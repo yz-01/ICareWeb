@@ -41,6 +41,6 @@ class RegisterController extends Controller
 
         $request->session()->flash('success', trans('messages.create.success'));
 
-        return redirect()->route('register.index');;
+        return redirect()->route('login.index');;
     }
 }

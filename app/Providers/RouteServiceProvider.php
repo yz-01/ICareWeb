@@ -35,18 +35,89 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->configureRateLimiting();
+        // $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+        // $this->routes(function () {
+        //     Route::prefix('api')
+        //         ->middleware('api')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path('routes/api.php'));
+
+        //     Route::middleware('web')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path('routes/web.php'));
+        // });
+
+        parent::boot();
+    }
+
+    /**
+     * Define the routes for the application.
+     *
+     * @return void
+     */
+    public function map()
+    {
+        $this->mapApiRoutes();
+        $this->mapWebRoutes();
+            Route::middleware('web')
+                ->prefix('admin')
+                ->name('admin.')
+                ->namespace('App\Http\Controllers\Admin')
+                ->group(base_path('routes/admin.php'));
 
             Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
+                ->prefix('agent')
+                ->name('agent.')
+                ->namespace('App\Http\Controllers\Agent')
+                ->group(base_path('routes/agent.php'));
+
+            Route::middleware('web')
+            ->prefix('merchant')
+            ->name('merchant.')
+            ->namespace('App\Http\Controllers\Merchant')
+            ->group(base_path('routes/merchant.php'));
+
+            Route::middleware('web')
+                ->prefix('teacher')
+                ->name('teacher.')
+                ->namespace('App\Http\Controllers\Teacher')
+                ->group(base_path('routes/teacher.php'));
+
+            Route::middleware('web')
+                ->prefix('customer')
+                ->name('customer.')
+                ->namespace('App\Http\Controllers\Customer')
+                ->group(base_path('routes/customer.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
     }
 
     /**

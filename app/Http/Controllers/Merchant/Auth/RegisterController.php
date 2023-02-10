@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Merchant\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Merchant;
+use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
@@ -70,16 +71,27 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         $this->validate($request, [
+            'company_name' => 'required|string|max:255',
+            'company_registration_number' => 'required|string|max:255',
+            'nature_business' => 'required|string|max:255',
             'name' => 'required|string|max:255',
-            'identity_card' => 'nullable|string|max:255|unique:merchants',
+            'position' => 'required|string|max:255',
+            'ssm_document' => 'required',
             'email' => 'required|string|email|max:255|unique:merchants',
-            'phone' => 'nullable|numeric',
-            'address' => 'nullable',
-            'city' => 'nullable',
-            'state' => 'nullable',
-            'postal_code' => 'nullable',
-            'country_id' => 'nullable',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'postal_code' => 'required',
+            'country_id' => 'required',
             'agent_id' => 'nullable',
+            'is_own_company' => 'required',
+            'member_number' => 'required',
+            'is_hrdf' => 'required',
+            'product1' => 'nullable|string|max:255',
+            'product2' => 'nullable|string|max:255',
+            'product3' => 'nullable|string|max:255',
+            'product4' => 'nullable|string|max:255',
+            'product5' => 'nullable|string|max:255',
             'security_question_id' => 'required',
             'security_answer' => 'required|string|max:255',
             'username' => 'required|string|max:255',
@@ -94,34 +106,52 @@ class RegisterController extends Controller
         $merchant = Merchant::create([
             'code' => $last_merchant ? $last_merchant->code : null,
             'name' => $request->name,
-            'identity_card' => $request->identity_card,
+            'position' => $request->position,
+            'company_name' => $request->company_name,
+            'company_registration_number' => $request->company_registration_number,
+            'ssm_document' => $request->ssm_document,
+            'nature_business' => $request->nature_business,
             'email' => $request->email,
-            'phone' => $request->phone,
             'address' => $request->address,
             'city' => $request->city,
             'state' => $request->state,
             'postal_code' => $request->postal_code,
             'country_id' => $request->country_id,
+            'is_own_company' => $request->is_own_company,
+            'member_number' => $request->member_number,
+            'is_hrdf' => $request->is_hrdf,
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'security_question_id' => $request->security_question_id,
             'security_answer' => $request->security_answer,
             'agent_id' => $request->agent_id,
+            'is_approve' => 0,
+        ]);
+
+        $promote_product = PromoteProduct::create([
+            'merchant_id' => $merchant->id,
+            'product1' => $request->product1,
+            'product2' => $request->product2,
+            'product3' => $request->product3,
+            'product4' => $request->product4,
+            'product5' => $request->product5,
         ]);
 
         if($last_merchant){
             $add_merchant_code_number = substr($merchant->code,-4) + 1;
             $merchant->update([
                 'code' => "C".str_pad($add_merchant_code_number, 4, '0', STR_PAD_LEFT),
+                'promote_product_id' => $promote_product->id,
             ]);
         }
         else{
             $merchant->update([
                 'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
+                'promote_product_id' => $promote_product->id,
             ]);
         }
 
-        return redirect()->route('merchant.login');
+        return redirect()->route('merchant.login')->with('success', 'Register Successfully, Please wait for Admin approve');
     }
 
     public function showRegistrationForm()

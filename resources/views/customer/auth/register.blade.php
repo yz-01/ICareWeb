@@ -35,7 +35,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="name" type="text" class="@error('name') is-invalid @enderror" value="{{ old('name') ?: '' }}">
-                                    <label>Name *</label>
+                                    <label>Name <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('name')
                                         <div class="invalid-feedback">
@@ -46,8 +46,8 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="identity_card" type="text" class="@error('name') is-invalid @enderror" value="{{ old('identity_card') ?: '' }}">
-                                    <label>Identity Card</label>
+                                    <input name="identity_card" type="text" class="@error('identity_card') is-invalid @enderror" value="{{ old('identity_card') ?: '' }}">
+                                    <label>Identity Card <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('identity_card')
                                         <div class="invalid-feedback">
@@ -61,7 +61,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="email" type="text" class="@error('email') is-invalid @enderror" value="{{ old('email') ?: '' }}">
-                                    <label>Email *</label>
+                                    <label>Email <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('email')
                                         <div class="invalid-feedback">
@@ -73,7 +73,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="phone" type="number" class="@error('phone') is-invalid @enderror" value="{{ old('phone') ?: '' }}">
-                                    <label>Contact Number</label>
+                                    <label>Contact Number <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('phone')
                                         <div class="invalid-feedback">
@@ -87,7 +87,7 @@
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <input name="address" type="text" class="@error('address') is-invalid @enderror" value="{{ old('address') ?: '' }}">
-                                    <label>Address</label>
+                                    <label>Address <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('address')
                                         <div class="invalid-feedback">
@@ -101,7 +101,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="city" type="text" class="@error('city') is-invalid @enderror" value="{{ old('city') ?: '' }}">
-                                    <label>City</label>
+                                    <label>City <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('city')
                                         <div class="invalid-feedback">
@@ -113,7 +113,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="state" type="text" class="@error('state') is-invalid @enderror" value="{{ old('state') ?: '' }}">
-                                    <label>State</label>
+                                    <label>State <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('state')
                                         <div class="invalid-feedback">
@@ -127,7 +127,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="postal_code" type="text" class="@error('postal_code') is-invalid @enderror" value="{{ old('postal_code') ?: '' }}">
-                                    <label>Postal Code</label>
+                                    <label>Postal Code <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('postal_code')
                                         <div class="invalid-feedback">
@@ -137,7 +137,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <p class="mb-0">Country</p>
+                                <p class="mb-0">Country <span class="text-danger">*</span></p>
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select class="w-100" name="country_id" class="@error('country_id') is-invalid @enderror" value="{{ old('country_id') ?: '' }}" style="z-index: 999">
                                         <option value="">-- Select Country --</option>
@@ -157,7 +157,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="username" type="text" class="@error('username') is-invalid @enderror" value="{{ old('username') ?: '' }}">
-                                    <label>Username *</label>
+                                    <label>Username <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('username')
                                         <div class="invalid-feedback">
@@ -167,7 +167,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-6">
-                                <p class="mb-0">Security Question *</p>
+                                <p class="mb-0">Security Question <span class="text-danger">*</span></p>
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select class="w-100" name="security_question_id" class="@error('security_question_id') is-invalid @enderror">
                                         <option value="">-- Select Security Question --</option>
@@ -187,7 +187,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="password" type="password"  class="@error('password') is-invalid @enderror" value="{{ old('password') ?: '' }}">
-                                    <label>Password *</label>
+                                    <label>Password <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('password')
                                         <div class="invalid-feedback">
@@ -199,7 +199,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="security_answer" type="text" class="@error('security_answer') is-invalid @enderror" value="{{ old('security_answer') ?: '' }}">
-                                    <label>Security Answer *</label>
+                                    <label>Security Answer <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('security_answer')
                                         <div class="invalid-feedback">
@@ -213,7 +213,7 @@
                             <div class="col-lg-6">
                                 <div class="form-group">
                                     <input name="password_confirmation" type="password" class="@error('password_confirmation') is-invalid @enderror" value="{{ old('password_confirmation') ?: '' }}">
-                                    <label>Confirm Password *</label>
+                                    <label>Confirm Password <span class="text-danger">*</span></label>
                                     <span class="focus-border"></span>
                                     @error('password_confirmation')
                                         <div class="invalid-feedback">

@@ -30,8 +30,11 @@ class CreateCustomersTable extends Migration
             $table->string('state')->nullable();
             $table->foreignId('country_id')->nullable()->constrained('countries');
             $table->foreignId('agent_id')->nullable()->constrained('agents');
+            $table->integer('point_balance')->default(0);
+            $table->integer('point_usage')->default(0)->comment('Total point this student has used');
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
+            $table->tinyInteger('is_approve')->comment('0=No, 1=Yes')->nullable();
             $table->boolean('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

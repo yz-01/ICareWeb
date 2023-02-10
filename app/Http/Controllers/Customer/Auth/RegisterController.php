@@ -71,14 +71,14 @@ class RegisterController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|string|max:255',
-            'identity_card' => 'nullable|string|max:255|unique:customers',
+            'identity_card' => 'required|string|max:255|unique:customers',
             'email' => 'required|string|email|max:255|unique:customers',
-            'phone' => 'nullable|numeric',
-            'address' => 'nullable',
-            'city' => 'nullable',
-            'state' => 'nullable',
-            'postal_code' => 'nullable',
-            'country_id' => 'nullable',
+            'phone' => 'required|numeric',
+            'address' => 'required',
+            'city' => 'required',
+            'state' => 'required',
+            'postal_code' => 'required',
+            'country_id' => 'required',
             'agent_id' => 'nullable',
             'security_question_id' => 'required',
             'security_answer' => 'required|string|max:255',
@@ -107,6 +107,7 @@ class RegisterController extends Controller
             'security_question_id' => $request->security_question_id,
             'security_answer' => $request->security_answer,
             'agent_id' => $request->agent_id,
+            'is_approve' => 0,
         ]);
 
         if($last_customer){
@@ -121,7 +122,7 @@ class RegisterController extends Controller
             ]);
         }
 
-        return redirect()->route('customer.login');
+        return redirect()->route('customer.login')->with('success', 'Register Successfully, Please wait for Admin approve');
     }
 
     public function showRegistrationForm()

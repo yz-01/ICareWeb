@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnigy-popup.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- Sweet Alert-->
+    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="rbt-header-sticky">
@@ -73,6 +75,13 @@
     <script src="{{ asset('assets/js/vendor/countdown.js') }}"></script>
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
+
+    @include('customer.auth.layouts.sweetalerts')
 </body>
 
 </html>

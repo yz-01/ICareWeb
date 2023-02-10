@@ -24,4 +24,9 @@ class Merchant extends Authenticatable
             'name' => '-',
         ]);
     }
+
+    public function promote_product()
+    {
+        return $this->belongsTo(PromoteProduct::class);
+    }
 }

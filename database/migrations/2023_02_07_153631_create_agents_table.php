@@ -22,11 +22,11 @@ class CreateAgentsTable extends Migration
             $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->string('image')->nullable();
-            $table->string('address1')->nullable();
-            $table->string('address2')->nullable();
+            $table->string('address')->nullable();
             $table->string('postal_code')->nullable();
-            $table->foreignId('city_id')->nullable()->constrained('cities');
-            $table->foreignId('state_id')->nullable()->constrained('states');
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->foreignId('country_id')->nullable()->constrained('countries');
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
             $table->boolean('status')->nullable()->default(1);

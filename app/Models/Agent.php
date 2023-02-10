@@ -16,4 +16,11 @@ class Agent extends Model
     protected $guarded = ['id'];
 
     protected $hidden = ['password', 'remember_token',];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class)->withDefault([
+            'name' => '-',
+        ]);
+    }
 }

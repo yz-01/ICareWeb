@@ -15,7 +15,9 @@ class CreateSecurityQuestionsTable extends Migration
     {
         Schema::create('security_questions', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

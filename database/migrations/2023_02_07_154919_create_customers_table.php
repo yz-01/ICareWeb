@@ -24,11 +24,12 @@ class CreateCustomersTable extends Migration
             $table->string('image')->nullable();
             $table->foreignId('security_question_id')->nullable()->constrained('security_questions');
             $table->string('security_answer')->nullable();
-            $table->string('address1')->nullable();
-            $table->string('address2')->nullable();
+            $table->string('address')->nullable();
             $table->string('postal_code')->nullable();
-            $table->foreignId('city_id')->nullable()->constrained('cities');
-            $table->foreignId('state_id')->nullable()->constrained('states');
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->foreignId('country_id')->nullable()->constrained('countries');
+            $table->foreignId('agent_id')->nullable()->constrained('agents');
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
             $table->boolean('status')->nullable()->default(1);

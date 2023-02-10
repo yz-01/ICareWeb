@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Merchant extends Model
+class Merchant extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
 
@@ -16,4 +17,11 @@ class Merchant extends Model
     protected $guarded = ['id'];
 
     protected $hidden = ['password', 'remember_token',];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class)->withDefault([
+            'name' => '-',
+        ]);
+    }
 }

@@ -40,6 +40,11 @@ class Handler extends ExceptionHandler
         });
     }
 
+    public function report(Throwable $exception)
+    {
+        parent::report($exception);
+    }
+
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if ($request->expectsJson()) {

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/hrdp logo.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
 
     <!-- CSS ============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">

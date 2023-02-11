@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/hrdp logo.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
 
     <!-- CSS
 	============================================ -->
@@ -153,7 +153,7 @@
                         <div class="header-info">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="{{ asset('images/icon/hrdp logo.png') }}" alt="Education Logo Images">
+                                    <img src="{{ asset('images/icon/logo.png') }}" alt="Education Logo Images">
                                 </a>
                             </div>
                         </div>
@@ -1135,7 +1135,7 @@
                 <div class="content">
                     <div class="logo">
                         <a href="/">
-                            <img src="{{ asset('images/icon/hrdp logo.png') }}" alt="Education Logo Images">
+                            <img src="{{ asset('images/icon/logo.png') }}" alt="Education Logo Images">
                         </a>
                     </div>
                     <div class="rbt-btn-close">
@@ -2837,7 +2837,7 @@
                         <div class="footer-widget">
                             <div class="logo">
                                 <a href="/">
-                                    <img src="{{ asset('images/icon/hrdp logo.png') }}" alt="Edu-cause">
+                                    <img src="{{ asset('images/icon/logo.png') }}" alt="Edu-cause">
                                 </a>
                             </div>
 

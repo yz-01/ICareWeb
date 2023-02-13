@@ -7,16 +7,15 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="inner text-start">
-                    <h2 class="title"><span class="text-decoration-underline">Histudy</span> Starter is a community for creative people</h2>
-                    <p class="description">We just don't give our student only lecture but real life
-                        experience.</p>
-                    <div class="slider-btn rbt-button-group justify-content-start">
-                        <a class="rbt-btn btn-border icon-hover color-white radius-round" href="#">
+                    <h2 class="title" style="font-size: 35px">HRDP is a one-stop platform for all your human resource development needs in Malaysia.</h2>
+                    <p class="description">Join us now and take your professional development to the next level!</p>
+                    {{-- <div class="slider-btn rbt-button-group justify-content-start">
+                        <a class="rbt-btn btn-border icon-hover color-white radius-round" >
                             <span class="btn-text">Explore Courses</span>
                             <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                         </a>
-                        <a class="rbt-btn-link color-white" href="#">Start learning<i class="feather-arrow-right"></i></a>
-                    </div>
+                        <a class="rbt-btn-link color-white" >Start learning<i class="feather-arrow-right"></i></a>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -31,13 +30,13 @@
         <div class="row g-5">
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/category/image/web-design.jpg') }}" alt="Icons Images">
+                            <img src="{{ asset('images/oe/ddckbg.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">OE FOR WWW MODEL</h5>
+                            <h5 class="title">Datuk Wira (Dr) Calvin Khiu</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -48,31 +47,13 @@
             <!-- End Category Box Layout  -->
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ ('images/category/image/graphic-design.jpg') }}" alt="Icons Images">
+                            <img src="{{ ('images/oe/jamie.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">OE FOR ENTREPRENEURSHIP</h5>
-                            <div class="read-more-btn">
-                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <!-- End Category Box Layout  -->
-
-            <!-- Start Category Box Layout  -->
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a href="#" class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
-                    <div class="inner">
-                        <div class="thumbnail">
-                            <img src="{{ ('images/category/image/personal-development.jpg') }}" alt="Icons Images">
-                        </div>
-                        <div class="content">
-                            <h5 class="title">OE FOR BUSINESS MODEL 5G</h5>
+                            <h5 class="title">Dr Jamie Chin</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -84,13 +65,13 @@
 
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a  class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/category/image/software.jpg') }}" alt="Icons Images">
+                            <img src="{{ ('images/oe/eunice.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">OE FOR CEO</h5>
+                            <h5 class="title">(Dr) Eunice Chew</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -102,13 +83,13 @@
 
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/category/image/sales.jpg') }}" alt="Icons Images">
+                            <img src="{{ asset('images/oe/grace.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">OE FOR TOP MANAGEMENT</h5>
+                            <h5 class="title">(Dr) Grace Yee</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -120,13 +101,13 @@
 
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/category/image/arts.jpg') }}" alt="Icons Images">
+                            <img src="{{ asset('images/oe/jason.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">OE FOR MDMT</h5>
+                            <h5 class="title">Jason Kok</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -138,13 +119,13 @@
 
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/category/image/mobile.jpg') }}" alt="Icons Images">
+                            <img src="{{ asset('images/oe/kingsley.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">Mobile Application</h5>
+                            <h5 class="title">Kingsley Chew</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -156,13 +137,31 @@
 
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" href="#">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
                     <div class="inner">
                         <div class="thumbnail">
-                            <img src="{{ asset('images/category/image/finance.jpg') }}" alt="Icons Images">
+                            <img src="{{ asset('images/oe/xiaogu.png') }}" alt="Icons Images">
                         </div>
                         <div class="content">
-                            <h5 class="title">Finance & Accounting</h5>
+                            <h5 class="title">小姑</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/oe/michelle.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">Michelle Tai</h5>
                             <div class="read-more-btn">
                                 <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
                             </div>
@@ -180,15 +179,15 @@
 <div class="rbt-featured-course bg-color-white rbt-section-gap">
     <div class="container">
         <div class="row g-5 align-items-end mb--60">
-            <div class="col-lg-6 col-md-12 col-12">
+            <div class="col-lg-12 col-md-12 col-12">
                 <div class="section-title text-start">
                     <h2 class="title">Featured Courses</h2>
-                    <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our histudy.</p>
+                    <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
                 </div>
             </div>
             {{-- <div class="col-lg-6 col-md-12 col-12">
                 <div class="load-more-btn text-start text-lg-end">
-                    <a class="rbt-btn btn-border icon-hover radius-round" href="#">
+                    <a class="rbt-btn btn-border icon-hover radius-round" >
                         <span class="btn-text">Browse Histudy Courses</span>
                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                     </a>
@@ -202,7 +201,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                        <a href="#">
+                        <a >
                             <img src="{{ asset('images/oe/www.jpg') }}" alt="Card image" style="height: 240px; width: 100%;">
                             <div class="rbt-badge-3 bg-white">
                                 <span>-40%</span>
@@ -223,12 +222,12 @@
                                 <span class="rating-count"> (10k+ Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                <a class="rbt-round-btn" title="Bookmark" ><i
                                         class="feather-bookmark"></i></a>
                             </div>
                         </div>
 
-                        <h4 class="rbt-card-title"><a href="#">OE for WWW Model</a>
+                        <h4 class="rbt-card-title"><a >OE for WWW Model</a>
                         </h4>
 
                         <ul class="rbt-meta">
@@ -236,11 +235,10 @@
                             <li><i class="feather-users"></i>1000 Students</li>
                         </ul>
 
-                        <p class="rbt-card-text">It is a long established fact that a reader will be
-                            distracted.</p>
+                        <p class="rbt-card-text">Design your own business board. Design a www model with shareholders, customers and teams for enterprises.</p>
                         <div class="rbt-author-meta mb--10">
                             <div class="rbt-avater">
-                                <a href="#">
+                                <a >
                                     <img src="{{ asset('images/oe/ddck.png') }}" alt="Datuk Wira (Dr) Calvin Khiu">
                                 </a>
                             </div>
@@ -250,11 +248,11 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">$60</span>
-                                <span class="off-price">$120</span>
+                                <span class="current-price">RM3218.80</span>
+                                <span class="off-price">RM4218.80</span>
                             </div>
-                            <a class="rbt-btn-link" href="#">Learn
-                                More<i class="feather-arrow-right"></i></a>
+                            <a class="rbt-btn-link left-icon" ><i
+                                class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -265,7 +263,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                        <a href="#">
+                        <a >
                             <img src="{{ asset('images/oe/siwei.jpeg') }}" alt="Card image" style="height: 240px; width: 100%;">
                         </a>
                     </div>
@@ -279,26 +277,25 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <span class="rating-count"> (15 Reviews)</span>
+                                <span class="rating-count"> (10k+ Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                <a class="rbt-round-btn" title="Bookmark" ><i
                                         class="feather-bookmark"></i></a>
                             </div>
                         </div>
-                        <h4 class="rbt-card-title"><a href="#">OE for ENTREPRENEURSHIP</a>
+                        <h4 class="rbt-card-title"><a >OE for Entrepreneurship</a>
                         </h4>
                         <ul class="rbt-meta">
                             <li><i class="feather-book"></i>10 Lessons</li>
                             <li><i class="feather-users"></i>1000 Students</li>
                         </ul>
 
-                        <p class="rbt-card-text">It is a long established fact that a reader will be
-                            distracted.</p>
+                        <p class="rbt-card-text">A lesson in the soul of an enterprise. Three days for you to settle down and understand the end point of the enterprise.</p>
                         <div class="rbt-author-meta mb--10">
                             <div class="rbt-avater">
-                                <a href="#">
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="Sophia Jaymes">
+                                <a >
+                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
                                 </a>
                             </div>
                             <div class="rbt-author-info">
@@ -307,10 +304,10 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">$60</span>
-                                <span class="off-price">$120</span>
+                                <span class="current-price">RM6398.80</span>
+                                <span class="off-price">RM7398.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" href="#"><i
+                            <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -322,7 +319,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                        <a href="#">
+                        <a >
                             <img src="{{ asset('images/oe/5G.jpg') }}" alt="Card image" style="height: 240px; width: 100%;">
                             <div class="rbt-badge-3 bg-white">
                                 <span>-10%</span>
@@ -340,39 +337,39 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <span class="rating-count"> (5 Reviews)</span>
+                                <span class="rating-count"> (10k+ Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                <a class="rbt-round-btn" title="Bookmark" ><i
                                         class="feather-bookmark"></i></a>
                             </div>
                         </div>
-                        <h4 class="rbt-card-title"><a href="#">OE For Business Model 5G</a>
+                        <h4 class="rbt-card-title"><a >OE for Business Model 5G</a>
                         </h4>
                         <ul class="rbt-meta">
                             <li><i class="feather-book"></i>8 Lessons</li>
-                            <li><i class="feather-users"></i>30 Students</li>
+                            <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">Angular Js long fact that a reader will be distracted by
-                            the readable.</p>
+                        <p class="rbt-card-text">Let you know how to cooperate, merge, and make good use of the power of equity to leverage.
+                            </p>
 
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
-                                <a href="#">
-                                    <img src="{{ asset('images/client/avatar-03.png') }}" alt="Sophia Jaymes">
+                                <a >
+                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
                                 </a>
                             </div>
                             <div class="rbt-author-info">
-                                By <a href="#">Slaughter</a> In <a href="#">Languages</a>
+                                By Datuk Wira (Dr) Calvin Khiu
                             </div>
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">$80</span>
-                                <span class="off-price">$100</span>
+                                <span class="current-price">RM15808</span>
+                                <span class="off-price">RM17808</span>
                             </div>
-                            <a class="rbt-btn-link" href="#">Learn
-                                More<i class="feather-arrow-right"></i></a>
+                            <a class="rbt-btn-link left-icon" ><i
+                                    class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -383,7 +380,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                        <a href="#">
+                        <a >
                             <img src="{{ asset('images/oe/top.jpeg') }}" alt="Card image" style="height: 240px; width: 100%;">
                             <div class="rbt-badge-3 bg-white">
                                 <span>-40%</span>
@@ -404,37 +401,36 @@
                                 <span class="rating-count"> (10k+ Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                <a class="rbt-round-btn" title="Bookmark" ><i
                                         class="feather-bookmark"></i></a>
                             </div>
                         </div>
 
-                        <h4 class="rbt-card-title"><a href="#">OE for Top Management</a>
+                        <h4 class="rbt-card-title"><a >OE for Top Management</a>
                         </h4>
                         <ul class="rbt-meta">
                             <li><i class="feather-book"></i>20 Lessons</li>
                             <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">Web Js long fact that a reader will be distracted by
-                            the readable.</p>
+                        <p class="rbt-card-text">Detonate the passion of your team, understand the needs of the enterprise, and be considerate of colleagues.</p>
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
-                                <a href="#">
-                                    <img src="{{ asset('images/client/avater-01.png') }}" alt="Sophia Jaymes">
+                                <a >
+                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
                                 </a>
                             </div>
                             <div class="rbt-author-info">
-                                By <a href="#">Patrick</a> In <a href="#">Languages</a>
+                                By Datuk Wira (Dr) Calvin Khiu
                             </div>
                         </div>
 
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">$60</span>
-                                <span class="off-price">$120</span>
+                                <span class="current-price">RM3218.80</span>
+                                <span class="off-price">RM4218.80</span>
                             </div>
-                            <a class="rbt-btn-link" href="#">Learn
-                                More<i class="feather-arrow-right"></i></a>
+                            <a class="rbt-btn-link left-icon" ><i
+                                    class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -445,8 +441,8 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                        <a href="#">
-                            <img src="{{ asset('images/course/course-online-05.jpg') }}" alt="Card image">
+                        <a >
+                            <img src="{{ asset('images/oe/ceo.jpeg') }}" alt="Card image" style="height: 240px; width: 100%;">
                             <div class="rbt-badge-3 bg-white">
                                 <span>-20%</span>
                                 <span>Off</span>
@@ -463,38 +459,36 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <span class="rating-count"> (15 Reviews)</span>
+                                <span class="rating-count"> (10K+ Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                <a class="rbt-round-btn" title="Bookmark" ><i
                                         class="feather-bookmark"></i></a>
                             </div>
                         </div>
-                        <h4 class="rbt-card-title"><a href="#">SQL Beginner Advanced</a>
+                        <h4 class="rbt-card-title"><a >OE for CEO</a>
                         </h4>
                         <ul class="rbt-meta">
                             <li><i class="feather-book"></i>12 Lessons</li>
-                            <li><i class="feather-users"></i>50 Students</li>
+                            <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">It is a long established fact that a reader will be
-                            distracted
-                            by the readable.</p>
+                        <p class="rbt-card-text">Four days to make you a public speaker.</p>
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
-                                <a href="#">
-                                    <img src="{{ asset('images/client/avatar-02.png') }}" alt="Sophia Jaymes">
+                                <a >
+                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
                                 </a>
                             </div>
                             <div class="rbt-author-info">
-                                By <a href="#">Angela</a> In <a href="#">Development</a>
+                                By Datuk Wira (Dr) Calvin Khiu
                             </div>
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">$60</span>
-                                <span class="off-price">$120</span>
+                                <span class="current-price">RM22228</span>
+                                <span class="off-price">RM25228</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" href="#"><i
+                            <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -506,8 +500,8 @@
             <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                        <a href="#">
-                            <img src="{{ asset('images/course/course-online-06.jpg') }}" alt="Card image">
+                        <a >
+                            <img src="{{ asset('images/oe/mdmt.gif') }}" alt="Card image" style="height: 240px; width: 100%;">
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -520,39 +514,38 @@
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                 </div>
-                                <span class="rating-count"> (5 Reviews)</span>
+                                <span class="rating-count"> (10k+ Reviews)</span>
                             </div>
                             <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" href="#"><i
+                                <a class="rbt-round-btn" title="Bookmark" ><i
                                         class="feather-bookmark"></i></a>
                             </div>
                         </div>
-                        <h4 class="rbt-card-title"><a href="#">JS Zero to Mastery</a>
+                        <h4 class="rbt-card-title"><a >OE for MDMT</a>
                         </h4>
                         <ul class="rbt-meta">
                             <li><i class="feather-book"></i>8 Lessons</li>
-                            <li><i class="feather-users"></i>30 Students</li>
+                            <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">Angular Js long fact that a reader will be distracted by
-                            the readable.</p>
+                        <p class="rbt-card-text">Million Dollar Mentor Table</p>
 
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
-                                <a href="#">
-                                    <img src="{{ asset('images/client/avatar-03.png') }}" alt="Sophia Jaymes">
+                                <a >
+                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
                                 </a>
                             </div>
                             <div class="rbt-author-info">
-                                By <a href="#">Slaughter</a> In <a href="#">Languages</a>
+                                By Datuk Wira (Dr) Calvin Khiu
                             </div>
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">$80</span>
-                                <span class="off-price">$100</span>
+                                <span class="current-price">RM28888</span>
+                                <span class="off-price">RM31588</span>
                             </div>
-                            <a class="rbt-btn-link" href="#">Learn
-                                More<i class="feather-arrow-right"></i></a>
+                            <a class="rbt-btn-link left-icon" ><i
+                                    class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
                 </div>
@@ -565,7 +558,7 @@
 <!-- End Featured Course Area  -->
 
 
-<div class="rbt-counterup-area bg_image bg_image_fixed bg_image--20 ptb--170 bg-black-overlay" data-black-overlay="2" style="background-image: url({{ asset('images/welcome/bg-image-20.jpg') }})">
+<div class="rbt-counterup-area bg_image bg_image_fixed bg_image--20 ptb--170 bg-black-overlay" data-black-overlay="2" style="background-image: url({{ asset('images/oe/bg2.jpg') }})">
     <div class="conter-style-2">
         <div class="container">
             <div class="row g-5">
@@ -634,8 +627,8 @@
         <div class="row">
             <div class="col-lg-12 mb--60">
                 <div class="section-title text-center">
-                    <h2 class="title">Student's Feedback</h2>
-                    <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our histudy.</p>
+                    <h2 class="title">Student's Testimonials</h2>
+                    <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
                 </div>
             </div>
         </div>
@@ -649,22 +642,23 @@
                             <div class="inner bg-no-shadow bg-color-primary-opacity">
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
-                                        <img src="{{ asset('images/testimonial/client-01.png') }}" alt="Clint Images">
+                                        <img src="{{ asset('images/oe/tes1.jpg') }}" alt="Clint Images">
                                     </div>
                                     <div class="client-info">
-                                        <h5 class="title">Martha Maldonado</h5>
-                                        <span>Executive Chairman <i>@ Google</i></span>
+                                        <h5 class="title">Fred Tan</h5>
+                                        {{-- <span>Executive Chairman <i>@ Google</i></span> --}}
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="subtitle-3">After the launch, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget risus velit.</p>
+                                    <p class="subtitle-3">OE For Ceo 总裁路演
+                                        这堂皇牌课超越了我的想象！太强了、可以把一个不敢站上舞台的人，在舞台上享受路演☺️
+                                        还可以把全场的气氛搞的很high！爽😊</p>
                                     <div class="rating mt--20">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -680,22 +674,23 @@
                             <div class="inner bg-no-shadow bg-color-primary-opacity">
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
-                                        <img src="{{ asset('images/testimonial/client-02.png') }}" alt="Clint Images">
+                                        <img src="{{ asset('images/oe/tes2.png') }}" alt="Clint Images">
                                     </div>
                                     <div class="client-info">
-                                        <h5 class="title">Michael D. Lovelady</h5>
-                                        <span>CEO <i>@ Google</i></span>
+                                        <h5 class="title">Kae Cynn</h5>
+                                        {{-- <span>CEO <i>@ Google</i></span> --}}
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="subtitle-3">Histudy education, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget.</p>
+                                    <p class="subtitle-3">MDMT【宇宙级的课程🌍】
+                                        真的很感恩自己有这个福报可以上这么这么棒的一堂课❤️
+                                        经过这短短的三天，我们大家都重生了〰️</p>
                                     <div class="rating mt--20">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -711,22 +706,22 @@
                             <div class="inner bg-no-shadow bg-color-primary-opacity">
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
-                                        <img src="{{ asset('images/testimonial/client-03.png') }}" alt="Clint Images">
+                                        <img src="{{ asset('images/oe/tes3.jpg') }}" alt="Clint Images">
                                     </div>
                                     <div class="client-info">
-                                        <h5 class="title">Valerie J. Creasman</h5>
-                                        <span>Executive Designer <i>@ Google</i></span>
+                                        <h5 class="title">Gary Thong KL </h5>
+                                        {{-- <span>Executive Designer <i>@ Google</i></span> --}}
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget.</p>
+                                    <p class="subtitle-3">真的，真的，真的（重要的事情要说三次）
+                                        非常棒！！！这让我发觉不一样的自己，也知道自己以后需要做些什么、和走哪一条路。</p>
                                     <div class="rating mt--20">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -742,22 +737,23 @@
                             <div class="inner bg-no-shadow bg-color-primary-opacity">
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
-                                        <img src="{{ asset('images/testimonial/client-03.png') }}" alt="Clint Images">
+                                        <img src="{{ asset('images/oe/tes4.jpg') }}" alt="Clint Images">
                                     </div>
                                     <div class="client-info">
-                                        <h5 class="title">Valerie J. Creasman</h5>
-                                        <span>Executive Designer <i>@ Google</i></span>
+                                        <h5 class="title">Tu Soon Heng </h5>
+                                        {{-- <span>Executive Designer <i>@ Google</i></span> --}}
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget.</p>
+                                    <p class="subtitle-3">人与人之间，都有一道墙
+                                        <br />CEO总裁班，有一颗炸弹💣
+                                        <br />竟然可以炸开它!<br />我们终于突破了🥳</p>
                                     <div class="rating mt--20">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -773,22 +769,21 @@
                             <div class="inner bg-no-shadow bg-color-primary-opacity">
                                 <div class="clint-info-wrapper">
                                     <div class="thumb">
-                                        <img src="{{ asset('images/testimonial/client-03.png') }}" alt="Clint Images">
+                                        <img src="{{ asset('images/oe/tes5.jpg') }}" alt="Clint Images">
                                     </div>
                                     <div class="client-info">
-                                        <h5 class="title">Valerie J. Creasman</h5>
-                                        <span>Executive Designer <i>@ Google</i></span>
+                                        <h5 class="title">SY Teo</h5>
+                                        {{-- <span>Executive Designer <i>@ Google</i></span> --}}
                                     </div>
                                 </div>
                                 <div class="description">
-                                    <p class="subtitle-3">Our educational, vulputate at sapien sit amet,
-                                        auctor iaculis lorem. In vel hend rerit nisi. Vestibulum eget.</p>
+                                    <p class="subtitle-3">非常感恩 Dato 创造一个这么棒，这么有文化的平台，让同频率的人全部聚在一起，大家往同一个目标前进👍👍👍有一群人陪着你一起走😘😘😘</p>
                                     <div class="rating mt--20">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
+                                        <a ><i class="fa fa-star"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -824,17 +819,17 @@
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="section-title text-start">
                         <h2 class="title color-white">Latest News</h2>
-                        <p class="description color-white-off mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our histudy.</p>
+                        <p class="description color-white-off mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-12">
+                {{-- <div class="col-lg-6 col-md-12 col-12">
                     <div class="load-more-btn text-start text-lg-end">
-                        <a class="rbt-btn btn-border icon-hover radius-round color-white-off" href="#">
+                        <a class="rbt-btn btn-border icon-hover radius-round color-white-off" >
                             <span class="btn-text">See All Articles</span>
                             <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <!-- Start Card Area -->
             <div class="row g-5">
@@ -848,10 +843,10 @@
                                     <span>20 March 2022</span>
                                 </li>
                             </ul>
-                            <h4 class="rbt-card-title"><a href="#">Learn From These You Learn Education.</a></h4>
-                            <div class="rbt-card-bottom mt--40">
-                                <a class="transparent-button" href="#">Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
+                            <h4 class="rbt-card-title"><a >Learn From These You Learn Education.</a></h4>
+                            {{-- <div class="rbt-card-bottom mt--40">
+                                <a class="transparent-button" >Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -867,10 +862,10 @@
                                     <span>30 May 2022</span>
                                 </li>
                             </ul>
-                            <h4 class="rbt-card-title"><a href="#">Think You're An Expert In Education?</a></h4>
-                            <div class="rbt-card-bottom mt--40">
-                                <a class="transparent-button" href="#">Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
+                            <h4 class="rbt-card-title"><a >Think You're An Expert In Education?</a></h4>
+                            {{-- <div class="rbt-card-bottom mt--40">
+                                <a class="transparent-button" >Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -886,10 +881,10 @@
                                     <span>15 July 2022</span>
                                 </li>
                             </ul>
-                            <h4 class="rbt-card-title"><a href="#">Seven Easy Rules Of Education.</a></h4>
-                            <div class="rbt-card-bottom mt--40">
-                                <a class="transparent-button" href="#">Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div>
+                            <h4 class="rbt-card-title"><a >Seven Easy Rules Of Education.</a></h4>
+                            {{-- <div class="rbt-card-bottom mt--40">
+                                <a class="transparent-button" >Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -909,16 +904,21 @@
             <div class="col-lg-12">
                 <div class="section-title text-center">
                     <h2 class="title">Want to get special offers <br /> and Course updates?</h2>
-                    <form action="#" class="newsletter-form-1 mt--50 radius-round">
-                        <input class="rbt-border" type="email" placeholder="Enter Your E-Email">
-                        <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
-                            <span class="icon-reverse-wrapper">
-            <span class="btn-text">Subscribe</span>
-                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                            </span>
-                        </button>
-                    </form>
+                    {{-- <form action="#" class="newsletter-form-1 mt--50 radius-round"> --}}
+                        <div class="row pt-5">
+                            <div class="col-lg-12">
+                                <a href="{{ route('customer.register.create') }}">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    {{-- </form> --}}
                 </div>
             </div>
         </div>

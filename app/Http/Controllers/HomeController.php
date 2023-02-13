@@ -15,4 +15,9 @@ class HomeController extends Controller
     {
         return view('tnc');
     }
+
+    public function reward_tnc()
+    {
+        return view('reward_tnc');
+    }
 }

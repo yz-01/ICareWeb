@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('tnc', 'HomeController@tnc')->name('tnc');
+Route::get('reward_tnc', 'HomeController@reward_tnc')->name('reward_tnc');
 Route::resource('home', 'HomeController');
 
 Route::resource('profile', 'ProfileController');

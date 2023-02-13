@@ -82,6 +82,11 @@
                             </div>
                         </div>
                     </form>
+                    <div class="row pt-3">
+                        <div class="col-lg-12 text-center">
+                            <a href="{{ route('merchant.register.create') }}" class="text-primary"><u>Haven't Register? Register Now</u></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

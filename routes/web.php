@@ -18,7 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('register', 'RegisterController');
-Route::resource('login', 'LoginController');
+Route::get('tnc', 'HomeController@tnc')->name('tnc');
+Route::resource('home', 'HomeController');
+
 Route::resource('profile', 'ProfileController');
 

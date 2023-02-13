@@ -257,7 +257,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM4218.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                 class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM7398.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -372,7 +372,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM17808.00</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -432,7 +432,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM4218.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -492,7 +492,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM25228.00</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -548,7 +548,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM31588.00</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -909,10 +909,19 @@
                     {{-- <form action="#" class="newsletter-form-1 mt--50 radius-round"> --}}
                         <div class="row pt-5">
                             <div class="col-lg-12">
-                                <a href="{{ route('customer.register.create') }}">
+                                <a href="{{ route('customer.register.create') }}" class="px-3">
                                     <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
                                         <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Register Now</span>
+                                        <span class="btn-text">Register as Customer Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                                <a href="{{ route('merchant.register.create') }}">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register as Merchant Now</span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </span>

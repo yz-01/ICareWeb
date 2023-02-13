@@ -24,6 +24,11 @@
 
 <div class="rbt-elements-area bg-color-white rbt-section-gap py-5">
     <div class="container">
+        {{-- <button class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100 h-100">
+            <span class="icon-reverse-wrapper">
+                <span class="btn-text" style="font-size: 23px">Become a member of The Point to earn a welcome offer of 500 points</span>
+            </span>
+        </button> --}}
 
         <a class="rbt-btn bg-primary-opacity hover-icon-reverse my-4" href="/">
                             <span class="icon-reverse-wrapper">
@@ -386,10 +391,10 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="form-group">
-                                    <input name="agent_id" type="text" class="@error('agent_id') is-invalid @enderror" value="{{ old('agent_id') ?: '' }}">
+                                    <input name="agent_code" type="text" class="@error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}">
                                     <label>Referral ID</label>
                                     <span class="focus-border"></span>
-                                    @error('agent_id')
+                                    @error('agent_code')
                                         <div class="invalid-feedback">
                                             <span>{{ $message }}</span>
                                         </div>

@@ -83,7 +83,8 @@ class RegisterController extends Controller
             'state' => 'required',
             'postal_code' => 'required',
             'country_id' => 'required',
-            'agent_id' => 'nullable',
+            // 'agent_id' => 'nullable',
+            'agent_code' => 'nullable',
             'is_own_company' => 'required',
             'member_number' => 'required',
             'is_hrdf' => 'required',
@@ -124,7 +125,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'security_question_id' => $request->security_question_id,
             'security_answer' => $request->security_answer,
-            'agent_id' => $request->agent_id,
+            'agent_code' => $request->agent_code,
             'is_approve' => 0,
         ]);
 

@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('tnc', 'HomeController@tnc')->name('tnc');
 Route::get('reward_tnc', 'HomeController@reward_tnc')->name('reward_tnc');

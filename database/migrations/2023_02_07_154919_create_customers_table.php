@@ -30,6 +30,7 @@ class CreateCustomersTable extends Migration
             $table->string('state')->nullable();
             $table->foreignId('country_id')->nullable()->constrained('countries');
             $table->foreignId('agent_id')->nullable()->constrained('agents');
+            $table->string('agent_code')->nullable();
             $table->integer('point_balance')->default(0);
             $table->integer('point_usage')->default(0)->comment('Total point this student has used');
             $table->string('password')->nullable();

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Start Banner Area -->
-<div class="rbt-banner-5 height-650 bg_image bg_image--19" style="background-image: url({{ asset('images/welcome/H_Banner.png') }})">
+<div class="rbt-banner-5 height-650 bg_image bg_image--19" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }})">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -27,6 +27,13 @@
 <!-- Start category Area  -->
 <div class="rbt-category-area bg-color-white rbt-section-gapTop">
     <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb--60">
+                <div class="section-title text-center">
+                    <h2 class="title">Top Trainer</h2>
+                </div>
+            </div>
+        </div>
         <div class="row g-5">
             <!-- Start Category Box Layout  -->
             <div class="col-lg-3 col-md-6 col-sm-6 col-12">
@@ -180,7 +187,7 @@
     <div class="container">
         <div class="row g-5 align-items-end mb--60">
             <div class="col-lg-12 col-md-12 col-12">
-                <div class="section-title text-start">
+                <div class="section-title text-center">
                     <h2 class="title">Featured Courses</h2>
                     <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
                 </div>
@@ -248,8 +255,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM3218.80</span>
-                                <span class="off-price">RM4218.80</span>
+                                <span class="current-price">RM4218.80</span>
                             </div>
                             <a class="rbt-btn-link left-icon" ><i
                                 class="feather-shopping-cart"></i> Add To Cart</a>
@@ -291,7 +297,7 @@
                             <li><i class="feather-users"></i>1000 Students</li>
                         </ul>
 
-                        <p class="rbt-card-text">A lesson in the soul of an enterprise. Three days for you to settle down and understand the end point of the enterprise.</p>
+                        <p class="rbt-card-text">Three days for you to settle down and understand the end point of the enterprise.</p>
                         <div class="rbt-author-meta mb--10">
                             <div class="rbt-avater">
                                 <a >
@@ -304,8 +310,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM6398.80</span>
-                                <span class="off-price">RM7398.80</span>
+                                <span class="current-price">RM7398.80</span>
                             </div>
                             <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -365,8 +370,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM15808</span>
-                                <span class="off-price">RM17808</span>
+                                <span class="current-price">RM17808.00</span>
                             </div>
                             <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -426,8 +430,7 @@
 
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM3218.80</span>
-                                <span class="off-price">RM4218.80</span>
+                                <span class="current-price">RM4218.80</span>
                             </div>
                             <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -473,6 +476,8 @@
                             <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
                         <p class="rbt-card-text">Four days to make you a public speaker.</p>
+                        <br/>
+                        <br/>
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
                                 <a >
@@ -485,8 +490,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM22228</span>
-                                <span class="off-price">RM25228</span>
+                                <span class="current-price">RM25228.00</span>
                             </div>
                             <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -528,7 +532,8 @@
                             <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
                         <p class="rbt-card-text">Million Dollar Mentor Table</p>
-
+                        <br/>
+                        <br/>
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
                                 <a >
@@ -541,8 +546,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM28888</span>
-                                <span class="off-price">RM31588</span>
+                                <span class="current-price">RM31588.00</span>
                             </div>
                             <a class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -558,7 +562,7 @@
 <!-- End Featured Course Area  -->
 
 
-<div class="rbt-counterup-area bg_image bg_image_fixed bg_image--20 ptb--170 bg-black-overlay" data-black-overlay="2" style="background-image: url({{ asset('images/oe/bg2.jpg') }})">
+<div class="rbt-counterup-area bg_image bg_image_fixed bg_image--20 ptb--170 bg-black-overlay" data-black-overlay="2" style="background-image: url({{ asset('images/oe/bg4.jpg') }})">
     <div class="conter-style-2">
         <div class="container">
             <div class="row g-5">
@@ -816,8 +820,8 @@
     <div class="wrapper pb--50 rbt-index-upper">
         <div class="container">
             <div class="row g-5 align-items-end mb--60">
-                <div class="col-lg-6 col-md-12 col-12">
-                    <div class="section-title text-start">
+                <div class="col-lg-12 col-md-12 col-12">
+                    <div class="section-title text-center">
                         <h2 class="title color-white">Latest News</h2>
                         <p class="description color-white-off mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
                     </div>
@@ -840,7 +844,7 @@
                             <ul class="meta-list justify-content-start mb--30">
                                 <li class="list-item">
                                     <i class="feather-clock"></i>
-                                    <span>20 March 2022</span>
+                                    <span>20 Jan 2023</span>
                                 </li>
                             </ul>
                             <h4 class="rbt-card-title"><a >Learn From These You Learn Education.</a></h4>
@@ -859,7 +863,7 @@
                             <ul class="meta-list justify-content-start mb--30">
                                 <li class="list-item">
                                     <i class="feather-clock"></i>
-                                    <span>30 May 2022</span>
+                                    <span>11 Feb 2023</span>
                                 </li>
                             </ul>
                             <h4 class="rbt-card-title"><a >Think You're An Expert In Education?</a></h4>
@@ -878,7 +882,7 @@
                             <ul class="meta-list justify-content-start mb--30">
                                 <li class="list-item">
                                     <i class="feather-clock"></i>
-                                    <span>15 July 2022</span>
+                                    <span>12 Feb 2023</span>
                                 </li>
                             </ul>
                             <h4 class="rbt-card-title"><a >Seven Easy Rules Of Education.</a></h4>

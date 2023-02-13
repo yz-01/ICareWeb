@@ -90,7 +90,7 @@ class RegisterController extends Controller
         ]);
 
         $last_customer = Customer::withTrashed()->latest('id')->first();
-        
+
         $customer = Customer::create([
             'code' => $last_customer ? $last_customer->code : null,
             'name' => $request->name,
@@ -122,7 +122,7 @@ class RegisterController extends Controller
             ]);
         }
 
-        return redirect()->route('customer.login')->with('success', 'Register Successfully, Please wait for Admin approve');
+        return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website! Please wait for Admin approval.');
     }
 
     public function showRegistrationForm()

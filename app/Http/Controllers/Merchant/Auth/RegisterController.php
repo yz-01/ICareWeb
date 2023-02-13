@@ -102,7 +102,7 @@ class RegisterController extends Controller
         ]);
 
         $last_merchant = Merchant::withTrashed()->latest('id')->first();
-        
+
         $merchant = Merchant::create([
             'code' => $last_merchant ? $last_merchant->code : null,
             'name' => $request->name,
@@ -151,7 +151,8 @@ class RegisterController extends Controller
             ]);
         }
 
-        return redirect()->route('merchant.login')->with('success', 'Register Successfully, Please wait for Admin approve');
+
+        return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website! Please wait for Admin approval.');
     }
 
     public function showRegistrationForm()

@@ -23,4 +23,5 @@ Route::get('reward_tnc', 'HomeController@reward_tnc')->name('reward_tnc');
 Route::resource('home', 'HomeController');
 
 Route::resource('profile', 'ProfileController');
+Route::resource('cart', 'CartController');
 

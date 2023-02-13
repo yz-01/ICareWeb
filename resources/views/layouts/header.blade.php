@@ -661,6 +661,10 @@
                                 </div>
                             </div>
                         </li>
+                        <li class="account-access rbt-user-wrapper d-none d-xl-block" style="margin-right: 0">
+                            <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i></a>
+                        </li>
+
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
                             <a class="rbt-round-btn" href="#"><i class="feather-user"></i></a>
                             <div class="rbt-user-menu-list-wrapper">
@@ -698,6 +702,9 @@
                                     </ul>
                                 </div>
                             </div>
+                        </li>
+                        <li class="access-icon rbt-user-wrapper d-block d-xl-none">
+                            <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i></a>
                         </li>
                     </ul>
 

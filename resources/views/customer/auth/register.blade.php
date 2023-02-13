@@ -22,8 +22,17 @@
 </div>
 <!-- End Breadcrumb Area -->
 
+
 <div class="rbt-elements-area bg-color-white rbt-section-gap py-5">
     <div class="container">
+        <a class="rbt-btn bg-primary-opacity hover-icon-reverse my-4" href="/">
+                            <span class="icon-reverse-wrapper">
+                                <span class="btn-text">Return</span>
+                            <span class="btn-icon"><i class="feather-arrow-left"></i></span>
+                            <span class="btn-icon"><i class="feather-arrow-left"></i></span>
+                            </span>
+        </a>
+
         <div class="row gy-5 row--30 d-flex justify-content-center">
 
             <div class="col-lg-12">
@@ -234,7 +243,7 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div> 
+                        </div>
 
                         <div class="form-submit-group">
                             <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">

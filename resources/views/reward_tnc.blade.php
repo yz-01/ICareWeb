@@ -11,7 +11,7 @@
                 <h1 class="title">Rewards & Benefits Terms </h1>
                 {{--                <p class="mb--20">Histudy Course Privacy Policy Here.</p>--}}
                 <ul class="page-list">
-                    <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="rbt-breadcrumb-item"><a href="/">Home</a></li>
                     <li>
                         <div class="icon-right"><i class="feather-chevron-right"></i></div>
                     </li>

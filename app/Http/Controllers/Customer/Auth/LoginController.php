@@ -61,7 +61,7 @@ class LoginController extends Controller
         if (Auth::guard('customer')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->route('customer.dashboard');
         }
-        dd('456');
+
         return $this->sendFailedLoginResponse($request);
     }
 

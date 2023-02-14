@@ -65,7 +65,7 @@ class LoginController extends Controller
         if (Auth::guard('merchant')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->route('merchant.dashboard');
         }
-        dd('456');
+
         return $this->sendFailedLoginResponse($request);
     }
 

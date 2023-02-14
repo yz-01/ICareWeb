@@ -932,7 +932,7 @@
                             </li>
 
                             <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                                <a href="#"><i class="feather-user"></i>{{ $user->name }}</a>
+                                <a href="#"><i class="feather-user"></i>abc</a>
                                 {{-- <div class="rbt-user-menu-list-wrapper">
                                     <div class="inner">
                                         <div class="rbt-admin-profile">
@@ -2187,7 +2187,7 @@
                                     <img src="{{ asset('images/welcome/avatar.jpg') }}" alt="Instructor">
                                 </div>
                                 <div class="tutor-content">
-                                    <h5 class="title">{{ $user->name }}</h5>
+                                    <h5 class="title">abc</h5>
                                     <div class="rbt-review">
                                         <div class="rating">
                                             <i class="fas fa-star"></i>

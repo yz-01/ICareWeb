@@ -18,12 +18,13 @@ class CreateCompanyDetailsTable extends Migration
             $table->string('code')->nullable();
             $table->string('username')->nullable();
             $table->string('name')->nullable();
+            $table->string('phone')->nullable();
             $table->string('position')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_registration_number')->nullable();
             $table->string('ssm_document')->nullable();
             $table->string('company_logo')->nullable();
-            $table->string('nature_business')->nullable();
+            $table->foreignId('nature_business_id')->nullable()->constrained('nature_businesses');
             $table->string('email')->unique();
             $table->string('address')->nullable();
             $table->string('postal_code')->nullable();

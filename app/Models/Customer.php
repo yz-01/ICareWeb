@@ -31,4 +31,9 @@ class Customer extends Authenticatable
             'name' => '-',
         ]);
     }
+
+    public function point_transactions()
+    {
+        return $this->hasMany(PointTransaction::class);
+    }
 }

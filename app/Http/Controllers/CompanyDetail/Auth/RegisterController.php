@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\CompanyDetail\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AgentCode;
 use App\Models\Company;
 use App\Models\CompanyDetail;
 use App\Models\Country;
 use App\Models\NatureBusiness;
+use App\Models\PointTransaction;
 use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
 use App\Providers\RouteServiceProvider;
@@ -78,6 +80,7 @@ class RegisterController extends Controller
             'company_registration_number' => 'required|string|max:255',
             'nature_business' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'phone' => 'required|numeric|unique:company_details|min:10',
             'position' => 'required|string|max:255',
             'ssm_document' => 'nullable',
             'email' => 'required|string|email|max:255|unique:company_details',
@@ -116,63 +119,105 @@ class RegisterController extends Controller
             'security_question_id.required' => 'The security question field is required.',
         ]);
 
-        $last_company_detail = CompanyDetail::withTrashed()->latest('id')->first();
+        $check_agent_code = AgentCode::where('phone', $request->agent_code)->where('is_use', 0)->first();
 
-        if($request->file('ssm_document'))
+        if($check_agent_code || $request->agent_code == null)
         {
-            $ssm_document = $request->file('ssm_document');
-            $fileName   = $ssm_document->getClientOriginalName(); 
-            Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
-            $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
-        }
-        
+            if($check_agent_code)
+            {
+                $check_agent_code->update([
+                    'is_use' => 1,
+                ]);
+            }
 
-        $company_detail = CompanyDetail::create([
-            'code' => $last_company_detail ? $last_company_detail->code : null,
-            'name' => $request->name,
-            'position' => $request->position,
-            'company_name' => $request->company_name,
-            'company_registration_number' => $request->company_registration_number,
-            'ssm_document' => $request->file('ssm_document') ? $file : null,
-            'nature_business' => $request->nature_business,
-            'email' => $request->email,
-            'address' => $request->address,
-            'city' => $request->city,
-            'state' => $request->state,
-            'postal_code' => $request->postal_code,
-            'country_id' => $request->country_id,
-            'is_own_company' => $request->is_own_company,
-            'member_number' => $request->member_number,
-            'is_hrdf' => $request->is_hrdf,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'security_question_id' => $request->security_question_id,
-            'security_answer' => $request->security_answer,
-            'agent_code' => $request->agent_code,
-            'is_approve' => 0,
-        ]);
+            $last_company_detail = CompanyDetail::withTrashed()->latest('id')->first();
 
-        $promote_product = PromoteProduct::create([
-            'company_detail_id' => $company_detail->id,
-            'product1' => $request->product1,
-            'product2' => $request->product2,
-            'product3' => $request->product3,
-            'product4' => $request->product4,
-            'product5' => $request->product5,
-        ]);
+            if($request->file('ssm_document'))
+            {
+                $ssm_document = $request->file('ssm_document');
+                $fileName   = $ssm_document->getClientOriginalName(); 
+                Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
+                $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
+            }
+            
 
-        if($last_company_detail){
-            $add_company_detail_code_number = substr($company_detail->code,-4) + 1;
-            $company_detail->update([
-                'code' => "C".str_pad($add_company_detail_code_number, 4, '0', STR_PAD_LEFT),
-                'promote_product_id' => $promote_product->id,
+            $company_detail = CompanyDetail::create([
+                'code' => $last_company_detail ? $last_company_detail->code : null,
+                'name' => $request->name,
+                'phone' => $request->phone,
+                'position' => $request->position,
+                'company_name' => $request->company_name,
+                'company_registration_number' => $request->company_registration_number,
+                'ssm_document' => $request->file('ssm_document') ? $file : null,
+                'nature_business' => $request->nature_business,
+                'email' => $request->email,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'postal_code' => $request->postal_code,
+                'country_id' => $request->country_id,
+                'is_own_company' => $request->is_own_company,
+                'member_number' => $request->member_number,
+                'is_hrdf' => $request->is_hrdf,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'security_question_id' => $request->security_question_id,
+                'security_answer' => $request->security_answer,
+                'agent_code' => $request->agent_code,
+                'is_approve' => 1,
+                'point_balance' => 100,
+            ]);
+
+            $point_transaction = PointTransaction::create([
+                'company_detail_id' => $company_detail->id,
+                'in' => $company_detail->point_balance,
+                'description' => 'New Member - Welcome Bonus',
+            ]);
+
+
+            if($check_agent_code)
+            {
+                $company_detail->update([
+                    'point_balance' => $company_detail->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'company_detail_id' => $company_detail->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
+
+            $promote_product = PromoteProduct::create([
+                'company_detail_id' => $company_detail->id,
+                'product1' => $request->product1,
+                'product2' => $request->product2,
+                'product3' => $request->product3,
+                'product4' => $request->product4,
+                'product5' => $request->product5,
+            ]);
+
+            if($last_company_detail){
+                $add_company_detail_code_number = substr($company_detail->code,-4) + 1;
+                $company_detail->update([
+                    'code' => "C".str_pad($add_company_detail_code_number, 4, '0', STR_PAD_LEFT),
+                    'promote_product_id' => $promote_product->id,
+                ]);
+            }
+            else{
+                $company_detail->update([
+                    'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
+                    'promote_product_id' => $promote_product->id,
+                ]);
+            }
+
+            AgentCode::create([
+                'phone' => $company_detail->phone,
+                'is_use' => 0,
             ]);
         }
-        else{
-            $company_detail->update([
-                'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
-                'promote_product_id' => $promote_product->id,
-            ]);
+        else
+        {
+            return redirect()->back()->withInput(request()->input())->withErrors(['error'=> 'The Referral Code is incorrect or have been use.']);
         }
 
 

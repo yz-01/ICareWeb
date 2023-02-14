@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Merchant;
 
 use App\Http\Controllers\Controller;
+use App\Models\PromoteProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('merchant.dashboard');
+        $promote_product = PromoteProduct::where('merchant_id', Auth::user()->id)->first();
+        return view('merchant.dashboard', compact('promote_product'));
     }
 }

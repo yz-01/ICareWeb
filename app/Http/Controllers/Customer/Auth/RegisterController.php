@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\AgentCode;
 use App\Models\Country;
 use App\Models\Customer;
 use App\Models\SecurityQuestion;
@@ -73,7 +74,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'identity_card' => 'required|string|max:255|unique:customers',
             'email' => 'required|string|email|max:255|unique:customers',
-            'phone' => 'required|numeric',
+            'phone' => 'required|numeric|unique:customers',
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
@@ -95,39 +96,61 @@ class RegisterController extends Controller
         ],[
             'country_id.required' => 'The country field is required.',
             'security_question_id.required' => 'The security question field is required.',
+            'agent_code.required' => 'Your Referral Code is not correct or have been use.',
         ]);
 
-        $last_customer = Customer::withTrashed()->latest('id')->first();
+        $check_agent_code = AgentCode::where('phone', $request->agent_code)->where('is_use', 0)->first();
 
-        $customer = Customer::create([
-            'code' => $last_customer ? $last_customer->code : null,
-            'name' => $request->name,
-            'identity_card' => $request->identity_card,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'city' => $request->city,
-            'state' => $request->state,
-            'postal_code' => $request->postal_code,
-            'country_id' => $request->country_id,
-            'username' => $request->username,
-            'password' => Hash::make($request->password),
-            'security_question_id' => $request->security_question_id,
-            'security_answer' => $request->security_answer,
-            'agent_code' => $request->agent_code,
-            'is_approve' => 0,
-        ]);
+        if($check_agent_code || $request->agent_code == null)
+        {
+            if($check_agent_code)
+            {
+                $check_agent_code->update([
+                    'is_use' => 1,
+                ]);
+            }
 
-        if($last_customer){
-            $add_customer_code_number = substr($customer->code,-4) + 1;
-            $customer->update([
-                'code' => "C".str_pad($add_customer_code_number, 4, '0', STR_PAD_LEFT),
+            $last_customer = Customer::withTrashed()->latest('id')->first();
+
+            $customer = Customer::create([
+                'code' => $last_customer ? $last_customer->code : null,
+                'name' => $request->name,
+                'identity_card' => $request->identity_card,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'address' => $request->address,
+                'city' => $request->city,
+                'state' => $request->state,
+                'postal_code' => $request->postal_code,
+                'country_id' => $request->country_id,
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'security_question_id' => $request->security_question_id,
+                'security_answer' => $request->security_answer,
+                'agent_code' => $request->agent_code,
+                'is_approve' => 0,
+            ]);
+
+            if($last_customer){
+                $add_customer_code_number = substr($customer->code,-4) + 1;
+                $customer->update([
+                    'code' => "C".str_pad($add_customer_code_number, 4, '0', STR_PAD_LEFT),
+                ]);
+            }
+            else{
+                $customer->update([
+                    'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
+                ]);
+            }
+
+            AgentCode::create([
+                'phone' => $customer->phone,
+                'is_use' => 0,
             ]);
         }
-        else{
-            $customer->update([
-                'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
-            ]);
+        else
+        {
+            return redirect()->back()->withInput(request()->input())->withErrors(['error'=> 'The Referral Code is incorrect or have been use.']);
         }
 
         return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website! Please wait for Admin approval.');

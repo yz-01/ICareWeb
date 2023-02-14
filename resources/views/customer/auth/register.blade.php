@@ -15,6 +15,7 @@
                         </li>
                         <li class="rbt-breadcrumb-item active">Member Register</li>
                     </ul>
+                    <label class="description" for="">Register as a member today and start earning HRDP reward points! Whether you're interested in our courses, services, or products, you can earn reward points for each purchase made using your own name. Simply sign up as an individual customer, and you'll be on your way to redeeming HRDP reward points for exclusive offers and discounts. Don't miss out on the benefits of membership - register today!</label>
                 </div>
             </div>
         </div>
@@ -80,7 +81,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <label>Phone <span class="text-danger">*</span></label>
-                                <input name="phone" type="number" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') ?: '' }}" placeholder="Phone">
+                                <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') ?: '' }}" placeholder="Phone" minlength="10" maxlength="13">
                                 <span class="focus-border"></span>
                                 @error('phone')
                                     <div class="invalid-feedback">
@@ -153,14 +154,14 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-6">
-                                <label>Referral/Agent ID</label>
-                                <input name="agent_code" type="text" class="form-control @error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}" placeholder="Referral/Agent ID">
+                                <label>Referral Code</label>
+                                <input name="agent_code" type="text" class="form-control @error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}" placeholder="Referral Code">
                                 <span class="focus-border"></span>
-                                @error('agent_code')
-                                    <div class="invalid-feedback">
-                                        <span>{{ $message }}</span>
-                                    </div>
-                                @enderror
+                                @if(count($errors) > 0)
+                                    {{-- <div class="invalid-feedback"> --}}
+                                        <span class="text-danger" style="font-size: 15px">{{$errors->first('error')}}</span>
+                                    {{-- </div> --}}
+                                @endif
                             </div>
                             <div class="col-lg-6">
                                 <label>Username <span class="text-danger">*</span></label>

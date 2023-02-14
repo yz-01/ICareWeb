@@ -15,6 +15,7 @@
                         </li>
                         <li class="rbt-breadcrumb-item active">Merchant Register</li>
                     </ul>
+                    <label class="description" for="">Promote your services and products to our audience of professionals! Register as a merchant and gain access to our Human Resource Development Platform, where you can sell and promote your offerings. Our platform is designed to help you reach a wider audience and boost your sales. Don't miss out on the benefits of merchant registration - register today and start promoting your business!</label>
                 </div>
             </div>
         </div>
@@ -196,6 +197,16 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-6">
+                                <label>Phone <span class="text-danger">*</span></label>
+                                <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') ?: '' }}" placeholder="Phone" minlength="10" maxlength="13">
+                                <span class="focus-border"></span>
+                                @error('phone')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
                                 <label>What is your position in this company? <span class="text-danger">*</span></label>
                                 <input name="position" type="text" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') ?: '' }}" placeholder="Your Position">
                                 <span class="focus-border"></span>
@@ -205,11 +216,13 @@
                                     </div>
                                 @enderror
                             </div>
+                        </div>
+                        <div class="row pt-4">
                             <div class="col-lg-6">
                                 <label>How many Malaysian staff members in your company? <span class="text-danger">*</span></label>
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select name="member_number" class="form-control @error('member_number') is-invalid @enderror">
-                                        <option value="">-- Select Member of Number --</option>
+                                        <option value="">-- Select Total Number of Employees --</option>
                                         <option value="0">Less than 9</option>
                                         <option value="1">10 or more than 10</option>
                                         <option value="2">More than 50</option>
@@ -223,9 +236,7 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-                        <div class="row pt-4">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <label>Does your company has registered under Human Resource Development Fund (HRDF)?<span class="text-danger">*</span></label>
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select name="is_hrdf" class="form-control @error('is_hrdf') is-invalid @enderror">
@@ -246,8 +257,9 @@
                             <div class="col-lg-12">
                                 <label>List out the products/services you wish to promote/offer in HRDP?</label>
                             </div>
-                            <div class="col-lg-6 pt-2">
-                                <input name="product1" type="text" class="form-control @error('product1') is-invalid @enderror" value="{{ old('product1') ?: '' }}" placeholder="1.">
+                            <div class="col-lg-6 pt-2 d-flex align-items-center">
+                                <label class="pe-3 ps-2" for="">1</label>
+                                <input name="product1" type="text" class="form-control @error('product1') is-invalid @enderror" value="{{ old('product1') ?: '' }}" placeholder="1">
                                 <span class="focus-border"></span>
                                 @error('product1')
                                     <div class="invalid-feedback">
@@ -255,8 +267,9 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-6 pt-2">
-                                <input name="product2" type="text" class="form-control @error('product2') is-invalid @enderror" value="{{ old('product2') ?: '' }}" placeholder="2.">
+                            <div class="col-lg-6 pt-2 d-flex align-items-center">
+                                <label class="px-2" for="">2</label>
+                                <input name="product2" type="text" class="form-control @error('product2') is-invalid @enderror" value="{{ old('product2') ?: '' }}" placeholder="2">
                                 <span class="focus-border"></span>
                                 @error('product2')
                                     <div class="invalid-feedback">
@@ -264,8 +277,9 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-6 pt-2">
-                                <input name="product3" type="text" class="form-control @error('product3') is-invalid @enderror" value="{{ old('product3') ?: '' }}" placeholder="3.">
+                            <div class="col-lg-6 pt-2 d-flex align-items-center">
+                                <label class="px-2" for="">3</label>
+                                <input name="product3" type="text" class="form-control @error('product3') is-invalid @enderror" value="{{ old('product3') ?: '' }}" placeholder="3">
                                 <span class="focus-border"></span>
                                 @error('product3')
                                     <div class="invalid-feedback">
@@ -273,8 +287,9 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-6 pt-2">
-                                <input name="product4" type="text" class="form-control @error('product4') is-invalid @enderror" value="{{ old('product4') ?: '' }}" placeholder="4.">
+                            <div class="col-lg-6 pt-2 d-flex align-items-center">
+                                <label class="px-2" for="">4</label>
+                                <input name="product4" type="text" class="form-control @error('product4') is-invalid @enderror" value="{{ old('product4') ?: '' }}" placeholder="4">
                                 <span class="focus-border"></span>
                                 @error('product4')
                                     <div class="invalid-feedback">
@@ -282,8 +297,9 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-6 pt-2">
-                                <input name="product5" type="text" class="form-control @error('product5') is-invalid @enderror" value="{{ old('product5') ?: '' }}" placeholder="5.">
+                            <div class="col-lg-6 pt-2 d-flex align-items-center">
+                                <label class="px-2" for="">5</label>
+                                <input name="product5" type="text" class="form-control @error('product5') is-invalid @enderror" value="{{ old('product5') ?: '' }}" placeholder="5">
                                 <span class="focus-border"></span>
                                 @error('product5')
                                     <div class="invalid-feedback">
@@ -294,14 +310,14 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-6">
-                                <label>Referral/Agent ID</label>
-                                <input name="agent_code" type="text" class="form-control @error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}" placeholder="Referral/Agent ID">
+                                <label>Referral Code</label>
+                                <input name="agent_code" type="text" class="form-control @error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}" placeholder="Referral Code">
                                 <span class="focus-border"></span>
-                                @error('agent_code')
-                                    <div class="invalid-feedback">
-                                        <span>{{ $message }}</span>
-                                    </div>
-                                @enderror
+                                @if(count($errors) > 0)
+                                    {{-- <div class="invalid-feedback"> --}}
+                                        <span class="text-danger" style="font-size: 15px">{{$errors->first('error')}}</span>
+                                    {{-- </div> --}}
+                                @endif
                             </div>
                             <div class="col-lg-6">
                                 <label>Username <span class="text-danger">*</span></label>

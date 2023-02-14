@@ -24,7 +24,7 @@ class CreateMerchantsTable extends Migration
             $table->string('company_registration_number')->nullable();
             $table->string('ssm_document')->nullable();
             $table->string('company_logo')->nullable();
-            $table->string('nature_business')->nullable();
+            $table->foreignId('nature_business_id')->nullable()->constrained('nature_businesses');
             $table->string('email')->unique();
             $table->string('address')->nullable();
             $table->string('postal_code')->nullable();

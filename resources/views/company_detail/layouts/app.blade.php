@@ -1,83 +1,87 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- CSS ============================================ -->
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/sal.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/feather.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/euclid-circulara.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnify.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/odometer.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/animation.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap-select.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnigy-popup.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- Sweet Alert-->
+    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('company_detail.logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('company_detail.logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
+<body class="rbt-header-sticky">
+    @include('company_detail.layouts.header')
+    @yield('content')
+    @include('company_detail.layouts.footer')
+    
+    <!-- End Copyright Area  -->
+    <div class="rbt-progress-parent">
+        <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
     </div>
+
+    <!-- JS
+============================================ -->
+    <!-- Modernizer JS -->
+    <script src="{{ asset('assets/js/vendor/modernizr.min.js') }}"></script>
+    <!-- jQuery JS -->
+    <script src="{{ asset('assets/js/vendor/jquery.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+    <!-- sal.js -->
+    <script src="{{ asset('assets/js/vendor/sal.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/swiper.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/magnify.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-appear.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/odometer.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/backtotop.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/isotop.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/imageloaded.js') }}"></script>
+
+    <script src="{{ asset('assets/js/vendor/wow.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/waypoint.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/easypie.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/text-type.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-one-page-nav.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/jquery-ui.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/magnify-popup.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/paralax-scroll.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/paralax.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/countdown.js') }}"></script>
+    <!-- Main JS -->
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    <!-- Sweet Alerts js -->
+    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
+
+    <!-- Sweet alert init js-->
+    <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
+
+    @include('company_detail.auth.layouts.sweetalerts')
 </body>
+
 </html>

@@ -34,4 +34,9 @@ class Merchant extends Authenticatable
     {
         return $this->belongsTo(NatureBusiness::class);
     }
+
+    public function point_transactions()
+    {
+        return $this->hasMany(PointTransaction::class);
+    }
 }

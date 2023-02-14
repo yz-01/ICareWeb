@@ -8,6 +8,7 @@ use App\Models\Company;
 use App\Models\CompanyDetail;
 use App\Models\Country;
 use App\Models\NatureBusiness;
+use App\Models\PointTransaction;
 use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
 use App\Providers\RouteServiceProvider;
@@ -164,7 +165,27 @@ class RegisterController extends Controller
                 'security_answer' => $request->security_answer,
                 'agent_code' => $request->agent_code,
                 'is_approve' => 0,
+                'point_balance' => 100,
             ]);
+
+            $point_transaction = PointTransaction::create([
+                'company_detail_id' => $company_detail->id,
+                'in' => $company_detail->point_balance,
+                'description' => 'New Member - Welcome Bonus',
+            ]);
+
+
+            if($check_agent_code)
+            {
+                $company_detail->update([
+                    'point_balance' => $company_detail->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'company_detail_id' => $company_detail->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
 
             $promote_product = PromoteProduct::create([
                 'company_detail_id' => $company_detail->id,

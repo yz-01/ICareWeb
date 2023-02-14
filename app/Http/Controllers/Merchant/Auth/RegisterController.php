@@ -7,6 +7,7 @@ use App\Models\AgentCode;
 use App\Models\Country;
 use App\Models\Merchant;
 use App\Models\NatureBusiness;
+use App\Models\PointTransaction;
 use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
 use App\Providers\RouteServiceProvider;
@@ -162,7 +163,26 @@ class RegisterController extends Controller
                 'security_answer' => $request->security_answer,
                 'agent_code' => $request->agent_code,
                 'is_approve' => 0,
+                'point_balance' => 100,
             ]);
+
+            $point_transaction = PointTransaction::create([
+                'merchant_id' => $merchant->id,
+                'in' => $merchant->point_balance,
+                'description' => 'New Member - Welcome Bonus',
+            ]);
+
+            if($check_agent_code)
+            {
+                $merchant->update([
+                    'point_balance' => $merchant->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'merchant_id' => $merchant->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
 
             $promote_product = PromoteProduct::create([
                 'merchant_id' => $merchant->id,

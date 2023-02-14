@@ -37,6 +37,7 @@ class CreateMerchantsTable extends Migration
             $table->foreignId('security_question_id')->nullable()->constrained('security_questions');
             $table->string('security_answer')->nullable();
             $table->foreignId('agent_id')->nullable()->constrained('agents');
+            $table->string('agent_code')->nullable();
             $table->integer('point_balance')->default(0);
             $table->integer('point_usage')->default(0)->comment('Total point this student has used');
             $table->string('password')->nullable();

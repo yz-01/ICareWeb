@@ -25,7 +25,7 @@
 
 
 <!-- Start category Area  -->
-<div class="rbt-category-area bg-color-white rbt-section-gapTop">
+<div class="rbt-category-area bg-color-white rbt-section-gapTop" id="trainer">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mb--60">
@@ -183,7 +183,7 @@
 <!-- End category Area  -->
 
 <!-- Start Featured Course Area  -->
-<div class="rbt-featured-course bg-color-white rbt-section-gap">
+<div class="rbt-featured-course bg-color-white rbt-section-gap" id="course">
     <div class="container">
         <div class="row g-5 align-items-end mb--60">
             <div class="col-lg-12 col-md-12 col-12">
@@ -257,7 +257,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM4218.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                 class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -312,7 +312,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM7398.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -372,7 +372,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM17808.00</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -432,7 +432,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM4218.80</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -492,7 +492,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM25228.00</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -548,7 +548,7 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM31588.00</span>
                             </div>
-                            <a class="rbt-btn-link left-icon" ><i
+                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
                         </div>
                     </div>
@@ -626,13 +626,13 @@
     </div>
 </div>
 
-<div class="rbt-testimonial-area bg-color-extra2 rbt-section-gap">
+<div class="rbt-testimonial-area bg-color-extra2 rbt-section-gap" id="testimonial">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 mb--60">
                 <div class="section-title text-center">
                     <h2 class="title">Student's Testimonials</h2>
-                    <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
+                    {{-- <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p> --}}
                 </div>
             </div>
         </div>
@@ -816,14 +816,14 @@
 
 
 <!-- Start Blog Style -->
-<div class="rbt-rbt-blog-area rbt-section-gapTop bg-gradient-8 rbt-round-bottom-shape">
+<div class="rbt-rbt-blog-area rbt-section-gapTop bg-gradient-8 rbt-round-bottom-shape" id="news">
     <div class="wrapper pb--50 rbt-index-upper">
         <div class="container">
             <div class="row g-5 align-items-end mb--60">
                 <div class="col-lg-12 col-md-12 col-12">
                     <div class="section-title text-center">
                         <h2 class="title color-white">Latest News</h2>
-                        <p class="description color-white-off mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
+                        {{-- <p class="description color-white-off mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p> --}}
                     </div>
                 </div>
                 {{-- <div class="col-lg-6 col-md-12 col-12">
@@ -838,16 +838,23 @@
             <!-- Start Card Area -->
             <div class="row g-5">
                 <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="rbt-card variation-02 rbt-hover card-minimal">
                         <div class="rbt-card-body">
                             <ul class="meta-list justify-content-start mb--30">
                                 <li class="list-item">
                                     <i class="feather-clock"></i>
-                                    <span>20 Jan 2023</span>
+                                    <span>14 Feb 2023</span>
                                 </li>
                             </ul>
-                            <h4 class="rbt-card-title"><a >Learn From These You Learn Education.</a></h4>
+                            <h5 style="font-weight: 600">
+                                <a>
+                                    Greetings! We are thrilled to have you visit HRDP. 
+                                    <br /><br />As a platform dedicated to promoting business growth and professional development, we invite you to join us as either a trainer or a merchant.
+                                    <br /><br />By becoming a part of our community, you will have the opportunity to expand your business and reach new heights in your career. 
+                                    <br /><br />We look forward to supporting you on this exciting journey.
+                                </a>
+                            </h5>
                             {{-- <div class="rbt-card-bottom mt--40">
                                 <a class="transparent-button" >Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
                             </div> --}}
@@ -857,16 +864,24 @@
                 <!-- End Single Card  -->
 
                 <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
                     <div class="rbt-card variation-02 rbt-hover card-minimal">
                         <div class="rbt-card-body">
                             <ul class="meta-list justify-content-start mb--30">
                                 <li class="list-item">
                                     <i class="feather-clock"></i>
-                                    <span>11 Feb 2023</span>
+                                    <span>14 Feb 2023</span>
                                 </li>
                             </ul>
-                            <h4 class="rbt-card-title"><a >Think You're An Expert In Education?</a></h4>
+                            <h5 style="font-weight: 600">
+                                <a >
+                                    We are excited to offer our members a unique rewards program! 
+                                    <br /><br />With every purchase of a course or product, you will earn points that can be used as cash towards a variety of perks. 
+                                    <br /><br />Accumulate your points and redeem them for additional courses, products, vouchers, and more. 
+                                    <br /><br />Our reward program is just one more way we show appreciation for your loyalty to our brand. 
+                                    Start earning points today!
+                                </a>
+                            </h5>
                             {{-- <div class="rbt-card-bottom mt--40">
                                 <a class="transparent-button" >Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
                             </div> --}}
@@ -875,24 +890,7 @@
                 </div>
                 <!-- End Single Card  -->
 
-                <!-- Start Single Card  -->
-                <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                    <div class="rbt-card variation-02 rbt-hover card-minimal">
-                        <div class="rbt-card-body">
-                            <ul class="meta-list justify-content-start mb--30">
-                                <li class="list-item">
-                                    <i class="feather-clock"></i>
-                                    <span>12 Feb 2023</span>
-                                </li>
-                            </ul>
-                            <h4 class="rbt-card-title"><a >Seven Easy Rules Of Education.</a></h4>
-                            {{-- <div class="rbt-card-bottom mt--40">
-                                <a class="transparent-button" >Learn More<i><svg width="17" height="12" xmlns="http://www.w3.org/2000/svg"><g stroke="#27374D" fill="none" fill-rule="evenodd"><path d="M10.614 0l5.629 5.629-5.63 5.629"/><path stroke-linecap="square" d="M.663 5.572h14.594"/></g></svg></i></a>
-                            </div> --}}
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Card  -->
+                
             </div>
             <!-- End Card Area -->
         </div>
@@ -911,10 +909,19 @@
                     {{-- <form action="#" class="newsletter-form-1 mt--50 radius-round"> --}}
                         <div class="row pt-5">
                             <div class="col-lg-12">
-                                <a href="{{ route('customer.register.create') }}">
+                                <a href="{{ route('customer.register.create') }}" class="px-3">
                                     <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
                                         <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Register Now</span>
+                                        <span class="btn-text">Register as Customer Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                                <a href="{{ route('merchant.register.create') }}">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register as Merchant Now</span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </span>

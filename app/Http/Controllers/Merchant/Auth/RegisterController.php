@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -83,7 +84,8 @@ class RegisterController extends Controller
             'state' => 'required',
             'postal_code' => 'required',
             'country_id' => 'required',
-            'agent_id' => 'nullable',
+            // 'agent_id' => 'nullable',
+            'agent_code' => 'nullable',
             'is_own_company' => 'required',
             'member_number' => 'required',
             'is_hrdf' => 'required',
@@ -103,13 +105,18 @@ class RegisterController extends Controller
 
         $last_merchant = Merchant::withTrashed()->latest('id')->first();
 
+        $ssm_document = $request->file('ssm_document');
+        $fileName   = $ssm_document->getClientOriginalName(); 
+        Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
+        $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
+
         $merchant = Merchant::create([
             'code' => $last_merchant ? $last_merchant->code : null,
             'name' => $request->name,
             'position' => $request->position,
             'company_name' => $request->company_name,
             'company_registration_number' => $request->company_registration_number,
-            'ssm_document' => $request->ssm_document,
+            'ssm_document' => $file,
             'nature_business' => $request->nature_business,
             'email' => $request->email,
             'address' => $request->address,
@@ -124,7 +131,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
             'security_question_id' => $request->security_question_id,
             'security_answer' => $request->security_answer,
-            'agent_id' => $request->agent_id,
+            'agent_code' => $request->agent_code,
             'is_approve' => 0,
         ]);
 
@@ -157,8 +164,10 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
+        $merchant = Merchant::where('code', 'C0002')->first();
+        // dd($merchant);
         $countries = Country::all();
         $security_questions = SecurityQuestion::all();
-        return view('merchant.auth.register', compact('countries', 'security_questions'));
+        return view('merchant.auth.register', compact('countries', 'security_questions', 'merchant'));
     }
 }

@@ -11,8 +11,8 @@
                             </a>
                         </div>
 
-                        <p class="description mt--20">We’re always in search for talented
-                            and motivated people. Don’t be shy introduce yourself!
+                        <p class="description mt--20">
+                            HRDP is a dedicated online platform that promotes business growth and professional development.
                         </p>
 
                         <ul class="social-icon social-default icon-naked justify-content-start mt--20">
@@ -44,7 +44,7 @@
                                 <a href="{{ route('welcome') }}">Home</a>
                             </li>
                             <li>
-                                <a href="{{ route('welcome','#trainer') }}">Trainer</a>
+                                <a href="{{ route('welcome','#trainer') }}">Trainers</a>
                             </li>
                             <li>
                                 <a href="{{ route('welcome','#course') }}">Course</a>

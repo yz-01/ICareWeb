@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Merchant\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Merchant;
+use App\Models\NatureBusiness;
 use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
 use App\Providers\RouteServiceProvider;
@@ -101,6 +102,13 @@ class RegisterController extends Controller
                 'required','string','confirmed',
                 Password::min(8)
             ],
+        ],[
+            'nature_business.required' => 'The nature of business field is required.',
+            'country_id.required' => 'The country field is required.',
+            'is_own_company.required' => 'The own company field is required.',
+            'member_number.required' => 'The member of number field is required.',
+            'is_hrdf.required' => 'The HRDF field is required.',
+            'security_question_id.required' => 'The security question field is required.',
         ]);
 
         $last_merchant = Merchant::withTrashed()->latest('id')->first();
@@ -164,10 +172,9 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $merchant = Merchant::where('code', 'C0002')->first();
-        // dd($merchant);
         $countries = Country::all();
+        $nature_businesses = NatureBusiness::all();
         $security_questions = SecurityQuestion::all();
-        return view('merchant.auth.register', compact('countries', 'security_questions', 'merchant'));
+        return view('merchant.auth.register', compact('countries', 'security_questions', 'nature_businesses'));
     }
 }

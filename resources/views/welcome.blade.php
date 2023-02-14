@@ -30,7 +30,10 @@
         <div class="row">
             <div class="col-lg-12 mb--60">
                 <div class="section-title text-center">
-                    <h2 class="title">Top Trainer</h2>
+                    <h2 class="title">Top Trainers</h2>
+                    <p class="description mt--20">
+                        Our top trainers are specialists with years of expertise and a passion for helping people and organizations reach their maximum potential. They provide our clients with high-quality, tailored leadership, communication, and technical skills training.
+                    </p>
                 </div>
             </div>
         </div>
@@ -183,13 +186,15 @@
 <!-- End category Area  -->
 
 <!-- Start Featured Course Area  -->
-<div class="rbt-featured-course bg-color-white rbt-section-gap" id="course">
+<div class="rbt-featured-course bg-color-white rbt-section-gapTop" id="course">
     <div class="container">
         <div class="row g-5 align-items-end mb--60">
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="section-title text-center">
                     <h2 class="title">Featured Courses</h2>
-                    <p class="description mt--20">Learning communicate to global world and build a bright future and career development, increase your skill with our HRDP.</p>
+                    <p class="description mt--20">
+                        Build a bright future and take your career to the next level with us.
+                    </p>
                 </div>
             </div>
             {{-- <div class="col-lg-6 col-md-12 col-12">
@@ -209,11 +214,11 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/www.jpg') }}" alt="Card image" style="height: 240px; width: 100%;">
-                            <div class="rbt-badge-3 bg-white">
+                            <img src="{{ asset('images/oe/www.jpg') }}" alt="Card image" style="height: 240px; object-fit: contain; background-color: rgba(128, 128, 128, 0.08)">
+                            {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-40%</span>
                                 <span>Off</span>
-                            </div>
+                            </div> --}}
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -242,7 +247,8 @@
                             <li><i class="feather-users"></i>1000 Students</li>
                         </ul>
 
-                        <p class="rbt-card-text">Design your own business board. Design a www model with shareholders, customers and teams for enterprises.</p>
+                        <p class="rbt-card-text">设计属于您的企业棋盘 <br />
+                            为企业设计一个与股东，顾客，团队的三赢模式</p>
                         <div class="rbt-author-meta mb--10">
                             <div class="rbt-avater">
                                 <a >
@@ -270,7 +276,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/siwei.jpeg') }}" alt="Card image" style="height: 240px; width: 100%;">
+                            <img src="{{ asset('images/oe/siwei.jpeg') }}" alt="Card image" style="height: 240px; object-fit: contain; background-color: rgba(128, 128, 128, 0.08)">
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -297,7 +303,11 @@
                             <li><i class="feather-users"></i>1000 Students</li>
                         </ul>
 
-                        <p class="rbt-card-text">Three days for you to settle down and understand the end point of the enterprise.</p>
+                        <p class="rbt-card-text">
+                            思维模式～一堂企业的心灵课程 <br />
+                            三天让您沉淀,领悟企业要的终点
+                        </p>
+                        <br />
                         <div class="rbt-author-meta mb--10">
                             <div class="rbt-avater">
                                 <a >
@@ -325,11 +335,11 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/5G.jpg') }}" alt="Card image" style="height: 240px; width: 100%;">
-                            <div class="rbt-badge-3 bg-white">
+                            <img src="{{ asset('images/oe/5G.jpg') }}" alt="Card image" style="height: 240px; object-fit: contain; background-color: rgba(128, 128, 128, 0.08)">
+                            {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-10%</span>
                                 <span>Off</span>
-                            </div>
+                            </div> --}}
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -355,8 +365,10 @@
                             <li><i class="feather-book"></i>8 Lessons</li>
                             <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">Let you know how to cooperate, merge, and make good use of the power of equity to leverage.
-                            </p>
+                        <p class="rbt-card-text">
+                            一堂让您懂得合作、合并、善用股权的力量来杠杆 <br />
+                            企业价值的新商业模式5G课程
+                        </p>
 
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
@@ -385,11 +397,11 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/top.jpeg') }}" alt="Card image" style="height: 240px; width: 100%;">
-                            <div class="rbt-badge-3 bg-white">
+                            <img src="{{ asset('images/oe/top.jpeg') }}" alt="Card image" style="height: 240px; object-fit: contain; background-color: rgba(128, 128, 128, 0.08)">
+                            {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-40%</span>
                                 <span>Off</span>
-                            </div>
+                            </div> --}}
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -416,7 +428,11 @@
                             <li><i class="feather-book"></i>20 Lessons</li>
                             <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">Detonate the passion of your team, understand the needs of the enterprise, and be considerate of colleagues.</p>
+                        <p class="rbt-card-text">
+                            引爆您团队的激情,了解企业需求,体谅同事 <br />
+                            学会承担责任,适合管理层的培训课程
+                        </p>
+                        <br/>
                         <div class="rbt-author-meta mb--20">
                             <div class="rbt-avater">
                                 <a >
@@ -445,11 +461,11 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/ceo.jpeg') }}" alt="Card image" style="height: 240px; width: 100%;">
-                            <div class="rbt-badge-3 bg-white">
+                            <img src="{{ asset('images/oe/ceo.jpeg') }}" alt="Card image" style="height: 240px; object-fit: contain; background-color: rgba(128, 128, 128, 0.08)">
+                            {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-20%</span>
                                 <span>Off</span>
-                            </div>
+                            </div> --}}
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -475,7 +491,9 @@
                             <li><i class="feather-book"></i>12 Lessons</li>
                             <li><i class="feather-users"></i>1000+ Students</li>
                         </ul>
-                        <p class="rbt-card-text">Four days to make you a public speaker.</p>
+                        <p class="rbt-card-text">
+                            四天让您成为演说家
+                        </p>
                         <br/>
                         <br/>
                         <div class="rbt-author-meta mb--20">
@@ -505,7 +523,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/mdmt.gif') }}" alt="Card image" style="height: 240px; width: 100%;">
+                            <img src="{{ asset('images/oe/mdmt.gif') }}" alt="Card image" style="height: 240px; object-fit: contain; background-color: rgba(128, 128, 128, 0.08)">
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -561,6 +579,249 @@
 </div>
 <!-- End Featured Course Area  -->
 
+<div class="rbt-category-area bg-color-white rbt-section-gap" id="state">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb--60">
+                <div class="section-title text-center">
+                    <h2 class="title">State</h2>
+                    {{-- <p class="description mt--20">
+                        Our top trainers are specialists with years of expertise and a passion for helping people and organizations reach their maximum potential. They provide our clients with high-quality, tailored leadership, communication, and technical skills training.
+                    </p> --}}
+                </div>
+            </div>
+        </div>
+        <div class="row g-5">
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/johor.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">JOHOR</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ ('images/flag/kedah.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">KEDAH</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a  class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ ('images/flag/kelantan.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">KELANTAN</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/perak.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">PERAK</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/selangor.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">SELANGOR</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/melacca.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">MELACCA</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible" >
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/negerisembilan.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">NEGERI SEMBILAN</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/pahang.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">PAHANG</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/perlis.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">PERLIS</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/penang.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">PENANG</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/sabah.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">SABAH</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/sarawak.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">SARAWAK</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+            <!-- Start Category Box Layout  -->
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                <a class="rbt-cat-box rbt-cat-box-1 image-overlaping-content on-hover-content-visible">
+                    <div class="inner">
+                        <div class="thumbnail">
+                            <img src="{{ asset('images/flag/terengganu.png') }}" alt="Icons Images">
+                        </div>
+                        <div class="content">
+                            <h5 class="title">TERENGGANU</h5>
+                            <div class="read-more-btn">
+                                <span class="rbt-btn-link">15 Courses<i class="feather-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- End Category Box Layout  -->
+        </div>
+    </div>
+</div>
 
 <div class="rbt-counterup-area bg_image bg_image_fixed bg_image--20 ptb--170 bg-black-overlay" data-black-overlay="2" style="background-image: url({{ asset('images/oe/bg4.jpg') }})">
     <div class="conter-style-2">
@@ -912,7 +1173,7 @@
                                 <a href="{{ route('customer.register.create') }}" class="px-3">
                                     <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round">
                                         <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Register as Customer Now</span>
+                                        <span class="btn-text">Register as Member Now</span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </span>

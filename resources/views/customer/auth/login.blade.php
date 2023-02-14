@@ -7,13 +7,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-inner text-center">
-                    <h3 class="">Customer Login</h3>
+                    <h3 class="">Member Login</h3>
                     <ul class="page-list">
                         <li class="rbt-breadcrumb-item"><a href="/">Home</a></li>
                         <li>
                             <div class="icon-right"><i class="feather-chevron-right"></i></div>
                         </li>
-                        <li class="rbt-breadcrumb-item active">Customer Login</li>
+                        <li class="rbt-breadcrumb-item active">Member Login</li>
                     </ul>
                 </div>
             </div>
@@ -27,7 +27,7 @@
 
             <div class="col-lg-6">
                 <div class="rbt-contact-form contact-form-style-1 max-width-auto">
-                    <h5 class="">Customer Login Information</h5>
+                    <h5 class="">Member Login Information</h5>
                     <form class="max-width-auto" action="{{ route('customer.login') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">

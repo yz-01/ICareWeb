@@ -26,7 +26,7 @@
     <div class="container-fluid mt-5">
         <div class="d-flex justify-content-center">
             <h5>
-                Our online purchase will be ready soon. Stay tune.
+                Our online store will be available soon. Stay tuned for updates!
             </h5>
         </div>
     </div>

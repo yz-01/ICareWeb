@@ -21,7 +21,7 @@
                                 <a href="{{ route('welcome') }}">Home</a>
                             </li>
                             <li class="with-megamenu has-menu-child-item position-static">
-                                <a href="{{ route('welcome','#trainer') }}">Trainer</a>
+                                <a href="{{ route('welcome','#trainer') }}">Trainers</a>
                             </li>
                             <li class="with-megamenu has-menu-child-item position-static">
                                 <a href="{{ route('welcome','#course') }}">Course</a>
@@ -365,7 +365,7 @@
                                     <ul class="user-list-wrapper">
                                         <li>
                                             <a href="{{ route('customer.login') }}">
-                                                <span>Customer Login</span>
+                                                <span>Member Login</span>
                                             </a>
                                         </li>
                                         <li>
@@ -384,7 +384,7 @@
                                     <ul class="user-list-wrapper">
                                         <li>
                                             <a href="{{ route('customer.register.create') }}">
-                                                <span>Customer Register</span>
+                                                <span>Member Register</span>
                                             </a>
                                         </li>
                                         <li>
@@ -407,7 +407,7 @@
                                     <ul class="user-list-wrapper">
                                         <li>
                                             <a href="{{ route('customer.login') }}">
-                                                <span>Customer Login</span>
+                                                <span>Member Login</span>
                                             </a>
                                         </li>
                                         <li>
@@ -426,7 +426,7 @@
                                     <ul class="user-list-wrapper">
                                         <li>
                                             <a href="{{ route('customer.register.create') }}">
-                                                <span>Customer Register</span>
+                                                <span>Member Register</span>
                                             </a>
                                         </li>
                                         <li>

@@ -88,6 +88,9 @@ class RegisterController extends Controller
                 'required','string','confirmed',
                 Password::min(8)
             ],
+        ],[
+            'country_id.required' => 'The country field is required.',
+            'security_question_id.required' => 'The security question field is required.',
         ]);
 
         $last_customer = Customer::withTrashed()->latest('id')->first();

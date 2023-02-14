@@ -29,4 +29,9 @@ class Merchant extends Authenticatable
     {
         return $this->belongsTo(PromoteProduct::class);
     }
+
+    public function nature_business()
+    {
+        return $this->belongsTo(NatureBusiness::class);
+    }
 }

@@ -15,11 +15,13 @@ class VerifyCsrfToken extends Middleware
         'admin/login',
         'agent/login',
         'merchant/login',
+        'company_detail/login',
         'teacher/login',
         'customer/login',
         'admin/logout',
         'agent/logout',
         'merchant/logout',
+        'company_detail/logout',
         'teacher/logout',
         'customer/logout',
     ];

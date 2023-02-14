@@ -16,4 +16,9 @@ class PromoteProduct extends Model
     {
         return $this->hasMany(Merchant::class);
     }
+
+    public function company_details()
+    {
+        return $this->hasMany(CompanyDetail::class);
+    }
 }

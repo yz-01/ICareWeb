@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Merchant\Auth;
+namespace App\Http\Controllers\CompanyDetail\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;

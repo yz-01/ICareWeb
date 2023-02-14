@@ -16,6 +16,7 @@ class CreatePromoteProductsTable extends Migration
         Schema::create('promote_products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('merchant_id')->nullable()->constrained('merchants');
+            $table->foreignId('company_detail_id')->nullable()->constrained('company_details');
             $table->string('product1')->nullable();
             $table->string('product2')->nullable();
             $table->string('product3')->nullable();

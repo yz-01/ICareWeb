@@ -31,6 +31,9 @@ class RedirectIfAuthenticated
             if ($guard == "merchant" && Auth::guard($guard)->check()) {
                 return redirect('/merchant/dashboard');
             }
+            if ($guard == "company_detail" && Auth::guard($guard)->check()) {
+                return redirect('/company_detail/dashboard');
+            }
             if ($guard == "teacher" && Auth::guard($guard)->check()) {
                 return redirect('/teacher/dashboard');
             }

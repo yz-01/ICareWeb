@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Merchant\Auth;
+namespace App\Http\Controllers\CompanyDetail\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
+use App\Models\CompanyDetail;
 use App\Models\Country;
-use App\Models\Merchant;
 use App\Models\NatureBusiness;
 use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
@@ -37,7 +38,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/merchant/dashboard';
+    protected $redirectTo = '/company_detail/dashboard';
 
     /**
      * Create a new controller instance.
@@ -46,7 +47,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:merchant');
+        $this->middleware('guest:company_detail');
     }
 
     /**
@@ -79,7 +80,7 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'position' => 'required|string|max:255',
             'ssm_document' => 'nullable',
-            'email' => 'required|string|email|max:255|unique:merchants',
+            'email' => 'required|string|email|max:255|unique:company_details',
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
@@ -115,8 +116,8 @@ class RegisterController extends Controller
             'security_question_id.required' => 'The security question field is required.',
         ]);
 
-        $last_merchant = Merchant::withTrashed()->latest('id')->first();
-        
+        $last_company_detail = CompanyDetail::withTrashed()->latest('id')->first();
+
         if($request->file('ssm_document'))
         {
             $ssm_document = $request->file('ssm_document');
@@ -124,9 +125,10 @@ class RegisterController extends Controller
             Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
             $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
         }
+        
 
-        $merchant = Merchant::create([
-            'code' => $last_merchant ? $last_merchant->code : null,
+        $company_detail = CompanyDetail::create([
+            'code' => $last_company_detail ? $last_company_detail->code : null,
             'name' => $request->name,
             'position' => $request->position,
             'company_name' => $request->company_name,
@@ -151,7 +153,7 @@ class RegisterController extends Controller
         ]);
 
         $promote_product = PromoteProduct::create([
-            'merchant_id' => $merchant->id,
+            'company_detail_id' => $company_detail->id,
             'product1' => $request->product1,
             'product2' => $request->product2,
             'product3' => $request->product3,
@@ -159,15 +161,15 @@ class RegisterController extends Controller
             'product5' => $request->product5,
         ]);
 
-        if($last_merchant){
-            $add_merchant_code_number = substr($merchant->code,-4) + 1;
-            $merchant->update([
-                'code' => "C".str_pad($add_merchant_code_number, 4, '0', STR_PAD_LEFT),
+        if($last_company_detail){
+            $add_company_detail_code_number = substr($company_detail->code,-4) + 1;
+            $company_detail->update([
+                'code' => "C".str_pad($add_company_detail_code_number, 4, '0', STR_PAD_LEFT),
                 'promote_product_id' => $promote_product->id,
             ]);
         }
         else{
-            $merchant->update([
+            $company_detail->update([
                 'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
                 'promote_product_id' => $promote_product->id,
             ]);
@@ -182,6 +184,6 @@ class RegisterController extends Controller
         $countries = Country::all();
         $nature_businesses = NatureBusiness::all();
         $security_questions = SecurityQuestion::all();
-        return view('merchant.auth.register', compact('countries', 'security_questions', 'nature_businesses'));
+        return view('company_detail.auth.register', compact('countries', 'security_questions', 'nature_businesses'));
     }
 }

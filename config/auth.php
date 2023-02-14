@@ -52,6 +52,10 @@ return [
             'driver' => 'session',
             'provider' => 'merchants',
         ],
+        'company_detail' => [
+            'driver' => 'session',
+            'provider' => 'company_details',
+        ],
         'teacher' => [
             'driver' => 'session',
             'provider' => 'teachers',
@@ -95,6 +99,10 @@ return [
         'merchants' => [
             'driver' => 'eloquent',
             'model' => App\Models\Merchant::class,
+        ],
+        'company_details' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CompanyDetail::class,
         ],
         'teachers' => [
             'driver' => 'eloquent',
@@ -147,6 +155,12 @@ return [
         ],
         'merchants' => [
             'provider' => 'merchants',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'company_details' => [
+            'provider' => 'company_details',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

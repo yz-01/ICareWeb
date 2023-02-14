@@ -79,6 +79,12 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/merchant.php'));
 
             Route::middleware('web')
+            ->prefix('company_detail')
+            ->name('company_detail.')
+            ->namespace('App\Http\Controllers\CompanyDetail')
+            ->group(base_path('routes/company_detail.php'));
+
+            Route::middleware('web')
                 ->prefix('teacher')
                 ->name('teacher.')
                 ->namespace('App\Http\Controllers\Teacher')

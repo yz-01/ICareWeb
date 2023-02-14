@@ -638,6 +638,11 @@
                                                 <span>Merchant Login</span>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('company_detail.login') }}">
+                                                <span>Company Login</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -655,6 +660,11 @@
                                         <li>
                                             <a href="{{ route('merchant.register.create') }}">
                                                 <span>Merchant Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('company_detail.register.create') }}">
+                                                <span>Company Register</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -676,6 +686,11 @@
                                                 <span>Merchant Login</span>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('company_detail.login') }}">
+                                                <span>Company Login</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -693,6 +708,11 @@
                                         <li>
                                             <a href="{{ route('merchant.register.create') }}">
                                                 <span>Merchant Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('company_detail.register.create') }}">
+                                                <span>Company Register</span>
                                             </a>
                                         </li>
                                     </ul>

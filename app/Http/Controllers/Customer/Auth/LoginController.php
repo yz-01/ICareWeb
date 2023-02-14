@@ -57,6 +57,10 @@ class LoginController extends Controller
         if(Customer::where('username',$request->username)->exists() && Customer::where('username',$request->username)->first()->status == 0){
             return redirect()->back()->withErrors(['username' => 'This account is not active']);
         }
+
+        if(Customer::where('username',$request->username)->exists() && Customer::where('username',$request->username)->first()->is_approve == 0){
+            return redirect()->back()->withErrors(['username' => 'This account is not approve']);
+        }
         
         if (Auth::guard('customer')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->route('customer.dashboard');

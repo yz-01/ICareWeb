@@ -162,7 +162,7 @@ class RegisterController extends Controller
                 'security_question_id' => $request->security_question_id,
                 'security_answer' => $request->security_answer,
                 'agent_code' => $request->agent_code,
-                'is_approve' => 0,
+                'is_approve' => 1,
                 'point_balance' => 100,
             ]);
 

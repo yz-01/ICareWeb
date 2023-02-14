@@ -101,6 +101,10 @@ class RegisterController extends Controller
             'password' => [
                 'required','string','confirmed',
                 Password::min(8)
+                        ->mixedCase()
+                        ->letters()
+                        ->numbers()
+                        ->symbols()
             ],
         ],[
             'nature_business.required' => 'The nature of business field is required.',

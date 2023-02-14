@@ -173,7 +173,19 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row pt-4">
+                        <div class="row pt-5">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-body"  style="background-color: rgba(128, 128, 128, 0.116); ">
+                                        <span class="text-danger" style="line-height: 38px">
+                                            ***Password should be alphanumeric   <br />
+                                            ***Password must be at least 8 characters  <br />
+                                            ***Password must include Uppercase & Lowercase   <br />
+                                            ***Password must contain a special character (@, $, !, &, etc)
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-6">
                                 <label>Password <span class="text-danger">*</span></label>
                                 <input name="password" type="password"  class="form-control @error('password') is-invalid @enderror" value="{{ old('password') ?: '' }}" placeholder="Password">
@@ -183,9 +195,7 @@
                                         <span>{{ $message }}</span>
                                     </div>
                                 @enderror
-                            </div>
-                            <div class="col-lg-6">
-                                <label>Confirm Password <span class="text-danger">*</span></label>
+                                <label class="pt-4">Confirm Password <span class="text-danger">*</span></label>
                                 <input name="password_confirmation" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" value="{{ old('password_confirmation') ?: '' }}" placeholder="Confirm Password">
                                 <span class="focus-border"></span>
                                 @error('password_confirmation')
@@ -223,7 +233,6 @@
                                 @enderror
                             </div>
                         </div>
-
                         <div class="form-submit-group pt-3">
                             <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
                                 <span class="icon-reverse-wrapper">

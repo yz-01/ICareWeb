@@ -2,6 +2,9 @@
     .swal2-container .swal2-select{
         display: none !important;
     }
+    .swal2-popup{
+        font-size: 1.5rem;
+    }
 </style>
 
 @if(session('success'))

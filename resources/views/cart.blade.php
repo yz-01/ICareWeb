@@ -34,7 +34,6 @@
     <br><br>
     <br><br>
     <br><br>
-    <br><br>
 
 {{--    <div class="rbt-cart-side-menu">--}}
 {{--        <div class="inner-wrapper">--}}

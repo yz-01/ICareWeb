@@ -355,9 +355,6 @@
                 <div class="header-right">
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
-                        <li class="account-access rbt-user-wrapper d-none d-xl-block" style="margin-right: 0">
-                            <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i>Cart</a>
-                        </li>
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
                             <a href="#"><i class="feather-user"></i>Login</a>
                             <div class="rbt-user-menu-list-wrapper">
@@ -406,7 +403,10 @@
                                 </div>
                             </div>
                         </li>
-                        
+                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
+                            <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i>Cart</a>
+                        </li>
+
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
                             <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i></a>
                         </li>
@@ -438,7 +438,7 @@
                             <a class="rbt-round-btn" href="#"><i class="feather-file-text"></i></a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
-                                    <ul class="user-list-wrapper">
+                                    <ul class="user-list-wrapper mr-0">
                                         <li>
                                             <a href="{{ route('customer.register.create') }}">
                                                 <span>Member Register</span>
@@ -458,7 +458,7 @@
                                 </div>
                             </div>
                         </li>
-                        
+
                     </ul>
 
                     <!-- Start Mobile-Menu-Bar -->

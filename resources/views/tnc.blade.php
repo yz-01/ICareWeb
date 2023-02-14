@@ -43,8 +43,7 @@
                         Thank you for using HRDP!
                     </p>
                     <p>
-                        These Terms of Service (“ <b>Terms</b>”) are a binding legal agreement between you and HRDP that govern your right to use the websites, applications, and other offerings from HRDP (collectively, the “<b>Human Resource Development Platform</b>”). When used in these Terms, “<b>HRDP</b>,” “<b>we</b>,” “<b>us</b>,” or “<b>our</b>” refers to the HRDP entity set out on Schedule 1 with whom you are contracting.
-                    </p>
+                       These Terms of Service (“<b>Terms</b>”) are a binding legal agreement between you and HRDP that govern your right to use the websites, applications, and other offerings from HRDP (collectively, the “<b>Human Resource Development Platform</b>”). When used in these Terms, “<b>HRDP</b>,” “<b>we</b>,” “<b>us</b>,” or “<b>our</b>” refers to the HRDP entity set out with whom you are contracting.                    </p>
                     <p>
                         The HRDP Platform offers an online venue that enables users (“ <b>Members</b>”) to publish, offer, search for, collect points, purchase and redeem products services. Members who publish and offer services are “ <b>Merchants</b>” and “ <b>Trainers</b>”, and Members who search for, purchase, redeem or use services are “ <b>Customers.</b>” Merchants and Trainers offer products and services (“ <b>Offerings</b>”). You must register an account to access and use many features of the HRDP Platform, and must keep your account information accurate. As the provider of the HRDP Platform, HRDP does not own, control, offer or manage any Offerings or Trainer Services. HRDP is not a party to the contracts entered into directly between Merchants, Trainers and Customers. HRDP is not acting as an agent in any capacity for any Member, except as specified in the Payments Terms of Service (“ <b>Payment Terms</b>”). To learn more about HRDP’s role see Section 16.
                     </p>
@@ -52,8 +51,7 @@
                         We maintain other terms and policies that supplement these Terms like our Privacy Policy, which describes our collection and use of personal data, and our Payments Terms, which govern any payment services provided to Members by the HRDP payment entities (collectively "<b>HRDP Payments</b>").
                     </p>
                     <p>
-                        If you are a Merchant or a Trainer, you are responsible for understanding and complying with all laws, rules, regulations and contracts with third parties that apply to your Products and Services.
-                    </p>
+                        If you are a Merchant or a Trainer, you are responsible for understanding and complying with all laws, rules, regulations and contracts with third parties that apply to your Products and Services.                    </p>
 
                     <h5>
                         Customer Terms
@@ -75,8 +73,7 @@
                                     <b>Searching.</b>
                                 </li>
                                 <p>
-                                    You can search for Trainer Services by using criteria like the type of Trainer Service, training venue and training dates. You can also use filters to refine your search results. Search results are based on their relevance to your search and other criteria. Relevance considers factors like price, availability, Reviews, customer service and cancellation history, popularity, previous training and saved Offerings, Trainer requirements (e.g. minimum or maximum days), and more. Learn more about search results in our Help Center.
-                                </p>
+                                    You can search for Trainer Services by using criteria like the type of Trainer Service, training venue and training dates. You can also use filters to refine your search results. Search results are based on their relevance to your search and other criteria. Relevance considers factors like price, availability, Reviews, customer service and cancellation history, popularity, previous training and saved Offerings, Trainer requirements (e.g. minimum or maximum days), and more.                                 </p>
 
                                 <li>
                                     <b>Booking.</b>
@@ -89,8 +86,7 @@
                                     <b>Course Purchases.</b>
                                 </li>
                                 <p>
-                                    A Course Purchase is a limited license to participate the Course. The Trainer retains the right to cancel or postpone or extended the duration of the Course, to the extent: (i) it is reasonably necessary, (ii) permitted by your contract with the Trainer, and (iii) consistent with applicable law. Please be advised that the trainer cannot guarantee any specific outcomes or the attendance of the participants. No refunds will be issued in the event that the participant fails to attend the course for any reason. Additionally, in the event that the participant breaches the copyright of the course materials, the trainer reserves the right to take legal action, including pursuing reasonable penalties, and taking the matter to court in accordance with applicable laws.
-                                </p>
+                                    A Course Purchase is a limited license to participate the Course. The Trainer retains the right to cancel or postpone or extended the duration of the Course, to the extent: (i) it is reasonably necessary, (ii) permitted by your contract with the Trainer, and (iii) consistent with applicable law. Please be advised that the trainer cannot guarantee any specific outcomes or the attendance of the participants. No refunds will be issued in the event that the participant fails to attend the course for any reason. Additionally, in the event that the participant breaches the copyright of the course materials, the trainer reserves the right to take legal action, including pursuing reasonable penalties, and taking the matter to court in accordance with applicable laws.                                </p>
 
                                 <li>
                                    <b> Purchases for Experiences and Other Trainer Services.</b>
@@ -111,12 +107,14 @@
                                     <b>Cancellations, Travel Issues, and Refunds.</b>
                                 </li>
                                 <p>
-                                    In general, if as a Customer you cancel a Purchase, the amount refunded to you is determined by the cancellation policy that applies to that Purchase. But, in certain situations, other policies take precedence and determine what amount is refunded to you. If something outside your control forces you to cancel a Purchase, you may be eligible for a partial or full refund under our Extenuating Circumstances Policy. If the Trainer cancels, or you experience a Travel Issue (as defined in our Rebooking and Refund Policy), you may be eligible for rebooking assistance or a partial or full refund under the Rebooking and Refund Policy. Different policies apply to certain categories of Offerings
+                                    In general, if as a Customer you cancel a Purchase, the amount refunded to you is determined by the cancellation policy that applies to that Purchase. But, in certain situations, other policies take precedence and determine what amount is refunded to you. If something outside your control forces you to cancel a Purchase, you may be eligible for a partial or full refund under our Extenuating Circumstances Policy. If the Trainer cancels, or you experience a Travel Issue (as defined in our Rebooking and Refund Policy), you may be eligible for rebooking assistance or a partial or full refund under the Rebooking and Refund Policy. Different policies apply to certain categories of Offerings.
                                 </p>
 
                                 <li>
                                     <b>Booking Modifications.</b>
-                                    <p>Customers and Trainers are responsible for any booking modifications they agree to make via the HRDP Platform or direct HRDP customer service to make on their behalf ("<b>Booking Modifications</b>"), and agree to pay any additional amounts, fees, or taxes associated with any Booking Modification.</p>
+                                    <p>
+                                        Customers and Trainers are responsible for any booking modifications they agree to make via the HRDP Platform or direct HRDP customer service to make on their behalf ("<b>Booking Modifications</b>"), and agree to pay any additional amounts, fees, or taxes associated with any Booking Modification.
+                                    </p>
                                 </li>
                             </ol>
                         </li>
@@ -140,7 +138,6 @@
                                 <p>
                                     <b>
                                         You acknowledge that many activities carry inherent risks and agree that, to the maximum extent permitted by applicable law, you assume the entire risk arising out of your access to and use of the HRDP Platform and any Content (as defined in Section 10), including your stay at any Course, participation in any Experience, use of any other Trainer Service, or any other interaction you have with other Members whether in person or online. This means it is your responsibility to investigate a Trainer Service to determine whether it is suitable for you, and you freely and willfully assume those risks by choosing to participate in those Trainer Services.
-
                                     </b>
                                 </p>
                             </ol>
@@ -171,9 +168,11 @@
                                 </p>
 
                                 <li>
-                                    <b>Independence of Trainers</b>
+                                    <b>Independence of Trainers.</b>
                                 </li>
-                                <p>Your relationship with HRDP is that of an independent individual or entity and not an employee, agent, joint venturer, or partner of HRDP, except that HRDP Payments acts as a payment collection agent as described in the Payments Terms. HRDP does not direct or control your Trainer Service, and you agree that you have complete discretion whether and when to provide Trainer Services, and at what price and on what terms to offer them.</p>
+                                <p>
+                                    Your relationship with HRDP is that of an independent individual or entity and not an employee, agent, joint venturer, or partner of HRDP, except that HRDP Payments acts as a payment collection agent as described in the Payments Terms. HRDP does not direct or control your Trainer Service, and you agree that you have complete discretion whether and when to provide Trainer Services, and at what price and on what terms to offer them.
+                                </p>
                             </ol>
                         </li>
 {{--                        end of fifth sub list--}}
@@ -186,13 +185,15 @@
                                 <li>
                                     <b>Creating and Managing Your Offering.</b>
                                 </li>
-                                <p>The HRDP Platform provides tools that make it easy for you to set up and manage an Offering. Your Offering must include complete and accurate information about your Trainer Service, your price, other charges like material fees, resort fees, offline fees, and any rules or requirements that apply to your Customers or Offering. You are responsible for keeping your Offering information (including calendar availability) and content (like photos) up-to-date and accurate at all times. We recommend that you obtain appropriate insurance for your Trainer Services and suggest you carefully review policy terms and conditions including coverage details and exclusions. Any offer of an Experience is subject to our Additional Terms for Experience Trainers.</p>
-
+                                <p>
+                                    The HRDP Platform provides tools that make it easy for you to set up and manage an Offering. Your Offering must include complete and accurate information about your Trainer Service, your price, other charges like material fees, resort fees, offline fees, and any rules or requirements that apply to your Customers or Offering. You are responsible for keeping your Offering information (including calendar availability) and content (like photos) up-to-date and accurate at all times. We recommend that you obtain appropriate insurance for your Trainer Services and suggest you carefully review policy terms and conditions including coverage details and exclusions. Any offer of an Experience is subject to our Additional Terms for Experience Trainers.
+                                </p>
                                 <li>
                                     <b>Know Your Legal Obligations.</b>
                                 </li>
-                                <p>You are responsible for understanding and complying with any laws, rules, regulations, and contracts with third parties that apply to your Offering or Trainer Services. For example: Check your local rules to learn what rules apply to the Trainer Services you plan to offer. Information we provide regarding legal requirements is for informational purposes only and you should independently confirm your obligations. You are responsible for handling and using personal data of Customers and others in compliance with applicable privacy laws and these Terms, including our Trainer Privacy Standards. If you have questions about how local laws apply you should always seek legal advice.</p>
-
+                                <p>
+                                    You are responsible for understanding and complying with any laws, rules, regulations, and contracts with third parties that apply to your Offering or Trainer Services. For example: Check your local rules to learn what rules apply to the Trainer Services you plan to offer. Information we provide regarding legal requirements is for informational purposes only and you should independently confirm your obligations. You are responsible for handling and using personal data of Customers and others in compliance with applicable privacy laws and these Terms, including our Trainer Privacy Standards. If you have questions about how local laws apply you should always seek legal advice.
+                                </p>
                                 <li>
                                     <b>Search Ranking. </b>
                                     <br>
@@ -220,8 +221,7 @@
                                 </li>
                                 <br>
                                 <p>
-                                    Search results may appear different on our mobile application than they appear on our website. HRDP may allow Trainers and Merchants to promote their Offerings in search or elsewhere on the HRDP Platform by paying an additional fee. More information about the factors that determine how your Offering appears in search results.
-                                </p>
+                                    Search results may appear different on our mobile application than they appear on our website. HRDP may allow Trainers and Merchants to promote their Offerings in search or elsewhere on the HRDP Platform by paying an additional fee. More information about the factors that determine how your Offering appears in search results.                                </p>
 
                                 <li>
                                     <b>Your Responsibilities.</b>
@@ -243,7 +243,8 @@
                                     </b>
                                 </li>
                                 <p>
-                                    <b>You acknowledge that Training carries inherent risks and agree that you assume the entire risk arising out of your access to and use of the HRDP Platform, offering Trainer Services, or any interaction you have with other Members whether in person or online. You agree that you have had the opportunity to investigate the HRDP Platform and any laws, rules, regulations, or obligations that may be applicable to your Offerings or Trainer Services and that you are not relying upon any statement of law made by HRDP.
+                                    <b>
+                                        You acknowledge that Training carries inherent risks and agree that you assume the entire risk arising out of your access to and use of the HRDP Platform, offering Trainer Services, or any interaction you have with other Members whether in person or online. You agree that you have had the opportunity to investigate the HRDP Platform and any laws, rules, regulations, or obligations that may be applicable to your Offerings or Trainer Services and that you are not relying upon any statement of law made by HRDP.
                                     </b>
                                 </p>
                             </ol>

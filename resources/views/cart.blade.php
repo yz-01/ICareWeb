@@ -24,7 +24,7 @@
     <br><br>
     <br><br>
     <div class="container-fluid mt-5">
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center text-center">
             <h5>
                 Our online store will be available soon. Stay tuned for updates!
             </h5>

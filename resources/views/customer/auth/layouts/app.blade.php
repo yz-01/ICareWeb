@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- Sweet Alert-->
     <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    @stack('style')
 </head>
 
 <body class="rbt-header-sticky">
@@ -82,6 +83,7 @@
     <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
 
     @include('customer.auth.layouts.sweetalerts')
+    @stack('script')
 </body>
 
 </html>

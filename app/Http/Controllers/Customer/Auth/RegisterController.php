@@ -143,7 +143,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password),
                 'security_question_id' => $request->security_question_id,
                 'security_answer' => $request->security_answer,
-                'own_referral_code' => 'I'.$request->phone,
+                'own_referral_code' => 'P'.$request->phone,
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
@@ -192,12 +192,12 @@ class RegisterController extends Controller
             if($last_customer){
                 $add_customer_code_number = substr($customer->code,-4) + 1;
                 $customer->update([
-                    'code' => "I".str_pad($add_customer_code_number, 4, '0', STR_PAD_LEFT),
+                    'code' => "P".str_pad($add_customer_code_number, 4, '0', STR_PAD_LEFT),
                 ]);
             }
             else{
                 $customer->update([
-                    'code' => "I".str_pad(1, 4, '0', STR_PAD_LEFT),
+                    'code' => "P".str_pad(1, 4, '0', STR_PAD_LEFT),
                 ]);
             }
 

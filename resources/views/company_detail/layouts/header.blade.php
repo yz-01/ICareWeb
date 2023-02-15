@@ -624,7 +624,7 @@
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a href="#"><i class="feather-user"></i>{{ auth()->user()->name }}</a>
+                            <a style="cursor: pointer"><i class="feather-user"></i>{{ auth()->user()->name }}</a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
@@ -643,11 +643,15 @@
                             </div>
                         </li>
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                            <a class="rbt-round-btn" href="#"><i class="feather-user"></i></a>
+                            <a style="cursor: pointer" class="rbt-round-btn"><i class="feather-user"></i></a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
                                         <li><a>Welcome, {{ auth()->user()->name }}</a></li>
+                                    </ul>
+                                    <hr class="mt--10 mb--10">
+                                    <ul class="user-list-wrapper">
+                                        <li><a href="{{ route('company_detail.dashboard','#profile') }}">My Profile</a></li>
                                     </ul>
                                     <hr class="mt--10 mb--10">
                                     <ul class="user-list-wrapper">

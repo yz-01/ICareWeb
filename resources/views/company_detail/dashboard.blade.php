@@ -23,7 +23,8 @@
                                 <i class="fas fa-user py-3 px-4" style="font-size: 50px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
                             </div>
                             <div class="tutor-content">
-                                <h5 class="title">{{ auth()->user()->name }}</h5>
+                                <h5 class="mb-0 title">{{ auth()->user()->name }}</h5>
+                                <h6 class="my-2 title">{{ number_format(auth()->user()->point_balance, 0) }} pts</h6>
                                 <div class="rbt-review">
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
@@ -66,17 +67,30 @@
                                         <nav class="mainmenu-nav">
                                             <ul class="dashboard-mainmenu rbt-default-sidebar-list">
                                                 <li><a><i class="feather-home"></i><span>Dashboard</span></a></li>
-                                                <li><a><i class="feather-user"></i><span>My Profile</span></a></li>
+                                                <li><a href="{{ route('company_detail.dashboard','#profile') }}"><i class="feather-user"></i><span>My Profile</span></a></li>
                                                 <li><a><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
                                                 <li><a><i class="feather-bookmark"></i><span>Wishlist</span></a></li>
                                                 <li><a><i class="feather-star"></i><span>Reviews</span></a></li>
                                                 <li><a><i class="feather-help-circle"></i><span>My Quiz Attempts</span></a></li>
                                                 <li><a><i class="feather-shopping-bag"></i><span>Order History</span></a></li>
+                                                <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
+                                                <li><a><i class="feather-volume-2"></i><span>Announcements</span></a></li>
+                                                <li><a><i class="feather-message-square"></i><span>Quiz Attempts</span></a></li>
+                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li>
+                                                <li><a><i class="feather-settings"></i><span>Settings</span></a></li>
+                                                <li><a class="" href="{{ route('company_detail.logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('company_detail.logout') }}" method="POST" class="d-none">
+                                                        @csrf
+                                                    </form>
                                             </ul>
                                         </nav>
 
-                                        <div class="section-title mt--40 mb--20">
-                                            <h6 class="rbt-title-style-2">Instructor</h6>
+                                        {{-- <div class="section-title mt--40 mb--20">
+                                            <h6 class="rbt-title-style-2">Trainer</h6>
                                         </div>
 
                                         <nav class="mainmenu-nav">
@@ -104,7 +118,7 @@
                                                         @csrf
                                                     </form>
                                             </ul>
-                                        </nav>
+                                        </nav> --}}
                                     </div>
 
                                 </div>
@@ -112,7 +126,7 @@
                         </div>
                         <!-- End Dashboard Sidebar  -->
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-9" id="profile">
                         <!-- Start Instructor Profile  -->
                         <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
                             <div class="content">
@@ -125,13 +139,11 @@
                                         <div class="rbt-profile-content b2">Referral Code:</div>
                                     </div>
                                     <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">
-                                            {{ auth()->user()->own_referral_code }}
-                                            @if (auth()->user()->is_referral_code_use == 1)
-                                                <span class="badge text-success">Haven't Use</span>
-                                            @else
-                                                <span class="badge text-danger">Used by Friend</span>
-                                            @endif
+                                        <div class="rbt-profile-content b2 d-flex align-items-center">
+                                            <input id="myInput" type="text" value="{{ auth()->user()->own_referral_code }}" style="border: 0px transparent; width: 150px">
+                                            <button class="btn btn-lg" value="copy" onclick="myFunction()" style="background-color:rgb(93, 155, 236); color: white">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -239,10 +251,10 @@
                                 <!-- Start Profile Row  -->
                                 <div class="rbt-profile-row row row--15 mt--15">
                                     <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Point Balance</div>
+                                        <div class="rbt-profile-content b2">HRDP Reward Points Balance</div>
                                     </div>
                                     <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->point_balance }}</div>
+                                        <div class="rbt-profile-content b2">{{ number_format(auth()->user()->point_balance, 0) }}</div>
                                     </div>
                                 </div>
                                 <!-- End Profile Row  -->
@@ -303,3 +315,21 @@
 </div>
 <!-- End Card Style -->
 @endsection
+@push('script')
+    <script>
+        function myFunction() {
+            // Get the text field
+            var copyText = document.getElementById("myInput");
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
+
+            // Alert the copied text
+            // alert("Copied the text: " + copyText.value);
+        }
+    </script>
+@endpush

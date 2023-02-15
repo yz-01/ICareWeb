@@ -82,6 +82,7 @@
     <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
 
     @include('company_detail.auth.layouts.sweetalerts')
+    @stack('script')
 </body>
 
 </html>

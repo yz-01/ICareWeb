@@ -155,7 +155,7 @@
                         <div class="row pt-4">
                             <div class="col-lg-6">
                                 <label>Referral Code</label>
-                                <input name="agent_code" type="text" class="form-control @error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}" placeholder="Referral Code">
+                                <input name="referral_code" type="text" class="form-control @error('referral_code') is-invalid @enderror" value="{{ old('referral_code') ?: '' }}" placeholder="Referral Code" oninput="this.value = this.value.toUpperCase()">
                                 <span class="focus-border"></span>
                                 @if(count($errors) > 0)
                                     {{-- <div class="invalid-feedback"> --}}

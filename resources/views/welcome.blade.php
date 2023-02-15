@@ -52,7 +52,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/www.jpeg') }}" alt="Card image" style="height: 500px;">
+                            <img src="{{ asset('images/oe/www.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
                             {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-40%</span>
                                 <span>Off</span>
@@ -114,7 +114,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/siwei.jpeg') }}" alt="Card image" style="height: 500px;">
+                            <img src="{{ asset('images/oe/siwei.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -173,7 +173,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/5G.jpeg') }}" alt="Card image" style="height: 500px;">
+                            <img src="{{ asset('images/oe/5G.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
                             {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-10%</span>
                                 <span>Off</span>
@@ -235,7 +235,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/top.jpeg') }}" alt="Card image" style="height: 500px;">
+                            <img src="{{ asset('images/oe/top.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
                             {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-40%</span>
                                 <span>Off</span>
@@ -299,7 +299,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/ceo.jpeg') }}" alt="Card image" style="height: 500px;">
+                            <img src="{{ asset('images/oe/ceo.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
                             {{-- <div class="rbt-badge-3 bg-white">
                                 <span>-20%</span>
                                 <span>Off</span>
@@ -361,7 +361,7 @@
                 <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                         <a >
-                            <img src="{{ asset('images/oe/mdmt.gif') }}" alt="Card image" style="height: 500px;">
+                            <img src="{{ asset('images/oe/mdmt.gif') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
                         </a>
                     </div>
                     <div class="rbt-card-body">
@@ -831,7 +831,7 @@
                     <div class="rbt-counterup style-2">
                         <div class="inner">
                             <div class="content">
-                                <h3 class="counter"><span class="odometer" data-count="500">00</span>
+                                <h3 class="counter"><span class="odometer" data-count="5000">00</span>
                                 </h3>
                                 <span class="subtitle">Learners &amp; counting</span>
                             </div>
@@ -859,7 +859,7 @@
                     <div class="rbt-counterup style-2">
                         <div class="inner">
                             <div class="content">
-                                <h3 class="counter"><span class="odometer" data-count="1000">00</span>
+                                <h3 class="counter"><span class="odometer" data-count="10000">00</span>
                                 </h3>
                                 <span class="subtitle">Certified Students</span>
                             </div>
@@ -873,9 +873,9 @@
                     <div class="rbt-counterup style-2">
                         <div class="inner">
                             <div class="content">
-                                <h3 class="counter"><span class="odometer" data-count="100">00</span>
+                                <h3 class="counter"><span class="odometer" data-count="500">00</span>
                                 </h3>
-                                <span class="subtitle">Certified Students</span>
+                                <span class="subtitle">Certified trainers</span>
                             </div>
                         </div>
                     </div>

@@ -122,10 +122,17 @@
                                 <!-- Start Profile Row  -->
                                 <div class="rbt-profile-row row row--15">
                                     <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Agent Code/Phone Number:</div>
+                                        <div class="rbt-profile-content b2">Your Referral Code:</div>
                                     </div>
                                     <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->phone }}</div>
+                                        <div class="rbt-profile-content b2">
+                                            {{ auth()->user()->own_referral_code }}
+                                            @if (auth()->user()->is_referral_code_use == 1)
+                                                <span class="badge text-success">Haven't Use</span>
+                                            @else
+                                                <span class="badge text-danger">Used by Friend</span>
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- End Profile Row  -->
@@ -140,7 +147,14 @@
                                     </div>
                                 </div>
                                 <!-- End Profile Row  -->
-
+                                <div class="rbt-profile-row row row--15 mt--15">
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="rbt-profile-content b2">Phone</div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8">
+                                        <div class="rbt-profile-content b2">{{ auth()->user()->phone }}</div>
+                                    </div>
+                                </div>
                                 <!-- Start Profile Row  -->
                                 <div class="rbt-profile-row row row--15 mt--15">
                                     <div class="col-lg-4 col-md-4">

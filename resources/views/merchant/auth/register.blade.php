@@ -24,11 +24,11 @@
 <!-- End Breadcrumb Area -->
 <div class="rbt-elements-area bg-color-white rbt-section-gap py-5">
     <div class="container">
-        {{-- <button class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100 h-100">
+        <button class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100 h-100">
             <span class="icon-reverse-wrapper">
-                <span class="btn-text" style="font-size: 23px">Become a member of The Point to earn a welcome offer of 500 points</span>
+                <span class="btn-text" style="font-size: 23px">Join the HRDP Rewards Program Today and Earn a 100-Point Welcome Bonus!</span>
             </span>
-        </button> --}}
+        </button>
 
         <a class="rbt-btn bg-primary-opacity hover-icon-reverse my-4" href="/">
                             <span class="icon-reverse-wrapper">
@@ -78,7 +78,7 @@
                                 @enderror
                             </div>
                             <div class="col-lg-6">
-                                <label>SSM Document <span class="text-danger">*</span></label>
+                                <label>SSM Document</label>
                                 <div class="form-group">
                                     <input name="ssm_document" type="file" class="form-control @error('ssm_document') is-invalid @enderror" value="{{ old('ssm_document') ?: '' }}">
                                     <span class="focus-border"></span>
@@ -104,13 +104,13 @@
                             <div class="col-lg-6">
                                 <label>Nature of Business <span class="text-danger">*</span></label>
                                 <div class="rbt-modern-select bg-transparent height-45">
-                                    <select name="nature_business" class="form-control @error('nature_business') is-invalid @enderror">
-                                        <option value="">-- Select Security Question --</option>
+                                    <select name="nature_business_id" class="form-control @error('nature_business_id') is-invalid @enderror">
+                                        <option value="">-- Select Nature of Business --</option>
                                         @foreach ($nature_businesses as $nature_business)
-                                            <option value="{{ $nature_business->id }}" {{ old('nature_businesses') == $nature_business->id ? 'selected' : ''}}>{{ $nature_business->name }}</option>
+                                            <option value="{{ $nature_business->id }}" {{ old('nature_business_id') == $nature_business->id ? 'selected' : ''}}>{{ $nature_business->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('nature_business')
+                                    @error('nature_business_id')
                                         <div class="invalid-feedback">
                                             <span>{{ $message }}</span>
                                         </div>
@@ -184,8 +184,8 @@
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select name="is_own_company" class="form-control @error('is_own_company') is-invalid @enderror">
                                         <option value="">-- Select Yes/No --</option>
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
+                                        <option value="1" {{ old('is_own_company') == 1 ? 'selected' : ''}}>No</option>
+                                        <option value="2" {{ old('is_own_company') == 2 ? 'selected' : ''}}>Yes</option>
                                     </select>
                                     @error('is_own_company')
                                         <div class="invalid-feedback">
@@ -223,11 +223,11 @@
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select name="member_number" class="form-control @error('member_number') is-invalid @enderror">
                                         <option value="">-- Select Total Number of Employees --</option>
-                                        <option value="0">Less than 9</option>
-                                        <option value="1">10 or more than 10</option>
-                                        <option value="2">More than 50</option>
-                                        <option value="3">More than 100</option>
-                                        <option value="4">More than 200</option>
+                                        <option value="1" {{ old('member_number') == 1 ? 'selected' : ''}}>Less than 9</option>
+                                        <option value="2" {{ old('member_number') == 2 ? 'selected' : ''}}>10 or more than 10</option>
+                                        <option value="3" {{ old('member_number') == 3 ? 'selected' : ''}}>More than 50</option>
+                                        <option value="4" {{ old('member_number') == 4 ? 'selected' : ''}}>More than 100</option>
+                                        <option value="5" {{ old('member_number') == 5 ? 'selected' : ''}}>More than 200</option>
                                     </select>
                                     @error('member_number')
                                         <div class="invalid-feedback">
@@ -241,9 +241,9 @@
                                 <div class="rbt-modern-select bg-transparent height-45">
                                     <select name="is_hrdf" class="form-control @error('is_hrdf') is-invalid @enderror">
                                         <option value="">-- Select Yes/No --</option>
-                                        <option value="0">No</option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">Not Sure</option>
+                                        <option value="1" {{ old('is_hrdf') == 1 ? 'selected' : ''}}>No</option>
+                                        <option value="2" {{ old('is_hrdf') == 2 ? 'selected' : ''}}>Yes</option>
+                                        <option value="3" {{ old('is_hrdf') == 3 ? 'selected' : ''}}>Not Sure</option>
                                     </select>
                                     @error('is_hrdf')
                                         <div class="invalid-feedback">
@@ -311,7 +311,7 @@
                         <div class="row pt-4">
                             <div class="col-lg-6">
                                 <label>Referral Code</label>
-                                <input name="agent_code" type="text" class="form-control @error('agent_code') is-invalid @enderror" value="{{ old('agent_code') ?: '' }}" placeholder="Referral Code">
+                                <input name="referral_code" type="text" class="form-control @error('referral_code') is-invalid @enderror" value="{{ old('referral_code') ?: '' }}" placeholder="Referral Code" oninput="this.value = this.value.toUpperCase()">
                                 <span class="focus-border"></span>
                                 @if(count($errors) > 0)
                                     {{-- <div class="invalid-feedback"> --}}

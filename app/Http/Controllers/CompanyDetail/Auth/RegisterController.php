@@ -7,6 +7,8 @@ use App\Models\AgentCode;
 use App\Models\Company;
 use App\Models\CompanyDetail;
 use App\Models\Country;
+use App\Models\Customer;
+use App\Models\Merchant;
 use App\Models\NatureBusiness;
 use App\Models\PointTransaction;
 use App\Models\PromoteProduct;
@@ -78,7 +80,7 @@ class RegisterController extends Controller
         $this->validate($request, [
             'company_name' => 'required|string|max:255',
             'company_registration_number' => 'required|string|max:255',
-            'nature_business' => 'required|string|max:255',
+            'nature_business_id' => 'required',
             'name' => 'required|string|max:255',
             'phone' => 'required|numeric|unique:company_details|min:10',
             'position' => 'required|string|max:255',
@@ -89,8 +91,7 @@ class RegisterController extends Controller
             'state' => 'required',
             'postal_code' => 'required',
             'country_id' => 'required',
-            // 'agent_id' => 'nullable',
-            'agent_code' => 'nullable',
+            'referral_code' => 'nullable',
             'is_own_company' => 'required',
             'member_number' => 'required',
             'is_hrdf' => 'required',
@@ -111,7 +112,7 @@ class RegisterController extends Controller
                         ->symbols()
             ],
         ],[
-            'nature_business.required' => 'The nature of business field is required.',
+            'nature_business_id.required' => 'The nature of business field is required.',
             'country_id.required' => 'The country field is required.',
             'is_own_company.required' => 'The own company field is required.',
             'member_number.required' => 'The member of number field is required.',
@@ -119,14 +120,28 @@ class RegisterController extends Controller
             'security_question_id.required' => 'The security question field is required.',
         ]);
 
-        $check_agent_code = AgentCode::where('phone', $request->agent_code)->where('is_use', 0)->first();
+        $check_customer_referral_code = Customer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
+        $check_merchant_referral_code = Merchant::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
+        $check_company_referral_code = CompanyDetail::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
 
-        if($check_agent_code || $request->agent_code == null)
+        if($check_customer_referral_code || $check_merchant_referral_code || $check_company_referral_code || $request->referral_code == null)
         {
-            if($check_agent_code)
+            if($check_customer_referral_code)
             {
-                $check_agent_code->update([
-                    'is_use' => 1,
+                $check_customer_referral_code->update([
+                    'is_referral_code_use' => 2, //2=yes
+                ]);
+            }
+            if($check_merchant_referral_code)
+            {
+                $check_merchant_referral_code->update([
+                    'is_referral_code_use' => 2,
+                ]);
+            }
+            if($check_company_referral_code)
+            {
+                $check_company_referral_code->update([
+                    'is_referral_code_use' => 2,
                 ]);
             }
 
@@ -149,7 +164,7 @@ class RegisterController extends Controller
                 'company_name' => $request->company_name,
                 'company_registration_number' => $request->company_registration_number,
                 'ssm_document' => $request->file('ssm_document') ? $file : null,
-                'nature_business' => $request->nature_business,
+                'nature_business_id' => $request->nature_business_id,
                 'email' => $request->email,
                 'address' => $request->address,
                 'city' => $request->city,
@@ -163,8 +178,9 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password),
                 'security_question_id' => $request->security_question_id,
                 'security_answer' => $request->security_answer,
-                'agent_code' => $request->agent_code,
-                'is_approve' => 1,
+                'own_referral_code' => 'C'.$request->phone,
+                'is_referral_code_use' => 1, //1=no
+                'is_approve' => 2, //2=yes
                 'point_balance' => 100,
             ]);
 
@@ -175,13 +191,35 @@ class RegisterController extends Controller
             ]);
 
 
-            if($check_agent_code)
+            if($check_customer_referral_code)
             {
-                $company_detail->update([
-                    'point_balance' => $company_detail->point_balance+50,
+                $check_customer_referral_code->update([
+                    'point_balance' => $check_customer_referral_code->point_balance+50,
                 ]);
                 $point_transaction->create([
-                    'company_detail_id' => $company_detail->id,
+                    'customer_id' => $check_customer_referral_code->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
+            if($check_merchant_referral_code)
+            {
+                $check_merchant_referral_code->update([
+                    'point_balance' => $check_merchant_referral_code->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'merchant_id' => $check_merchant_referral_code->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
+            if($check_company_referral_code)
+            {
+                $check_company_referral_code->update([
+                    'point_balance' => $check_company_referral_code->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'company_detail_id' => $check_company_referral_code->id,
                     'in' => 50,
                     'description' => 'New Member - Referral Bonus',
                 ]);
@@ -209,11 +247,6 @@ class RegisterController extends Controller
                     'promote_product_id' => $promote_product->id,
                 ]);
             }
-
-            AgentCode::create([
-                'phone' => $company_detail->phone,
-                'is_use' => 0,
-            ]);
         }
         else
         {
@@ -221,7 +254,7 @@ class RegisterController extends Controller
         }
 
 
-        return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website! Please wait for Admin approval.');
+        return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website!');
     }
 
     public function showRegistrationForm()

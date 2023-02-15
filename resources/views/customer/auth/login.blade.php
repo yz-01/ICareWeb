@@ -32,28 +32,24 @@
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input id="username" type="text" class="@error('username') is-invalid @enderror" value="{{ old('username') }}" name="username" required autocomplete="username">
-                                    <label>Username *</label>
-                                    <span class="focus-border"></span>
-                                    @error('username')
-                                        <div class="invalid-feedback">
-                                            <span>{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                                </div>
+                                <label>Username *</label>
+                                <input id="username" type="text" class="@error('username') is-invalid @enderror" value="{{ old('username') }}" name="username" required autocomplete="username">
+                                <span class="focus-border"></span>
+                                @error('username')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                                    <label>Password *</label>
-                                    <span class="focus-border"></span>
-                                    @error('password')
-                                        <div class="invalid-feedback">
-                                            <span>{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                                </div>
+                                <label>Password *</label>
+                                <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <span class="focus-border"></span>
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-check">

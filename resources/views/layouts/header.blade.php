@@ -356,6 +356,9 @@
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
+                            <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i>Cart</a>
+                        </li>
+                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
                             <a style="cursor: pointer"><i class="feather-user"></i>Login</a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
@@ -403,9 +406,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i>Cart</a>
-                        </li>
+                        
 
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
                             <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i></a>

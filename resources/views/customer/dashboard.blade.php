@@ -221,7 +221,44 @@
                                     </div>
                                 </div>
                                 <!-- End Profile Row  -->
-
+                                <div class="rbt-profile-row row row--15 mt--15">
+                                    <div class="col-lg-4 col-md-4">
+                                        <div class="rbt-profile-content b2">Employee Status</div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8">
+                                        <div class="rbt-profile-content b2">
+                                            @if (auth()->user()->employment_status == 1)
+                                                Employee
+                                            @elseif (auth()->user()->employment_status == 2)
+                                                Employer
+                                            @elseif (auth()->user()->employment_status == 3)
+                                                Unemployed
+                                            @elseif (auth()->user()->employment_status == 4)
+                                                Retiree
+                                            @elseif (auth()->user()->employment_status == 5)
+                                                Student
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                @if (auth()->user()->employment_status == 1 || auth()->user()->employment_status == 2)
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Company Name</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ auth()->user()->company_name ?: '-' }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Position</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">{{ auth()->user()->position ?: '-' }}</div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <!-- Start Profile Row  -->
                                 <div class="rbt-profile-row row row--15 mt--15">
                                     <div class="col-lg-4 col-md-4">

@@ -162,6 +162,48 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-6">
+                                <label>Employment Status <span class="text-danger">*</span></label>
+                                <div class="rbt-modern-select bg-transparent height-45">
+                                    <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror">
+                                        <option value="">-- Select Employment Status --</option>
+                                        <option value="1" {{ old('employment_status') == 1 ? 'selected' : ''}}>Employee</option>
+                                        <option value="2" {{ old('employment_status') == 2 ? 'selected' : ''}}>Employer</option>
+                                        <option value="3" {{ old('employment_status') == 3 ? 'selected' : ''}}>Unemployed</option>
+                                        <option value="4" {{ old('employment_status') == 4 ? 'selected' : ''}}>Retiree</option>
+                                        <option value="5" {{ old('employment_status') == 5 ? 'selected' : ''}}>Student</option>
+                                    </select>
+                                    @error('employment_status')
+                                        <div class="invalid-feedback">
+                                            <span>{{ $message }}</span>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>If <span class="text-danger">Employee/Employer</span>(Provide the company name)</label>
+                                <input name="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') ?: '' }}" placeholder="Company Name">
+                                <span class="focus-border"></span>
+                                @error('company_name')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                <label>If <span class="text-danger">Employee/Employer</span>(Provide your position in this company)</label>
+                                <input name="position" type="text" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') ?: '' }}" placeholder="Your Position">
+                                <span class="focus-border"></span>
+                                @error('position')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
                                 <label>Referral Code</label>
                                 <input name="referral_code" type="text" class="form-control @error('referral_code') is-invalid @enderror" value="{{ old('referral_code') ?: '' }}" placeholder="Referral Code" oninput="this.value = this.value.toUpperCase()">
                                 <span class="focus-border"></span>

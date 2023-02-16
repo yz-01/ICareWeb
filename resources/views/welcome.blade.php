@@ -99,7 +99,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM4218.80</span>
+                                <span class="current-price">RM4,218.80</span>
                             </div>
                             <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                 class="feather-shopping-cart"></i> Add To Cart</a>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM7398.80</span>
+                                <span class="current-price">RM7,398.80</span>
                             </div>
                             <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -220,7 +220,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM17808.00</span>
+                                <span class="current-price">RM17,808.00</span>
                             </div>
                             <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -284,7 +284,7 @@
 
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM4218.80</span>
+                                <span class="current-price">RM4,218.80</span>
                             </div>
                             <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>
@@ -346,7 +346,7 @@
                         </div>
                         <div class="rbt-card-bottom">
                             <div class="rbt-price">
-                                <span class="current-price">RM25228.00</span>
+                                <span class="current-price">RM25,228.00</span>
                             </div>
                             <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
                                     class="feather-shopping-cart"></i> Add To Cart</a>

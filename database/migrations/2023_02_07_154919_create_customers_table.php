@@ -29,6 +29,9 @@ class CreateCustomersTable extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->foreignId('country_id')->nullable()->constrained('countries');
+            $table->tinyInteger('employment_status')->comment('1=Employee, 2=Employer, 3=Unemployed, 4=Retiree, 5=Student')->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('position')->nullable();
             $table->string('own_referral_code')->nullable();
             $table->tinyInteger('is_referral_code_use')->comment('1=No, 2=Yes')->nullable();
             $table->integer('point_balance')->default(0);

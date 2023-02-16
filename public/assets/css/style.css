@@ -11259,6 +11259,8 @@ ul.rbt-dropdown-menu.currency-menu li .sub-menu {
   background-color: var(--color-white);
   box-shadow: var(--shadow-1);
   border-top: 1px solid #e6e3f14f;
+  left: auto;
+  right: 0;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .rbt-user-wrapper .rbt-user-menu-list-wrapper {

@@ -101,8 +101,15 @@
                             <div class="rbt-price">
                                 <span class="current-price">RM4,218.80</span>
                             </div>
-                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                class="feather-shopping-cart"></i> Add To Cart</a>
+                            @if (auth()->guard('customer')->check() == true)
+                                <a href="{{ route('customer.cart.index') }}" class="rbt-btn-link left-icon" ><i
+                                    class="feather-shopping-cart"></i> Add To Cart
+                                </a>
+                            @else
+                                <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
+                                    class="feather-shopping-cart"></i> Add To Cart
+                                </a>
+                            @endif
                         </div>
                     </div>
                 </div>

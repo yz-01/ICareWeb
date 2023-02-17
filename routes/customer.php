@@ -26,4 +26,5 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth:customer'], function(){
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('cart', 'CartController');
 });

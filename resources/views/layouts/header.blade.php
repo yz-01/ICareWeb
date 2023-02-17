@@ -358,108 +358,165 @@
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
                             <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i>Cart</a>
                         </li>
-                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a style="cursor: pointer"><i class="feather-user"></i>Login</a>
-                            <div class="rbt-user-menu-list-wrapper">
-                                <div class="inner">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="{{ route('customer.login') }}">
-                                                <span>Member Login</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('merchant.login') }}">
-                                                <span>Merchant Login</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('company_detail.login') }}">
-                                                <span>Company Login</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a style="cursor: pointer"><i class="feather-file-text"></i>Register</a>
-                            <div class="rbt-user-menu-list-wrapper">
-                                <div class="inner">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="{{ route('customer.register.create') }}">
-                                                <span>Member Register</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('merchant.register.create') }}">
-                                                <span>Merchant Register</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('company_detail.register.create') }}">
-                                                <span>Company Register</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        
-
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
                             <a href="{{ route('cart.index') }}"><i class="feather-shopping-cart"></i></a>
                         </li>
-                        <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                            <a class="rbt-round-btn" style="cursor: pointer"><i class="feather-user"></i></a>
-                            <div class="rbt-user-menu-list-wrapper">
-                                <div class="inner">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="{{ route('customer.login') }}">
-                                                <span>Member Login</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('merchant.login') }}">
-                                                <span>Merchant Login</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('company_detail.login') }}">
-                                                <span>Company Login</span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                        @if (auth()->guard('customer')->check() == true)
+                            <li class="account-access rbt-user-wrapper d-none d-xl-block">
+                                <a style="cursor: pointer"><i class="feather-user"></i>{{auth()->guard('customer')->user()->name}}</a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{{ route('customer.dashboard') }}">
+                                                    <span>My Dashboard</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span>My Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('customer.logout') }}" onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    <span>{{ __('Logout') }}</span>
+                                                </a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                            <a class="rbt-round-btn" style="cursor: pointer"><i class="feather-file-text"></i></a>
-                            <div class="rbt-user-menu-list-wrapper">
-                                <div class="inner">
-                                    <ul class="user-list-wrapper mr-0">
-                                        <li>
-                                            <a href="{{ route('customer.register.create') }}">
-                                                <span>Member Register</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('merchant.register.create') }}">
-                                                <span>Merchant Register</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('company_detail.register.create') }}">
-                                                <span>Company Register</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
+                            </li>
+                            <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
 
+                            
+                            <li class="access-icon rbt-user-wrapper d-block d-xl-none">
+                                <a class="rbt-round-btn" style="cursor: pointer"><i class="feather-user"></i></a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{{ route('customer.dashboard') }}">
+                                                    <span>My Dashboard</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <span>My Profile</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('customer.logout') }}" onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    <span>{{ __('Logout') }}</span>
+                                                </a>
+                                                
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        @else
+                            <li class="account-access rbt-user-wrapper d-none d-xl-block">
+                                <a style="cursor: pointer"><i class="feather-user"></i>Login</a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{{ route('customer.login') }}">
+                                                    <span>Member Login</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('merchant.login') }}">
+                                                    <span>Merchant Login</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('company_detail.login') }}">
+                                                    <span>Company Login</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="account-access rbt-user-wrapper d-none d-xl-block">
+                                <a style="cursor: pointer"><i class="feather-file-text"></i>Register</a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{{ route('customer.register.create') }}">
+                                                    <span>Member Register</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('merchant.register.create') }}">
+                                                    <span>Merchant Register</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('company_detail.register.create') }}">
+                                                    <span>Company Register</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="access-icon rbt-user-wrapper d-block d-xl-none">
+                                <a class="rbt-round-btn" style="cursor: pointer"><i class="feather-user"></i></a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper">
+                                            <li>
+                                                <a href="{{ route('customer.login') }}">
+                                                    <span>Member Login</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('merchant.login') }}">
+                                                    <span>Merchant Login</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('company_detail.login') }}">
+                                                    <span>Company Login</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="access-icon rbt-user-wrapper d-block d-xl-none">
+                                <a class="rbt-round-btn" style="cursor: pointer"><i class="feather-file-text"></i></a>
+                                <div class="rbt-user-menu-list-wrapper">
+                                    <div class="inner">
+                                        <ul class="user-list-wrapper mr-0">
+                                            <li>
+                                                <a href="{{ route('customer.register.create') }}">
+                                                    <span>Member Register</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('merchant.register.create') }}">
+                                                    <span>Merchant Register</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ route('company_detail.register.create') }}">
+                                                    <span>Company Register</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Start Mobile-Menu-Bar -->

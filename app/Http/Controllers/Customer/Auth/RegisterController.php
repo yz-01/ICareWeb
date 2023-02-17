@@ -102,6 +102,8 @@ class RegisterController extends Controller
             'country_id.required' => 'The country field is required.',
             'security_question_id.required' => 'The security question field is required.',
             'referral_code.required' => 'Your Referral Code is not correct or have been use.',
+            'company_name.required_if' => 'The company name field is required when employment status is employee/employer.',
+            'position.required_if' => 'The position field is required when employment status is employee/employer.',
         ]);
 
         $check_customer_referral_code = Customer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();

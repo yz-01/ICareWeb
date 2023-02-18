@@ -147,143 +147,154 @@
                                         </li>
                                         <li role="presentation">
                                             @if($social == null)
-                                                <a href="{{ route('customer.social.create') }}" class="tab-button">
-                                                    <span class="title">Social Share</span>
-                                                </a>
+                                            <a href="{{ route('customer.social.create') }}" class="tab-button">
+                                                <span class="title">Social Share</span>
+                                            </a>
                                             @else
-                                                <a href="{{ route('customer.social.edit', auth()->user()->id) }}" class="tab-button">
-                                                    <span class="title">Social Share</span>
-                                                </a>
+                                            <a href="{{ route('customer.social.edit', auth()->user()->id) }}" class="tab-button">
+                                                <span class="title">Social Share</span>
+                                            </a>
                                             @endif
                                         </li>
                                     </ul>
                                 </div>
 
-                                <div class="tab-content">
-                                    <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="rbt-dashboard-content-wrapper">
-                                            <div class="tutor-bg-photo bg_image bg_image--23 height-245"></div>
-                                            <!-- Start Tutor Information  -->
-                                            <div class="rbt-tutor-information">
-                                                <div class="rbt-tutor-information-left">
-                                                    <div class="thumbnail rbt-avatars size-lg position-relative">
-                                                        <img src="assets/images/team/avatar-2.jpg" alt="Instructor">
-                                                        <div class="rbt-edit-photo-inner">
-                                                            <button class="rbt-edit-photo" title="Upload Photo">
-                                                                <i class="feather-camera"></i>
-                                                            </button>
+                                <form action="{{ route('customer.profile.update', auth()->user()->id) }}" method="post" enctype="multipart/form-data">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                            <div class="rbt-dashboard-content-wrapper">
+                                                <!-- Start Banner  -->
+                                                <input type="file" name="banner" id="banner" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" hidden>
+                                                <a id="upload-banner-btn">
+                                                    @if($customer->banner)
+                                                        <div id="banner-icon" class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
+                                                    @else
+                                                        <div id="banner-icon" class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
+                                                    @endif
+                                                    <img id="bannerResult" class="tutor-bg-photo bg_image--22 height-350" style="object-fit: contain !important; display: none;" />
+                                                </a>
+                                                <!-- End Banner  -->
+                                                <!-- Start Tutor Information  -->
+                                                <div class="rbt-tutor-information">
+                                                    <div class="rbt-tutor-information-left">
+                                                        <div class="thumbnail rbt-avatars size-lg position-relative">
+                                                            <input type="file" name="image" id="image" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" hidden>
+                                                            <a id="upload-image-btn">
+                                                                @if($customer->image)
+                                                                    <img id="user-icon" src="{{ asset($customer->image) }}" style="width: 100px; height: 100px;">
+                                                                @else
+                                                                    <i id="user-icon" class="fas fa-user py-3 px-4" style="font-size: 110px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
+                                                                @endif
+                                                                <img id="imageResult" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="rbt-tutor-information-right">
-                                                    <div class="tutor-btn">
-                                                        <a class="rbt-btn btn-sm btn-border color-white radius-round-10" href="#">Edit Cover Photo</a>
+                                                <!-- End Tutor Information  -->
+                                            </div>
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row rbt-default-form row row--15">
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Name <span class="text-danger">*</span></label>
+                                                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $customer->name}}" placeholder="Name" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Identity Card <span class="text-danger">*</span></label>
+                                                        <input name="identity_card" type="text" class="form-control @error('identity_card') is-invalid @enderror" value="{{ $customer->identity_card}}" placeholder="Identity Card" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Email <span class="text-danger">*</span></label>
+                                                        <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" value="{{ $customer->email}}" placeholder="Email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Phone <span class="text-danger">*</span></label>
+                                                        <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ $customer->phone}}" placeholder="Phone" minlength="10" maxlength="13" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Address <span class="text-danger">*</span></label>
+                                                        <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{ $customer->address}}" placeholder="Address" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>City <span class="text-danger">*</span></label>
+                                                        <input name="city" type="text" class="form-control @error('city') is-invalid @enderror" value="{{ $customer->city}}" placeholder="City" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>State <span class="text-danger">*</span></label>
+                                                        <input name="state" type="text" class="form-control @error('state') is-invalid @enderror" value="{{ $customer->state}}" placeholder="State" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Postal Code <span class="text-danger">*</span></label>
+                                                        <input name="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" value="{{ $customer->postal_code}}" placeholder="Postal Code" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Country <span class="text-danger">*</span></label>
+                                                        <div class="rbt-modern-select bg-transparent height-45">
+                                                            <select name="country_id" class="form-control @error('country_id') is-invalid @enderror" required>
+                                                                <option value="">-- Select Country --</option>
+                                                                @foreach ($countries as $country)
+                                                                <option value="{{ $country->id }}" {{ $customer->country_id == $country->id ? 'selected' : ''}}>{{ $country->code }} - {{ $country->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                                                    <div class="rbt-form-group">
+                                                        <label>Employment Status <span class="text-danger">*</span></label>
+                                                        <div class="rbt-modern-select bg-transparent height-45">
+                                                            <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror" required>
+                                                                <option value="">-- Select Employment Status --</option>
+                                                                <option value="1" {{ $customer->employment_status == 1 ? 'selected' : ''}}>Employee</option>
+                                                                <option value="2" {{ $customer->employment_status == 2 ? 'selected' : ''}}>Employer</option>
+                                                                <option value="3" {{ $customer->employment_status == 3 ? 'selected' : ''}}>Unemployed</option>
+                                                                <option value="4" {{ $customer->employment_status == 4 ? 'selected' : ''}}>Retiree</option>
+                                                                <option value="5" {{ $customer->employment_status == 5 ? 'selected' : ''}}>Student</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="padding-top: 10px;">
+                                                    <div class="rbt-form-group">
+                                                        <label>Company Name<span class="text-danger"></span></label>
+                                                        <input name="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" value="{{ $customer->company_name }}" placeholder="Company Name">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="padding-top: 10px;">
+                                                    <div class="rbt-form-group">
+                                                        <label>Position<span class="text-danger"></span></label>
+                                                        <input name="position" type="text" class="form-control @error('position') is-invalid @enderror" value="{{ $customer->position }}" placeholder="Your Position">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 mt--20">
+                                                    <div class="rbt-form-group">
+                                                        <button class="rbt-btn btn-gradient" type="submit">Update Info</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- End Tutor Information  -->
+
+                                            <!-- End Profile Row  -->
                                         </div>
-                                        <!-- Start Profile Row  -->
-                                        <form action="{{ route('customer.profile.update', auth()->user()->id) }}" class="rbt-profile-row rbt-default-form row row--15" method="post" enctype="multipart/form-data">
-                                        @method('PUT')
-                                        @csrf
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Name <span class="text-danger">*</span></label>
-                                                    <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ $customer->name}}" placeholder="Name" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Identity Card <span class="text-danger">*</span></label>
-                                                    <input name="identity_card" type="text" class="form-control @error('identity_card') is-invalid @enderror" value="{{ $customer->identity_card}}" placeholder="Identity Card" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Email <span class="text-danger">*</span></label>
-                                                    <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" value="{{ $customer->email}}" placeholder="Email" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Phone <span class="text-danger">*</span></label>
-                                                    <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ $customer->phone}}" placeholder="Phone" minlength="10" maxlength="13" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Address <span class="text-danger">*</span></label>
-                                                    <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{ $customer->address}}" placeholder="Address" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>City <span class="text-danger">*</span></label>
-                                                    <input name="city" type="text" class="form-control @error('city') is-invalid @enderror" value="{{ $customer->city}}" placeholder="City" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>State <span class="text-danger">*</span></label>
-                                                    <input name="state" type="text" class="form-control @error('state') is-invalid @enderror" value="{{ $customer->state}}" placeholder="State" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Postal Code <span class="text-danger">*</span></label>
-                                                    <input name="postal_code" type="text" class="form-control @error('postal_code') is-invalid @enderror" value="{{ $customer->postal_code}}" placeholder="Postal Code" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Country <span class="text-danger">*</span></label>
-                                                    <div class="rbt-modern-select bg-transparent height-45">
-                                                        <select name="country_id" class="form-control @error('country_id') is-invalid @enderror" required>
-                                                            <option value="">-- Select Country --</option>
-                                                            @foreach ($countries as $country)
-                                                            <option value="{{ $country->id }}" {{ $customer->country_id == $country->id ? 'selected' : ''}}>{{ $country->code }} - {{ $country->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                                                <div class="rbt-form-group">
-                                                    <label>Employment Status <span class="text-danger">*</span></label>
-                                                    <div class="rbt-modern-select bg-transparent height-45">
-                                                        <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror" required>
-                                                            <option value="">-- Select Employment Status --</option>
-                                                            <option value="1" {{ $customer->employment_status == 1 ? 'selected' : ''}}>Employee</option>
-                                                            <option value="2" {{ $customer->employment_status == 2 ? 'selected' : ''}}>Employer</option>
-                                                            <option value="3" {{ $customer->employment_status == 3 ? 'selected' : ''}}>Unemployed</option>
-                                                            <option value="4" {{ $customer->employment_status == 4 ? 'selected' : ''}}>Retiree</option>
-                                                            <option value="5" {{ $customer->employment_status == 5 ? 'selected' : ''}}>Student</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="padding-top: 10px;">
-                                                <div class="rbt-form-group">
-                                                    <label>Company Name<span class="text-danger"></span></label>
-                                                    <input name="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" value="{{ $customer->company_name }}" placeholder="Company Name">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="padding-top: 10px;">
-                                                <div class="rbt-form-group">
-                                                    <label>Position<span class="text-danger"></span></label>
-                                                    <input name="position" type="text" class="form-control @error('position') is-invalid @enderror" value="{{ $customer->position }}" placeholder="Your Position">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mt--20">
-                                                <div class="rbt-form-group">
-                                                    <button class="rbt-btn btn-gradient" type="submit">Update Info</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <!-- End Profile Row  -->
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                         <!-- End Instructor Profile  -->
@@ -300,6 +311,38 @@
 
 @push('script')
 <script>
+    function readURL(input, id) {
+        if (input.files && input.files[0]) {
+            console.log(input.name);
+            var reader = new FileReader();
+
+            if (input.name == 'image') {
+                reader.onload = function(e) {
+                    $('#user-icon').hide();
+                    $('#imageResult').attr('src', e.target.result);
+                    $('#imageResult').show();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+            if (input.name == 'banner') {
+                reader.onload = function(e) {
+                    $('#banner-icon').hide();
+                    $('#bannerResult').attr('src', e.target.result);
+                    $('#bannerResult').show();
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    }
+
+    document.getElementById('upload-image-btn').addEventListener('click', function() {
+        document.getElementById('image').click();
+    });
+
+    document.getElementById('upload-banner-btn').addEventListener('click', function() {
+        document.getElementById('banner').click();
+    });
+
     function myFunction() {
         // Get the text field
         var copyText = document.getElementById("myInput");

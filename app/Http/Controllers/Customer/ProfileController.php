@@ -8,6 +8,8 @@ use App\Models\Customer;
 use App\Models\Social;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -49,6 +51,34 @@ class ProfileController extends Controller
             'company_name' => $request->company_name,
             'position' => $request->position,
         ]);
+
+        if($request->file('image'))
+        {
+            $image = $request->file('image');
+
+            $file_name = Str::random(10);  // File name random;
+            $fileName = $file_name . '.' . $image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('images', $image, $fileName);
+            $file = "storage/images/". $fileName;   // Get path to access image
+
+            $customer ->update([
+                'image' => $file,
+            ]);
+        }
+
+        if($request->file('banner'))
+        {
+            $banner = $request->file('banner');
+
+            $file_name = Str::random(10);  // File name random;
+            $fileName = $file_name . '.' . $banner->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('banners', $banner, $fileName);
+            $file = "storage/banners/". $fileName;   // Get path to access image
+
+            $customer ->update([
+                'banner' => $file,
+            ]);
+        }
 
         $request->session()->flash('success', trans('Updated'));
         return view('customer.profile.edit', compact('customer', 'countries', 'social'));

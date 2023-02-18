@@ -19,7 +19,6 @@
                     <div class="rbt-tutor-information">
                         <div class="rbt-tutor-information-left">
                             <div class="thumbnail rbt-avatars ">
-                                {{-- <img src="assets/images/team/avatar.jpg" alt="Instructor"> --}}
                                 <i class="fas fa-user py-3 px-4" style="font-size: 50px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
                             </div>
                             <div class="tutor-content">
@@ -78,14 +77,13 @@
                                                 <li><a><i class="feather-message-square"></i><span>Quiz Attempts</span></a></li>
                                                 <li><a><i class="feather-list"></i><span>Assignments</span></a></li>
                                                 <li><a href="{{ route('customer.profile.edit', auth()->user()->id) }}"><i class="feather-settings"></i><span>Settings</span></a></li>
-                                                <li><a class="" href="{{ route('customer.logout') }}"
-                                                    onclick="event.preventDefault();
+                                                <li><a class="" href="{{ route('customer.logout') }}" onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
                                                         <i class="feather-log-out"></i><span>Logout</span></a></li>
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
+                                                </a>
+                                                <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
                                             </ul>
                                         </nav>
 
@@ -110,14 +108,14 @@
                                             <ul class="dashboard-mainmenu rbt-default-sidebar-list">
                                                 <li><a><i class="feather-settings"></i><span>Settings</span></a></li>
                                                 <li><a class="" href="{{ route('customer.logout') }}"
-                                                    onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
-                                            </ul>
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                        </ul>
                                         </nav> --}}
                                     </div>
 
@@ -126,70 +124,76 @@
                         </div>
                         <!-- End Dashboard Sidebar  -->
                     </div>
-                        <div class="col-lg-9">
-                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">
-                                <div class="content">
-                                    <div class="section-title">
-                                        <h4 class="rbt-title-style-3">Dashboard</h4>
-                                    </div>
-                                    <div class="row g-5">
+                    <div class="col-lg-9">
+                        <!-- Start Instructor Profile  -->
+                        <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
+                            <div class="content">
 
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-primary-opacity">
-                                                        <i class="feather-book-open"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-primary"><span class="odometer" data-count="30">00</span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">Enrolled Courses</span>
-                                                    </div>
+                                <div class="section-title">
+                                    <h4 class="rbt-title-style-3">Settings</h4>
+                                </div>
+
+                                <div class="advance-tab-button mb--30">
+                                    <ul class="nav nav-tabs tab-button-style-2 justify-content-start" id="settinsTab-4" role="tablist">
+                                        <li role="presentation">
+                                            <a href="{{ route('customer.profile.edit', auth()->user()->id) }}" class="tab-button">
+                                                <span class="title">Profile</span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a href="" class="tab-button active">
+                                                <span class="title">Password</span>
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            @if($social == null)
+                                                <a href="{{ route('customer.social.create') }}" class="tab-button">
+                                                    <span class="title">Social Share</span>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('customer.social.edit', auth()->user()->id) }}" class="tab-button">
+                                                    <span class="title">Social Share</span>
+                                                </a>
+                                            @endif
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <!-- Start Profile Row  -->
+                                        <form action="{{ route('customer.profile.updatePassword', auth()->user()->id) }}" class="rbt-profile-row rbt-default-form row row--15">
+                                            <div class="col-12">
+                                                <div class="rbt-form-group">
+                                                    <label for="currentpassword">Current Password</label>
+                                                    <input name="currentpassword" id="currentpassword" type="password" placeholder="Current Password">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- End Single Card  -->
-
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-secondary-opacity">
-                                                        <i class="feather-monitor"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-secondary"><span class="odometer" data-count="10">00</span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">ACTIVE COURSES</span>
-                                                    </div>
+                                            <div class="col-12">
+                                                <div class="rbt-form-group">
+                                                    <label for="newpassword">New Password</label>
+                                                    <input name="newpassword" id="newpassword" type="password" placeholder="New Password">
                                                 </div>
                                             </div>
-
-                                        </div>
-                                        <!-- End Single Card  -->
-
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-violet-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-violet-opacity">
-                                                        <i class="feather-award"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-violet"><span class="odometer" data-count="7">00</span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">Completed Courses</span>
-                                                    </div>
+                                            <div class="col-12">
+                                                <div class="rbt-form-group">
+                                                    <label for="retypenewpassword">Re-type New Password</label>
+                                                    <input name="retypenewpassword" id="retypenewpassword" type="password" placeholder="Re-type New Password">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <!-- End Single Card  -->
-
+                                            <div class="col-12 mt--10">
+                                                <div class="rbt-form-group">
+                                                    <button class="rbt-btn btn-gradient" type="submit">Update Password</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- End Profile Row  -->
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- End Instructor Profile  -->
+                    </div>
                 </div>
 
             </div>
@@ -200,20 +204,20 @@
 @endsection
 
 @push('script')
-    <script>
-        function myFunction() {
-            // Get the text field
-            var copyText = document.getElementById("myInput");
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myInput");
 
-            // Select the text field
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
 
-            // Copy the text inside the text field
-            navigator.clipboard.writeText(copyText.value);
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
 
-            // Alert the copied text
-            // alert("Copied the text: " + copyText.value);
-        }
-    </script>
+        // Alert the copied text
+        // alert("Copied the text: " + copyText.value);
+    }
+</script>
 @endpush

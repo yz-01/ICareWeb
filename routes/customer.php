@@ -27,4 +27,12 @@ Route::group(['middleware' => 'auth:customer'], function(){
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('cart', 'CartController');
+
+    // Profile
+    Route::get('profile/{id}/editPassword', 'ProfileController@editPassword')->name('profile.editPassword');
+    Route::get('profile/{id}/updatePassword', 'ProfileController@updatePassword')->name('profile.updatePassword');
+    Route::resource('profile', 'ProfileController');
+
+    // Social
+    Route::resource('social', 'SocialController');
 });

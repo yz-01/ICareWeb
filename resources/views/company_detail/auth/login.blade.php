@@ -41,7 +41,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label>Username *</label>
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" name="username" required autocomplete="username">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" name="username" autocomplete="username">
                                 <span class="focus-border"></span>
                                 @error('username')
                                     <div class="invalid-feedback">
@@ -52,7 +52,7 @@
                             <div class="col-lg-12">
                                 <label>Password *</label>
                                 <div class="search-field" style="border: 1px solid #6b738541; height: auto; border-radius: 5px">
-                                    <input id="password" type="password" class="@error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
                                     <a class="btn btn-primary btn-lg py-4 px-4 password-eye" onclick="myFunction()" style="background-color: transparent; color: gray; border: 1px solid #6b738541; border-top: 0px; border-bottom: 0px; border-right: 0px">
                                         <i class="fas fa-eye" ></i>
                                     </a>
@@ -64,13 +64,20 @@
                                     </div>
                                 @enderror
                             </div>
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 d-flex">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
+                                </div>
+                                <div class="ms-auto">
+                                    @if (Route::has('company_detail.password.request'))
+                                        <a class="btn" href="{{ route('company_detail.password.request') }}" style="font-size: 15px; color: var(--body-color)">
+                                            <i class="fas fa-lock" ></i> {{ __('Forgot Your Password?') }}
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-12 mt-3">
@@ -82,11 +89,6 @@
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </span>
                                     </button>
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
-                                        </a>
-                                    @endif
                                 </div>
                             </div>
                         </div>

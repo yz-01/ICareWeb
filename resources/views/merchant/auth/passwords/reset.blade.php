@@ -1,5 +1,12 @@
 @extends('merchant.auth.layouts.app')
-
+@push('style')
+    <style>
+        .password-eye:hover
+        {
+            background-color: rgba(128, 128, 128, 0.205) !important;
+        }
+    </style>
+@endpush
 @section('content')
 <div class="rbt-breadcrumb-default ptb--50 ptb_md--50 ptb_sm--30 bg-gradient-1">
     <div class="container">
@@ -26,6 +33,16 @@
             <div class="col-lg-6">
                 <div class="rbt-contact-form contact-form-style-1 max-width-auto">
                     <h5 class="">Merchant Reset Password</h5>
+                    <div class="card">
+                        <div class="card-body"  style="background-color: rgba(128, 128, 128, 0.116); ">
+                            <span class="text-danger" style="line-height: 38px; font-size: 16px">
+                                ***Password should be alphanumeric   <br />
+                                ***Password must be at least 8 characters  <br />
+                                ***Password must include Uppercase & Lowercase   <br />
+                                ***Password must contain a special character (@, $, !, &, etc)
+                            </span>
+                        </div>
+                    </div>
                     <form class="max-width-auto" action="{{ route('merchant.password.reset') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
@@ -42,7 +59,12 @@
                             </div>
                             <div class="col-lg-12">
                                 <label>Password *</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <div class="search-field" style="border: 1px solid #6b738541; height: auto; border-radius: 5px">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    <a class="btn btn-primary btn-lg py-4 px-4 password-eye" onclick="myFunction()" style="background-color: transparent; color: gray; border: 1px solid #6b738541; border-top: 0px; border-bottom: 0px; border-right: 0px">
+                                        <i class="fas fa-eye" ></i>
+                                    </a>
+                                </div>
                                 <span class="focus-border"></span>
                                 @error('password')
                                     <div class="invalid-feedback" role="alert">
@@ -52,7 +74,12 @@
                             </div>
                             <div class="col-lg-12">
                                 <label>Confirm Password *</label>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <div class="search-field" style="border: 1px solid #6b738541; height: auto; border-radius: 5px">
+                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                    <a class="btn btn-primary btn-lg py-4 px-4 password-eye" onclick="myFunction2()" style="background-color: transparent; color: gray; border: 1px solid #6b738541; border-top: 0px; border-bottom: 0px; border-right: 0px">
+                                        <i class="fas fa-eye" ></i>
+                                    </a>
+                                </div>
                                 <span class="focus-border"></span>
                                 @error('password-confirm')
                                     <div class="invalid-feedback" role="alert">
@@ -85,3 +112,24 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        function myFunction2() {
+            var x = document.getElementById("password-confirm");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+@endpush

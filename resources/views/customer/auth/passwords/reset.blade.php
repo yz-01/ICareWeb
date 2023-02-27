@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <label>Email *</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus disabled style="display: block; cursor: not-allowed">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
                                 <span class="focus-border"></span>
                                 @error('email') 
                                     <div class="invalid-feedback" role="alert">

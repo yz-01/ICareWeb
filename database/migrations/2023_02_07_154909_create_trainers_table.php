@@ -15,6 +15,7 @@ class CreateTrainersTable extends Migration
     {
         Schema::create('trainers', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId('center_user_id')->nullable()->constrained('center_users');
             $table->string('code')->nullable();
             $table->string('username')->nullable();
             $table->string('name')->nullable();

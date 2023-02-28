@@ -629,8 +629,8 @@
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
                                         <li>
-                                            <a href="{{ route('customer.login') }}">
-                                                <span>Member Login</span>
+                                            <a href="{{ route('agent.login') }}">
+                                                <span>Agent Login</span>
                                             </a>
                                         </li>
                                         <li>
@@ -639,8 +639,23 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{{ route('center_user.login') }}">
+                                                <span>Center Login</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('trainer.login') }}">
+                                                <span>Trainer Login</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('company_user.login') }}">
                                                 <span>Company Login</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('customer.login') }}">
+                                                <span>Member Login</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -653,8 +668,8 @@
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
                                         <li>
-                                            <a href="{{ route('customer.register.create') }}">
-                                                <span>Member Register</span>
+                                            <a href="{{ route('agent.register.create') }}">
+                                                <span>Agent Register</span>
                                             </a>
                                         </li>
                                         <li>
@@ -663,8 +678,23 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{{ route('center_user.register.create') }}">
+                                                <span>Center Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('trainer.register.create') }}">
+                                                <span>Trainer Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('company_user.register.create') }}">
                                                 <span>Company Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('customer.register.create') }}">
+                                                <span>Member Register</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -677,8 +707,8 @@
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
                                         <li>
-                                            <a href="{{ route('customer.login') }}">
-                                                <span>Member Login</span>
+                                            <a href="{{ route('agent.login') }}">
+                                                <span>Agent Login</span>
                                             </a>
                                         </li>
                                         <li>
@@ -687,8 +717,23 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{{ route('center_user.login') }}">
+                                                <span>Center Login</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('trainer.login') }}">
+                                                <span>Trainer Login</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('company_user.login') }}">
                                                 <span>Company Login</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('customer.login') }}">
+                                                <span>Member Login</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -701,8 +746,8 @@
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
                                         <li>
-                                            <a href="{{ route('customer.register.create') }}">
-                                                <span>Member Register</span>
+                                            <a href="{{ route('agent.register.create') }}">
+                                                <span>Agent Register</span>
                                             </a>
                                         </li>
                                         <li>
@@ -711,8 +756,23 @@
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="{{ route('center_user.register.create') }}">
+                                                <span>Center Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('trainer.register.create') }}">
+                                                <span>Trainer Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="{{ route('company_user.register.create') }}">
                                                 <span>Company Register</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('customer.register.create') }}">
+                                                <span>Member Register</span>
                                             </a>
                                         </li>
                                     </ul>

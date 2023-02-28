@@ -1179,10 +1179,39 @@
                                 <label for="">Looking for a way to earn rewards for doing what you already do? Join our HRDP referral program and start earning reward points today! As a member, you can refer your friends and family to join HRDP, and you'll earn points that can be redeemed for free products, special offers, and courses. The more people you refer, the more rewards you can earn. Don't miss out on this opportunity to get the most out of your HRDP membership. Sign up today and start earning rewards!</label>
                             </div>
                             <div class="col-lg-12 pt-4">
-                                <a href="{{ route('customer.register.create') }}" class="px-3">
+                                <a href="{{ route('agent.register.create') }}" class="px-3">
                                     <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
                                         <span class="icon-reverse-wrapper">
-                                        <span class="btn-text">Register as a Member Now</span>
+                                        <span class="btn-text">Register as a Agent Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                                <a href="{{ route('merchant.register.create') }}" class="px-3">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register as a Merchant Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                                <a href="{{ route('center_user.register.create') }}" class="px-3">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register as a Center Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="col-lg-12 pt-2">
+                                <a href="{{ route('trainer.register.create') }}" class="px-3">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register as a Trainer Now</span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </span>
@@ -1192,6 +1221,15 @@
                                     <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
                                         <span class="icon-reverse-wrapper">
                                         <span class="btn-text">Register as a Company Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </a>
+                                <a href="{{ route('customer.register.create') }}" class="px-3">
+                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
+                                        <span class="icon-reverse-wrapper">
+                                        <span class="btn-text">Register as a Member Now</span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                         </span>

@@ -6,9 +6,10 @@ use App\Notifications\ResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Trainer extends Model
+class Trainer extends Authenticatable
 {
     use HasFactory, Notifiable, SoftDeletes;
 

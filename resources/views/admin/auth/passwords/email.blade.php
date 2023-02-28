@@ -8,7 +8,7 @@
     </style>
 @endpush
 @section('content')
-<div class="bg-gradient-1 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh; background-image: url({{ asset('assets/images/bg/bg-image-10.jpg')}}); background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div class="container">
         <div class="row gy-5 row--30 d-flex justify-content-center">
 

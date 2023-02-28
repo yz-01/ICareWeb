@@ -21,7 +21,7 @@
 
         <div class="breadcrumb-image-container breadcrumb-style-max-width">
             <div class="breadcrumb-image-wrapper">
-                <img src="assets/images/bg/bg-image-10.jpg" alt="Education Images">
+                <img src="{{ asset('assets/images/bg/bg-image-10.jpg')}}" alt="Education Images">
             </div>
             <div class="breadcrumb-content-top text-center">
                 <h1 class="title">Term and Conditions</h1>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Merchant\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
 use App\Models\CenterUser;
 use App\Models\CompanyUser;
 use App\Models\Country;
@@ -12,6 +13,7 @@ use App\Models\NatureBusiness;
 use App\Models\PointTransaction;
 use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
+use App\Models\Trainer;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -117,22 +119,36 @@ class RegisterController extends Controller
             'security_question_id.required' => 'The security question field is required.',
         ]);
 
+        $check_agent_referral_code = Agent::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_merchant_referral_code = Merchant::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_center_referral_code = CenterUser::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
+        $check_trainer_referral_code = Trainer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_company_referral_code = CompanyUser::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_customer_referral_code = Customer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
 
-        if($check_merchant_referral_code || $check_center_referral_code || $check_company_referral_code || $check_customer_referral_code || $request->referral_code == null)
+        if($check_agent_referral_code || $check_merchant_referral_code || $check_center_referral_code || $check_trainer_referral_code || $check_company_referral_code || $check_customer_referral_code || $request->referral_code == null)
         {
+            if($check_agent_referral_code)
+            {
+                $check_agent_referral_code->update([
+                    'is_referral_code_use' => 2,  //2=yes
+                ]);
+            }
             if($check_merchant_referral_code)
             {
                 $check_merchant_referral_code->update([
-                    'is_referral_code_use' => 2,  //2=yes
+                    'is_referral_code_use' => 2,
                 ]);
             }
             if($check_center_referral_code)
             {
                 $check_center_referral_code->update([
+                    'is_referral_code_use' => 2,
+                ]);
+            }
+            if($check_trainer_referral_code)
+            {
+                $check_trainer_referral_code->update([
                     'is_referral_code_use' => 2,
                 ]);
             }
@@ -193,6 +209,17 @@ class RegisterController extends Controller
                 'description' => 'New Member - Welcome Bonus',
             ]);
 
+            if($check_agent_referral_code)
+            {
+                $check_agent_referral_code->update([
+                    'point_balance' => $check_agent_referral_code->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'agent_id' => $check_agent_referral_code->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
             if($check_merchant_referral_code)
             {
                 $check_merchant_referral_code->update([
@@ -211,6 +238,17 @@ class RegisterController extends Controller
                 ]);
                 $point_transaction->create([
                     'center_user_id' => $check_center_referral_code->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
+            if($check_trainer_referral_code)
+            {
+                $check_trainer_referral_code->update([
+                    'point_balance' => $check_trainer_referral_code->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'trainer_id' => $check_trainer_referral_code->id,
                     'in' => 50,
                     'description' => 'New Member - Referral Bonus',
                 ]);

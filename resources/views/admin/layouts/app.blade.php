@@ -1,88 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets2/images/icon/logodefault.jpg') }}">
 
-    <!-- CSS ============================================ -->
-    <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick-theme.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/sal.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/feather.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/euclid-circulara.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/swiper.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnify.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/odometer.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/animation.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/bootstrap-select.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/jquery-ui.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/plugins/magnigy-popup.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <!-- Sweet Alert-->
-    <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link href="{{ asset('assets2/libs/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets2/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets2/libs/bootstrap-editable/css/bootstrap-editable.css') }}" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+
+    <!-- Styles -->
+    <link href="{{ asset('assets2/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets2/css/app.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets2/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets2/css/icons.min.css') }}" rel="stylesheet">
+    <style>
+        .vertical-collpsed .vertical-menu #profileInfo
+        {
+            display: none;
+            padding-left: 25px;
+        }
+    </style>
+    @stack('styles')
+    @stack('livewire-style')
+    {{-- @livewireStyles --}}
+
 </head>
-
-<body class="rbt-header-sticky">
-    @include('admin.layouts.header')
-    @yield('content')
-    @include('admin.layouts.footer')
-    
-    <!-- End Copyright Area  -->
-    <div class="rbt-progress-parent">
-        <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-        </svg>
+<body data-sidebar="dark">
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner-chase">
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+                <div class="chase-dot"></div>
+            </div>
+        </div>
     </div>
 
-    <!-- JS
-============================================ -->
-    <!-- Modernizer JS -->
-    <script src="{{ asset('assets/js/vendor/modernizr.min.js') }}"></script>
-    <!-- jQuery JS -->
-    <script src="{{ asset('assets/js/vendor/jquery.js') }}"></script>
-    <!-- Bootstrap JS -->
-    <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
-    <!-- sal.js -->
-    <script src="{{ asset('assets/js/vendor/sal.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/swiper.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/magnify.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/jquery-appear.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/odometer.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/backtotop.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/isotop.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/imageloaded.js') }}"></script>
+    <!-- Full Loader -->
+    <div class="loader-full">
+        <div class="content">
+            <div class="spinner-border text-white">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
 
-    <script src="{{ asset('assets/js/vendor/wow.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/waypoint.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/easypie.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/text-type.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/jquery-one-page-nav.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/jquery-ui.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/magnify-popup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/paralax-scroll.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/paralax.min.js') }}"></script>
-    <script src="{{ asset('assets/js/vendor/countdown.js') }}"></script>
-    <!-- Main JS -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-    <!-- Sweet Alerts js -->
-    <script src="{{ asset('assets/js/sweetalert2.min.js') }}"></script>
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        @include('admin.layouts.header2')
+        @include('admin.layouts.sidebar2')
 
-    <!-- Sweet alert init js-->
-    <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
+            </div>
 
-    @include('admin.auth.layouts.sweetalerts')
-    @stack('script')
+            @include('admin.layouts.footer2')
+        </div>
+    </div>
 </body>
+<script src="{{ asset('assets2/libs/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/metismenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/simplebar/simplebar.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/node-waves/waves.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/select2/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/jquery-ui-dist/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/tinymce6/tinymce/tinymce.min.js') }}"></script>
 
+<!-- Required datatable js -->
+<script src="{{ asset('assets2/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+
+<!-- Bootstrap Editable js -->
+<script src="{{ asset('assets2/libs/bootstrap-editable/js/index.js') }}"></script>
+
+<!-- Sweet Alerts js -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Bootstrap Datepicker -->
+<script src="{{ asset('assets2/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
+<script src="{{ asset('assets2/js/app.js') }}"></script>
+
+<script>
+    $(document).ready(function() {
+        tinymce.init({
+            selector: 'textarea.text-editor',
+            plugins: 'lists link',
+            toolbar: [
+                { name: 'history', items: [ 'undo', 'redo' ] },
+                { name: 'styles', items: [ 'styles' ] },
+                { name: 'formatting', items: [ 'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript' ] },
+                { name: 'colors', items: [ 'forecolor', 'backcolor' ] },
+                { name: 'links', items: [ 'link', 'unlink' ] },
+                { name: 'alignment', items: [ 'alignleft', 'aligncenter', 'alignright', 'alignjustify' ] },
+                { name: 'lists', items: [ 'numlist', 'bullist' ] },
+                { name: 'indentation', items: [ 'outdent', 'indent' ] },
+            ],
+            promotion: false,
+            link_default_target: '_blank',
+            link_target_list: false
+        });
+        
+        $('.btn-logout').on('click', function() {
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, logout!'
+            }).then((result) => {
+                if (result.value) {
+                    $('#logout-form').submit();
+                }
+            })
+        });
+    });
+</script>
+
+@include('admin.layouts.sweetalerts')
+@stack('livewire-script')
+{{-- @livewireScripts --}}
+@stack('scripts')
 </html>

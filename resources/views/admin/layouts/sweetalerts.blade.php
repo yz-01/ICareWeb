@@ -34,6 +34,20 @@
     </script>
 @endif
 
+@if(session('error_msg'))
+    <script>
+        $(function () {
+            Swal.fire({
+                title: "Failed!",
+                html: "{!! session('error_msg') !!}",
+                icon: "error",
+                showConfirmButton: true,
+                heightAuto: false
+            });
+        })
+    </script>
+@endif
+
 @if(session('warning'))
     <script>
         $(function () {

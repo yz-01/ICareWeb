@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\CompanyUser\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\CenterUser;
 use App\Models\CompanyUser;
 use App\Models\Country;
 use App\Models\Customer;
@@ -116,21 +117,22 @@ class RegisterController extends Controller
             'security_question_id.required' => 'The security question field is required.',
         ]);
 
-        $check_customer_referral_code = Customer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_merchant_referral_code = Merchant::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
+        $check_center_referral_code = CenterUser::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_company_referral_code = CompanyUser::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
+        $check_customer_referral_code = Customer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
 
-        if($check_customer_referral_code || $check_merchant_referral_code || $check_company_referral_code || $request->referral_code == null)
+        if($check_merchant_referral_code || $check_center_referral_code || $check_company_referral_code || $check_customer_referral_code || $request->referral_code == null)
         {
-            if($check_customer_referral_code)
-            {
-                $check_customer_referral_code->update([
-                    'is_referral_code_use' => 2, //2=yes
-                ]);
-            }
             if($check_merchant_referral_code)
             {
                 $check_merchant_referral_code->update([
+                    'is_referral_code_use' => 2,  //2=yes
+                ]);
+            }
+            if($check_center_referral_code)
+            {
+                $check_center_referral_code->update([
                     'is_referral_code_use' => 2,
                 ]);
             }
@@ -138,6 +140,12 @@ class RegisterController extends Controller
             {
                 $check_company_referral_code->update([
                     'is_referral_code_use' => 2,
+                ]);
+            }
+            if($check_customer_referral_code)
+            {
+                $check_customer_referral_code->update([
+                    'is_referral_code_use' => 2, 
                 ]);
             }
 
@@ -150,7 +158,6 @@ class RegisterController extends Controller
                 Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
                 $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
             }
-            
 
             $company_user = CompanyUser::create([
                 'code' => $last_company_user ? $last_company_user->code : null,
@@ -174,7 +181,7 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password),
                 'security_question_id' => $request->security_question_id,
                 'security_answer' => $request->security_answer,
-                'own_referral_code' => 'C'.$request->phone,
+                'own_referral_code' => 'CP'.$request->phone,
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
@@ -186,18 +193,6 @@ class RegisterController extends Controller
                 'description' => 'New Member - Welcome Bonus',
             ]);
 
-
-            if($check_customer_referral_code)
-            {
-                $check_customer_referral_code->update([
-                    'point_balance' => $check_customer_referral_code->point_balance+50,
-                ]);
-                $point_transaction->create([
-                    'customer_id' => $check_customer_referral_code->id,
-                    'in' => 50,
-                    'description' => 'New Member - Referral Bonus',
-                ]);
-            }
             if($check_merchant_referral_code)
             {
                 $check_merchant_referral_code->update([
@@ -209,6 +204,17 @@ class RegisterController extends Controller
                     'description' => 'New Member - Referral Bonus',
                 ]);
             }
+            if($check_center_referral_code)
+            {
+                $check_center_referral_code->update([
+                    'point_balance' => $check_center_referral_code->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'center_user_id' => $check_center_referral_code->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
             if($check_company_referral_code)
             {
                 $check_company_referral_code->update([
@@ -216,6 +222,17 @@ class RegisterController extends Controller
                 ]);
                 $point_transaction->create([
                     'company_user_id' => $check_company_referral_code->id,
+                    'in' => 50,
+                    'description' => 'New Member - Referral Bonus',
+                ]);
+            }
+            if($check_customer_referral_code)
+            {
+                $check_customer_referral_code->update([
+                    'point_balance' => $check_customer_referral_code->point_balance+50,
+                ]);
+                $point_transaction->create([
+                    'customer_id' => $check_customer_referral_code->id,
                     'in' => 50,
                     'description' => 'New Member - Referral Bonus',
                 ]);
@@ -233,13 +250,13 @@ class RegisterController extends Controller
             if($last_company_user){
                 $add_company_user_code_number = substr($company_user->code,-4) + 1;
                 $company_user->update([
-                    'code' => "C".str_pad($add_company_user_code_number, 4, '0', STR_PAD_LEFT),
+                    'code' => "CP".str_pad($add_company_user_code_number, 4, '0', STR_PAD_LEFT),
                     'promote_product_id' => $promote_product->id,
                 ]);
             }
             else{
                 $company_user->update([
-                    'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
+                    'code' => "CP".str_pad(1, 4, '0', STR_PAD_LEFT),
                     'promote_product_id' => $promote_product->id,
                 ]);
             }

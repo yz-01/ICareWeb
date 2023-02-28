@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Customer\Auth;
+namespace App\Http\Controllers\CenterUser\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\CenterUser;
@@ -8,11 +8,14 @@ use App\Models\CompanyUser;
 use App\Models\Country;
 use App\Models\Customer;
 use App\Models\Merchant;
+use App\Models\NatureBusiness;
 use App\Models\PointTransaction;
+use App\Models\PromoteProduct;
 use App\Models\SecurityQuestion;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -36,7 +39,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/customer/dashboard';
+    protected $redirectTo = '/center_user/dashboard';
 
     /**
      * Create a new controller instance.
@@ -45,7 +48,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:customer');
+        $this->middleware('guest:center_user');
     }
 
     /**
@@ -72,22 +75,31 @@ class RegisterController extends Controller
     protected function create(Request $request)
     {
         $this->validate($request, [
+            'company_name' => 'required|string|max:255',
+            'company_registration_number' => 'required|string|max:255',
+            'nature_business_id' => 'required',
             'name' => 'required|string|max:255',
-            'identity_card' => 'required|string|max:255|unique:customers',
-            'email' => 'required|string|email|max:255|unique:customers',
-            'phone' => 'required|numeric|unique:customers',
+            'phone' => 'required|numeric|unique:center_users|min:10',
+            'position' => 'required|string|max:255',
+            'ssm_document' => 'nullable',
+            'email' => 'required|string|email|max:255|unique:center_users',
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
             'postal_code' => 'required',
             'country_id' => 'required',
-            'employment_status' => 'required',
-            'company_name' => 'required_if:employment_status,1,2',
-            'position' => 'required_if:employment_status,1,2',
             'referral_code' => 'nullable',
+            'is_own_company' => 'required',
+            'member_number' => 'required',
+            'is_hrdf' => 'required',
+            'product1' => 'nullable|string|max:255',
+            'product2' => 'nullable|string|max:255',
+            'product3' => 'nullable|string|max:255',
+            'product4' => 'nullable|string|max:255',
+            'product5' => 'nullable|string|max:255',
             'security_question_id' => 'required',
             'security_answer' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:customers',
+            'username' => 'required|string|max:255',
             'password' => [
                 'required','string','confirmed',
                 Password::min(8)
@@ -97,11 +109,12 @@ class RegisterController extends Controller
                         ->symbols()
             ],
         ],[
+            'nature_business_id.required' => 'The nature of business field is required.',
             'country_id.required' => 'The country field is required.',
+            'is_own_company.required' => 'The own company field is required.',
+            'member_number.required' => 'The member of number field is required.',
+            'is_hrdf.required' => 'The HRDF field is required.',
             'security_question_id.required' => 'The security question field is required.',
-            'referral_code.required' => 'Your Referral Code is not correct or have been use.',
-            'company_name.required_if' => 'The company name field is required when employment status is employee/employer.',
-            'position.required_if' => 'The position field is required when employment status is employee/employer.',
         ]);
 
         $check_merchant_referral_code = Merchant::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
@@ -136,38 +149,50 @@ class RegisterController extends Controller
                 ]);
             }
 
-            $last_customer = Customer::withTrashed()->latest('id')->first();
+            $last_center_user = CenterUser::withTrashed()->latest('id')->first();
 
-            $customer = Customer::create([
-                'code' => $last_customer ? $last_customer->code : null,
+            if($request->file('ssm_document'))
+            {
+                $ssm_document = $request->file('ssm_document');
+                $fileName   = $ssm_document->getClientOriginalName(); 
+                Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
+                $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
+            }
+
+            $center_user = CenterUser::create([
+                'code' => $last_center_user ? $last_center_user->code : null,
                 'name' => $request->name,
-                'identity_card' => $request->identity_card,
-                'email' => $request->email,
                 'phone' => $request->phone,
+                'position' => $request->position,
+                'company_name' => $request->company_name,
+                'company_registration_number' => $request->company_registration_number,
+                'ssm_document' => $request->file('ssm_document') ? $file : null,
+                'nature_business_id' => $request->nature_business_id,
+                'email' => $request->email,
                 'address' => $request->address,
                 'city' => $request->city,
                 'state' => $request->state,
                 'postal_code' => $request->postal_code,
                 'country_id' => $request->country_id,
-                'employment_status' => $request->employment_status,
-                'company_name' => ($request->employment_status == 1 || $request->employment_status == 2) ? $request->company_name : null,
-                'position' => ($request->employment_status == 1 || $request->employment_status == 2) ? $request->position : null,
+                'is_own_company' => $request->is_own_company,
+                'member_number' => $request->member_number,
+                'is_hrdf' => $request->is_hrdf,
                 'username' => $request->username,
                 'password' => Hash::make($request->password),
                 'security_question_id' => $request->security_question_id,
                 'security_answer' => $request->security_answer,
-                'own_referral_code' => 'P'.$request->phone,
+                'own_referral_code' => 'CT'.$request->phone,
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
             ]);
 
             $point_transaction = PointTransaction::create([
-                'customer_id' => $customer->id,
-                'in' => $customer->point_balance,
+                'center_user_id' => $center_user->id,
+                'in' => $center_user->point_balance,
                 'description' => 'New Member - Welcome Bonus',
             ]);
-
+            
             if($check_merchant_referral_code)
             {
                 $check_merchant_referral_code->update([
@@ -213,23 +238,34 @@ class RegisterController extends Controller
                 ]);
             }
 
-            if($last_customer){
-                $add_customer_code_number = substr($customer->code,-4) + 1;
-                $customer->update([
-                    'code' => "P".str_pad($add_customer_code_number, 4, '0', STR_PAD_LEFT),
+            $promote_product = PromoteProduct::create([
+                'center_user_id' => $center_user->id,
+                'product1' => $request->product1,
+                'product2' => $request->product2,
+                'product3' => $request->product3,
+                'product4' => $request->product4,
+                'product5' => $request->product5,
+            ]);
+
+            if($last_center_user){
+                $add_center_user_code_number = substr($center_user->code,-4) + 1;
+                $center_user->update([
+                    'code' => "CT".str_pad($add_center_user_code_number, 4, '0', STR_PAD_LEFT),
+                    'promote_product_id' => $promote_product->id,
                 ]);
             }
             else{
-                $customer->update([
-                    'code' => "P".str_pad(1, 4, '0', STR_PAD_LEFT),
+                $center_user->update([
+                    'code' => "CT".str_pad(1, 4, '0', STR_PAD_LEFT),
+                    'promote_product_id' => $promote_product->id,
                 ]);
             }
-
         }
         else
         {
             return redirect()->back()->withInput(request()->input())->withErrors(['error'=> 'The Referral Code is incorrect or have been use.']);
         }
+
 
         return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website!');
     }
@@ -237,7 +273,8 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $countries = Country::all();
+        $nature_businesses = NatureBusiness::all();
         $security_questions = SecurityQuestion::all();
-        return view('customer.auth.register', compact('countries', 'security_questions'));
+        return view('center_user.auth.register', compact('countries', 'security_questions', 'nature_businesses'));
     }
 }

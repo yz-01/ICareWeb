@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\CompanyUser;
+namespace App\Http\Controllers\CenterUser;
 
 use App\Http\Controllers\Controller;
 use App\Models\PromoteProduct;
@@ -11,7 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $promote_product = PromoteProduct::where('company_user_id', Auth::user()->id)->first();
-        return view('company_user.dashboard', compact('promote_product'));
+        $promote_product = PromoteProduct::where('center_user_id', Auth::user()->id)->first();
+        return view('center_user.dashboard', compact('promote_product'));
     }
 }

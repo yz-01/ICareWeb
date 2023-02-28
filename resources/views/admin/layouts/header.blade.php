@@ -5,16 +5,16 @@
             <div class="navbar-brand-box">
                 <a href="{{ route('admin.dashboard') }}" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('images/icon/logodefault.jpg') }}" alt="" height="50">
+                        <img src="{{ asset('images/icon/icon2.png') }}" alt="" height="40">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('images/icon/logotext_default.png') }}" alt="" height="40">
+                        <img src="{{ asset('images/icon/logo.png') }}" alt="" height="40">
                     </span>
                 </a>
             </div>
-
+            
             <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
-                <i class="fa fa-fw fa-bars" style="color: #D587E3"></i>
+                <i class="fa fa-fw fa-bars" style="color: #8797e3"></i>
             </button>
         </div>
 
@@ -62,7 +62,7 @@
 
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect py-0" id="page-header-user-dropdown"
-                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 5px; background-color: #D587E3; height: 50px;">
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 5px; background: linear-gradient(180deg, rgba(0,198,255,1) 50%, rgba(64,71,205,1) 100%); color: white; height: 50px;">
                     @if (Auth::user()->image == null)
                         <img class="rounded-circle header-profile-user" src="{{ asset('/images/avatar/profile_default.png') }}">
                     @else

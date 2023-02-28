@@ -1,31 +1,23 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-
-                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
-                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
-                </div>
-
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div>
+                <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
+                <ol class="breadcrumb m-0 mt-3">
+                    <li class="breadcrumb-item active">Welcome to {{ config('app.name') }}</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                Login Successfully!
             </div>
         </div>
     </div>

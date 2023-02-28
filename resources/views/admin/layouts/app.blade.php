@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets2/images/icon/logodefault.jpg') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -64,8 +64,8 @@
 
     <!-- Begin page -->
     <div id="layout-wrapper">
-        @include('admin.layouts.header2')
-        @include('admin.layouts.sidebar2')
+        @include('admin.layouts.header')
+        @include('admin.layouts.sidebar')
 
         <div class="main-content">
             <div class="page-content">
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            @include('admin.layouts.footer2')
+            @include('admin.layouts.footer')
         </div>
     </div>
 </body>
@@ -85,7 +85,7 @@
 <script src="{{ asset('assets2/libs/node-waves/waves.min.js') }}"></script>
 <script src="{{ asset('assets2/libs/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets2/libs/jquery-ui-dist/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('assets2/libs/tinymce6/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/tinymce/tinymce.min.js') }}"></script>
 
 <!-- Required datatable js -->
 <script src="{{ asset('assets2/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>

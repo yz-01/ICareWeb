@@ -1188,7 +1188,7 @@
                                         </span>
                                     </button>
                                 </a>
-                                <a href="{{ route('company_detail.register.create') }}">
+                                <a href="{{ route('company_user.register.create') }}">
                                     <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse radius-round mt-2">
                                         <span class="icon-reverse-wrapper">
                                         <span class="btn-text">Register as a Company Now</span>

@@ -16,4 +16,14 @@ class NatureBusiness extends Model
     {
         return $this->hasMany(Merchant::class);
     }
+
+    public function center_users()
+    {
+        return $this->hasMany(CenterUser::class);
+    }
+
+    public function company_users()
+    {
+        return $this->hasMany(CompanyUser::class);
+    }
 }

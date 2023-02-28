@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Merchant\Auth;
+namespace App\Http\Controllers\CompanyUser\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\CompanyUser;
@@ -38,7 +38,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/merchant/dashboard';
+    protected $redirectTo = '/company_user/dashboard';
 
     /**
      * Create a new controller instance.
@@ -47,7 +47,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:merchant');
+        $this->middleware('guest:company_user');
     }
 
     /**
@@ -78,10 +78,10 @@ class RegisterController extends Controller
             'company_registration_number' => 'required|string|max:255',
             'nature_business_id' => 'required',
             'name' => 'required|string|max:255',
-            'phone' => 'required|numeric|unique:merchants',
+            'phone' => 'required|numeric|unique:company_users|min:10',
             'position' => 'required|string|max:255',
             'ssm_document' => 'nullable',
-            'email' => 'required|string|email|max:255|unique:merchants',
+            'email' => 'required|string|email|max:255|unique:company_users',
             'address' => 'required',
             'city' => 'required',
             'state' => 'required',
@@ -141,8 +141,8 @@ class RegisterController extends Controller
                 ]);
             }
 
-            $last_merchant = Merchant::withTrashed()->latest('id')->first();
-            
+            $last_company_user = CompanyUser::withTrashed()->latest('id')->first();
+
             if($request->file('ssm_document'))
             {
                 $ssm_document = $request->file('ssm_document');
@@ -150,9 +150,10 @@ class RegisterController extends Controller
                 Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
                 $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
             }
+            
 
-            $merchant = Merchant::create([
-                'code' => $last_merchant ? $last_merchant->code : null,
+            $company_user = CompanyUser::create([
+                'code' => $last_company_user ? $last_company_user->code : null,
                 'name' => $request->name,
                 'phone' => $request->phone,
                 'position' => $request->position,
@@ -173,17 +174,18 @@ class RegisterController extends Controller
                 'password' => Hash::make($request->password),
                 'security_question_id' => $request->security_question_id,
                 'security_answer' => $request->security_answer,
-                'own_referral_code' => 'M'.$request->phone,
+                'own_referral_code' => 'C'.$request->phone,
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
             ]);
 
             $point_transaction = PointTransaction::create([
-                'merchant_id' => $merchant->id,
-                'in' => $merchant->point_balance,
+                'company_user_id' => $company_user->id,
+                'in' => $company_user->point_balance,
                 'description' => 'New Member - Welcome Bonus',
             ]);
+
 
             if($check_customer_referral_code)
             {
@@ -220,7 +222,7 @@ class RegisterController extends Controller
             }
 
             $promote_product = PromoteProduct::create([
-                'merchant_id' => $merchant->id,
+                'company_user_id' => $company_user->id,
                 'product1' => $request->product1,
                 'product2' => $request->product2,
                 'product3' => $request->product3,
@@ -228,16 +230,16 @@ class RegisterController extends Controller
                 'product5' => $request->product5,
             ]);
 
-            if($last_merchant){
-                $add_merchant_code_number = substr($merchant->code,-4) + 1;
-                $merchant->update([
-                    'code' => "M".str_pad($add_merchant_code_number, 4, '0', STR_PAD_LEFT),
+            if($last_company_user){
+                $add_company_user_code_number = substr($company_user->code,-4) + 1;
+                $company_user->update([
+                    'code' => "C".str_pad($add_company_user_code_number, 4, '0', STR_PAD_LEFT),
                     'promote_product_id' => $promote_product->id,
                 ]);
             }
             else{
-                $merchant->update([
-                    'code' => "M".str_pad(1, 4, '0', STR_PAD_LEFT),
+                $company_user->update([
+                    'code' => "C".str_pad(1, 4, '0', STR_PAD_LEFT),
                     'promote_product_id' => $promote_product->id,
                 ]);
             }
@@ -247,6 +249,7 @@ class RegisterController extends Controller
             return redirect()->back()->withInput(request()->input())->withErrors(['error'=> 'The Referral Code is incorrect or have been use.']);
         }
 
+
         return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website!');
     }
 
@@ -255,6 +258,6 @@ class RegisterController extends Controller
         $countries = Country::all();
         $nature_businesses = NatureBusiness::all();
         $security_questions = SecurityQuestion::all();
-        return view('merchant.auth.register', compact('countries', 'security_questions', 'nature_businesses'));
+        return view('company_user.auth.register', compact('countries', 'security_questions', 'nature_businesses'));
     }
 }

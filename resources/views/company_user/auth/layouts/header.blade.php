@@ -672,7 +672,7 @@
                             </div>
                         </li>
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                            <a style="cursor: pointer" class="rbt-round-btn" ><i class="feather-user"></i></a>
+                            <a style="cursor: pointer" class="rbt-round-btn"><i class="feather-user"></i></a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
                                     <ul class="user-list-wrapper">
@@ -696,7 +696,7 @@
                             </div>
                         </li>
                         <li class="access-icon rbt-user-wrapper d-block d-xl-none">
-                            <a style="cursor: pointer" class="rbt-round-btn" ><i class="feather-file-text"></i></a>
+                            <a style="cursor: pointer" class="rbt-round-btn"><i class="feather-file-text"></i></a>
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
                                     <ul class="user-list-wrapper">

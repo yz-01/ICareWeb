@@ -22,9 +22,19 @@ class Country extends Model
         return $this->hasMany(Merchant::class);
     }
 
-    public function teachers()
+    public function center_users()
     {
-        return $this->hasMany(Teacher::class);
+        return $this->hasMany(CenterUser::class);
+    }
+
+    public function trainers()
+    {
+        return $this->hasMany(Trainer::class);
+    }
+
+    public function company_users()
+    {
+        return $this->hasMany(CompanyUser::class);
     }
 
     public function customers()

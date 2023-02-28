@@ -17,8 +17,13 @@ class PromoteProduct extends Model
         return $this->hasMany(Merchant::class);
     }
 
-    public function company_details()
+    public function center_users()
     {
-        return $this->hasMany(CompanyDetail::class);
+        return $this->hasMany(CenterUser::class);
+    }
+
+    public function company_users()
+    {
+        return $this->hasMany(CompanyUser::class);
     }
 }

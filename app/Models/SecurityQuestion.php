@@ -12,6 +12,26 @@ class SecurityQuestion extends Model
 
     protected $guarded = ['id'];
 
+    public function merchants()
+    {
+        return $this->hasMany(Merchant::class);
+    }
+
+    public function center_users()
+    {
+        return $this->hasMany(CenterUser::class);
+    }
+
+    public function trainers()
+    {
+        return $this->hasMany(Trainer::class);
+    }
+
+    public function company_users()
+    {
+        return $this->hasMany(CompanyUser::class);
+    }
+
     public function customers()
     {
         return $this->hasMany(Customer::class);

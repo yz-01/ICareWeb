@@ -436,7 +436,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('company_detail.login') }}">
+                                                <a href="{{ route('company_user.login') }}">
                                                     <span>Company Login</span>
                                                 </a>
                                             </li>
@@ -460,7 +460,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('company_detail.register.create') }}">
+                                                <a href="{{ route('company_user.register.create') }}">
                                                     <span>Company Register</span>
                                                 </a>
                                             </li>
@@ -484,7 +484,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('company_detail.login') }}">
+                                                <a href="{{ route('company_user.login') }}">
                                                     <span>Company Login</span>
                                                 </a>
                                             </li>
@@ -508,7 +508,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('company_detail.register.create') }}">
+                                                <a href="{{ route('company_user.register.create') }}">
                                                     <span>Company Register</span>
                                                 </a>
                                             </li>

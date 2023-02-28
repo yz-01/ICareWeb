@@ -52,13 +52,17 @@ return [
             'driver' => 'session',
             'provider' => 'merchants',
         ],
-        'company_detail' => [
+        'center_user' => [
             'driver' => 'session',
-            'provider' => 'company_details',
+            'provider' => 'center_users',
         ],
-        'teacher' => [
+        'trainer' => [
             'driver' => 'session',
-            'provider' => 'teachers',
+            'provider' => 'trainers',
+        ],
+        'company_user' => [
+            'driver' => 'session',
+            'provider' => 'company_users',
         ],
         'customer' => [
             'driver' => 'session',
@@ -100,13 +104,17 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Merchant::class,
         ],
-        'company_details' => [
+        'center_users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\CompanyDetail::class,
+            'model' => App\Models\CenterUser::class,
         ],
-        'teachers' => [
+        'trainers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Teacher::class,
+            'model' => App\Models\Trainer::class,
+        ],
+        'company_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CompanyUser::class,
         ],
         'customers' => [
             'driver' => 'eloquent',
@@ -159,14 +167,20 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'company_details' => [
-            'provider' => 'company_details',
+        'center_users' => [
+            'provider' => 'center_users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
-        'teachers' => [
-            'provider' => 'teachers',
+        'trainers' => [
+            'provider' => 'trainers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'company_users' => [
+            'provider' => 'company_users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

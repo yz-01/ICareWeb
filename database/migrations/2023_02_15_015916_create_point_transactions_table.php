@@ -15,9 +15,12 @@ class CreatePointTransactionsTable extends Migration
     {
         Schema::create('point_transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->foreignId('agent_id')->nullable()->constrained('agents');
             $table->foreignId('merchant_id')->nullable()->constrained('merchants');
-            $table->foreignId('company_detail_id')->nullable()->constrained('company_details');
+            $table->foreignId('center_user_id')->nullable()->constrained('center_users');
+            $table->foreignId('trainer_id')->nullable()->constrained('trainers');
+            $table->foreignId('company_user_id')->nullable()->constrained('company_users');
+            $table->foreignId('customer_id')->nullable()->constrained('customers');
             $table->string('in')->nullable();
             $table->string('out')->nullable();
             $table->string('description')->nullable();

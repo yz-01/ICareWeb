@@ -79,16 +79,22 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/merchant.php'));
 
             Route::middleware('web')
-            ->prefix('company_detail')
-            ->name('company_detail.')
-            ->namespace('App\Http\Controllers\CompanyDetail')
-            ->group(base_path('routes/company_detail.php'));
+            ->prefix('center_user')
+            ->name('center_user.')
+            ->namespace('App\Http\Controllers\CenterUser')
+            ->group(base_path('routes/center_user.php'));
 
             Route::middleware('web')
-                ->prefix('teacher')
-                ->name('teacher.')
-                ->namespace('App\Http\Controllers\Teacher')
-                ->group(base_path('routes/teacher.php'));
+                ->prefix('trainer')
+                ->name('trainer.')
+                ->namespace('App\Http\Controllers\Trainer')
+                ->group(base_path('routes/trainer.php'));
+
+            Route::middleware('web')
+                ->prefix('company_user')
+                ->name('company_user.')
+                ->namespace('App\Http\Controllers\CompanyUser')
+                ->group(base_path('routes/company_user.php'));
 
             Route::middleware('web')
                 ->prefix('customer')

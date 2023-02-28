@@ -31,11 +31,14 @@ class RedirectIfAuthenticated
             if ($guard == "merchant" && Auth::guard($guard)->check()) {
                 return redirect('/merchant/dashboard');
             }
-            if ($guard == "company_detail" && Auth::guard($guard)->check()) {
-                return redirect('/company_detail/dashboard');
+            if ($guard == "center_user" && Auth::guard($guard)->check()) {
+                return redirect('/center_user/dashboard');
             }
-            if ($guard == "teacher" && Auth::guard($guard)->check()) {
-                return redirect('/teacher/dashboard');
+            if ($guard == "trainer" && Auth::guard($guard)->check()) {
+                return redirect('/trainer/dashboard');
+            }
+            if ($guard == "company_user" && Auth::guard($guard)->check()) {
+                return redirect('/company_user/dashboard');
             }
             if ($guard == "customer" && Auth::guard($guard)->check()) {
                 return redirect('/customer/dashboard');

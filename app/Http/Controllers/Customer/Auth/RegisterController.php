@@ -3,15 +3,12 @@
 namespace App\Http\Controllers\Customer\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\AgentCode;
-use App\Models\CompanyDetail;
+use App\Models\CompanyUser;
 use App\Models\Country;
 use App\Models\Customer;
 use App\Models\Merchant;
 use App\Models\PointTransaction;
 use App\Models\SecurityQuestion;
-use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -108,7 +105,7 @@ class RegisterController extends Controller
 
         $check_customer_referral_code = Customer::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
         $check_merchant_referral_code = Merchant::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
-        $check_company_referral_code = CompanyDetail::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
+        $check_company_referral_code = CompanyUser::where('own_referral_code', $request->referral_code)->where('is_referral_code_use', 1)->first();
 
         if($check_customer_referral_code || $check_merchant_referral_code || $check_company_referral_code || $request->referral_code == null)
         {
@@ -191,7 +188,7 @@ class RegisterController extends Controller
                     'point_balance' => $check_company_referral_code->point_balance+50,
                 ]);
                 $point_transaction->create([
-                    'company_detail_id' => $check_company_referral_code->id,
+                    'company_user_id' => $check_company_referral_code->id,
                     'in' => 50,
                     'description' => 'New Member - Referral Bonus',
                 ]);

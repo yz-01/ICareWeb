@@ -12,18 +12,28 @@ class PointTransaction extends Model
 
     protected $guarded = ['id'];
 
-    public function customer()
-    {
-        return $this->belongsTo(Customer::class);
-    }
-
     public function merchant()
     {
         return $this->belongsTo(Merchant::class);
     }
 
-    public function company_detail()
+    public function center_user()
     {
-        return $this->belongsTo(CompanyDetail::class);
+        return $this->belongsTo(CenterUser::class);
+    }
+
+    public function trainer()
+    {
+        return $this->belongsTo(Trainer::class);
+    }
+
+    public function company_user()
+    {
+        return $this->belongsTo(CompanyUser::class);
+    }
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
     }
 }

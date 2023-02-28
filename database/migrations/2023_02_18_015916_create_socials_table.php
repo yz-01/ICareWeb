@@ -15,14 +15,16 @@ class CreateSocialsTable extends Migration
     {
         Schema::create('socials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->nullable()->constrained('customers');
+            $table->foreignId('agent_id')->nullable()->constrained('agents');
             $table->foreignId('merchant_id')->nullable()->constrained('merchants');
-            $table->foreignId('company_detail_id')->nullable()->constrained('company_details');
+            $table->foreignId('center_user_id')->nullable()->constrained('center_users');
+            $table->foreignId('trainer_id')->nullable()->constrained('trainers');
+            $table->foreignId('company_user_id')->nullable()->constrained('company_users');
+            $table->foreignId('customer_id')->nullable()->constrained('customers');
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
-            $table->string('linkedin')->nullable();
+            $table->string('instagram')->nullable();
             $table->string('website')->nullable();
-            $table->string('github')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -19,11 +19,31 @@
                         <span>Dashboards</span>
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="waves-effect">
-                        <i class="bx bx-home-circle"></i>
-                        <span>Dashboards</span>
+                <li class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-user"></i>
+                        <span>User List</span>
                     </a>
+                    <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
+                        {{-- @can('admin-list') --}}
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Admin List</a></li>
+                        {{-- @endcan
+                        @can('teacher-list') --}}
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'teachers' && Request::segment(3) != 'create') ? 'active' : '' }}">Agent List</a></li>
+                        {{-- @endcan
+                        @can('parent-list') --}}
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'guardians' && Request::segment(3) != 'create') ? 'active' : '' }}">Merchant List</a></li>
+                        {{-- @endcan
+                        @can('student-list') --}}
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Center List</a></li>
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Trainer List</a></li>
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Company List</a></li>
+                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Member List</a></li>
+                        {{-- @endcan --}}
+                        {{-- @can('admin-create')
+                            <li><a href="{{ route('admin.admins.create') }}">Create Admin</a></li>
+                        @endcan --}}
+                    </ul>
                 </li>
 
                 

@@ -2,7 +2,7 @@
     <div data-simplebar class="h-100">
         <div id="profileInfo" class="text-center py-3" style="height: 150px; background: linear-gradient(180deg, rgba(0,198,255,1) 50%, rgba(64,71,205,1) 100%);">
             @if (Auth::user()->image == null)
-                <img class="rounded-circle" style="height: 80px; width: 80px" src="{{ asset('/images/avatar/profile_default.png') }}">
+                <img class="rounded-circle" style="height: 80px; width: 80px" src="{{ asset('images/default/profile.png') }}">
             @else
                 <img class="rounded-circle" style="height: 80px; width: 80px" src="{{ asset(Auth::user()->image) }}">
             @endif
@@ -26,7 +26,7 @@
                     </a>
                     <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
                         {{-- @can('admin-list') --}}
-                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Admin List</a></li>
+                            <li><a href="{{ route('admin.admins.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Admin List</a></li>
                         {{-- @endcan
                         @can('teacher-list') --}}
                             <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'teachers' && Request::segment(3) != 'create') ? 'active' : '' }}">Agent List</a></li>

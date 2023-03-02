@@ -64,7 +64,7 @@
                 <button type="button" class="btn header-item waves-effect py-0" id="page-header-user-dropdown"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius: 5px; background: linear-gradient(180deg, rgba(0,198,255,1) 50%, rgba(64,71,205,1) 100%); color: white; height: 50px;">
                     @if (Auth::user()->image == null)
-                        <img class="rounded-circle header-profile-user" src="{{ asset('/images/avatar/profile_default.png') }}">
+                        <img class="rounded-circle header-profile-user" src="{{ asset('images/default/profile.png') }}">
                     @else
                         <img class="rounded-circle header-profile-user" src="{{ asset(Auth::user()->image) }}">
                     @endif

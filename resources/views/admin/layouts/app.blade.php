@@ -33,9 +33,8 @@
             padding-left: 25px;
         }
     </style>
-    @stack('styles')
+    @stack('style')
     @stack('livewire-style')
-    {{-- @livewireStyles --}}
 
 </head>
 <body data-sidebar="dark">
@@ -141,6 +140,5 @@
 
 @include('admin.layouts.sweetalerts')
 @stack('livewire-script')
-{{-- @livewireScripts --}}
-@stack('scripts')
+@stack('script')
 </html>

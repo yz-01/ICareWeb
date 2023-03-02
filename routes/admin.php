@@ -26,4 +26,9 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth:admin'], function(){
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+    //Admins
+    Route::put('admin/updateStatus/{admin}', 'AdminController@updateStatus')->name('admins.updateStatus');
+    Route::put('admin/updatePassword/{admin}', 'AdminController@updatePassword')->name('admins.updatePassword');
+    Route::resource('admins', 'AdminController');
 });

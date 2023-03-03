@@ -45,7 +45,7 @@
                                         <th scope="row">Banner :</th>
                                         <td>
                                             @if ($trainer->banner)
-                                                <img src="{{ asset($trainer->image) }}" style="width: 100px" class="rounded-circle">
+                                                <img src="{{ asset($trainer->banner) }}" style="width: 100px" class="rounded-circle">
                                             @else
                                                 -
                                             @endif

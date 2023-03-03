@@ -29,14 +29,14 @@
                             <li><a href="{{ route('admin.admins.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Admin List</a></li>
                         {{-- @endcan
                         @can('teacher-list') --}}
-                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'teachers' && Request::segment(3) != 'create') ? 'active' : '' }}">Agent List</a></li>
+                            <li><a href="{{ route('admin.agents.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'teachers' && Request::segment(3) != 'create') ? 'active' : '' }}">Agent List</a></li>
                         {{-- @endcan
                         @can('parent-list') --}}
                             <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'guardians' && Request::segment(3) != 'create') ? 'active' : '' }}">Merchant List</a></li>
                         {{-- @endcan
                         @can('student-list') --}}
                             <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Center List</a></li>
-                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Trainer List</a></li>
+                            <li><a href="{{ route('admin.trainers.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Trainer List</a></li>
                             <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Company List</a></li>
                             <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Member List</a></li>
                         {{-- @endcan --}}

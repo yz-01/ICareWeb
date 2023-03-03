@@ -12,6 +12,11 @@ class Social extends Model
 
     protected $guarded = ['id'];
 
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class);
+    }
+
     public function merchant()
     {
         return $this->belongsTo(Merchant::class);

@@ -42,4 +42,9 @@ class Customer extends Authenticatable
     {
         return $this->hasMany(PointTransaction::class);
     }
+
+    public function company_user()
+    {
+        return $this->belongsTo(CompanyUser::class);
+    }
 }

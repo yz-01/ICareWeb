@@ -31,4 +31,14 @@ Route::group(['middleware' => 'auth:admin'], function(){
     Route::put('admin/updateStatus/{admin}', 'AdminController@updateStatus')->name('admins.updateStatus');
     Route::put('admin/updatePassword/{admin}', 'AdminController@updatePassword')->name('admins.updatePassword');
     Route::resource('admins', 'AdminController');
+
+    //Agent
+    Route::put('agent/updateStatus/{agent}', 'AgentController@updateStatus')->name('agents.updateStatus');
+    Route::put('agent/updatePassword/{agent}', 'AgentController@updatePassword')->name('agents.updatePassword');
+    Route::resource('agents', 'AgentController');
+
+    //Trainer
+    Route::put('trainer/updateStatus/{trainer}', 'TrainerController@updateStatus')->name('trainers.updateStatus');
+    Route::put('trainer/updatePassword/{trainer}', 'TrainerController@updatePassword')->name('trainers.updatePassword');
+    Route::resource('trainers', 'TrainerController');
 });

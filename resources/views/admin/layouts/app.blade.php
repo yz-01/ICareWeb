@@ -136,6 +136,9 @@
             })
         });
     });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 
 @include('admin.layouts.sweetalerts')

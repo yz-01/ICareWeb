@@ -30,6 +30,13 @@ class CenterUser extends Authenticatable
             'name' => '-',
         ]);
     }
+    
+    public function security_question()
+    {
+        return $this->belongsTo(SecurityQuestion::class)->withDefault([
+            'name' => '-',
+        ]);
+    }
 
     public function promote_product()
     {
@@ -44,5 +51,25 @@ class CenterUser extends Authenticatable
     public function point_transactions()
     {
         return $this->hasMany(PointTransaction::class);
+    }
+
+    public function scopeLocalSearch($query)
+    {
+        $query->when(request()->has('code') && filled(request('code')), function ($q) {
+            $q->where('code', 'LIKE', '%' . request('code') . '%');
+        });
+        $query->when(request()->has('name') && filled(request('name')), function ($q) {
+            $q->where('name', 'LIKE', '%' . request('name') . '%');
+        });
+        $query->when(request()->has('email') && filled(request('email')), function ($q) {
+            $q->where('email', 'LIKE', '%' . request('email') . '%');
+        });
+        $query->when(request()->has('company_name') && filled(request('company_name')), function ($q) {
+            $q->where('company_name', 'LIKE', '%' . request('company_name') . '%');
+        });
+        $query->when(request()->has('center_user_status') && filled(request('center_user_status')), function ($q) {
+            $q->where('status', request('center_user_status'));
+        });
+        return $query;
     }
 }

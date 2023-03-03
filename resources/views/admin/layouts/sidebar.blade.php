@@ -35,7 +35,7 @@
                             <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'guardians' && Request::segment(3) != 'create') ? 'active' : '' }}">Merchant List</a></li>
                         {{-- @endcan
                         @can('student-list') --}}
-                            <li><a href="#" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Center List</a></li>
+                            <li><a href="{{ route('admin.center_users.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Center List</a></li>
                             <li><a href="{{ route('admin.trainers.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Trainer List</a></li>
                             <li><a href="{{ route('admin.company_users.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Company List</a></li>
                             <li><a href="{{ route('admin.customers.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'students' && Request::segment(3) != 'create') ? 'active' : '' }}">Member List</a></li>

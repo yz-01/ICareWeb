@@ -109,7 +109,7 @@ class AgentDataTable extends DataTable
                     });
                     $("#admin-agents-table").on("click", ".delFunc", function(e) {
                         var id = $(this).data("id");
-                        var form = $("#delete-admin-"+id);
+                        var form = $("#delete-agent-"+id);
                         Swal.fire({
                             title: "Are you sure?",
                             //text: "You won\"t be able to revert this!",

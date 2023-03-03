@@ -18,7 +18,7 @@
             <button type="submit" class="btn btn-danger waves-effect waves-light delFunc" data-id="{{$item->id}}" data-toggle='tooltip' data-placement='top' title='Delete'>
                 <i class="fas fa-trash-alt"></i>
             </button>
-            <form id="delete-admin-{{$item->id}}" method="POST" action="{{ route('admin.trainers.destroy', $item->id) }}" class="destroy_{{$item->id}} d-none">
+            <form id="delete-trainer-{{$item->id}}" method="POST" action="{{ route('admin.trainers.destroy', $item->id) }}" class="destroy_{{$item->id}} d-none">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
             </form>

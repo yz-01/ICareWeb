@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Trainer;
+use App\Models\Customer;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TrainerDataTable extends DataTable
+class CustomerDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -32,7 +32,7 @@ class TrainerDataTable extends DataTable
                 }
             })
             ->addColumn('action', function ($item) {
-                return view('admin.trainers.action', compact('item'));
+                return view('admin.customers.action', compact('item'));
             })
             ->addColumn('email', function($item){
                 return $item->email ?: '-';
@@ -40,7 +40,7 @@ class TrainerDataTable extends DataTable
             ->addColumn('identity_card', function($item){
                 return $item->identity_card ?: '-';
             })
-            ->addColumn('trainer_status', function($item){
+            ->addColumn('customer_status', function($item){
                 $action = '<div class="form-check form-switch">';
                         if($item->status) 
                         {
@@ -51,21 +51,21 @@ class TrainerDataTable extends DataTable
                             $action .= '<input class="form-check-input change-status" type="checkbox" data-id="'.$item->id.'" value="'.$item->status.'">';
                         }
                 $action .= '</div>';
-                $action .= '<form id="update-trainer-status-'.$item->id.'" action="'.route("admin.trainers.updateStatus", $item->id).'" class="d-none" method="post">'
+                $action .= '<form id="update-customer-status-'.$item->id.'" action="'.route("admin.customers.updateStatus", $item->id).'" class="d-none" method="post">'
                             .csrf_field().method_field("PUT").
                            '</form>';
                 return $action;
             })
-            ->rawColumns(['action','trainer_status', 'image']);
+            ->rawColumns(['action','customer_status', 'image']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Admin\Trainer $model
+     * @param \App\Models\Admin\Customer $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Trainer $model)
+    public function query(Customer $model)
     {
         return $model->localsearch(request());
     }
@@ -78,38 +78,38 @@ class TrainerDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admin-trainers-table')
+            ->setTableId('admin-customers-table')
             ->columns($this->getColumns())
             ->ajax([
-                'url' => route('admin.trainers.index'),
+                'url' => route('admin.customers.index'),
                 'data' => 'function(d) {
                     d.code = $("#code").val();
                     d.name = $("#name").val();
                     d.email = $("#email").val();
                     d.identity_card = $("#identity_card").val();
-                    d.trainer_status = $("#trainer_status").val();
+                    d.customer_status = $("#customer_status").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
             ->initComplete('function() {
                     $(".datatable-input").on("change",function () {
-                        $("#admin-trainers-table").DataTable().ajax.reload();
+                        $("#admin-customers-table").DataTable().ajax.reload();
                     });
                     $("#subBtn").on("click",function () {
-                        $("#admin-trainers-table").DataTable().ajax.reload();
+                        $("#admin-customers-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
                         $("#code").val(null);
                         $("#name").val(null);
                         $("#email").val(null);
                         $("#identity_card").val(null);
-                        $("#trainer_status").val(null);
-                        $("#trainer_status").change();
-                        $("#admin-trainers-table").DataTable().ajax.reload();
+                        $("#customer_status").val(null);
+                        $("#customer_status").change();
+                        $("#admin-customers-table").DataTable().ajax.reload();
                     });
-                    $("#admin-trainers-table").on("click", ".delFunc", function(e) {
+                    $("#admin-customers-table").on("click", ".delFunc", function(e) {
                         var id = $(this).data("id");
-                        var form = $("#delete-trainer-"+id);
+                        var form = $("#delete-customer-"+id);
                         Swal.fire({
                             title: "Are you sure?",
                             //text: "You won\"t be able to revert this!",
@@ -122,10 +122,10 @@ class TrainerDataTable extends DataTable
                             }
                         });
                     });
-                    $("#admin-trainers-table").on("change", ".change-status", function(e) {
+                    $("#admin-customers-table").on("change", ".change-status", function(e) {
                         var $this = $(this);
                         var id = $(this).data("id");
-                        var form = $("#update-trainer-status-"+id);
+                        var form = $("#update-customer-status-"+id);
                         var button_text = $this.val() == 1 ? "Yes, deactivate!" : "Yes, activate!";
                         
                         Swal.fire({
@@ -162,7 +162,7 @@ class TrainerDataTable extends DataTable
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),
             Column::make('identity_card')->title('Identity Card')->orderable(false),
-            Column::make('trainer_status')->title('Status')->orderable(false),
+            Column::make('customer_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->sorting(false),
         ];
     }
@@ -174,6 +174,6 @@ class TrainerDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Trainer_' . date('YmdHis');
+        return 'Admin\Customer_' . date('YmdHis');
     }
 }

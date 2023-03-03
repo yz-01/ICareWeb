@@ -67,8 +67,8 @@ class Merchant extends Authenticatable
         $query->when(request()->has('company_name') && filled(request('company_name')), function ($q) {
             $q->where('company_name', 'LIKE', '%' . request('company_name') . '%');
         });
-        $query->when(request()->has('company_user_status') && filled(request('company_user_status')), function ($q) {
-            $q->where('status', request('company_user_status'));
+        $query->when(request()->has('merchant_status') && filled(request('merchant_status')), function ($q) {
+            $q->where('status', request('merchant_status'));
         });
         return $query;
     }

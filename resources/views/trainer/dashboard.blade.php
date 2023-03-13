@@ -14,13 +14,21 @@
             <div class="col-lg-12">
                 <!-- Start Dashboard Top  -->
                 <div class="rbt-dashboard-content-wrapper">
+                                        @if($customer->banner)
+                    <div class="tutor-bg-photo bg_image bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
+                    @else
                     <div class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
+                    @endif
                     <!-- Start Tutor Information  -->
                     <div class="rbt-tutor-information">
                         <div class="rbt-tutor-information-left">
                             <div class="thumbnail rbt-avatars ">
                                 {{-- <img src="assets/images/team/avatar.jpg" alt="Instructor"> --}}
-                                <i class="fas fa-user py-3 px-4" style="font-size: 50px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
+                                                                @if($customer->image)
+                                <img src="{{ asset($customer->image) }}" alt="Profile-Image">
+                                @else
+                                <img src="{{ asset('images/default/profile.png') }}" alt="Profile-Image">
+                                @endif
                             </div>
                             <div class="tutor-content">
                                 <h5 class="mb-0 title">{{ auth()->user()->name }}</h5>

@@ -15,7 +15,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        return view('customer.profile.index');
+        $customer = Customer::where('id', auth()->user()->id)->first();
+
+        return view('customer.profile.index', compact('customer'));
     }
 
     public function edit($id)

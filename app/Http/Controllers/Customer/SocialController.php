@@ -12,7 +12,9 @@ class SocialController extends Controller
 {
     public function create()
     {
-        return view('customer.social.create');
+        $customer = Customer::where('id', auth()->user()->id)->first();
+
+        return view('customer.social.create', compact('customer'));
     }
 
     public function edit($id)

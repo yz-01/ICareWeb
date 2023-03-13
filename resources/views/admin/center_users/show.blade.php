@@ -82,10 +82,10 @@
                                     <tr>
                                         <th scope="row">Address :</th>
                                         <td style="width: 200px">
-                                            {{ $center_user->address ?: '-' }}, 
+                                            {{ $center_user->address ?: '-' }},
                                             {{ $center_user->postal_code }}
-                                            {{ $center_user->city }}, 
-                                            {{ $center_user->state }}, 
+                                            {{ $center_user->city }},
+                                            {{ $center_user->state }},
                                             {{ $center_user->country->name }}
                                         </td>
                                     </tr>
@@ -108,6 +108,10 @@
                                     <tr>
                                         <th scope="row">Do you own the company?</th>
                                         <td>{{ $center_user->is_own_company == 1 ? 'No' : 'Yes' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Person in Charge</th>
+                                        <td>{{$center_user->person_in_charge }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Position :</th>
@@ -138,7 +142,7 @@
                                                 More than 100
                                             @elseif ($center_user->member_number == 5)
                                                 More than 200
-                                            @endif    
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>

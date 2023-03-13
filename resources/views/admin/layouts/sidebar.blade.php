@@ -45,8 +45,13 @@
                         @endcan --}}
                     </ul>
                 </li>
+                <li>
+                    <a href="{{ route('admin.courses.index') }}" class="waves-effect">
+                        <i class="bx bx-book"></i>
+                        <span>Course List</span>
+                    </a>
+                </li>
 
-                
             </ul>
         </div>
         <!-- Sidebar -->

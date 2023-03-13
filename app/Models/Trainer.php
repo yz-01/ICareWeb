@@ -48,6 +48,11 @@ class Trainer extends Authenticatable
         return $this->belongsTo(CenterUser::class);
     }
 
+    public function course()
+    {
+        return $this->hasOne(Course::class);
+    }
+
     public function scopeLocalSearch($query)
     {
         $query->when(request()->has('code') && filled(request('code')), function ($q) {

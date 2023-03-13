@@ -22,6 +22,7 @@ class CreateCenterUsersTable extends Migration
             $table->string('position')->nullable();
             $table->string('company_name')->nullable();
             $table->string('company_registration_number')->nullable();
+            $table->string('person_in_charge')->nullable();
             $table->string('ssm_document')->nullable();
             $table->string('company_logo')->nullable();
             $table->foreignId('nature_business_id')->nullable()->constrained('nature_businesses');

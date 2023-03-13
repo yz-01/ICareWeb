@@ -78,7 +78,7 @@
                         <div class="row pt-4">
                             <div class="col-lg-6">
                                 <label>Email <span class="text-danger">*</span></label>
-                                <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') ?: '' }}" placeholder="Email"> 
+                                <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') ?: '' }}" placeholder="Email">
                                 <span class="focus-border"></span>
                                 @error('email')
                                     <div class="invalid-feedback">
@@ -101,13 +101,13 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <label>Address <span class="text-danger">*</span></label>
-                                <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') ?: '' }}" placeholder="Address">
+                                <label>Name of Person In Charge <span class="text-danger">*</span></label>
+                                <input name="person_in_charge" type="text" class="form-control @error('person_in_charge') is-invalid @enderror" value="{{ old('person_in_charge') ?: '' }}" placeholder="Person In Charge">
                                 <span class="focus-border"></span>
-                                @error('address')
-                                    <div class="invalid-feedback">
-                                        <span>{{ $message }}</span>
-                                    </div>
+                                @error('person_in_charge')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
                                 @enderror
                             </div>
                             <div class="col-lg-6">
@@ -120,11 +120,24 @@
                                         @endforeach
                                     </select>
                                     @error('nature_business_id')
-                                        <div class="invalid-feedback">
-                                            <span>{{ $message }}</span>
-                                        </div>
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
                                     @enderror
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-4">
+                            <div class="col-lg-12">
+                                <label>Billing Address <span class="text-danger">*</span></label>
+                                <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') ?: '' }}" placeholder="Address">
+                                <span class="focus-border"></span>
+                                @error('address')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row pt-4">

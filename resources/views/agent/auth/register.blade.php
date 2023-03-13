@@ -56,7 +56,7 @@
                         @csrf
                         <div class="row pt-4">
                             <div class="col-lg-6">
-                                <label>Name <span class="text-danger">*</span></label>
+                                <label>Full Name <span class="text-danger">*</span></label>
                                 <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?: '' }}" placeholder="Name">
                                 <span class="focus-border"></span>
                                 @error('name')
@@ -88,7 +88,7 @@
                                 @enderror
                             </div>
                             <div class="col-lg-6">
-                                <label>Phone <span class="text-danger">*</span></label>
+                                <label>Contact Number <span class="text-danger">*</span></label>
                                 <input name="phone" type="text" class="form-control @error('phone') is-invalid @enderror" value="{{ old('phone') ?: '' }}" placeholder="Phone" minlength="10" maxlength="13">
                                 <span class="focus-border"></span>
                                 @error('phone')
@@ -99,8 +99,43 @@
                             </div>
                         </div>
                         <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Employment Status <span class="text-danger">*</span></label>
+                                <div class="rbt-modern-select bg-transparent height-45">
+                                    <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror">
+                                        <option value="">-- Select Employment Status --</option>
+                                        <option value="1" {{ old('employment_status') == 1 ? 'selected' : ''}}>Employee</option>
+                                        <option value="2" {{ old('employment_status') == 2 ? 'selected' : ''}}>Employer</option>
+                                        <option value="3" {{ old('employment_status') == 3 ? 'selected' : ''}}>Unemployed</option>
+                                        <option value="4" {{ old('employment_status') == 4 ? 'selected' : ''}}>Retiree</option>
+                                        <option value="5" {{ old('employment_status') == 5 ? 'selected' : ''}}>Student</option>
+                                    </select>
+                                    @error('employment_status')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Gender <span class="text-danger">*</span></label>
+                                <div class="rbt-modern-select bg-transparent height-45">
+                                    <select name="gender" class="form-control @error('gender') is-invalid @enderror">
+                                        <option value="">-- Select Gender --</option>
+                                        <option value="1" {{ old('gender') == 1 ? 'selected' : ''}}>Male</option>
+                                        <option value="2" {{ old('gender') == 2 ? 'selected' : ''}}>Female</option>
+                                    </select>
+                                    @error('gender')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
                             <div class="col-lg-12">
-                                <label>Address <span class="text-danger">*</span></label>
+                                <label>Billing Address <span class="text-danger">*</span></label>
                                 <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') ?: '' }}" placeholder="Address">
                                 <span class="focus-border"></span>
                                 @error('address')
@@ -162,26 +197,6 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-6">
-                                <label>Employment Status <span class="text-danger">*</span></label>
-                                <div class="rbt-modern-select bg-transparent height-45">
-                                    <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror">
-                                        <option value="">-- Select Employment Status --</option>
-                                        <option value="1" {{ old('employment_status') == 1 ? 'selected' : ''}}>Employee</option>
-                                        <option value="2" {{ old('employment_status') == 2 ? 'selected' : ''}}>Employer</option>
-                                        <option value="3" {{ old('employment_status') == 3 ? 'selected' : ''}}>Unemployed</option>
-                                        <option value="4" {{ old('employment_status') == 4 ? 'selected' : ''}}>Retiree</option>
-                                        <option value="5" {{ old('employment_status') == 5 ? 'selected' : ''}}>Student</option>
-                                    </select>
-                                    @error('employment_status')
-                                        <div class="invalid-feedback">
-                                            <span>{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pt-4">
-                            <div class="col-lg-6">
                                 <label>If <span class="text-danger">Employee/Employer</span>(Provide the company name)</label>
                                 <input name="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') ?: '' }}" placeholder="Company Name">
                                 <span class="focus-border"></span>
@@ -208,9 +223,9 @@
                                 <input name="referral_code" type="text" class="form-control @error('referral_code') is-invalid @enderror" value="{{ old('referral_code') ?: '' }}" placeholder="Referral Code" oninput="this.value = this.value.toUpperCase()">
                                 <span class="focus-border"></span>
                                 @if(count($errors) > 0)
-                                    {{-- <div class="invalid-feedback"> --}}
+                                     <div class="invalid-feedback">
                                         <span class="text-danger" style="font-size: 15px">{{$errors->first('error')}}</span>
-                                    {{-- </div> --}}
+                                     </div>
                                 @endif
                             </div>
                             <div class="col-lg-6">
@@ -221,6 +236,28 @@
                                     <div class="invalid-feedback">
                                         <span>{{ $message }}</span>
                                     </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Bank Account Name</label>
+                                <input name="bank_acc_name" type="text" class="form-control @error('bank_acc_name') is-invalid @enderror" value="{{ old('bank_acc_name') ?: '' }}" placeholder="Bank Account Name" >
+                                <span class="focus-border"></span>
+                                @error('bank_acc_name')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Bank Account Number</label>
+                                <input name="bank_acc_no" type="text" class="form-control @error('bank_acc_no') is-invalid @enderror" value="{{ old('bank_acc_no') ?: '' }}" placeholder="Bank Account Number">
+                                <span class="focus-border"></span>
+                                @error('bank_acc_no')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
                                 @enderror
                             </div>
                         </div>

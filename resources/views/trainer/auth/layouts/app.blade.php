@@ -37,7 +37,7 @@
     @include('trainer.auth.layouts.header')
     @yield('content')
     @include('trainer.auth.layouts.footer')
-    
+
     <!-- End Copyright Area  -->
     <div class="rbt-progress-parent">
         <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">

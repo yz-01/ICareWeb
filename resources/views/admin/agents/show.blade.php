@@ -78,10 +78,10 @@
                                     <tr>
                                         <th scope="row">Address :</th>
                                         <td style="width: 200px">
-                                            {{ $agent->address ?: '-' }}, 
+                                            {{ $agent->address ?: '-' }},
                                             {{ $agent->postal_code }}
-                                            {{ $agent->city }}, 
-                                            {{ $agent->state }}, 
+                                            {{ $agent->city }},
+                                            {{ $agent->state }},
                                             {{ $agent->country->name }}
                                         </td>
                                         <th scope="row">Employment Status :</th>
@@ -114,8 +114,14 @@
                                     <tr>
                                         <th scope="row">Account Approve?</th>
                                         <td>{{ $agent->is_approve == 1 ? 'No' : 'Yes' }}</td>
-                                        <th scope="row"></th>
-                                        <td></td>
+                                        <th scope="row">Gender :</th>
+                                        <td>{{ $agent->gender == 1 ? 'Male' : 'Female' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Bank Account Name :</th>
+                                        <td>{{ $agent->bank_account_name }}</td>
+                                        <th scope="row">Bank Account Number :</th>
+                                        <td>{{ $agent->bank_account_no }}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -102,6 +102,7 @@ class RegisterController extends Controller
             'security_question_id' => 'required',
             'security_answer' => 'required|string|max:255',
             'username' => 'required|string|max:255',
+            'person_in_charge' => 'required',
             'password' => [
                 'required','string','confirmed',
                 Password::min(8)
@@ -161,7 +162,7 @@ class RegisterController extends Controller
             if($check_customer_referral_code)
             {
                 $check_customer_referral_code->update([
-                    'is_referral_code_use' => 2, 
+                    'is_referral_code_use' => 2,
                 ]);
             }
 
@@ -170,7 +171,7 @@ class RegisterController extends Controller
             if($request->file('ssm_document'))
             {
                 $ssm_document = $request->file('ssm_document');
-                $fileName   = $ssm_document->getClientOriginalName(); 
+                $fileName   = $ssm_document->getClientOriginalName();
                 Storage::disk('public')->putFileAs('ssm_file', $ssm_document, $fileName);
                 $file = "storage/ssm_file/". $ssm_document->getClientOriginalName();
             }
@@ -201,6 +202,8 @@ class RegisterController extends Controller
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
+                'person_in_charge' => $request->person_in_charge,
+
             ]);
 
             $point_transaction = PointTransaction::create([
@@ -208,7 +211,7 @@ class RegisterController extends Controller
                 'in' => $center_user->point_balance,
                 'description' => 'New Member - Welcome Bonus',
             ]);
-            
+
             if($check_agent_referral_code)
             {
                 $check_agent_referral_code->update([
@@ -301,7 +304,7 @@ class RegisterController extends Controller
         }
         else
         {
-            return redirect()->back()->withInput(request()->input())->withErrors(['error'=> 'The Referral Code is incorrect or have been use.']);
+            return redirect()->back()->withInput(request()->input())->with('warning','The Referral Code is incorrect or have been use.');
         }
 
 

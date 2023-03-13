@@ -78,10 +78,10 @@
                                     <tr>
                                         <th scope="row">Address :</th>
                                         <td style="width: 200px">
-                                            {{ $trainer->address ?: '-' }}, 
+                                            {{ $trainer->address ?: '-' }},
                                             {{ $trainer->postal_code }}
-                                            {{ $trainer->city }}, 
-                                            {{ $trainer->state }}, 
+                                            {{ $trainer->city }},
+                                            {{ $trainer->state }},
                                             {{ $trainer->country->name }}
                                         </td>
                                         <th scope="row">Employment Status :</th>
@@ -112,10 +112,22 @@
                                         <td>{{ $trainer->point_balance ?: '-' }}</td>
                                     </tr>
                                     <tr>
+                                        <th scope="row">Company Registration Number :</th>
+                                        <td>{{ $trainer->company_registration_no ?: '-' }}</td>
+                                        <th scope="row">Expiry Date :</th>
+                                        <td>{{ $trainer->expiry_date ?: '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Training Language :</th>
+                                        <td>{{ $trainer->training_language ?: '-' }}</td>
+                                        <th scope="row">HRDF Trainer Number :</th>
+                                        <td>{{ $trainer->trainer_no ?: '-' }}</td>
+                                    </tr>
+                                    <tr>
                                         <th scope="row">Account Approve?</th>
                                         <td>{{ $trainer->is_approve == 1 ? 'No' : 'Yes' }}</td>
-                                        <th scope="row"></th>
-                                        <td></td>
+                                        <th scope="row">Gender :</th>
+                                        <td>{{ $trainer->gender == 1 ? 'Male': 'Female' }}</td>
                                     </tr>
                                 </tbody>
                             </table>

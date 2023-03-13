@@ -20,7 +20,7 @@ Route::group(['namespace' => 'Auth'], function () {
         // Logout
         Route::post('logout', 'LoginController@logout')->name('logout');
     });
-    
+
 });
 
 Route::group(['middleware' => 'auth:admin'], function(){
@@ -61,4 +61,8 @@ Route::group(['middleware' => 'auth:admin'], function(){
     Route::put('customer/updateStatus/{customer}', 'CustomerController@updateStatus')->name('customers.updateStatus');
     Route::put('customer/updatePassword/{customer}', 'CustomerController@updatePassword')->name('customers.updatePassword');
     Route::resource('customers', 'CustomerController');
+
+    //Course
+    Route::resource('courses', 'CourseController');
+
 });

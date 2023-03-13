@@ -6,6 +6,33 @@
         {
             background-color: rgba(128, 128, 128, 0.205) !important;
         }
+        .file-upload input[type='file'] {
+            height: 100px !important;
+            width: 100px !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            opacity: 0 !important;
+            cursor: pointer !important;
+        }
+        .file-upload {
+            height: 100px !important;
+            width: 100px !important;
+            /* border-radius: 100px !important; */
+            border-radius: 0.75rem !important;
+            position: relative !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            border: 1px solid #f0f1f5 !important;
+            overflow: hidden !important;
+            /* background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%) !important; */
+            background-color: #FFFFFF !important;
+            background-size: 100% 200% !important;
+            transition: all 1s !important;
+            color: #2590EB !important;
+            font-size: 20px !important;
+        }
     </style>
 @endpush
 @section('content')
@@ -56,7 +83,20 @@
                         @csrf
                         <div class="row pt-4">
                             <div class="col-lg-6">
-                                <label>Name <span class="text-danger">*</span></label>
+                                <label>Trainer Photo</label>
+                                <div class="file-upload" style="border-radius:65px">
+                                    <input type="file" name="image" onchange="readURL(this,1);" style="z-index:2;">
+                                    <div class="camera-bg"  id="camera1"></div>
+                                    <i id="imageResultIcon1" class="fa fa-plus" style="border-radius:15px;"></i>
+                                    <img id="imageResult1" src="" class="w-5 h-5" style="display:none;object-fit:contain;" value="{{ old('file') }}">
+                                </div>
+                                <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
+                                @error('image') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Full Name <span class="text-danger">*</span></label>
                                 <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') ?: '' }}" placeholder="Name">
                                 <span class="focus-border"></span>
                                 @error('name')
@@ -99,8 +139,43 @@
                             </div>
                         </div>
                         <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Employment Status <span class="text-danger">*</span></label>
+                                <div class="rbt-modern-select bg-transparent height-45">
+                                    <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror">
+                                        <option value="">-- Select Employment Status --</option>
+                                        <option value="1" {{ old('employment_status') == 1 ? 'selected' : ''}}>Employee</option>
+                                        <option value="2" {{ old('employment_status') == 2 ? 'selected' : ''}}>Employer</option>
+                                        <option value="3" {{ old('employment_status') == 3 ? 'selected' : ''}}>Unemployed</option>
+                                        <option value="4" {{ old('employment_status') == 4 ? 'selected' : ''}}>Retiree</option>
+                                        <option value="5" {{ old('employment_status') == 5 ? 'selected' : ''}}>Student</option>
+                                    </select>
+                                    @error('employment_status')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Gender <span class="text-danger">*</span></label>
+                                <div class="rbt-modern-select bg-transparent height-45">
+                                    <select name="gender" class="form-control @error('gender') is-invalid @enderror">
+                                        <option value="">-- Select Gender --</option>
+                                        <option value="1" {{ old('gender') == 1 ? 'selected' : ''}}>Male</option>
+                                        <option value="2" {{ old('gender') == 2 ? 'selected' : ''}}>Female</option>
+                                    </select>
+                                    @error('gender')
+                                    <div class="invalid-feedback">
+                                        <span>{{ $message }}</span>
+                                    </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
                             <div class="col-lg-12">
-                                <label>Address <span class="text-danger">*</span></label>
+                                <label>Billing Address <span class="text-danger">*</span></label>
                                 <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" value="{{ old('address') ?: '' }}" placeholder="Address">
                                 <span class="focus-border"></span>
                                 @error('address')
@@ -162,26 +237,6 @@
                         </div>
                         <div class="row pt-4">
                             <div class="col-lg-6">
-                                <label>Employment Status <span class="text-danger">*</span></label>
-                                <div class="rbt-modern-select bg-transparent height-45">
-                                    <select name="employment_status" class="form-control @error('employment_status') is-invalid @enderror">
-                                        <option value="">-- Select Employment Status --</option>
-                                        <option value="1" {{ old('employment_status') == 1 ? 'selected' : ''}}>Employee</option>
-                                        <option value="2" {{ old('employment_status') == 2 ? 'selected' : ''}}>Employer</option>
-                                        <option value="3" {{ old('employment_status') == 3 ? 'selected' : ''}}>Unemployed</option>
-                                        <option value="4" {{ old('employment_status') == 4 ? 'selected' : ''}}>Retiree</option>
-                                        <option value="5" {{ old('employment_status') == 5 ? 'selected' : ''}}>Student</option>
-                                    </select>
-                                    @error('employment_status')
-                                        <div class="invalid-feedback">
-                                            <span>{{ $message }}</span>
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row pt-4">
-                            <div class="col-lg-6">
                                 <label>If <span class="text-danger">Employee/Employer</span>(Provide the company name)</label>
                                 <input name="company_name" type="text" class="form-control @error('company_name') is-invalid @enderror" value="{{ old('company_name') ?: '' }}" placeholder="Company Name">
                                 <span class="focus-border"></span>
@@ -199,6 +254,71 @@
                                     <div class="invalid-feedback">
                                         <span>{{ $message }}</span>
                                     </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Company Registration Number</label>
+                                <input name="company_registration_no" type="text" class="form-control @error('company_registration_no') is-invalid @enderror" value="{{ old('company_registration_no') ?: '' }}" placeholder="Company Registration No">
+                                <span class="focus-border"></span>
+                                @error('company_registration_no')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                <label>HRDF trainer Number</label>
+                                <input name="trainer_no" type="text" class="form-control @error('trainer_no') is-invalid @enderror" value="{{ old('trainer_no') ?: '' }}" placeholder="Trainer No">
+                                <span class="focus-border"></span>
+                                @error('trainer_no')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Expiry Date</label>
+                                <input name="expiry" type="date" class="form-control @error('expiry') is-invalid @enderror" value="{{ old('expiry') ?: '' }}" placeholder="Expiry Date">
+                                <span class="focus-border"></span>
+                                @error('expiry')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Training Language</label>
+                                <input name="training_language" type="text" class="form-control @error('training_language') is-invalid @enderror" value="{{ old('training_language') ?: '' }}" placeholder="Training Language">
+                                <span class="focus-border"></span>
+                                @error('training_language')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-lg-6">
+                                <label>Qualification <span class="text-danger">*</span></label>
+                                <input name="qualification" type="text" class="form-control @error('qualification') is-invalid @enderror" value="{{ old('qualification') ?: '' }}" placeholder="Qualification" >
+                                <span class="focus-border"></span>
+                                @error('qualification')
+                                     <div class="invalid-feedback">
+                                     </div>
+                                @enderror
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Experience / Achievements <span class="text-danger">*</span></label>
+                                <input name="experience" type="text" class="form-control @error('experience') is-invalid @enderror" value="{{ old('experience') ?: '' }}" placeholder="Experience/Achievements">
+                                <span class="focus-border"></span>
+                                @error('experience')
+                                <div class="invalid-feedback">
+                                    <span>{{ $message }}</span>
+                                </div>
                                 @enderror
                             </div>
                         </div>
@@ -266,6 +386,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="row pt-4">
                             <div class="col-lg-6">
                                 <label>Security Question <span class="text-danger">*</span></label>
@@ -328,6 +449,19 @@
                 x.type = "text";
             } else {
                 x.type = "password";
+            }
+        }
+        function readURL(input, id) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imageResultIcon'+id).hide();
+                    $('#imageResult'+id)
+                        .attr('src', e.target.result);
+                    $('#imageResult'+id).show();
+                };
+                reader.readAsDataURL(input.files[0]);
             }
         }
     </script>

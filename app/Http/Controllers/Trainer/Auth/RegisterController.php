@@ -15,8 +15,10 @@ use App\Models\Trainer;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -90,6 +92,15 @@ class RegisterController extends Controller
             'security_question_id' => 'required',
             'security_answer' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:trainers',
+            'gender' => 'required',
+            'company_registration_no' => 'nullable',
+            'trainer_no' => 'nullable',
+            'expiry' => 'nullable',
+            'training_language' => 'nullable',
+            'image' => 'nullable|max:8192',
+            'experience' => 'required',
+            'qualification' => 'required',
+
             'password' => [
                 'required','string','confirmed',
                 Password::min(8)
@@ -148,11 +159,22 @@ class RegisterController extends Controller
             if($check_customer_referral_code)
             {
                 $check_customer_referral_code->update([
-                    'is_referral_code_use' => 2, 
+                    'is_referral_code_use' => 2,
                 ]);
             }
 
             $last_trainer = Trainer::withTrashed()->latest('id')->first();
+
+//            upload image
+            if ($request->image) {
+                $file_name = $last_trainer ? $last_trainer->id + 1 : 1;  // File name using user id;
+                $image = $request->file('image');
+                $fileName = $file_name . '.' . $image->getClientOriginalExtension();
+                $img = Image::make($image->getRealPath());
+                $img->stream();
+                Storage::disk('public')->put("/trainer/avatars/" . $fileName, $img);
+                $file = "storage/trainer/avatars/" . $fileName;   // Get path to access image
+            }
 
             $trainer = Trainer::create([
                 'code' => $last_trainer ? $last_trainer->code : null,
@@ -176,6 +198,14 @@ class RegisterController extends Controller
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
+                'gender' => $request->gender,
+                'company_registration_no' => $request->company_registration_no,
+                'trainer_no' => $request->trainer_no,
+                'expiry_date' => $request->expiry,
+                'training_language' => $request->training_language,
+                'avatar' => $file??'',
+                'experience' =>  $request->experience,
+                'qualification' =>  $request->qualification,
             ]);
 
             $point_transaction = PointTransaction::create([

@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
         <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
@@ -114,7 +114,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
-        </div>  
+        </div>
     </div>
 </form>
 

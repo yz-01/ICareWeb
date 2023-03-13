@@ -19,6 +19,7 @@ class CreateTrainersTable extends Migration
             $table->string('code')->nullable();
             $table->string('username')->nullable();
             $table->string('name')->nullable();
+            $table->tinyInteger('gender')->comment('1=Male, 2=Female')->nullable();
             $table->string('identity_card')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->unique();
@@ -33,6 +34,10 @@ class CreateTrainersTable extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries');
             $table->tinyInteger('employment_status')->comment('1=Employee, 2=Employer, 3=Unemployed, 4=Retiree, 5=Student')->nullable();
             $table->string('company_name')->nullable();
+            $table->string('company_registration_no')->nullable();
+            $table->date('expiry_date')->nullable();
+            $table->string('training_language')->nullable();
+            $table->string('trainer_no')->nullable();
             $table->string('position')->nullable();
             $table->string('own_referral_code')->nullable();
             $table->tinyInteger('is_referral_code_use')->comment('1=No, 2=Yes')->nullable();
@@ -40,6 +45,8 @@ class CreateTrainersTable extends Migration
             $table->integer('point_usage')->default(0)->comment('Total point this customer has used');
             $table->string('password')->nullable();
             $table->string('remember_token')->nullable();
+            $table->string('qualification')->nullable();
+            $table->string('experience')->nullable();
             $table->tinyInteger('is_approve')->comment('1=No, 2=Yes')->nullable();
             $table->boolean('status')->nullable()->default(1);
             $table->timestamps();

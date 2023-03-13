@@ -87,9 +87,12 @@ class RegisterController extends Controller
             'company_name' => 'required_if:employment_status,1,2',
             'position' => 'required_if:employment_status,1,2',
             'referral_code' => 'nullable',
+            'bank_acc_name' => 'nullable',
+            'bank_acc_no' => 'nullable',
             'security_question_id' => 'required',
             'security_answer' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:agents',
+            'gender' => 'required',
             'password' => [
                 'required','string','confirmed',
                 Password::min(8)
@@ -148,7 +151,7 @@ class RegisterController extends Controller
             if($check_customer_referral_code)
             {
                 $check_customer_referral_code->update([
-                    'is_referral_code_use' => 2, 
+                    'is_referral_code_use' => 2,
                 ]);
             }
 
@@ -176,6 +179,9 @@ class RegisterController extends Controller
                 'is_referral_code_use' => 1, //1=no
                 'is_approve' => 2, //2=yes
                 'point_balance' => 100,
+                'bank_account_name' => $request->bank_acc_name,
+                'bank_account_no' => $request->bank_acc_no,
+                'gender' =>$request->gender,
             ]);
 
             $point_transaction = PointTransaction::create([
@@ -266,7 +272,7 @@ class RegisterController extends Controller
         }
         else
         {
-            return redirect()->back()->withInput(request()->input())->withErrors(['error'=> 'The Referral Code is incorrect or have been use.']);
+            return redirect()->back()->withInput(request()->input())->with('warning','The Referral Code is incorrect or have been use.');
         }
 
         return redirect('/')->with('success', 'Thank you for submitting the form and welcome to our website!');

@@ -18,11 +18,14 @@ class CreateAgentsTable extends Migration
             $table->string('code')->nullable();
             $table->string('username')->nullable();
             $table->string('name')->nullable();
+            $table->tinyInteger('gender')->comment('1=Male, 2=Female')->nullable();
             $table->string('identity_card')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->unique();
             $table->string('image')->nullable();
             $table->string('banner')->nullable();
+            $table->string('bank_account_name')->nullable();
+            $table->string('bank_account_no')->nullable();
             $table->foreignId('security_question_id')->nullable()->constrained('security_questions');
             $table->string('security_answer')->nullable();
             $table->string('address')->nullable();

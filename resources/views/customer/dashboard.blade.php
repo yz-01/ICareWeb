@@ -14,13 +14,21 @@
             <div class="col-lg-12">
                 <!-- Start Dashboard Top  -->
                 <div class="rbt-dashboard-content-wrapper">
+                    @if($customer->banner)
+                    <div class="tutor-bg-photo bg_image bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
+                    @else
                     <div class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
+                    @endif
                     <!-- Start Tutor Information  -->
                     <div class="rbt-tutor-information">
                         <div class="rbt-tutor-information-left">
                             <div class="thumbnail rbt-avatars ">
                                 {{-- <img src="assets/images/team/avatar.jpg" alt="Instructor"> --}}
-                                <i class="fas fa-user py-3 px-4" style="font-size: 50px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
+                                @if($customer->image)
+                                <img src="{{ asset($customer->image) }}" alt="Profile-Image">
+                                @else
+                                <img src="{{ asset('images/default/profile.png') }}" alt="Profile-Image">
+                                @endif
                             </div>
                             <div class="tutor-content">
                                 <h5 class="mb-0 title">{{ auth()->user()->name }}</h5>
@@ -71,21 +79,20 @@
                                                 <li><a><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
                                                 <li><a><i class="feather-bookmark"></i><span>Wishlist</span></a></li>
                                                 <li><a><i class="feather-star"></i><span>Reviews</span></a></li>
-                                                <li><a><i class="feather-help-circle"></i><span>My Quiz Attempts</span></a></li>
-                                                <li><a><i class="feather-shopping-bag"></i><span>Order History</span></a></li>
-                                                <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
+                                                <li><a><i class="feather-help-circle"></i><span>Point History</span></a></li>
+                                                <li><a><i class="feather-shopping-bag"></i><span>Purchase History</span></a></li>
+                                                <!-- <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
                                                 <li><a><i class="feather-volume-2"></i><span>Announcements</span></a></li>
                                                 <li><a><i class="feather-message-square"></i><span>Quiz Attempts</span></a></li>
-                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li>
+                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li> -->
                                                 <li><a href="{{ route('customer.profile.edit', auth()->user()->id) }}"><i class="feather-settings"></i><span>Settings</span></a></li>
-                                                <li><a class="" href="{{ route('customer.logout') }}"
-                                                    onclick="event.preventDefault();
+                                                <li><a class="" href="{{ route('customer.logout') }}" onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
                                                         <i class="feather-log-out"></i><span>Logout</span></a></li>
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
+                                                </a>
+                                                <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
                                             </ul>
                                         </nav>
 
@@ -110,14 +117,14 @@
                                             <ul class="dashboard-mainmenu rbt-default-sidebar-list">
                                                 <li><a><i class="feather-settings"></i><span>Settings</span></a></li>
                                                 <li><a class="" href="{{ route('customer.logout') }}"
-                                                    onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
-                                                    </a>
-                                                    <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                                        @csrf
-                                                    </form>
-                                            </ul>
+                                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
+                                        </a>
+                                        <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                        </ul>
                                         </nav> --}}
                                     </div>
 
@@ -126,70 +133,70 @@
                         </div>
                         <!-- End Dashboard Sidebar  -->
                     </div>
-                        <div class="col-lg-9">
-                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">
-                                <div class="content">
-                                    <div class="section-title">
-                                        <h4 class="rbt-title-style-3">Dashboard</h4>
+                    <div class="col-lg-9">
+                        <div class="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">
+                            <div class="content">
+                                <div class="section-title">
+                                    <h4 class="rbt-title-style-3">Dashboard</h4>
+                                </div>
+                                <div class="row g-5">
+
+                                    <!-- Start Single Card  -->
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
+                                            <div class="inner">
+                                                <div class="rbt-round-icon bg-primary-opacity">
+                                                    <i class="feather-book-open"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h3 class="counter without-icon color-primary"><span class="odometer" data-count="30">00</span>
+                                                    </h3>
+                                                    <span class="rbt-title-style-2 d-block">Enrolled Courses</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="row g-5">
+                                    <!-- End Single Card  -->
 
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-primary-opacity">
-                                                        <i class="feather-book-open"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-primary"><span class="odometer" data-count="30">00</span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">Enrolled Courses</span>
-                                                    </div>
+                                    <!-- Start Single Card  -->
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
+                                            <div class="inner">
+                                                <div class="rbt-round-icon bg-secondary-opacity">
+                                                    <i class="feather-monitor"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h3 class="counter without-icon color-secondary"><span class="odometer" data-count="10">00</span>
+                                                    </h3>
+                                                    <span class="rbt-title-style-2 d-block">ACTIVE COURSES</span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- End Single Card  -->
-
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-secondary-opacity">
-                                                        <i class="feather-monitor"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-secondary"><span class="odometer" data-count="10">00</span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">ACTIVE COURSES</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- End Single Card  -->
-
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-violet-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-violet-opacity">
-                                                        <i class="feather-award"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-violet"><span class="odometer" data-count="7">00</span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">Completed Courses</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- End Single Card  -->
 
                                     </div>
+                                    <!-- End Single Card  -->
+
+                                    <!-- Start Single Card  -->
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <div class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-violet-opacity">
+                                            <div class="inner">
+                                                <div class="rbt-round-icon bg-violet-opacity">
+                                                    <i class="feather-award"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <h3 class="counter without-icon color-violet"><span class="odometer" data-count="7">00</span>
+                                                    </h3>
+                                                    <span class="rbt-title-style-2 d-block">Completed Courses</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Card  -->
+
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
 
             </div>
@@ -200,20 +207,20 @@
 @endsection
 
 @push('script')
-    <script>
-        function myFunction() {
-            // Get the text field
-            var copyText = document.getElementById("myInput");
+<script>
+    function myFunction() {
+        // Get the text field
+        var copyText = document.getElementById("myInput");
 
-            // Select the text field
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); // For mobile devices
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
 
-            // Copy the text inside the text field
-            navigator.clipboard.writeText(copyText.value);
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
 
-            // Alert the copied text
-            // alert("Copied the text: " + copyText.value);
-        }
-    </script>
+        // Alert the copied text
+        // alert("Copied the text: " + copyText.value);
+    }
+</script>
 @endpush

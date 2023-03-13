@@ -14,12 +14,24 @@
             <div class="col-lg-12">
                 <!-- Start Dashboard Top  -->
                 <div class="rbt-dashboard-content-wrapper">
+                    @if($customer->banner)
+                    <div class="tutor-bg-photo bg_image bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
+                    @else
+                                        @if($customer->banner)
+                    <div class="tutor-bg-photo bg_image bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
+                    @else
                     <div class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
+                    @endif
+                    @endif
                     <!-- Start Tutor Information  -->
                     <div class="rbt-tutor-information">
                         <div class="rbt-tutor-information-left">
                             <div class="thumbnail rbt-avatars ">
-                                <i class="fas fa-user py-3 px-4" style="font-size: 50px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
+                                @if($customer->image)
+                                <img src="{{ asset($customer->image) }}" alt="Profile-Image">
+                                @else
+                                <img src="{{ asset('images/default/profile.png') }}" alt="Profile-Image">
+                                @endif
                             </div>
                             <div class="tutor-content">
                                 <h5 class="mb-0 title">{{ auth()->user()->name }}</h5>
@@ -70,12 +82,12 @@
                                                 <li><a><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
                                                 <li><a><i class="feather-bookmark"></i><span>Wishlist</span></a></li>
                                                 <li><a><i class="feather-star"></i><span>Reviews</span></a></li>
-                                                <li><a><i class="feather-help-circle"></i><span>My Quiz Attempts</span></a></li>
-                                                <li><a><i class="feather-shopping-bag"></i><span>Order History</span></a></li>
-                                                <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
+                                                <li><a><i class="feather-help-circle"></i><span>Point History</span></a></li>
+                                                <li><a><i class="feather-shopping-bag"></i><span>Purchase History</span></a></li>
+                                                <!-- <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
                                                 <li><a><i class="feather-volume-2"></i><span>Announcements</span></a></li>
                                                 <li><a><i class="feather-message-square"></i><span>Quiz Attempts</span></a></li>
-                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li>
+                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li> -->
                                                 <li><a href="{{ route('customer.profile.edit', auth()->user()->id) }}"><i class="feather-settings"></i><span>Settings</span></a></li>
                                                 <li><a class="" href="{{ route('customer.logout') }}" onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
@@ -165,30 +177,38 @@
                                     <div class="tab-content">
                                         <div class="tab-pane fade active show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                             <div class="rbt-dashboard-content-wrapper">
-                                                <!-- Start Banner  -->
-                                                <input type="file" name="banner" id="banner" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" hidden>
-                                                <a id="upload-banner-btn">
-                                                    @if($customer->banner)
-                                                        <div id="banner-icon" class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
-                                                    @else
-                                                        <div id="banner-icon" class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
-                                                    @endif
-                                                    <img id="bannerResult" class="tutor-bg-photo bg_image--22 height-350" style="object-fit: contain !important; display: none;" />
-                                                </a>
-                                                <!-- End Banner  -->
+                                                @if($customer->banner)
+                                                <div id="banner-icon" class="tutor-bg-photo bg_image bg_image--23 height-245" style="background-image: url({{ asset($customer->banner) }});"></div>
+                                                @else
+                                                <div id="banner-icon" class="tutor-bg-photo bg_image bg_image--23 height-245" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
+                                                @endif
+                                                <div id="bannerResult" class="tutor-bg-photo bg_image bg_image--23 height-245" style="object-fit: contain !important; display: none;"></div>
                                                 <!-- Start Tutor Information  -->
                                                 <div class="rbt-tutor-information">
                                                     <div class="rbt-tutor-information-left">
                                                         <div class="thumbnail rbt-avatars size-lg position-relative">
+                                                            @if($customer->image)
+                                                            <img id="user-icon" src="{{ asset($customer->image) }}" alt="Profile-Image">
+                                                            @else
+                                                                                            @if($customer->image)
+                                <img src="{{ asset($customer->image) }}" alt="Profile-Image">
+                                @else
+                                <img src="{{ asset('images/default/profile.png') }}" alt="Profile-Image">
+                                @endif
+                                                            @endif
+                                                            <img id="imageResult" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
                                                             <input type="file" name="image" id="image" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" hidden>
-                                                            <a id="upload-image-btn">
-                                                                @if($customer->image)
-                                                                    <img id="user-icon" src="{{ asset($customer->image) }}" style="width: 100px; height: 100px;">
-                                                                @else
-                                                                    <i id="user-icon" class="fas fa-user py-3 px-4" style="font-size: 110px; background-color: white; border-radius: 30px; color:rgb(93, 155, 236)"></i>
-                                                                @endif
-                                                                <img id="imageResult" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
-                                                            </a>
+                                                            <div class="rbt-edit-photo-inner">
+                                                                <button class="rbt-edit-photo" title="Upload Photo" disabled>
+                                                                    <i id="upload-image-btn" class="feather-camera"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rbt-tutor-information-right">
+                                                        <div class="tutor-btn">
+                                                            <input type="file" name="banner" id="banner" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" hidden>
+                                                            <a id="upload-banner-btn" class="rbt-btn btn-sm btn-border color-white radius-round-10">Edit Cover Photo</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -327,7 +347,7 @@
             if (input.name == 'banner') {
                 reader.onload = function(e) {
                     $('#banner-icon').hide();
-                    $('#bannerResult').attr('src', e.target.result);
+                    $('#bannerResult').css('background-image', 'url(' + e.target.result + ')');
                     $('#bannerResult').show();
                 };
                 reader.readAsDataURL(input.files[0]);

@@ -17,7 +17,7 @@
                     @if($customer->banner)
                     <div class="tutor-bg-photo bg_image bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
                     @else
-                                        @if($customer->banner)
+                    @if($customer->banner)
                     <div class="tutor-bg-photo bg_image bg_image--22 height-350" style="background-image: url({{ asset($customer->banner) }});"></div>
                     @else
                     <div class="tutor-bg-photo bg_image--22 height-350" style="background-image: url({{ asset('images/welcome/bg-image-19.jpg') }});"></div>
@@ -190,11 +190,11 @@
                                                             @if($customer->image)
                                                             <img id="user-icon" src="{{ asset($customer->image) }}" alt="Profile-Image">
                                                             @else
-                                                                                            @if($customer->image)
-                                <img src="{{ asset($customer->image) }}" alt="Profile-Image">
-                                @else
-                                <img src="{{ asset('images/default/profile.png') }}" alt="Profile-Image">
-                                @endif
+                                                            @if($customer->image)
+                                                            <img src="{{ asset($customer->image) }}" alt="Profile-Image">
+                                                            @else
+                                                            <img src="{{ asset('images/default/profile.png') }}" alt="Profile-Image">
+                                                            @endif
                                                             @endif
                                                             <img id="imageResult" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
                                                             <input type="file" name="image" id="image" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" hidden>

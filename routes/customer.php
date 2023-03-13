@@ -20,10 +20,9 @@ Route::group(['namespace' => 'Auth'], function () {
         // Logout
         Route::post('logout', 'LoginController@logout')->name('logout');
     });
-    
 });
 
-Route::group(['middleware' => 'auth:customer'], function(){
+Route::group(['middleware' => 'auth:customer'], function () {
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::resource('cart', 'CartController');
@@ -35,4 +34,7 @@ Route::group(['middleware' => 'auth:customer'], function(){
 
     // Social
     Route::resource('social', 'SocialController');
+
+    // Point
+    Route::resource('point', 'PointController');
 });

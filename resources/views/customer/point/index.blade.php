@@ -134,163 +134,30 @@
                         <!-- End Dashboard Sidebar  -->
                     </div>
                     <div class="col-lg-9" id="profile">
-                        <!-- Start Instructor Profile  -->
                         <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
                             <div class="content">
                                 <div class="section-title">
-                                    <h4 class="rbt-title-style-3">My Profile</h4>
+                                    <h4 class="rbt-title-style-3">Point History</h4>
                                 </div>
-                                <!-- Start Profile Row  -->
                                 <div class="rbt-profile-row row row--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Your Referral Code:</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2 d-flex align-items-center">
-                                            <input id="myInput" type="text" value="{{ auth()->user()->own_referral_code }}" style="border: 0px transparent; width: 150px">
-                                            <button class="btn btn-lg" value="copy" onclick="myFunction()" style="background-color:rgb(93, 155, 236); color: white">
-                                                <i class="fas fa-copy"></i>
-                                            </button>
+                                    <div class="d-none d-md-flex mb-3">
+                                        <div class="pe-2 flex-fill">
+                                            <input type="text" class="form-control datatable-input" id="code" placeholder="Code" data-col-index="2">
                                         </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <span class="text-danger">
-                                            To earn Reward points, simply copy and send this referral code to your friend when they register for HRDP online. Thank you for referring your friend!
-                                        </span>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
-
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Name</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->name }}</div>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Phone</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->phone }}</div>
-                                    </div>
-                                </div>
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Identity Card</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->identity_card ?: '-' }}</div>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
-
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Email</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->email ?: '-' }}</div>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
-
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Address</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">
-                                            {{ auth()->user()->address ?: '-' }},
-                                            {{ auth()->user()->postal_code ?: '-' }},
-                                            {{ auth()->user()->city ?: '-' }},
-                                            {{ auth()->user()->state ?: '-' }},
-                                            {{ auth()->user()->country->name ?: '-' }}
+                                        <div class="pe-2 flex-fill">
+                                            <input type="text" class="form-control datatable-input" id="name" placeholder="Name" data-col-index="2">
+                                        </div>
+                                        <div class="pe-2 flex-fill">
+                                            <input type="text" class="form-control datatable-input" id="email" placeholder="Email" data-col-index="2">
+                                        </div>
+                                        <div class="pe-2 flex-fill">
+                                            <input type="text" class="form-control datatable-input" id="identity_card" placeholder="Identity Card" data-col-index="2">
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End Profile Row  -->
-
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">HRDP Reward Points Balance</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ number_format(auth()->user()->point_balance, 0) }}</div>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Employee Status</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">
-                                            @if (auth()->user()->employment_status == 1)
-                                            Employee
-                                            @elseif (auth()->user()->employment_status == 2)
-                                            Employer
-                                            @elseif (auth()->user()->employment_status == 3)
-                                            Unemployed
-                                            @elseif (auth()->user()->employment_status == 4)
-                                            Retiree
-                                            @elseif (auth()->user()->employment_status == 5)
-                                            Student
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                                @if (auth()->user()->employment_status == 1 || auth()->user()->employment_status == 2)
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Company Name</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->company_name ?: '-' }}</div>
-                                    </div>
-                                </div>
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Position</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->position ?: '-' }}</div>
-                                    </div>
-                                </div>
-                                @endif
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Code</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->code ?: '-' }}</div>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
-
-                                <!-- Start Profile Row  -->
-                                <div class="rbt-profile-row row row--15 mt--15">
-                                    <div class="col-lg-4 col-md-4">
-                                        <div class="rbt-profile-content b2">Username</div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8">
-                                        <div class="rbt-profile-content b2">{{ auth()->user()->username ?: '-' }}</div>
-                                    </div>
-                                </div>
-                                <!-- End Profile Row  -->
+                                {{$dataTable->table(['class'=>'table table-checkable dataTable dtr-inline w-100'], false)}}
                             </div>
                         </div>
-                        <!-- End Instructor Profile  -->
-
                     </div>
                 </div>
 
@@ -302,6 +169,7 @@
 @endsection
 
 @push('script')
+{{$dataTable->scripts()}}
 <script>
     function myFunction() {
         // Get the text field

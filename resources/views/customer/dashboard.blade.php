@@ -79,7 +79,7 @@
                                                 <li><a><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
                                                 <li><a><i class="feather-bookmark"></i><span>Wishlist</span></a></li>
                                                 <li><a><i class="feather-star"></i><span>Reviews</span></a></li>
-                                                <li><a><i class="feather-help-circle"></i><span>Point History</span></a></li>
+                                                <li><a href="{{ route('customer.point.index') }}"><i class="feather-help-circle"></i><span>Point History</span></a></li>
                                                 <li><a><i class="feather-shopping-bag"></i><span>Purchase History</span></a></li>
                                                 <!-- <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
                                                 <li><a><i class="feather-volume-2"></i><span>Announcements</span></a></li>

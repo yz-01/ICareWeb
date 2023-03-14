@@ -36,7 +36,7 @@
     @include('customer.layouts.header')
     @yield('content')
     @include('customer.layouts.footer')
-    
+
     <!-- End Copyright Area  -->
     <div class="rbt-progress-parent">
         <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -80,6 +80,9 @@
 
     <!-- Sweet alert init js-->
     <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
+
+    <script src="{{ asset('assets2/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets2/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 
     @include('customer.auth.layouts.sweetalerts')
     @stack('script')

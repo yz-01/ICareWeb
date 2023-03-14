@@ -41,4 +41,12 @@ class PointTransaction extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    public function scopeLocalSearch($query)
+    {
+        $query->when(request()->has('description') && filled(request('description')), function ($q) {
+            $q->where('description', 'LIKE', '%' . request('description') . '%');
+        });
+        return $query;
+    }
 }

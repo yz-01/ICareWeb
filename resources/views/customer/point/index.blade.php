@@ -45,114 +45,28 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="rbt-tutor-information-right">
-                            <div class="tutor-btn">
-                                <a class="rbt-btn btn-md hover-icon-reverse">
-                                    <span class="icon-reverse-wrapper">
-                    <span class="btn-text">Create a New Course</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div> --}}
                     </div>
                     <!-- End Tutor Information  -->
                 </div>
                 <!-- End Dashboard Top  -->
 
                 <div class="row g-5">
-                    <div class="col-lg-3">
-                        <!-- Start Dashboard Sidebar  -->
-                        <div class="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
-                            <div class="inner">
-                                <div class="content-item-content">
-
-                                    <div class="rbt-default-sidebar-wrapper">
-                                        <div class="section-title mb--20">
-                                            <h6 class="rbt-title-style-2">Welcome, {{ auth()->user()->name }}</h6>
-                                        </div>
-                                        <nav class="mainmenu-nav">
-                                            <ul class="dashboard-mainmenu rbt-default-sidebar-list">
-                                                <li><a href="{{ route('customer.dashboard','#dashboard') }}"><i class="feather-home"></i><span>Dashboard</span></a></li>
-                                                <li><a href="{{ route('customer.profile.index') }}"><i class="feather-user"></i><span>My Profile</span></a></li>
-                                                <li><a><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
-                                                <li><a><i class="feather-bookmark"></i><span>Wishlist</span></a></li>
-                                                <li><a><i class="feather-star"></i><span>Reviews</span></a></li>
-                                                <li><a><i class="feather-help-circle"></i><span>Point History</span></a></li>
-                                                <li><a><i class="feather-shopping-bag"></i><span>Purchase History</span></a></li>
-                                                <!-- <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
-                                                <li><a><i class="feather-volume-2"></i><span>Announcements</span></a></li>
-                                                <li><a><i class="feather-message-square"></i><span>Quiz Attempts</span></a></li>
-                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li> -->
-                                                <li><a href="{{ route('customer.profile.edit', auth()->user()->id) }}"><i class="feather-settings"></i><span>Settings</span></a></li>
-                                                <li><a class="" href="{{ route('customer.logout') }}" onclick="event.preventDefault();
-                                                                    document.getElementById('logout-form').submit();">
-                                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
-                                                </a>
-                                                <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                                    @csrf
-                                                </form>
-                                            </ul>
-                                        </nav>
-
-                                        {{-- <div class="section-title mt--40 mb--20">
-                                            <h6 class="rbt-title-style-2">Trainer</h6>
-                                        </div>
-
-                                        <nav class="mainmenu-nav">
-                                            <ul class="dashboard-mainmenu rbt-default-sidebar-list">
-                                                <li><a><i class="feather-monitor"></i><span>My Courses</span></a></li>
-                                                <li><a><i class="feather-volume-2"></i><span>Announcements</span></a></li>
-                                                <li><a><i class="feather-message-square"></i><span>Quiz Attempts</span></a></li>
-                                                <li><a><i class="feather-list"></i><span>Assignments</span></a></li>
-                                            </ul>
-                                        </nav>
-
-                                        <div class="section-title mt--40 mb--20">
-                                            <h6 class="rbt-title-style-2">User</h6>
-                                        </div>
-
-                                        <nav class="mainmenu-nav">
-                                            <ul class="dashboard-mainmenu rbt-default-sidebar-list">
-                                                <li><a><i class="feather-settings"></i><span>Settings</span></a></li>
-                                                <li><a class="" href="{{ route('customer.logout') }}"
-                                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        <i class="feather-log-out"></i><span>Logout</span></a></li>
-                                        </a>
-                                        <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                        </ul>
-                                        </nav> --}}
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Dashboard Sidebar  -->
-                    </div>
+                    @include('customer.layouts.sidebar')
                     <div class="col-lg-9" id="profile">
                         <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
                             <div class="content">
                                 <div class="section-title">
                                     <h4 class="rbt-title-style-3">Point History</h4>
                                 </div>
-                                <div class="rbt-profile-row row row--15">
-                                    <div class="d-none d-md-flex mb-3">
-                                        <div class="pe-2 flex-fill">
-                                            <input type="text" class="form-control datatable-input" id="code" placeholder="Code" data-col-index="2">
-                                        </div>
-                                        <div class="pe-2 flex-fill">
-                                            <input type="text" class="form-control datatable-input" id="name" placeholder="Name" data-col-index="2">
-                                        </div>
-                                        <div class="pe-2 flex-fill">
-                                            <input type="text" class="form-control datatable-input" id="email" placeholder="Email" data-col-index="2">
-                                        </div>
-                                        <div class="pe-2 flex-fill">
-                                            <input type="text" class="form-control datatable-input" id="identity_card" placeholder="Identity Card" data-col-index="2">
-                                        </div>
+                                <div class="d-none d-md-flex mb-3">
+                                    <div class="pe-2 flex-fill">
+                                        <input type="text" class="form-control datatable-input" id="description" placeholder="Description" data-col-index="2">
+                                    </div>
+                                    <div class="pe-2 flex-fill">
+                                        <input type="number" class="form-control datatable-input" id="in" placeholder="In" data-col-index="2">
+                                    </div>
+                                    <div class="pe-2 flex-fill">
+                                        <input type="number" class="form-control datatable-input" id="out" placeholder="Out" data-col-index="2">
                                     </div>
                                 </div>
                                 {{$dataTable->table(['class'=>'table table-checkable dataTable dtr-inline w-100'], false)}}
@@ -160,7 +74,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

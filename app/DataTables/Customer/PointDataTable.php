@@ -3,6 +3,7 @@
 namespace App\DataTables\Customer;
 
 use App\Models\Admin;
+use App\Models\PointTransaction;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,36 +22,20 @@ class PointDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('image', function ($item) {
-                if ($item->image) {
-                    return "<a target='_blank' href='" . asset($item->image) . "'><img src='" . asset($item->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                }
+            ->addIndexColumn('DT_RowIndex')
+            ->addColumn('date', function ($item) {
+                return $item->created_at ?: '-';
             })
-            ->addColumn('action', function ($item) {
-                return view('admin.admins.action', compact('item'));
+            ->addColumn('description', function ($item) {
+                return $item->description ?: '-';
             })
-            ->addColumn('email', function ($item) {
-                return $item->email ?: '-';
+            ->addColumn('in', function ($item) {
+                return $item->in ?: '-';
             })
-            ->addColumn('identity_card', function ($item) {
-                return $item->identity_card ?: '-';
+            ->addColumn('out', function ($item) {
+                return $item->out ?: '-';
             })
-            ->addColumn('admin_status', function ($item) {
-                $action = '<div class="form-check form-switch">';
-                if ($item->status) {
-                    $action .= '<input class="form-check-input change-status" type="checkbox" checked data-id="' . $item->id . '" value="' . $item->status . '">';
-                } else {
-                    $action .= '<input class="form-check-input change-status" type="checkbox" data-id="' . $item->id . '" value="' . $item->status . '">';
-                }
-                $action .= '</div>';
-                $action .= '<form id="update-admin-status-' . $item->id . '" action="' . route("admin.admins.updateStatus", $item->id) . '" class="d-none" method="post">'
-                    . csrf_field() . method_field("PUT") .
-                    '</form>';
-                return $action;
-            })
-            ->rawColumns(['action', 'admin_status', 'image']);
+            ->rawColumns(['date', 'description', 'in', 'out']);
     }
 
     /**
@@ -59,7 +44,7 @@ class PointDataTable extends DataTable
      * @param \App\Models\Admin\Admin $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Admin $model)
+    public function query(PointTransaction $model)
     {
         return $model->localsearch(request());
     }
@@ -71,21 +56,19 @@ class PointDataTable extends DataTable
      */
     public function html()
     {
-
         return $this->builder()
             ->setTableId('customer-point-table')
             ->columns($this->getColumns())
             ->ajax([
                 'url' => route('customer.point.index'),
                 'data' => 'function(d) {
-                    d.code = $("#code").val();
-                    d.name = $("#name").val();
-                    d.email = $("#email").val();
-                    d.identity_card = $("#identity_card").val();
-                    d.admin_status = $("#admin_status").val();
+                    d.date = $("#date").val();
+                    d.description = $("#description").val();
+                    d.in = $("#in").val();
+                    d.out = $("#out").val();
                 }',
             ])
-            ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
+            ->dom("<'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
             ->initComplete('function() {
                     $(".datatable-input").on("change",function () {
                         $("#customer-point-table").DataTable().ajax.reload();
@@ -94,12 +77,10 @@ class PointDataTable extends DataTable
                         $("#customer-point-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
-                        $("#code").val(null);
-                        $("#name").val(null);
-                        $("#email").val(null);
-                        $("#identity_card").val(null);
-                        $("#admin_status").val(null);
-                        $("#admin_status").change();
+                        $("#date").val(null);
+                        $("#description").val(null);
+                        $("#in").val(null);
+                        $("#out").val(null);
                         $("#customer-point-table").DataTable().ajax.reload();
                     });
                     $("#customer-point-table").on("click", ".delFunc", function(e) {
@@ -151,14 +132,11 @@ class PointDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('image')->title('Image')->orderable(false),
-            Column::make('code')->title('Code')->orderable(false),
-            Column::make('username')->title('Username')->orderable(false),
-            Column::make('name')->title('Name')->orderable(false),
-            Column::make('email')->title('Email')->orderable(false),
-            Column::make('identity_card')->title('Identity Card')->orderable(false),
-            Column::make('admin_status')->title('Status')->orderable(false),
-            Column::make('action')->className('text-end')->title('')->sorting(false),
+            Column::make('DT_RowIndex')->title('#')->orderable(false),
+            Column::make('date')->title('Date')->orderable(false),
+            Column::make('description')->title('Description')->orderable(false),
+            Column::make('in')->title('In')->orderable(false),
+            Column::make('out')->title('Out')->orderable(false),
         ];
     }
 

@@ -46,7 +46,7 @@ class PointDataTable extends DataTable
      */
     public function query(PointTransaction $model)
     {
-        return $model->localsearch(request());
+        return $model->where('customer_id', auth()->user()->id)->orderBy('created_at')->localsearch(request());
     }
 
     /**

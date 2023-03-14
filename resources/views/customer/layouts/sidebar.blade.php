@@ -29,8 +29,8 @@
                 <div class="rbt-default-sidebar-wrapper">
                     <div class="section-title mb--20">
                         <h6 class="rbt-title-style-2">Welcome, {{ auth()->user()->name }}&nbsp;&nbsp;&nbsp;
-                        <i id="showButton" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
-                        <i id="hideButton" style="display: none;" class="fa fa-arrow-circle-up" aria-hidden="true"></i>
+                        <i id="showButton" style="font-size: 15px;" class="fa fa-arrow-circle-down" aria-hidden="true"></i>
+                        <i id="hideButton" style="display: none; font-size: 15px;" class="fa fa-arrow-circle-up" aria-hidden="true"></i>
                         </h6>
                     </div>
                     <nav class="mainmenu-nav" id="sidebar">

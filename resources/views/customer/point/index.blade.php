@@ -52,13 +52,13 @@
 
                 <div class="row g-5">
                     @include('customer.layouts.sidebar')
-                    <div class="col-lg-9" id="profile">
+                    <div class="col-lg-9" id="point">
                         <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
                             <div class="content">
                                 <div class="section-title">
                                     <h4 class="rbt-title-style-3">Point History</h4>
                                 </div>
-                                <div class="d-none d-md-flex mb-3">
+                                <!-- <div class="d-none d-md-flex mb-3">
                                     <div class="pe-2 flex-fill">
                                         <input type="text" class="form-control datatable-input" id="description" placeholder="Description" data-col-index="2">
                                     </div>
@@ -68,7 +68,7 @@
                                     <div class="pe-2 flex-fill">
                                         <input type="number" class="form-control datatable-input" id="out" placeholder="Out" data-col-index="2">
                                     </div>
-                                </div>
+                                </div> -->
                                 {{$dataTable->table(['class'=>'table table-checkable dataTable dtr-inline w-100'], false)}}
                             </div>
                         </div>

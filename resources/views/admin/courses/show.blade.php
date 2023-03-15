@@ -39,24 +39,26 @@
                                     </tr>
                                     <tr>
                                         <th scope="row">Description :</th>
-                                        <td>{{ $course->description }}</td>
+                                        <td>{!! $course->description !!}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Hdrf Claimable :</th>
                                         <td>{{ $course->hdrf_claimable == '1' ? 'Yes':'No' }}</td>
-                                        <th scope="row">Date Time :</th>
-                                        <td>{{ $course->datetime }}</td>
+                                        <th scope="row">Venue / Online :</th>
+                                        <td>{{ $course->online==1 ? 'Online': $course->venue }}</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Duration :</th>
-                                        <td>{{ $course->duration ?: '-' }}</td>
-                                        <th scope="row">Venue :</th>
-                                        <td>{{ $course->venue ?: '-' }}</td>
+                                        <th scope="row">Start Time :</th>
+                                        <td>{{ $course->start??'-' }}</td>
+                                        <th scope="row">End Time :</th>
+                                        <td>{{ $course->end??'-' }}</td>
                                     </tr>
-                                <tr>
-                                    <th scope="row">Trainer :</th>
-                                    <td>{{ $course->trainer ?$course->trainer->name : '-' }}</td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row">Duration  :</th>
+                                        <td>{{ $course->duration ?: '-' }}{{ $course->duration>1 ?' days':' day' }}</td>
+                                        <th scope="row">Trainer :</th>
+                                        <td>{{ $course->trainer ?$course->trainer->name : '-' }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

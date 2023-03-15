@@ -18,9 +18,12 @@ class CreateCoursesTable extends Migration
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('hrdf_claimable')->comment('1=yes,2=no')->nullable();
-            $table->datetime('datetime')->nullable();
+            $table->datetime('start')->nullable();
+            $table->datetime('end')->nullable();
             $table->integer('duration')->nullable();
-            $table->string('venue')->comment('0=online without venue')->nullable();
+            $table->string('venue')->nullable();
+            $table->tinyInteger('online')->comment('1=online')->nullable();
+            $table->string('banner')->nullable();
             $table->foreignId('trainer_id')->nullable();
             $table->timestamps();
             $table->softDeletes();

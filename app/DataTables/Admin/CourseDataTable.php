@@ -28,11 +28,11 @@ class CourseDataTable extends DataTable
             ->addColumn('title', function($item){
                 return $item->title ?: '-';
             })
-            ->addColumn('desc', function($item){
-                return $item->description ?: '-';
+            ->addColumn('start', function($item){
+                return $item->start ?: '-';
             })
-            ->addColumn('datetime', function($item){
-                return $item->datetime ?: '-';
+            ->addColumn('end', function($item){
+                return $item->end ?: '-';
             })
             ->addColumn('duration', function($item){
                 return $item->duration ?: '-';
@@ -88,8 +88,8 @@ class CourseDataTable extends DataTable
                     });
                     $("#clearBtn").on("click",function () {
                         $("#title").val(null);
-                        $("#desc").val(null);
-                        $("#datetime").val(null);
+                        $("#start").val(null);
+                        $("#end").val(null);
                         $("#duration").val(null);
                         $("#venue").val(null);
                         $("#claimable").change();
@@ -121,9 +121,9 @@ class CourseDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::make('title')->title('Title')->orderable(false),
-            Column::make('desc')->title('Description')->orderable(false),
-            Column::make('datetime')->title('Date Time')->orderable(false),
+            Column::make('title')->title('Course Name')->orderable(false),
+            Column::make('start')->title('Start Time')->orderable(false),
+            Column::make('end')->title('End Time')->orderable(false),
             Column::make('duration')->title('Duration in Day(s)')->orderable(false),
             Column::make('venue')->title('Venue / Online')->orderable(false),
             Column::make('claimable')->title('Hrdf Claimable')->orderable(false),

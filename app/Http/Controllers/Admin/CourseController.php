@@ -47,87 +47,102 @@ class CourseController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required|string|max:255',
-            'desc' => 'required|max:500',
-            'claimable' => 'required',
-            'start' => 'required',
-            'end' => 'required',
-            'duration' => 'required|integer',
-            'online' => 'required',
-            'existing' => 'required',
-            'banner' => 'nullable|max:8192',
-        ]);
-
-        if ($request->online == 0){ //offline, venue required
-           $this->validate($request, [
-               'venue' => 'required',
-           ]);
-        }
-
-        if ($request->existing == 0) { //Existing Trainer
-            $this->validate($request, [
-                'trainer' => 'nullable',
+                    'title' => 'required|string|max:255',
+                    'desc' => 'required|max:500',
+                    'claimable' => 'required',
+                    'start' => 'required',
+                    'end' => 'required',
+                    'duration' => 'required|integer',
+                    'online' => 'required',
+                    'existing' => 'required',
+                    'approved' => 'required',
+                    'price' => 'required',
+                    'banner' => 'nullable|max:8192',
+                    'image' => 'nullable|max:8192',
                 ]);
-        }else{
-            $this->validate($request, [
-                'name' => 'required|string|max:255',
-                'email' => 'required|email|unique:trainers',
-                'qualification' => 'nullable',
-                'experience' => 'nullable',
-                'photo' => 'nullable|max:8192',
-            ]);
-        }
 
-        if ($request->banner){
-            $file_name = $request->title;  // File name using user id;
-            $image = $request->file('banner');
-            $fileName = $file_name . '.' . $image->getClientOriginalExtension();
-            $img = Image::make($image->getRealPath());
-            $img->stream();
-            Storage::disk('public')->put("/course/banner/" . $fileName, $img);
-            $banner_file = "storage/course/banner/" . $fileName;   // Get path to access image
-        }
+            if ($request->online == 0){ //offline, venue required
+                $this->validate($request, [
+                    'venue' => 'required',
+                ]);
+            }
 
-        $last_trainer = Trainer::withTrashed()->latest('id')->first();
-        if ($request->photo){
-            $file_name = $last_trainer ? $last_trainer->id + 1 : 1;  // File name using user id;
-            $image = $request->file('photo');
-            $fileName = $file_name . '.' . $image->getClientOriginalExtension();
-            $img = Image::make($image->getRealPath());
-            $img->stream();
-            Storage::disk('public')->put("/trainer/avatars/" . $fileName, $img);
-            $avatar_file = "storage/trainer/avatars/" . $fileName;   // Get path to access image
-        }
+            if ($request->existing == 0) { //Existing Trainer
+                $this->validate($request, [
+                    'trainer' => 'nullable',
+                ]);
+            }else{
+                $this->validate($request, [
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|email|unique:trainers',
+                    'qualification' => 'nullable',
+                    'experience' => 'nullable',
+                    'photo' => 'nullable|max:8192',
+                ]);
+            }
 
-        $course = Course::create([
-            'title' => $request->title,
-            'description' => $request->desc,
-            'hrdf_claimable' => $request->claimable,
-            'start' => $request->start,
-            'end' => $request->end,
-            'duration' => $request->duration,
-            'venue' => $request->venue,
-            'online' => $request->online,
-            'banner' => $banner_file??'',
+            if ($request->banner){
+                $file_name = $request->title;  // File name using user id;
+                $image = $request->file('banner');
+                $fileName = $file_name . '.' . $image->getClientOriginalExtension();
+                $img = Image::make($image->getRealPath());
+                $img->stream();
+                Storage::disk('public')->put("/course/banner/" . $fileName, $img);
+                $banner_file = "storage/course/banner/" . $fileName;   // Get path to access image
+            }
+            if ($request->image){
+                $file_name = $request->title;  // File name using user id;
+                $image = $request->file('image');
+                $fileName = $file_name . '.' . $image->getClientOriginalExtension();
+                $img = Image::make($image->getRealPath());
+                $img->stream();
+                Storage::disk('public')->put("/course/image/" . $fileName, $img);
+                $img_file = "storage/course/image/" . $fileName;   // Get path to access image
+            }
+
+            $last_trainer = Trainer::withTrashed()->latest('id')->first();
+            if ($request->photo){
+                $file_name = $last_trainer ? $last_trainer->id + 1 : 1;  // File name using user id;
+                $image = $request->file('photo');
+                $fileName = $file_name . '.' . $image->getClientOriginalExtension();
+                $img = Image::make($image->getRealPath());
+                $img->stream();
+                Storage::disk('public')->put("/trainer/avatars/" . $fileName, $img);
+                $avatar_file = "storage/trainer/avatars/" . $fileName;   // Get path to access image
+            }
+
+            $course = Course::create([
+                'title' => $request->title,
+                'description' => $request->desc,
+                'hrdf_claimable' => $request->claimable,
+                'start' => $request->start,
+                'end' => $request->end,
+                'duration' => $request->duration,
+                'venue' => $request->venue,
+                'online' => $request->online,
+                'is_approved' => $request->approved,
+                'price' => $request->price,
+                'banner' => $banner_file??'',
+                'image' => $img_file??'',
 //            'trainer_id' => $request->trainer,
-        ]);
-
-
-        if ($request->existing == 0) { //Existing Trainer
-            $course->update([
-                'trainer_id' => $request->trainer,
-            ]);
-        }else{
-            $trainer = Trainer::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'avatar' => $avatar_file??'',
-                'experience' =>  $request->experience,
-                'qualification' =>  $request->qualification,
             ]);
 
-            $course->update([
-                'trainer_id' => $trainer->id,
+
+            if ($request->existing == 0) { //Existing Trainer
+                $course->update([
+                    'trainer_id' => $request->trainer,
+                ]);
+            }else{
+                $trainer = Trainer::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'avatar' => $avatar_file??'',
+                    'experience' =>  $request->experience,
+                    'qualification' =>  $request->qualification,
+                ]);
+
+                $course->update([
+                    'trainer_id' => $trainer->id,
             ]);
         }
 
@@ -178,7 +193,13 @@ class CourseController extends Controller
             'end' => 'required',
             'duration' => 'required|integer',
             'online' => 'required',
+            'existing' => 'required',
+            'approved' => 'required',
+            'price' => 'required',
             'banner' => 'nullable|max:8192',
+            'image' => 'nullable|max:8192',
+            'trainer' => 'required',
+
         ]);
 
         if ($request->online == 0){ //offline, venue required
@@ -197,6 +218,15 @@ class CourseController extends Controller
             Storage::disk('public')->put("/course/banner/" . $fileName, $img);
             $banner_file = "storage/course/banner/" . $fileName;   // Get path to access image
         }
+        if ($request->image){
+            $file_name = $request->title;  // File name using user id;
+            $image = $request->file('image');
+            $fileName = $file_name . '.' . $image->getClientOriginalExtension();
+            $img = Image::make($image->getRealPath());
+            $img->stream();
+            Storage::disk('public')->put("/course/image/" . $fileName, $img);
+            $img_file = "storage/course/image/" . $fileName;   // Get path to access image
+        }
 
 
         $course->update([
@@ -208,9 +238,13 @@ class CourseController extends Controller
             'duration' => $request->duration,
             'venue' => $request->venue,
             'online' => $request->online,
+            'is_approved' => $request->approved,
+            'price' => $request->price,
             'banner' => $banner_file??'',
+            'image' => $img_file??'',
             'trainer_id' => $request->trainer,
         ]);
+
 
         $request->session()->flash('success', 'Updated Successfully');
 

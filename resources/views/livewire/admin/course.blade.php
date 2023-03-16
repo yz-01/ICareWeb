@@ -37,6 +37,15 @@
                     @enderror
                 </div>
                 <div class="form-group mb-3">
+                    <label for="price">Course Price<span class="text-danger">*</span></label>
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Price" value="{{ $course?$course->price??'' : (old('price') ?: '') }}">
+                    @error('price')
+                    <div class="invalid-feedback">
+                        <span>{{ $message }}</span>
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
                     <label for="datetime">Start Date Time<span class="text-danger">*</span></label>
                     <input type="datetime-local" class="form-control @error('start') is-invalid @enderror" name="start" placeholder="Start Date Time" value="{{ $course?$course->start??'' : (old('start') ?: '') }}">
                     @error('start')
@@ -58,6 +67,18 @@
                     <label for="duration">Duration in Day(s)<span class="text-danger">*</span></label>
                     <input type="number" class="form-control @error('duration') is-invalid @enderror" name="duration" placeholder="Duration" value="{{ $course?$course->duration??'' : (old('duration') ?: '') }}">
                     @error('duration')
+                    <div class="invalid-feedback">
+                        <span>{{ $message }}</span>
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label for="approved">Approved<span class="text-danger">*</span></label>
+                    <select name="approved" class="form-control @error('approved') is-invalid @enderror" >
+                        <option value="0" {{$course?($course->is_approve == 0 ?'selected':'') : (old('approved') == 0 ? 'selected' : '')}}>Yes</option>
+                        <option value="1" {{$course?($course->is_approve == 1 ?'selected':'') : (old('approved') == 1 ? 'selected' : '')}}>No</option>
+                    </select>
+                    @error('approved')
                     <div class="invalid-feedback">
                         <span>{{ $message }}</span>
                     </div>
@@ -119,12 +140,23 @@
                 </div>
                 @endif
                 <div class="form-group mb-3">
-                    <label>Banner</label>
+                    <label>Course Banner</label>
                     <div class="file-upload" style="border-radius:65px">
                         <input type="file" name="banner" onchange="readURL(this,2);" style="z-index:2;">
                         <div class="camera-bg"  id="camera2"></div>
                         <i id="imageResultIcon2" class="fa fa-plus" style="border-radius:15px;"></i>
                         <img id="imageResult2" src="" class="w-5 h-5" style="display:none;object-fit:contain;" value="{{ old('banner') }}">
+                    </div>
+                    <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
+                    @error('banner') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label>Course Image</label>
+                    <div class="file-upload" style="border-radius:65px">
+                        <input type="file" name="image" onchange="readURL(this,3);" style="z-index:2;">
+                        <div class="camera-bg"  id="camera3"></div>
+                        <i id="imageResultIcon3" class="fa fa-plus" style="border-radius:15px;"></i>
+                        <img id="imageResult3" src="" class="w-5 h-5" style="display:none;object-fit:contain;" value="{{ old('image') }}">
                     </div>
                     <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
                     @error('banner') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror

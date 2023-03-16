@@ -36,6 +36,10 @@
                                     <tr>
                                         <th scope="row">Title :</th>
                                         <td>{{ $course->title }}</td>
+                                        <th scope="row">Price :</th>
+                                        <td>{{ number_format($course->price,2,'.',',') }}</td>
+                                        <th scope="row">Venue / Online :</th>
+                                        <td>{{ $course->online==1 ? 'Online': $course->venue }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Description :</th>
@@ -44,8 +48,8 @@
                                     <tr>
                                         <th scope="row">Hdrf Claimable :</th>
                                         <td>{{ $course->hdrf_claimable == '1' ? 'Yes':'No' }}</td>
-                                        <th scope="row">Venue / Online :</th>
-                                        <td>{{ $course->online==1 ? 'Online': $course->venue }}</td>
+                                        <th scope="row">Status :</th>
+                                        <td>{{ $course->is_approve==1 ? 'Approved': 'Not Approved' }}</td>
                                     </tr>
                                     <tr>
                                         <th scope="row">Start Time :</th>

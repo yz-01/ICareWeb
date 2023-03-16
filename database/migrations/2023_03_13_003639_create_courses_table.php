@@ -24,6 +24,9 @@ class CreateCoursesTable extends Migration
             $table->string('venue')->nullable();
             $table->tinyInteger('online')->comment('1=online')->nullable();
             $table->string('banner')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('is_approve')->comment('0=no,1=yes')->default(0);
+            $table->float('price')->nullable();
             $table->foreignId('trainer_id')->nullable();
             $table->timestamps();
             $table->softDeletes();

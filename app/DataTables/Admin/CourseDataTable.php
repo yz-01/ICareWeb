@@ -28,6 +28,9 @@ class CourseDataTable extends DataTable
             ->addColumn('title', function($item){
                 return $item->title ?: '-';
             })
+            ->addColumn('price', function($item){
+                return number_format($item->price,2,'.',',');
+            })
             ->addColumn('start', function($item){
                 return $item->start ?: '-';
             })
@@ -39,6 +42,9 @@ class CourseDataTable extends DataTable
             })
             ->addColumn('venue', function($item){
                 return $item->venue==0 ? 'Online' : $item->venue;
+            })
+            ->addColumn('approve', function($item){
+                return $item->is_approve==1 ? 'Approved' : 'Not Approved';
             })
             ->addColumn('claimable', function($item){
                 return $item->hrdf_claimable==1 ? 'Yes' : 'No';
@@ -76,6 +82,8 @@ class CourseDataTable extends DataTable
                     d.duration = $("#duration").val();
                     d.venue = $("#venue").val();
                     d.claimable = $("#claimable").val();
+                    d.approve = $("#approve").val();
+                    d.price = $("#price").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
@@ -92,6 +100,8 @@ class CourseDataTable extends DataTable
                         $("#end").val(null);
                         $("#duration").val(null);
                         $("#venue").val(null);
+                        $("#approve").val(null);
+                        $("#price").val(null);
                         $("#claimable").change();
                         $("#admin-courses-table").DataTable().ajax.reload();
                     });
@@ -122,10 +132,12 @@ class CourseDataTable extends DataTable
     {
         return [
             Column::make('title')->title('Course Name')->orderable(false),
+            Column::make('price')->title('Price (RM)')->orderable(false),
             Column::make('start')->title('Start Time')->orderable(false),
             Column::make('end')->title('End Time')->orderable(false),
             Column::make('duration')->title('Duration in Day(s)')->orderable(false),
             Column::make('venue')->title('Venue / Online')->orderable(false),
+            Column::make('approve')->title('Status')->orderable(false),
             Column::make('claimable')->title('Hrdf Claimable')->orderable(false),
             Column::make('action')->className('text-end')->title('')->sorting(false),
         ];

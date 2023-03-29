@@ -48,7 +48,7 @@ class CourseController extends Controller
     {
         $this->validate($request, [
                     'title' => 'required|string|max:255',
-                    'desc' => 'required|max:500',
+                    'desc' => 'required|max:5500',
                     'claimable' => 'required',
                     'start' => 'required',
                     'end' => 'required',
@@ -187,7 +187,7 @@ class CourseController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string|max:255',
-            'desc' => 'required|max:500',
+            'desc' => 'required|max:5500',
             'claimable' => 'required',
             'start' => 'required',
             'end' => 'required',

@@ -12,7 +12,9 @@
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
 
-    <!-- CSS ============================================ -->
+@stack('livewire-style')
+
+<!-- CSS ============================================ -->
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/vendor/slick-theme.css') }}">
@@ -30,13 +32,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- Sweet Alert-->
     <link href="{{ asset('assets/css/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body class="rbt-header-sticky">
     @include('layouts.header')
     @yield('content')
     @include('layouts.footer')
-    
+
     <!-- End Copyright Area  -->
     <div class="rbt-progress-parent">
         <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
@@ -82,6 +85,8 @@
     <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
 
     @include('layouts.sweetalerts')
+    @stack('livewire-script')
+
 </body>
 
 </html>

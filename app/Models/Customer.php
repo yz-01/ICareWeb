@@ -38,6 +38,11 @@ class Customer extends Authenticatable
         ]);
     }
 
+    public function courseCustomer()
+    {
+        return $this->hasOne(courseCustomer::class);
+    }
+
     public function point_transactions()
     {
         return $this->hasMany(PointTransaction::class);
@@ -46,6 +51,16 @@ class Customer extends Authenticatable
     public function company_user()
     {
         return $this->belongsTo(CompanyUser::class);
+    }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    public function paymentItem()
+    {
+        return $this->hasOne(PaymentItem::class);
     }
 
     public function scopeLocalSearch($query)

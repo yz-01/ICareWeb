@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@push('livewire-style')
+    @livewireStyles
+@endpush
 
 @section('content')
 <!-- Start Banner Area -->
@@ -45,381 +48,8 @@
             </div> --}}
         </div>
 
-        <!-- Start Card Area -->
-        <div class="row g-5" style="text-align: center !important">
-            <!-- Start Single Card  -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                <div class="rbt-card variation-01 rbt-hover">
-                    <div class="rbt-card-img">
-                        <a >
-                            <img src="{{ asset('images/oe/www.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
-                            {{-- <div class="rbt-badge-3 bg-white">
-                                <span>-40%</span>
-                                <span>Off</span>
-                            </div> --}}
-                        </a>
-                    </div>
-                    <div class="rbt-card-body">
-                        <div class="rbt-card-top">
-                            <div class="rbt-review">
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (10k+ Reviews)</span>
-                            </div>
-                            <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" ><i
-                                        class="feather-bookmark"></i></a>
-                            </div>
-                        </div>
+        @livewire('welcome-courses',['courses'=>$courses, 'allcourses'=>$allcourses])
 
-                        <h4 class="rbt-card-title"><a >OE for WWW Model</a>
-                        </h4>
-
-                        <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>10 Lessons</li>
-                            <li><i class="feather-users"></i>1000 Students</li>
-                        </ul>
-
-                        <p class="rbt-card-text">设计属于您的企业棋盘 <br />
-                            为企业设计一个与股东，顾客，团队的三赢模式</p>
-                        <div class="rbt-author-meta mb--10">
-                            <div class="rbt-avater">
-                                <a >
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="Datuk Wira (Dr) Calvin Khiu">
-                                </a>
-                            </div>
-                            <div class="rbt-author-info">
-                                By Datuk Wira (Dr) Calvin Khiu
-                            </div>
-                        </div>
-                        <div class="rbt-card-bottom">
-                            <div class="rbt-price">
-                                <span class="current-price">RM4,218.80</span>
-                            </div>
-                            @if (auth()->guard('customer')->check() == true)
-                                <a href="{{ route('customer.cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart
-                                </a>
-                            @else
-                                <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart
-                                </a>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Card  -->
-
-            <!-- Start Single Card  -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
-                <div class="rbt-card variation-01 rbt-hover">
-                    <div class="rbt-card-img">
-                        <a >
-                            <img src="{{ asset('images/oe/siwei.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
-                        </a>
-                    </div>
-                    <div class="rbt-card-body">
-                        <div class="rbt-card-top">
-                            <div class="rbt-review">
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (10k+ Reviews)</span>
-                            </div>
-                            <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" ><i
-                                        class="feather-bookmark"></i></a>
-                            </div>
-                        </div>
-                        <h4 class="rbt-card-title"><a >OE for Entrepreneurship</a>
-                        </h4>
-                        <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>10 Lessons</li>
-                            <li><i class="feather-users"></i>1000 Students</li>
-                        </ul>
-
-                        <p class="rbt-card-text">
-                            思维模式～一堂企业的心灵课程 <br />
-                            三天让您沉淀,领悟企业要的终点
-                        </p>
-                        <br />
-                        <div class="rbt-author-meta mb--10">
-                            <div class="rbt-avater">
-                                <a >
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
-                                </a>
-                            </div>
-                            <div class="rbt-author-info">
-                                By Datuk Wira (Dr) Calvin Khiu
-                            </div>
-                        </div>
-                        <div class="rbt-card-bottom">
-                            <div class="rbt-price">
-                                <span class="current-price">RM7,398.80</span>
-                            </div>
-                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Card  -->
-
-            <!-- Start Single Card  -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                <div class="rbt-card variation-01 rbt-hover">
-                    <div class="rbt-card-img">
-                        <a >
-                            <img src="{{ asset('images/oe/5G.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
-                            {{-- <div class="rbt-badge-3 bg-white">
-                                <span>-10%</span>
-                                <span>Off</span>
-                            </div> --}}
-                        </a>
-                    </div>
-                    <div class="rbt-card-body">
-                        <div class="rbt-card-top">
-                            <div class="rbt-review">
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (10k+ Reviews)</span>
-                            </div>
-                            <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" ><i
-                                        class="feather-bookmark"></i></a>
-                            </div>
-                        </div>
-                        <h4 class="rbt-card-title"><a >OE for Business Model 5G</a>
-                        </h4>
-                        <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>8 Lessons</li>
-                            <li><i class="feather-users"></i>1000+ Students</li>
-                        </ul>
-                        <p class="rbt-card-text">
-                            一堂让您懂得合作、合并、善用股权的力量来杠杆 <br />
-                            企业价值的新商业模式5G课程
-                        </p>
-
-                        <div class="rbt-author-meta mb--20">
-                            <div class="rbt-avater">
-                                <a >
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
-                                </a>
-                            </div>
-                            <div class="rbt-author-info">
-                                By Datuk Wira (Dr) Calvin Khiu
-                            </div>
-                        </div>
-                        <div class="rbt-card-bottom">
-                            <div class="rbt-price">
-                                <span class="current-price">RM17,808.00</span>
-                            </div>
-                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Card  -->
-
-            <!-- Start Single Card  -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
-                <div class="rbt-card variation-01 rbt-hover">
-                    <div class="rbt-card-img">
-                        <a >
-                            <img src="{{ asset('images/oe/top.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
-                            {{-- <div class="rbt-badge-3 bg-white">
-                                <span>-40%</span>
-                                <span>Off</span>
-                            </div> --}}
-                        </a>
-                    </div>
-                    <div class="rbt-card-body">
-                        <div class="rbt-card-top">
-                            <div class="rbt-review">
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (10k+ Reviews)</span>
-                            </div>
-                            <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" ><i
-                                        class="feather-bookmark"></i></a>
-                            </div>
-                        </div>
-
-                        <h4 class="rbt-card-title"><a >OE for Top Management</a>
-                        </h4>
-                        <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>20 Lessons</li>
-                            <li><i class="feather-users"></i>1000+ Students</li>
-                        </ul>
-                        <p class="rbt-card-text">
-                            引爆您团队的激情,了解企业需求,体谅同事 <br />
-                            学会承担责任,适合管理层的培训课程
-                        </p>
-                        <br/>
-                        <div class="rbt-author-meta mb--20">
-                            <div class="rbt-avater">
-                                <a >
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
-                                </a>
-                            </div>
-                            <div class="rbt-author-info">
-                                By Datuk Wira (Dr) Calvin Khiu
-                            </div>
-                        </div>
-
-                        <div class="rbt-card-bottom">
-                            <div class="rbt-price">
-                                <span class="current-price">RM4,218.80</span>
-                            </div>
-                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Card  -->
-
-            <!-- Start Single Card  -->
-            <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="200" data-sal="slide-up" data-sal-duration="800">
-                <div class="rbt-card variation-01 rbt-hover">
-                    <div class="rbt-card-img">
-                        <a >
-                            <img src="{{ asset('images/oe/ceo.jpeg') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
-                            {{-- <div class="rbt-badge-3 bg-white">
-                                <span>-20%</span>
-                                <span>Off</span>
-                            </div> --}}
-                        </a>
-                    </div>
-                    <div class="rbt-card-body">
-                        <div class="rbt-card-top">
-                            <div class="rbt-review">
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (10K+ Reviews)</span>
-                            </div>
-                            <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" ><i
-                                        class="feather-bookmark"></i></a>
-                            </div>
-                        </div>
-                        <h4 class="rbt-card-title"><a >OE for CEO</a>
-                        </h4>
-                        <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>12 Lessons</li>
-                            <li><i class="feather-users"></i>1000+ Students</li>
-                        </ul>
-                        <p class="rbt-card-text">
-                            四天让您成为演说家
-                        </p>
-                        <br/>
-                        <br/>
-                        <div class="rbt-author-meta mb--20">
-                            <div class="rbt-avater">
-                                <a >
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
-                                </a>
-                            </div>
-                            <div class="rbt-author-info">
-                                By Datuk Wira (Dr) Calvin Khiu
-                            </div>
-                        </div>
-                        <div class="rbt-card-bottom">
-                            <div class="rbt-price">
-                                <span class="current-price">RM25,228.00</span>
-                            </div>
-                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Single Card  -->
-
-            <!-- Start Single Card  -->
-            {{-- <div class="col-lg-4 col-md-6 col-sm-12 col-12" data-sal-delay="250" data-sal="slide-up" data-sal-duration="800">
-                <div class="rbt-card variation-01 rbt-hover">
-                    <div class="rbt-card-img">
-                        <a >
-                            <img src="{{ asset('images/oe/mdmt.gif') }}" alt="Card image" style="height: 500px; object-fit:contain; background-color: rgba(164, 162, 162, 0.194)">
-                        </a>
-                    </div>
-                    <div class="rbt-card-body">
-                        <div class="rbt-card-top">
-                            <div class="rbt-review">
-                                <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (10k+ Reviews)</span>
-                            </div>
-                            <div class="rbt-bookmark-btn">
-                                <a class="rbt-round-btn" title="Bookmark" ><i
-                                        class="feather-bookmark"></i></a>
-                            </div>
-                        </div>
-                        <h4 class="rbt-card-title"><a >OE for MDMT</a>
-                        </h4>
-                        <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>8 Lessons</li>
-                            <li><i class="feather-users"></i>1000+ Students</li>
-                        </ul>
-                        <p class="rbt-card-text">Million Dollar Mentor Table</p>
-                        <br/>
-                        <br/>
-                        <div class="rbt-author-meta mb--20">
-                            <div class="rbt-avater">
-                                <a >
-                                    <img src="{{ asset('images/oe/ddck.png') }}" alt="ddck">
-                                </a>
-                            </div>
-                            <div class="rbt-author-info">
-                                By Datuk Wira (Dr) Calvin Khiu
-                            </div>
-                        </div>
-                        <div class="rbt-card-bottom">
-                            <div class="rbt-price">
-                                <span class="current-price">RM31588.00</span>
-                            </div>
-                            <a href="{{ route('cart.index') }}" class="rbt-btn-link left-icon" ><i
-                                    class="feather-shopping-cart"></i> Add To Cart</a>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            <!-- End Single Card  -->
-        </div>
-        <!-- End Card Area -->
     </div>
 </div>
 <!-- End Featured Course Area  -->
@@ -1116,9 +746,9 @@
                             </ul>
                             <h5 style="font-weight: 600">
                                 <a>
-                                    Greetings! We are thrilled to have you visit HRDP. 
+                                    Greetings! We are thrilled to have you visit HRDP.
                                     <br /><br />As a platform dedicated to promoting business growth and professional development, we invite you to join us as either a trainer or a merchant.
-                                    <br /><br />By becoming a part of our community, you will have the opportunity to expand your business and reach new heights in your career. 
+                                    <br /><br />By becoming a part of our community, you will have the opportunity to expand your business and reach new heights in your career.
                                     <br /><br />We look forward to supporting you on this exciting journey.
                                 </a>
                             </h5>
@@ -1142,10 +772,10 @@
                             </ul>
                             <h5 style="font-weight: 600">
                                 <a >
-                                    We are excited to offer our members a unique rewards program! 
-                                    <br /><br />With every purchase of a course or product, you will earn points that can be used as cash towards a variety of perks. 
-                                    <br /><br />Accumulate your points and redeem them for additional courses, products, vouchers, and more. 
-                                    <br /><br />Our reward program is just one more way we show appreciation for your loyalty to our brand. 
+                                    We are excited to offer our members a unique rewards program!
+                                    <br /><br />With every purchase of a course or product, you will earn points that can be used as cash towards a variety of perks.
+                                    <br /><br />Accumulate your points and redeem them for additional courses, products, vouchers, and more.
+                                    <br /><br />Our reward program is just one more way we show appreciation for your loyalty to our brand.
                                     Start earning points today!
                                 </a>
                             </h5>
@@ -1157,7 +787,7 @@
                 </div>
                 <!-- End Single Card  -->
 
-                
+
             </div>
             <!-- End Card Area -->
         </div>
@@ -1243,5 +873,8 @@
         </div>
     </div>
 </div>
+@push('livewire-script')
+    @livewireScripts
+@endpush
 <!-- End Newsletter Area  -->
 @endsection

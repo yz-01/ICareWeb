@@ -17,6 +17,16 @@ class Course extends Model
         return $this->belongsTo(Trainer::class);
     }
 
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    public function courseCustomer()
+    {
+        return $this->hasOne(courseCustomer::class);
+    }
+
     public function scopeLocalSearch($query)
     {
         $query->when(request()->has('title') && filled(request('title')), function ($q) {

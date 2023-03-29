@@ -24,6 +24,7 @@
                     </div>
                     @enderror
                 </div>
+
                 <div class="form-group mb-3">
                     <label for="claimable">Hrdf claimable </label>
                     <select name="claimable" class="form-control @error('claimable') is-invalid @enderror">
@@ -38,7 +39,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="price">Course Price<span class="text-danger">*</span></label>
-                    <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Price" value="{{ $course?$course->price??'' : (old('price') ?: '') }}">
+                    <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="Price" value="{{ $course?$course->price??'' : (old('price') ?: '') }}" min="0.00" step="0.01" >
                     @error('price')
                     <div class="invalid-feedback">
                         <span>{{ $message }}</span>

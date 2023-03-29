@@ -21,7 +21,7 @@
                                 <a href="{{ route('welcome') }}">Home</a>
                             </li>
                             <li class="with-megamenu has-menu-child-item position-static">
-                                <a href="{{ route('welcome','#course') }}">Courses</a>
+                                <a href="{{ route('courselist') }}">Courses</a>
                             </li>
                             <li class="with-megamenu has-menu-child-item position-static">
                                 <a href="{{ route('welcome','#trainer') }}">Trainers</a>
@@ -69,7 +69,7 @@
                                                                 document.getElementById('logout-form').submit();">
                                                     <span>{{ __('Logout') }}</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>
@@ -79,7 +79,7 @@
                                 @csrf
                             </form>
 
-                            
+
                             <li class="access-icon rbt-user-wrapper d-block d-xl-none">
                                 <a class="rbt-round-btn" style="cursor: pointer"><i class="feather-user"></i></a>
                                 <div class="rbt-user-menu-list-wrapper">
@@ -100,7 +100,7 @@
                                                                 document.getElementById('logout-form').submit();">
                                                     <span>{{ __('Logout') }}</span>
                                                 </a>
-                                                
+
                                             </li>
                                         </ul>
                                     </div>

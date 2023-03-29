@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('welcome');
+        $courses = Course::paginate(6);
+        $allcourses = Course::all();
+        return view('welcome',compact('courses','allcourses'));
     }
 
     public function tnc()

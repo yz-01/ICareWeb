@@ -57,8 +57,6 @@ class AdminController extends Controller
         $admin->update([
             'code' => "A0".str_pad($add_admin_code_number, 4, '0', STR_PAD_LEFT),
         ]);
-        // $roles = $request->role;
-        // $admin->assignRole($roles);
 
         if($request->image)
         {

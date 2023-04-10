@@ -20,10 +20,9 @@ Route::group(['namespace' => 'Auth'], function () {
         // Logout
         Route::post('logout', 'LoginController@logout')->name('logout');
     });
-
 });
 
-Route::group(['middleware' => 'auth:admin'], function(){
+Route::group(['middleware' => 'auth:admin'], function () {
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
@@ -32,20 +31,25 @@ Route::group(['middleware' => 'auth:admin'], function(){
     Route::put('admin/updatePassword/{admin}', 'AdminController@updatePassword')->name('admins.updatePassword');
     Route::resource('admins', 'AdminController');
 
-    //Agent
-    Route::put('agent/updateStatus/{agent}', 'AgentController@updateStatus')->name('agents.updateStatus');
-    Route::put('agent/updatePassword/{agent}', 'AgentController@updatePassword')->name('agents.updatePassword');
-    Route::resource('agents', 'AgentController');
+    //Doctor
+    Route::put('doctor/updateStatus/{doctor}', 'DoctorController@updateStatus')->name('doctors.updateStatus');
+    Route::put('doctor/updatePassword/{doctor}', 'DoctorController@updatePassword')->name('doctors.updatePassword');
+    Route::resource('doctors', 'DoctorController');
 
-    //Merchant
-    Route::put('merchant/updateStatus/{merchant}', 'MerchantController@updateStatus')->name('merchants.updateStatus');
-    Route::put('merchant/updatePassword/{merchant}', 'MerchantController@updatePassword')->name('merchants.updatePassword');
-    Route::resource('merchants', 'MerchantController');
+    //Nurse
+    Route::put('nurse/updateStatus/{nurse}', 'NurseController@updateStatus')->name('nurses.updateStatus');
+    Route::put('nurse/updatePassword/{nurse}', 'NurseController@updatePassword')->name('nurses.updatePassword');
+    Route::resource('nurses', 'NurseController');
 
-    //CenterUser
-    Route::put('center_user/updateStatus/{center_user}', 'CenterUserController@updateStatus')->name('center_users.updateStatus');
-    Route::put('center_user/updatePassword/{center_user}', 'CenterUserController@updatePassword')->name('center_users.updatePassword');
-    Route::resource('center_users', 'CenterUserController');
+    //Patient
+    Route::put('patient/updateStatus/{patient}', 'PatientController@updateStatus')->name('patients.updateStatus');
+    Route::put('patient/updatePassword/{patient}', 'PatientController@updatePassword')->name('patients.updatePassword');
+    Route::resource('patients', 'PatientController');
+
+    //Branch
+    Route::put('branch/updateStatus/{branch}', 'BranchController@updateStatus')->name('branches.updateStatus');
+    Route::put('branch/updatePassword/{branch}', 'BranchController@updatePassword')->name('branches.updatePassword');
+    Route::resource('branches', 'BranchController');
 
     //Trainer
     Route::put('trainer/updateStatus/{trainer}', 'TrainerController@updateStatus')->name('trainers.updateStatus');
@@ -64,5 +68,4 @@ Route::group(['middleware' => 'auth:admin'], function(){
 
     //Course
     Route::resource('courses', 'CourseController');
-
 });

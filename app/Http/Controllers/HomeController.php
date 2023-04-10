@@ -13,7 +13,7 @@ class HomeController extends Controller
     {
         $courses = Course::paginate(6);
         $allcourses = Course::all();
-        return view('welcome',compact('courses','allcourses'));
+        return view('admin.auth.login');
     }
 
     public function tnc()

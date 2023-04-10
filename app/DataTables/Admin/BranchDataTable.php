@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Admin;
+use App\Models\Branch;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminDataTable extends DataTable
+class BranchDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -21,51 +21,55 @@ class AdminDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->editColumn('image', function($item) {
-                if($item->image)
-                {
-                    return "<a target='_blank' href='".asset($item->image)."'><img src='".asset($item->image)."' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                }
-                else
-                {
-                    return "<a target='_blank' href='".asset('images/default/profile.png')."'><img src='".asset('images/default/profile.png')."' style='width: 50px; height: 50px' class='rounded-circle'></a>";
+            ->editColumn('image', function ($item) {
+                if ($item->logo) {
+                    return "<a target='_blank' href='" . asset($item->logo) . "'><img src='" . asset($item->logo) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
+                } else {
+                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 }
             })
             ->addColumn('action', function ($item) {
-                return view('admin.admins.action', compact('item'));
+                return view('admin.branches.action', compact('item'));
             })
-            ->addColumn('email', function($item){
+            ->addColumn('email', function ($item) {
                 return $item->email ?: '-';
             })
-            ->addColumn('identity_card', function($item){
-                return $item->identity_card ?: '-';
+            ->addColumn('address', function ($item) {
+                $address = $item->address1 . ', ' . $item->address2;
+                return $address ?: '-';
             })
-            ->addColumn('admin_status', function($item){
+            ->addColumn('city', function ($item) {
+                return $item->city->name ?: '-';
+            })
+            ->addColumn('state', function ($item) {
+                return $item->state->name ?: '-';
+            })
+            ->addColumn('country', function ($item) {
+                return $item->country->name ?: '-';
+            })
+            ->addColumn('branch_status', function ($item) {
                 $action = '<div class="form-check form-switch">';
-                        if($item->status) 
-                        {
-                            $action .= '<input class="form-check-input change-status" type="checkbox" checked data-id="'.$item->id.'" value="'.$item->status.'">';
-                        } 
-                        else 
-                        {
-                            $action .= '<input class="form-check-input change-status" type="checkbox" data-id="'.$item->id.'" value="'.$item->status.'">';
-                        }
+                if ($item->status) {
+                    $action .= '<input class="form-check-input change-status" type="checkbox" checked data-id="' . $item->id . '" value="' . $item->status . '">';
+                } else {
+                    $action .= '<input class="form-check-input change-status" type="checkbox" data-id="' . $item->id . '" value="' . $item->status . '">';
+                }
                 $action .= '</div>';
-                $action .= '<form id="update-admin-status-'.$item->id.'" action="'.route("admin.admins.updateStatus", $item->id).'" class="d-none" method="post">'
-                            .csrf_field().method_field("PUT").
-                           '</form>';
+                $action .= '<form id="update-branch-status-' . $item->id . '" action="' . route("admin.branches.updateStatus", $item->id) . '" class="d-none" method="post">'
+                    . csrf_field() . method_field("PUT") .
+                    '</form>';
                 return $action;
             })
-            ->rawColumns(['action','admin_status', 'image']);
+            ->rawColumns(['action', 'branch_status', 'image', 'country']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Admin\Admin $model
+     * @param \App\Models\Branch $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Admin $model)
+    public function query(Branch $model)
     {
         return $model->localsearch(request());
     }
@@ -78,38 +82,41 @@ class AdminDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admin-admins-table')
+            ->setTableId('admin-branches-table')
             ->columns($this->getColumns())
             ->ajax([
-                'url' => route('admin.admins.index'),
+                'url' => route('admin.branches.index'),
                 'data' => 'function(d) {
-                    d.code = $("#code").val();
                     d.name = $("#name").val();
-                    d.email = $("#email").val();
-                    d.identity_card = $("#identity_card").val();
-                    d.admin_status = $("#admin_status").val();
+                    d.city_id = $("#city_id").val();
+                    d.state_id = $("#state_id").val();
+                    d.country_id = $("#country_id").val();
+                    d.branch_status = $("#branch_status").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
             ->initComplete('function() {
                     $(".datatable-input").on("change",function () {
-                        $("#admin-admins-table").DataTable().ajax.reload();
+                        $("#admin-branches-table").DataTable().ajax.reload();
                     });
                     $("#subBtn").on("click",function () {
-                        $("#admin-admins-table").DataTable().ajax.reload();
+                        $("#admin-branches-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
-                        $("#code").val(null);
                         $("#name").val(null);
-                        $("#email").val(null);
-                        $("#identity_card").val(null);
-                        $("#admin_status").val(null);
-                        $("#admin_status").change();
-                        $("#admin-admins-table").DataTable().ajax.reload();
+                        $("#city_id").val(null);
+                        $("#city_id").change();
+                        $("#state_id").val(null);
+                        $("#state_id").change();
+                        $("#country_id").val(null);
+                        $("#country_id").change();
+                        $("#branch_status").val(null);
+                        $("#branch_status").change();
+                        $("#admin-branches-table").DataTable().ajax.reload();
                     });
-                    $("#admin-admins-table").on("click", ".delFunc", function(e) {
+                    $("#admin-branches-table").on("click", ".delFunc", function(e) {
                         var id = $(this).data("id");
-                        var form = $("#delete-admin-"+id);
+                        var form = $("#delete-branch-"+id);
                         Swal.fire({
                             title: "Are you sure?",
                             //text: "You won\"t be able to revert this!",
@@ -122,10 +129,10 @@ class AdminDataTable extends DataTable
                             }
                         });
                     });
-                    $("#admin-admins-table").on("change", ".change-status", function(e) {
+                    $("#admin-branches-table").on("change", ".change-status", function(e) {
                         var $this = $(this);
                         var id = $(this).data("id");
-                        var form = $("#update-admin-status-"+id);
+                        var form = $("#update-branch-status-"+id);
                         var button_text = $this.val() == 1 ? "Yes, deactivate!" : "Yes, activate!";
                         
                         Swal.fire({
@@ -157,12 +164,13 @@ class AdminDataTable extends DataTable
     {
         return [
             Column::make('image')->title('Image')->orderable(false),
-            Column::make('code')->title('Code')->orderable(false),
-            Column::make('username')->title('Username')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),
-            Column::make('identity_card')->title('Identity Card')->orderable(false),
-            Column::make('admin_status')->title('Status')->orderable(false),
+            Column::make('address')->title('Address')->orderable(false),
+            Column::make('city')->title('City')->orderable(false),
+            Column::make('state')->title('State')->orderable(false),
+            Column::make('country')->title('Country')->orderable(false),
+            Column::make('branch_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];
     }
@@ -174,6 +182,6 @@ class AdminDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Admin_' . date('YmdHis');
+        return 'Admin/Branch' . date('YmdHis');
     }
 }

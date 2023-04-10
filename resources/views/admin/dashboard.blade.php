@@ -7,7 +7,7 @@
             <div>
                 <h4 class="mb-sm-0 font-size-18">Dashboard</h4>
                 <ol class="breadcrumb m-0 mt-3">
-                    <li class="breadcrumb-item active">Welcome to {{ config('app.name') }}</li>
+                    <li class="breadcrumb-item active">Welcome to I Care Management</li>
                 </ol>
             </div>
         </div>

@@ -2,14 +2,14 @@
 
 namespace App\DataTables\Admin;
 
-use App\Models\Admin;
+use App\Models\Nurse;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class AdminDataTable extends DataTable
+class NurseDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -32,7 +32,7 @@ class AdminDataTable extends DataTable
                 }
             })
             ->addColumn('action', function ($item) {
-                return view('admin.admins.action', compact('item'));
+                return view('admin.nurses.action', compact('item'));
             })
             ->addColumn('email', function($item){
                 return $item->email ?: '-';
@@ -40,7 +40,7 @@ class AdminDataTable extends DataTable
             ->addColumn('identity_card', function($item){
                 return $item->identity_card ?: '-';
             })
-            ->addColumn('admin_status', function($item){
+            ->addColumn('nurse_status', function($item){
                 $action = '<div class="form-check form-switch">';
                         if($item->status) 
                         {
@@ -51,21 +51,21 @@ class AdminDataTable extends DataTable
                             $action .= '<input class="form-check-input change-status" type="checkbox" data-id="'.$item->id.'" value="'.$item->status.'">';
                         }
                 $action .= '</div>';
-                $action .= '<form id="update-admin-status-'.$item->id.'" action="'.route("admin.admins.updateStatus", $item->id).'" class="d-none" method="post">'
+                $action .= '<form id="update-nurse-status-'.$item->id.'" action="'.route("admin.nurses.updateStatus", $item->id).'" class="d-none" method="post">'
                             .csrf_field().method_field("PUT").
                            '</form>';
                 return $action;
             })
-            ->rawColumns(['action','admin_status', 'image']);
+            ->rawColumns(['action','nurse_status', 'image']);
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Admin\Admin $model
+     * @param \App\Models\Nurse $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Admin $model)
+    public function query(Nurse $model)
     {
         return $model->localsearch(request());
     }
@@ -78,38 +78,38 @@ class AdminDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admin-admins-table')
+            ->setTableId('admin-nurses-table')
             ->columns($this->getColumns())
             ->ajax([
-                'url' => route('admin.admins.index'),
+                'url' => route('admin.nurses.index'),
                 'data' => 'function(d) {
                     d.code = $("#code").val();
                     d.name = $("#name").val();
                     d.email = $("#email").val();
                     d.identity_card = $("#identity_card").val();
-                    d.admin_status = $("#admin_status").val();
+                    d.nurse_status = $("#nurse_status").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
             ->initComplete('function() {
                     $(".datatable-input").on("change",function () {
-                        $("#admin-admins-table").DataTable().ajax.reload();
+                        $("#admin-nurses-table").DataTable().ajax.reload();
                     });
                     $("#subBtn").on("click",function () {
-                        $("#admin-admins-table").DataTable().ajax.reload();
+                        $("#admin-nurses-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
                         $("#code").val(null);
                         $("#name").val(null);
                         $("#email").val(null);
                         $("#identity_card").val(null);
-                        $("#admin_status").val(null);
-                        $("#admin_status").change();
-                        $("#admin-admins-table").DataTable().ajax.reload();
+                        $("#nurse_status").val(null);
+                        $("#nurse_status").change();
+                        $("#admin-nurses-table").DataTable().ajax.reload();
                     });
-                    $("#admin-admins-table").on("click", ".delFunc", function(e) {
+                    $("#admin-nurses-table").on("click", ".delFunc", function(e) {
                         var id = $(this).data("id");
-                        var form = $("#delete-admin-"+id);
+                        var form = $("#delete-nurse-"+id);
                         Swal.fire({
                             title: "Are you sure?",
                             //text: "You won\"t be able to revert this!",
@@ -122,10 +122,10 @@ class AdminDataTable extends DataTable
                             }
                         });
                     });
-                    $("#admin-admins-table").on("change", ".change-status", function(e) {
+                    $("#admin-nurses-table").on("change", ".change-status", function(e) {
                         var $this = $(this);
                         var id = $(this).data("id");
-                        var form = $("#update-admin-status-"+id);
+                        var form = $("#update-nurse-status-"+id);
                         var button_text = $this.val() == 1 ? "Yes, deactivate!" : "Yes, activate!";
                         
                         Swal.fire({
@@ -162,7 +162,7 @@ class AdminDataTable extends DataTable
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),
             Column::make('identity_card')->title('Identity Card')->orderable(false),
-            Column::make('admin_status')->title('Status')->orderable(false),
+            Column::make('nurse_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];
     }
@@ -174,6 +174,6 @@ class AdminDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin\Admin_' . date('YmdHis');
+        return 'Admin/Nurse' . date('YmdHis');
     }
 }

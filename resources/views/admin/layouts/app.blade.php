@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>I Care Management</title>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('images/icon/icon2.png') }}">
 

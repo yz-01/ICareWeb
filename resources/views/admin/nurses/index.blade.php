@@ -5,14 +5,14 @@
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
             <div>
-                <h4 class="mb-sm-0 font-size-18">Admin</h4>
+                <h4 class="mb-sm-0 font-size-18">Nurse</h4>
                 <ol class="breadcrumb m-0 mt-3">
-                    <li class="breadcrumb-item active">Admin List</li>
+                    <li class="breadcrumb-item active">Nurse List</li>
                 </ol>
             </div>
 
             <div class="page-title-right">
-                <a href="{{ route('admin.admins.create') }}" class="btn btn-primary waves-effect waves-light">Create</a>
+                <a href="{{ route('admin.nurses.create') }}" class="btn btn-primary waves-effect waves-light">Create</a>
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
                         <input type="text" class="form-control datatable-input" id="identity_card" placeholder="Identity Card" data-col-index="2">
                     </div>
                     <div class="px-2 flex-fill">
-                        <select class="form-select select-status datatable-input" id="admin_status">
+                        <select class="form-select select-status datatable-input" id="nurse_status">
                             <option value="">Select Status</option>
                             <option value="1">Active</option>
                             <option value="0">Deactive</option>

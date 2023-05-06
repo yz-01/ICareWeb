@@ -102,7 +102,7 @@ class AnnouncementController extends Controller
     {
         $announcement->delete();
 
-        return redirect()->route('admin.announcements.index')->with('success', 'Agent Deleted Successfully');
+        return redirect()->route('admin.announcements.index')->with('success', 'Announcement Deleted Successfully');
     }
 
     public function updateStatus(Request $request, Announcement $announcement)

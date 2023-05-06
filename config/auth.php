@@ -44,30 +44,6 @@ return [
             'driver' => 'session',
             'provider' => 'admins',
         ],
-        'agent' => [
-            'driver' => 'session',
-            'provider' => 'agents',
-        ],
-        'merchant' => [
-            'driver' => 'session',
-            'provider' => 'merchants',
-        ],
-        'center_user' => [
-            'driver' => 'session',
-            'provider' => 'center_users',
-        ],
-        'trainer' => [
-            'driver' => 'session',
-            'provider' => 'trainers',
-        ],
-        'company_user' => [
-            'driver' => 'session',
-            'provider' => 'company_users',
-        ],
-        'customer' => [
-            'driver' => 'session',
-            'provider' => 'customers',
-        ],
     ],
 
     /*
@@ -96,35 +72,6 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
-        'agents' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Agent::class,
-        ],
-        'merchants' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Merchant::class,
-        ],
-        'center_users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\CenterUser::class,
-        ],
-        'trainers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Trainer::class,
-        ],
-        'company_users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\CompanyUser::class,
-        ],
-        'customers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Customer::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*
@@ -151,42 +98,6 @@ return [
         ],
         'admins' => [
             'provider' => 'admins',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'agents' => [
-            'provider' => 'agents',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'merchants' => [
-            'provider' => 'merchants',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'center_users' => [
-            'provider' => 'center_users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'trainers' => [
-            'provider' => 'trainers',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'company_users' => [
-            'provider' => 'company_users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'customers' => [
-            'provider' => 'customers',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

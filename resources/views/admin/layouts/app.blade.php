@@ -84,7 +84,7 @@
 <script src="{{ asset('assets2/libs/node-waves/waves.min.js') }}"></script>
 <script src="{{ asset('assets2/libs/select2/js/select2.min.js') }}"></script>
 <script src="{{ asset('assets2/libs/jquery-ui-dist/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('assets2/libs/tinymce/tinymce.min.js') }}"></script>
+<script src="{{ asset('assets2/libs/tinymce6/tinymce/tinymce.min.js') }}"></script>
 
 <!-- Required datatable js -->
 <script src="{{ asset('assets2/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>

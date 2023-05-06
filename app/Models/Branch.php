@@ -17,13 +17,6 @@ class Branch extends Authenticatable
 
     protected $guarded = ['id'];
 
-    protected $hidden = ['password', 'remember_token',];
-
-    public function sendPasswordResetNotification($token): void
-    {
-        $this->notify(new ResetPassword($token, 'branch'));
-    }
-
     public function country()
     {
         return $this->belongsTo(Country::class);

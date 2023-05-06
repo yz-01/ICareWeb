@@ -24,7 +24,7 @@ class AdminsTableSeeder extends Seeder
                 'id' => 1,
                 'code' => 'A00001',
                 'username' => 'superadmin',
-                'name' => 'Ocean Labs Admin',
+                'name' => 'I Care Web Admin',
                 'email' => 'superadmin@superadmin.com',
                 'password' => '$2y$10$I98ZKOiKXXMXHsN1IgDttuflLxXRvy9swaoFdsP5XuuxTRThweySu',
                 'status' => 1,

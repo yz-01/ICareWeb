@@ -22,7 +22,7 @@
                 <li class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-user"></i>
-                        <span>User List</span>
+                        <span>User</span>
                     </a>
                     <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
                         <li><a href="{{ route('admin.admins.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Admin List</a></li>
@@ -36,12 +36,62 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
-                        <i class="bx bx-book"></i>
-                        <span>Branch List</span>
+                    <a href="{{ route('admin.announcements.index') }}" class="waves-effect">
+                        <i class="bx bxs-megaphone"></i>
+                        <span>Announcement</span>
                     </a>
                 </li>
-
+                <li class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-active' : '' }}">
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-building-house"></i>
+                        <span>Branch</span>
+                    </a>
+                    <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li><a href="{{ route('admin.branches.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Branch List</a></li>
+                    </ul>
+                    <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-active' : '' }}">
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <span>Accommodation</span>
+                            </a>
+                            <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
+                                <li><a href="{{ route('admin.roomTypes.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'roomTypes' && Request::segment(3) != 'create') ? 'active' : '' }}">Room Type List</a></li>
+                                <li><a href="{{ route('admin.rooms.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'rooms' && Request::segment(3) != 'create') ? 'active' : '' }}">Room List</a></li>
+                                <li><a href="{{ route('admin.wards.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'nurses' && Request::segment(3) != 'create') ? 'active' : '' }}">Ward List</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ route('admin.medicines.index') }}" class="waves-effect">
+                        <i class="bx bx-band-aid"></i>
+                        <span>Medicines</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
+                        <i class="bx bx-plus-medical"></i>
+                        <span>Treament</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
+                        <i class="bx bx-calendar"></i>
+                        <span>Schedule</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
+                        <i class="bx bx-history"></i>
+                        <span>History</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
+                        <i class="bx bx-bar-chart-square"></i>
+                        <span>Report</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

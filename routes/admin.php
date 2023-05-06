@@ -48,8 +48,25 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     //Branch
     Route::put('branch/updateStatus/{branch}', 'BranchController@updateStatus')->name('branches.updateStatus');
-    Route::put('branch/updatePassword/{branch}', 'BranchController@updatePassword')->name('branches.updatePassword');
     Route::resource('branches', 'BranchController');
+
+    //Room Type
+    Route::put('roomType/updateStatus/{roomType}', 'RoomTypeController@updateStatus')->name('roomTypes.updateStatus');
+    Route::resource('roomTypes', 'RoomTypeController');
+
+    //Room
+    Route::put('room/updateStatus/{room}', 'RoomController@updateStatus')->name('rooms.updateStatus');
+    Route::resource('rooms', 'RoomController');
+
+    //Ward
+    Route::put('ward/updateStatus/{ward}', 'WardController@updateStatus')->name('wards.updateStatus');
+    Route::resource('wards', 'WardController');
+
+    //Announcement
+    Route::resource('announcements', 'AnnouncementController');
+
+    //Medicine
+    Route::resource('medicines', 'MedicineController');
 
     //Trainer
     Route::put('trainer/updateStatus/{trainer}', 'TrainerController@updateStatus')->name('trainers.updateStatus');

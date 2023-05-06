@@ -97,7 +97,7 @@
                                 <label for="logo">Logo</label>
                                 <input class="d-none" type="file" name="logo">
                                 <div class="upload overflow-hidden logo">
-                                    <img class="logo-preview" src="{{ asset('/images/icon/logotext_default.png') }}">
+                                    <img class="logo-preview" src="{{ asset('/images/icon/logo.png') }}">
                                 </div>
                                 @error('logo')
                                 <div class="text-danger" style="font-size: 80%;">
@@ -111,7 +111,7 @@
                                 <label for="logo">Logo Small</label>
                                 <input class="d-none" type="file" name="logo_sm">
                                 <div class="upload overflow-hidden logo_sm">
-                                    <img class="logo-sm-preview" src="{{ asset('/images/icon/logodefault.jpg') }}">
+                                    <img class="logo-sm-preview" src="{{ asset('/images/icon/logo.png') }}">
                                 </div>
                                 @error('logo_sm')
                                 <div class="text-danger" style="font-size: 80%;">

@@ -21,6 +21,7 @@ class PatientDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn('DT_RowIndex')
             ->editColumn('image', function($item) {
                 if($item->image)
                 {
@@ -156,6 +157,7 @@ class PatientDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('#')->orderable(false),
             Column::make('image')->title('Image')->orderable(false),
             Column::make('code')->title('Code')->orderable(false),
             Column::make('username')->title('Username')->orderable(false),

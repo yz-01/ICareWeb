@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\Admin\PatientDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Paient;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PatientController extends Controller
 {
@@ -16,33 +19,102 @@ class PatientController extends Controller
         return $dataTable->render('admin.patients.index');
     }
 
-    public function show(Doctor $agent)
+    public function create()
     {
-        return view('admin.agents.show', compact('agent'));
+        return view('admin.patients.create');
     }
 
-    public function edit(Doctor $agent)
+    public function store(Request $request)
     {
-        return view('admin.agents.edit', compact('agent'));
+        $patient_hq = Patient::withTrashed()->latest('id')->first();
+
+        $patient = Patient::create([
+            'username' => $request->username,
+            'name' => $request->name,
+            'code' => $patient_hq->code,
+            'identity_card' => $request->identity_card,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'password' => Hash::make($request->password),
+        ]);
+        $add_doctor_code_number = substr($patient->code,-4) + 1;
+        $patient->update([
+            'code' => "D0".str_pad($add_doctor_code_number, 4, '0', STR_PAD_LEFT),
+        ]);
+
+        if($request->image)
+        {
+            $image = $request->file('image');
+
+            $file_name = Str::random(10);  // File name random;
+            $fileName   = $file_name . '.' . $image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('images', $image, $fileName);
+            $file = "storage/images/" . $fileName;   // Get path to access image
+
+            $patient->update([
+                'image' => $file,
+            ]);
+        }
+        $request->session()->flash('success', 'Created Successfully');
+
+        return redirect()->route('admin.patients.index');
     }
 
-    public function destroy(Doctor $agent)
+    public function show(Patient $patient)
     {
-        $agent->delete();
-
-        return redirect()->route('admin.agents.index')->with('success', 'Agent Deleted Successfully');
+        return view('admin.patients.show', compact('patient'));
     }
 
-    public function updateStatus(Request $request, Doctor $agent)
+    public function edit(Patient $patient)
     {
-        $agent->update(['status'=>!$agent->status]);
+        return view('admin.patients.edit', compact('patient'));
+    }
+
+    public function update(Request $request, Patient $patient)
+    {
+        if($request->image)
+        {
+            $image = $request->file('image');
+
+            $file_name = Str::random(10);  // File name random;
+            $fileName   = $file_name . '.' . $image->getClientOriginalExtension();
+            Storage::disk('public')->putFileAs('images', $image, $fileName);
+            $file = "storage/images/" . $fileName;   // Get path to access image
+
+            $patient->update([
+                'image' => $file,
+            ]);
+        }
+
+        $patient->update([
+            'name' => $request->name,
+            'identity_card' => $request->identity_card,
+            'email' => $request->email,
+            'phone' => $request->phone,
+        ]);
+
+        $request->session()->flash('success', trans('Update Successfully'));
+
+        return redirect()->route('admin.patients.index');
+    }
+
+    public function destroy(Patient $patient)
+    {
+        $patient->delete();
+
+        return redirect()->route('admin.patients.index')->with('success', 'Patient Deleted Successfully');
+    }
+
+    public function updateStatus(Request $request, Patient $patient)
+    {
+        $patient->update(['status'=>!$patient->status]);
         
         $request->session()->flash('success', 'Status Update Successfully');
 
-        return redirect()->route('admin.agents.index');
+        return redirect()->route('admin.patients.index');
     }
 
-    public function updatePassword(Request $request, Doctor $agent)
+    public function updatePassword(Request $request, Patient $patient)
     {
         $request->validate([
             'password' => [
@@ -55,12 +127,12 @@ class PatientController extends Controller
             ],
         ]);
 
-        $agent->update([
+        $patient->update([
             'password' => Hash::make($request->password),
         ]);
 
         $request->session()->flash('success', 'Password updated successfully!');
 
-        return redirect()->route('admin.agents.index');
+        return redirect()->route('admin.patients.index');
     }
 }

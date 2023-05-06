@@ -27,7 +27,7 @@
                         <input type="text" class="form-control datatable-input" id="name" placeholder="Name" data-col-index="2">
                     </div>
                     <div class="px-2 flex-fill">
-                        <select class="form-select select-status datatable-input" id="city_id">
+                        <select class="form-select datatable-input" id="city_id">
                             <option value="">Select City</option>
                             @foreach($city as $cities)
                             <option value="{{ $cities->id }}">{{ $cities->name }}</option>
@@ -35,7 +35,7 @@
                         </select>
                     </div>
                     <div class="px-2 flex-fill">
-                        <select class="form-select select-status datatable-input" id="state_id">
+                        <select class="form-select datatable-input" id="state_id">
                             <option value="">Select State</option>
                             @foreach($state as $states)
                             <option value="{{ $states->id }}">{{ $states->name }}</option>
@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <div class="px-2 flex-fill">
-                        <select class="form-select select-status datatable-input" id="country_id">
+                        <select class="form-select datatable-input" id="country_id">
                             <option value="">Select Country</option>
                             @foreach($country as $counties)
                             <option value="{{ $counties->id }}">{{ $counties->name }}</option>

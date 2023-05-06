@@ -9,7 +9,7 @@
         </div>
         <div class="col-3">
             <a href="{{route('admin.branches.edit',$item->id)}}">
-                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Password Change'>
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Edit'>
                     <i class="fas fa-edit"></i>
                 </button>
             </a>

@@ -21,6 +21,7 @@ class BranchDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
+            ->addIndexColumn('DT_RowIndex')
             ->editColumn('image', function ($item) {
                 if ($item->logo) {
                     return "<a target='_blank' href='" . asset($item->logo) . "'><img src='" . asset($item->logo) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
@@ -163,6 +164,7 @@ class BranchDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('DT_RowIndex')->title('#')->orderable(false),
             Column::make('image')->title('Image')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),

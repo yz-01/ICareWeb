@@ -29,10 +29,6 @@
                         <li><a href="{{ route('admin.doctors.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'doctors' && Request::segment(3) != 'create') ? 'active' : '' }}">Doctor List</a></li>
                         <li><a href="{{ route('admin.nurses.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'nurses' && Request::segment(3) != 'create') ? 'active' : '' }}">Nurse List</a></li>
                         <li><a href="{{ route('admin.patients.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'patients' && Request::segment(3) != 'create') ? 'active' : '' }}">Patient List</a></li>
-                        <!-- <li><a href="{{ route('admin.trainers.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'trainers' && Request::segment(3) != 'create') ? 'active' : '' }}">Trainer List</a></li>
-                        <li><a href="{{ route('admin.company_users.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'company_users' && Request::segment(3) != 'create') ? 'active' : '' }}">Company List</a></li>
-                        <li><a href="{{ route('admin.customers.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'customers' && Request::segment(3) != 'create') ? 'active' : '' }}">Member List</a></li>
-                        <li><a href="{{ route('admin.admins.create') }}">Create Admin</a></li> -->
                     </ul>
                 </li>
                 <li>
@@ -55,7 +51,7 @@
                                 <span>Accommodation</span>
                             </a>
                             <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
-                                <li><a href="{{ route('admin.roomTypes.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'roomTypes' && Request::segment(3) != 'create') ? 'active' : '' }}">Room Type List</a></li>
+                                <li><a href="{{ route('admin.roomtypes.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'roomtypes' && Request::segment(3) != 'create') ? 'active' : '' }}">Room Type List</a></li>
                                 <li><a href="{{ route('admin.rooms.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'rooms' && Request::segment(3) != 'create') ? 'active' : '' }}">Room List</a></li>
                                 <li><a href="{{ route('admin.wards.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'nurses' && Request::segment(3) != 'create') ? 'active' : '' }}">Ward List</a></li>
                             </ul>

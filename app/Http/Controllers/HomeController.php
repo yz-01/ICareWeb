@@ -12,14 +12,4 @@ class HomeController extends Controller
     {
         return view('admin.auth.login');
     }
-
-    public function tnc()
-    {
-        return view('tnc');
-    }
-
-    public function reward_tnc()
-    {
-        return view('reward_tnc');
-    }
 }

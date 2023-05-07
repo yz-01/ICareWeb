@@ -51,8 +51,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('branches', 'BranchController');
 
     //Room Type
-    Route::put('roomType/updateStatus/{roomType}', 'RoomTypeController@updateStatus')->name('roomTypes.updateStatus');
-    Route::resource('roomTypes', 'RoomTypeController');
+    Route::put('roomtype/updateStatus/{roomType}', 'RoomTypeController@updateStatus')->name('roomtypes.updateStatus');
+    Route::resource('roomtypes', 'RoomTypeController');
 
     //Room
     Route::put('room/updateStatus/{room}', 'RoomController@updateStatus')->name('rooms.updateStatus');
@@ -68,21 +68,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     //Medicine
     Route::resource('medicines', 'MedicineController');
 
-    //Trainer
-    Route::put('trainer/updateStatus/{trainer}', 'TrainerController@updateStatus')->name('trainers.updateStatus');
-    Route::put('trainer/updatePassword/{trainer}', 'TrainerController@updatePassword')->name('trainers.updatePassword');
-    Route::resource('trainers', 'TrainerController');
-
-    //CompanyUser
-    Route::put('company_user/updateStatus/{company_user}', 'CompanyUserController@updateStatus')->name('company_users.updateStatus');
-    Route::put('company_user/updatePassword/{company_user}', 'CompanyUserController@updatePassword')->name('company_users.updatePassword');
-    Route::resource('company_users', 'CompanyUserController');
-
-    //Customer
-    Route::put('customer/updateStatus/{customer}', 'CustomerController@updateStatus')->name('customers.updateStatus');
-    Route::put('customer/updatePassword/{customer}', 'CustomerController@updatePassword')->name('customers.updatePassword');
-    Route::resource('customers', 'CustomerController');
-
-    //Course
-    Route::resource('courses', 'CourseController');
+    //Treatment
+    Route::get('treatments/getWardList', 'TreatmentController@getWardList')->name('treatments.getWardList');
+    Route::resource('treatments', 'TreatmentController');
 });

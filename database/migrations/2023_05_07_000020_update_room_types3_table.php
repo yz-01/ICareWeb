@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateRoomTypesTable extends Migration
+class UpdateRoomTypes3Table extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdateRoomTypesTable extends Migration
     public function up()
     {
         Schema::table('room_types', function (Blueprint $table) {
-            $table->string('status')->nullable()->after('image');
+            $table->string('max_number')->nullable()->after('name');
         });
     }
 }

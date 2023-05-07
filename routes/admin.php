@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('rooms', 'RoomController');
 
     //Ward
+    Route::get('wards/getRoomList', 'WardController@getRoomList')->name('wards.getRoomList');
     Route::put('ward/updateStatus/{ward}', 'WardController@updateStatus')->name('wards.updateStatus');
     Route::resource('wards', 'WardController');
 
@@ -69,6 +70,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('medicines', 'MedicineController');
 
     //Treatment
+    Route::get('treatments/deleteDataMedicine', 'TreatmentController@deleteDataMedicine')->name('treatments.deleteDataMedicine');
     Route::get('treatments/getWardList', 'TreatmentController@getWardList')->name('treatments.getWardList');
     Route::resource('treatments', 'TreatmentController');
 });

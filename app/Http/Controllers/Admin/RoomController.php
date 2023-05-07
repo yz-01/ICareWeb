@@ -39,11 +39,15 @@ class RoomController extends Controller
 
     public function store(Request $request)
     {
-        $branch = Room::create([
+        $room_type = RoomType::where('id', $request->room_type_id)->first();
+
+        $room = Room::create([
             'floor' => $request->floor,
             'room_number' => $request->room_number,
             'room_type_id' => $request->room_type_id,
             'branch_id' => $request->branch_id,
+            'max_number' => $room_type->max_number,
+            'available_number' => $room_type->max_number,
         ]);
 
         $request->session()->flash('success', 'Created Successfully');

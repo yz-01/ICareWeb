@@ -21,10 +21,19 @@
     <div class="row">
         <div class="col-12 col-md-12">
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-4">Room Information</h4>
+                            <div class="form-group mb-3">
+                                <label for="city">Branch<span class="text-danger">*</span></label>
+                                <select class="form-select select-city @error('branch_id') is-invalid @enderror" name="branch_id">
+                                    <option value="">-- Please Select --</option>
+                                    @foreach($branch as $branches)
+                                    <option value="{{ $branches->id }}" {{ old('branch_id') == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group mb-3">
                                 <label for="floor">Floor<span class="text-danger">*</span></label>
                                 <input type="number" class="form-control @error('floor') is-invalid @enderror" name="floor" placeholder="Floor" value="{{ old('floor') ?: '' }}">
@@ -39,15 +48,6 @@
                                     <option value="">-- Please Select --</option>
                                     @foreach($room_type as $room_types)
                                     <option value="{{ $room_types->id }}" {{ old('room_type_id') == $room_types->id ? 'selected' : '' }}>{{ $room_types->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="city">Branch<span class="text-danger">*</span></label>
-                                <select class="form-select select-city @error('branch_id') is-invalid @enderror" name="branch_id">
-                                    <option value="">-- Please Select --</option>
-                                    @foreach($branch as $branches)
-                                    <option value="{{ $branches->id }}" {{ old('branch_id') == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

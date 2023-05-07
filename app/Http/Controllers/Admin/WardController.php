@@ -33,7 +33,7 @@ class WardController extends Controller
     {
         $branch = Branch::all();
 
-        $room = Room::all();
+        $room = Room::where('available_number', '!=', 0)->get();
 
         return view('admin.wards.create', compact('branch', 'room'));
     }
@@ -43,8 +43,24 @@ class WardController extends Controller
         $ward = Ward::create([
             'room_id' => $request->room_id,
             'ward_number' => $request->ward_number,
-            'branch_id' => $request->branch_id,
         ]);
+
+        $room = Room::where('id', $request->room_id)->first();
+
+        $ward->update([
+            'branch_id' => $room->branch_id,
+        ]);
+
+        $room->update([
+            'available_number' => $room->available_number - 1,
+        ]);
+        
+        if($room->available_number == 0)
+        {
+            $room->update([
+                'status' => 0,
+            ]);
+        }
 
         $request->session()->flash('success', 'Created Successfully');
 
@@ -92,10 +108,18 @@ class WardController extends Controller
 
     public function updateStatus(Request $request, Room $room)
     {
-        $room->update(['status'=>!$room->status]);
-        
+        $room->update(['status' => !$room->status]);
+
         $request->session()->flash('success', 'Status Update Successfully');
 
         return redirect()->route('admin.rooms.index');
+    }
+
+    //AJAX
+    public function getRoomList(Request $request)
+    {
+        $room = Room::where('branch_id', request()->input('branch_id'))->where('available_number', '!=', 0)->get();
+
+        return response()->json(['room' => $room]);
     }
 }

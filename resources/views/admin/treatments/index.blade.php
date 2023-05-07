@@ -27,19 +27,34 @@
             <div class="card-body">
                 <!--begin: Datatable-->
                 <div class="d-md-flex mb-3 mt-1">
-                    <div class="px-2 flex-fill mt-1">
-                        <select class="form-select datatable-input" id="published_to" data-live-search="true">
-                            <option value="">Select Publish To</option>
-                            <option value="1">All</option>
-                            <option value="2">Doctors</option>
-                            <option value="2">Nurses</option>
-                            <option value="2">Patients</option>
+                    <div class="px-2 flex-fill">
+                        <select class="form-select datatable-input" id="patient_id">
+                            <option value="">Select Patient</option>
+                            @foreach($patient as $patients)
+                            <option value="{{ $patients->id }}">{{ $patients->name }}</option>
+                            @endforeach
                         </select>
                     </div>
-                    <div class="px-2 flex-fill mt-1">
+                    <div class="px-2 flex-fill">
+                        <select class="form-select datatable-input" id="doctor_id">
+                            <option value="">Select Doctor</option>
+                            @foreach($doctor as $doctors)
+                            <option value="{{ $doctors->id }}">{{ $doctors->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="px-2 flex-fill">
+                        <select class="form-select datatable-input" id="nurse_id">
+                            <option value="">Select Nurse</option>
+                            @foreach($nurse as $nurses)
+                            <option value="{{ $nurses->id }}">{{ $nurses->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="px-2 flex-fil">
                         <input type="text" class="form-control datatable-input" id="title" placeholder="Title" data-col-index="2">
                     </div>
-                    <div class="ps-2 mt-1">
+                    <div class="px-2 flex-fil">
                         <button type="button" id="subBtn" class="btn btn-primary btn-primary--icon">
                             <i class="fas fa-search"></i>
                         </button>

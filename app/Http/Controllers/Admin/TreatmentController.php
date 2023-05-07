@@ -7,20 +7,34 @@ use App\Http\Controllers\Controller;
 use App\Models\Announcement;
 use App\Models\Branch;
 use App\Models\Doctor;
+use App\Models\Medicine;
 use App\Models\Nurse;
 use App\Models\Patient;
+use App\Models\SupportDoctor;
+use App\Models\SupportNurse;
+use App\Models\Treatment;
+use App\Models\TreatmentMedicine;
 use App\Models\Ward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Redirect;
 
 class TreatmentController extends Controller
 {
     public function index(TreatmentDataTable $dataTable)
     {
-        return $dataTable->render('admin.treatments.index');
+        $patient = Patient::all();
+
+        $doctor = Doctor::all();
+
+        $nurse = Nurse::all();
+
+        $ward = Ward::all();
+
+        return $dataTable->render('admin.treatments.index', compact('patient', 'doctor', 'nurse', 'ward'));
     }
 
     public function create()
@@ -33,35 +47,69 @@ class TreatmentController extends Controller
 
         $ward = Ward::where('status', 1)->get();
 
-        return view('admin.treatments.create', compact('patient', 'doctor', 'nurse', 'ward'));
+        $medicine = Medicine::where('status', 1)->get();
+
+        return view('admin.treatments.create', compact('patient', 'doctor', 'nurse', 'ward', 'medicine'));
     }
 
     public function store(Request $request)
     {
-        $announcement = Announcement::create([
-            'branch_id' => $request->branch_id,
-            'admin_id' => auth()->id(),
-            'title' => $request->title,
-            'description' => $request->description,
-            'published_to' => $request->published_to,
-            'published_at' => $request->published_at,
+        $patient = Patient::where('id', $request->patient_id)->update([
+            'status' => 0,
         ]);
 
-        if ($request->image) {
-            $image = $request->file('image');
+        $ward = Ward::where('id', $request->ward_id)->update([
+            'status' => 0,
+        ]);
 
-            $file_name = Str::random(10);  // File name random;
-            $fileName   = $file_name . '.' . $image->getClientOriginalExtension();
-            Storage::disk('public')->putFileAs('images', $image, $fileName);
-            $file = "storage/images/" . $fileName;   // Get path to access image
+        $treatment = Treatment::create([
+            'patient_id' => $request->patient_id,
+            'pic_doctor_id' => $request->pic_doctor_id,
+            'pic_nurse_id' => $request->pic_nurse_id,
+            'ward_id' => $request->ward_id,
+            'title' => $request->title,
+            'description' => $request->description,
+        ]);
 
-            $announcement->update([
-                'image' => $file,
+        foreach ($request->support_doctor_id as $id => $support_doctor_ids) {
+            $support_doctor = SupportDoctor::create([
+                'treatment_id' => $treatment->id,
+                'support_doctor_id' => $support_doctor_ids,
             ]);
         }
+
+        foreach ($request->support_nurse_id as $id => $support_nurse_ids) {
+            $support_nurse = SupportNurse::create([
+                'treatment_id' => $treatment->id,
+                'support_nurse_id' => $support_nurse_ids,
+            ]);
+        }
+
+        foreach ($request->medicine_id as $id => $medicine_ids) {
+            $i = 0;
+            $treatment_medicine = TreatmentMedicine::create([
+                'treatment_id' => $treatment->id,
+                'medicine_id' => $medicine_ids,
+                'usage_of_medicine' => $request->number[$i],
+            ]);
+
+            $medicine = Medicine::where('id', $medicine_ids)->first();
+
+            $medicine->update([
+                'number' => $medicine->number - $request->number[$i],
+            ]);
+
+            if ($medicine->number == 0) {
+                $medicine->update([
+                    'status' => 0,
+                ]);
+            }
+            $i++;
+        }
+
         $request->session()->flash('success', 'Created Successfully');
 
-        return redirect()->route('admin.announcements.index');
+        return redirect()->route('admin.treatments.index');
     }
 
     public function show(Announcement $announcement)
@@ -69,11 +117,23 @@ class TreatmentController extends Controller
         return view('admin.announcements.show', compact('announcement'));
     }
 
-    public function edit(Announcement $announcement)
+    public function edit(Treatment $treatment)
     {
-        $branch = Branch::all();
+        $patient = Patient::orWhere('status', 1)->orWhere('id', $treatment->patient_id)->get();
 
-        return view('admin.announcements.edit', compact('announcement', 'branch'));
+        $doctor = Doctor::all();
+
+        $nurse = Nurse::all();
+
+        $ward = Ward::orWhere('status', 1)->orWhere('id', $treatment->ward_id)->where('branch_id', $treatment->patient->branch_id)->get();
+
+        $get_treatment_medicine = TreatmentMedicine::where('treatment_id', $treatment->id)->pluck('medicine_id');
+
+        $medicine = Medicine::where(function ($query) use ($get_treatment_medicine) {
+                $query->orWhere('status', 1)->orWhereIn('id', $get_treatment_medicine);
+            })->where('branch_id', $treatment->patient->branch_id)->get();
+
+        return view('admin.treatments.edit', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine'));
     }
 
     public function update(Request $request, Announcement $announcement)
@@ -148,8 +208,22 @@ class TreatmentController extends Controller
     {
         $branch = Patient::where('id', request()->input('patient_id'))->pluck('branch_id');
 
-        $ward = Ward::where('branch_id', $branch)->where('status', 1)->pluck('ward_number');
+        $ward = Ward::where('branch_id', $branch)->where('status', 1)->get();
 
-        return response()->json(['branch' => $branch, 'ward' => $ward]);
+        foreach ($ward as $wards) {
+            $room = $wards->room;
+            $roomNumber = $room->room_number;
+        }
+
+        $medicine = Medicine::where('branch_id', $branch)->where('status', 1)->get();
+
+        return response()->json(['branch' => $branch, 'ward' => $ward, 'medicine' => $medicine]);
+    }
+
+    public function deleteDataMedicine(Request $request)
+    {
+        $treatment_medicine = TreatmentMedicine::where('id', $request->id)->delete();
+
+        return Redirect::back();
     }
 }

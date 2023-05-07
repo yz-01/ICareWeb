@@ -51,8 +51,8 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('branches', 'BranchController');
 
     //Room Type
-    Route::put('roomtype/updateStatus/{roomType}', 'RoomTypeController@updateStatus')->name('roomtypes.updateStatus');
-    Route::resource('roomtypes', 'RoomTypeController');
+    Route::put('roomType/updateStatus/{roomType}', 'RoomTypeController@updateStatus')->name('roomTypes.updateStatus');
+    Route::resource('roomTypes', 'RoomTypeController');
 
     //Room
     Route::put('room/updateStatus/{room}', 'RoomController@updateStatus')->name('rooms.updateStatus');

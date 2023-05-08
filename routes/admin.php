@@ -70,7 +70,19 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('medicines', 'MedicineController');
 
     //Treatment
+    Route::get('treatments/history', 'TreatmentController@history')->name('treatments.history');
+    Route::get('treatments/historyCreate', 'TreatmentController@historyCreate')->name('treatments.historyCreate');
+    Route::get('treatments/historyEdit', 'TreatmentController@historyEdit')->name('treatments.historyEdit');
+    Route::get('treatments/historyShow', 'TreatmentController@historyShow')->name('treatments.historyShow');
+    Route::get('treatments/historyDelete', 'TreatmentController@historyDelete')->name('treatments.historyDelete');
     Route::get('treatments/deleteDataMedicine', 'TreatmentController@deleteDataMedicine')->name('treatments.deleteDataMedicine');
+    Route::get('treatments/deleteDataDoctor', 'TreatmentController@deleteDataDoctor')->name('treatments.deleteDataDoctor');
+    Route::get('treatments/deleteDataNurse', 'TreatmentController@deleteDataNurse')->name('treatments.deleteDataNurse');
     Route::get('treatments/getWardList', 'TreatmentController@getWardList')->name('treatments.getWardList');
+    Route::post('treatments/historyStore', 'TreatmentController@historyStore')->name('treatments.historyStore');
+    Route::post('treatments/historyUpdate', 'TreatmentController@historyUpdate')->name('treatments.historyUpdate');
     Route::resource('treatments', 'TreatmentController');
+
+    //Schedule
+    Route::resource('schedules', 'ScheduleController');
 });

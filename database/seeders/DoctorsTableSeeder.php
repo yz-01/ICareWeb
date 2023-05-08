@@ -26,7 +26,7 @@ class DoctorsTableSeeder extends Seeder
                 'username' => 'superdoctor',
                 'name' => 'Head of Doctors',
                 'email' => 'teyyoongzhun@gmail.com',
-                'password' => '$2y$10$I98ZKOiKXXMXHsN1IgDttuflLxXRvy9swaoFdsP5XuuxTRThweySu',
+                'password' => '$2y$10$JJLxXs.PhZ7M2thDH8xttOZbK/sOGAZPBTEebCY5KIuPUp0OTd/W6',
                 'status' => 1,
                 'created_at' => '2023-02-28 11:53:33',
                 'updated_at' => '2023-02-28 11:54:32',

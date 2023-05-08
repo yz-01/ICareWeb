@@ -18,4 +18,9 @@ class TreatmentMedicine extends Model
     protected $guarded = ['id'];
     public $table = 'treatment_medicines';
     protected $dates = ['created_at', 'updated_at', 'published_at'];
+
+    public function medicine()
+    {
+        return $this->belongsTo(\App\Models\Medicine::class);
+    }
 }

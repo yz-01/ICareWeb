@@ -71,15 +71,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
+                    <a href="{{ route('admin.schedules.index') }}" class="waves-effect">
                         <i class="bx bx-calendar"></i>
                         <span>Schedule</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
-                        <i class="bx bx-history"></i>
-                        <span>History</span>
                     </a>
                 </li>
                 <li>

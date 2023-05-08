@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\Admin\PatientDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Paient;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -21,7 +22,9 @@ class PatientController extends Controller
 
     public function create()
     {
-        return view('admin.patients.create');
+        $branch = Branch::all();
+
+        return view('admin.patients.create', compact('branch'));
     }
 
     public function store(Request $request)
@@ -36,6 +39,8 @@ class PatientController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
+            'nurse_call_application_id' => $request->nurse_call_application_id,
+            'branch_id' => $request->branch_id,
         ]);
         $add_doctor_code_number = substr($patient->code,-4) + 1;
         $patient->update([
@@ -67,7 +72,9 @@ class PatientController extends Controller
 
     public function edit(Patient $patient)
     {
-        return view('admin.patients.edit', compact('patient'));
+        $branch = Branch::all();
+
+        return view('admin.patients.edit', compact('patient', 'branch'));
     }
 
     public function update(Request $request, Patient $patient)
@@ -91,6 +98,8 @@ class PatientController extends Controller
             'identity_card' => $request->identity_card,
             'email' => $request->email,
             'phone' => $request->phone,
+            'nurse_call_application_id' => $request->nurse_call_application_id,
+            'branch_id' => $request->branch_id,
         ]);
 
         $request->session()->flash('success', trans('Update Successfully'));

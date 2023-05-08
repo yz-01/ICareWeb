@@ -8,6 +8,13 @@
             </a>
         </div>
         <div class="col-3">
+            <a href="{{route('admin.treatments.history',['treatment_id' => $item->id])}}">
+                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='View Treatment Process'>
+                    <i class="fas fa-history"></i>
+                </button>
+            </a>
+        </div>
+        <div class="col-3">
             <a href="{{route('admin.treatments.edit',$item->id)}}">
                 <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Edit'>
                     <i class="fas fa-edit"></i>
@@ -27,7 +34,7 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>

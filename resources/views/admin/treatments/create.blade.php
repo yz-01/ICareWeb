@@ -81,7 +81,7 @@
                     <div id="medicine_information" class="invalid-feedback animated fadeInUp" style="display: block; font-size: 16px;">Please Select Patient ! ! !</div>
 
                     <div class="row" style="display: none;" id="get_medicine">
-                        <div class="col-lg-7">
+                        <div class="col-lg-10">
                             <div class="mb-3">
                                 <label class="form-label">Name<span class="text-danger">*</span></label>
                                 <select class="form-select @error('medicine_id') is-invalid @enderror" name="medicine_id[0]" id="medicine_id">
@@ -90,13 +90,6 @@
                                     <option value="{{ $medicines->id }}">{{ $medicines->name }}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="mb-3">
-                                <label class="form-label">Number of Usage<span class="text-danger">*</span></label>
-                                <input type="number" class="form-control" name="number[0]">
-                                @error('number') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                             </div>
                         </div>
                         <div class="col-lg-2">
@@ -205,7 +198,7 @@
             var patientId = $(this).val();
             var $ward_id = $('#ward_id');
             var $medicine_id = $('#medicine_id');
-            
+
             console.log(patientId);
 
             $.ajax({
@@ -221,7 +214,7 @@
                         var roomNumber = room.room_number;
                         $ward_id.append('<option value="' + ward.id + '">Room Number: ' + roomNumber + ', Ward Number: ' + ward.ward_number + '</option>');
                     });
-                    $medicine_id.html('<option value="" selected>Please Select</option>');
+                    $medicine_id.html('<option value="" selected>-- Please Select --</option>');
                     $.each(response.medicine, function(id, medicine) {
                         $medicine_id.append('<option value="' + medicine.id + '">' + medicine.name + '</option>');
                     });
@@ -353,10 +346,9 @@
     var k = 0;
 
     $("#add_medicine").click(function() {
-        ++k;
         var newRow =
             '<div class="row">' +
-            '<div class="col-lg-7">' +
+            '<div class="col-lg-10">' +
             '<div class="mb-3">' +
             '<select class="form-select" name="medicine_id[' + k + ']" required>' +
             '<option value="">-- Please Select --</option>' +
@@ -366,18 +358,13 @@
             '</select>' +
             '</div>' +
             '</div>' +
-            '<div class="col-lg-3">' +
-            '<div class="mb-3">' +
-            '<input type="number" class="form-control" name="number[' + k + ']">' +
-            '</div>' +
-            '</div>' +
             '<div class="col-lg-2">' +
             '<div class="mb-3">' +
             '<button type="button" class="btn btn-outline-danger remove-input-field-medicine">Delete</button>' +
             '</div>' +
             '</div>' +
             '</div>';
-
+        ++k;
         $("#medicines_table").append(newRow);
     });
 

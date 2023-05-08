@@ -76,6 +76,23 @@
                         </div>
                         @enderror
                     </div>
+                    <div class="form-group mb-3">
+                        <label for="city">Branch<span class="text-danger">*</span></label>
+                        <select class="form-select select-city @error('branch_id') is-invalid @enderror" name="branch_id">
+                            <option value="">-- Please Select --</option>
+                            @foreach($branch as $branches)
+                            <option value="{{ $branches->id }}" {{ $patient->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="city">Nurse Call Application<span class="text-danger">*</span></label>
+                        <select class="form-select select-city @error('nurse_call_application_id') is-invalid @enderror" name="nurse_call_application_id">
+                            <option value="">-- Please Select --</option>
+                            <option value="1" {{ $patient->nurse_call_application_id == 1 ? 'selected' : '' }}>Fingers Recognition Application</option>
+                            <option value="0" {{ $patient->nurse_call_application_id == 0 ? 'selected' : '' }}>Eyes Recognition Application</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="card-footer text-end">
                     <button type="submit" class="btn btn-primary">Update Information</button>

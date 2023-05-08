@@ -37,7 +37,7 @@
 
                             <div class="form-group mb-3">
                                 <label for="phone">Phone<span class="text-danger">*</span></label>
-                                <input type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone" value="{{ old('phone') ?: '' }}">
+                                <input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone" value="{{ old('phone') ?: '' }}">
                             </div>
 
                             <div class="form-group mb-3">
@@ -50,7 +50,7 @@
                                 <div class="col-12 col-md-4">
                                     <div class="form-group mb-3 mb-md-0">
                                         <label for="postal_code">Postal Code<span class="text-danger">*</span></label>
-                                        <input type="tel" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" placeholder="Postal Code" value="{{ old('postal_code') ?: '' }}">
+                                        <input type="number" class="form-control @error('postal_code') is-invalid @enderror" name="postal_code" placeholder="Postal Code" value="{{ old('postal_code') ?: '' }}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-md-4">

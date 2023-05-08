@@ -26,7 +26,7 @@ class BranchDataTable extends DataTable
                 if ($item->logo) {
                     return "<a target='_blank' href='" . asset($item->logo) . "'><img src='" . asset($item->logo) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
+                    return "<a target='_blank' href='" . asset('images/default/logo.png') . "'><img src='" . asset('images/default/logo.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 }
             })
             ->addColumn('action', function ($item) {

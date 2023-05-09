@@ -59,6 +59,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('rooms', 'RoomController');
 
     //Ward
+    Route::get('wards/deleteDataWard', 'WardController@deleteDataWard')->name('wards.deleteDataWard');
     Route::get('wards/getRoomList', 'WardController@getRoomList')->name('wards.getRoomList');
     Route::put('ward/updateStatus/{ward}', 'WardController@updateStatus')->name('wards.updateStatus');
     Route::resource('wards', 'WardController');

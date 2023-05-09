@@ -1,5 +1,20 @@
 <div>
     <div class="row">
+        @if($item->status == 1)
+        <div class="col-3">
+            <a href="{{route('admin.wards.create', ['room_id' => $item->id])}}">
+                <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Add Wards'>
+                    <i class="fas fa-bed"></i>
+                </button>
+            </a>
+        </div>
+        @else
+        <div class="col-3">
+            <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Add Wards' disabled>
+                <i class="fas fa-bed"></i>
+            </button>
+        </div>
+        @endif
         <div class="col-3">
             <a href="{{route('admin.rooms.show',$item->id)}}">
                 <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='View'>
@@ -9,7 +24,7 @@
         </div>
         <div class="col-3">
             <a href="{{route('admin.rooms.edit',$item->id)}}">
-                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Password Change'>
+                <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Edit'>
                     <i class="fas fa-edit"></i>
                 </button>
             </a>
@@ -27,7 +42,7 @@
 </div>
 
 <script>
-    $(function () {
+    $(function() {
         $('[data-toggle="tooltip"]').tooltip()
     })
 </script>

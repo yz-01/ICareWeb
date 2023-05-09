@@ -29,11 +29,13 @@ class WardController extends Controller
         return $dataTable->render('admin.wards.index', compact('branch', 'room'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $branch = Branch::all();
+        $get_room_id = Room::where('id', $request->room_id)->first();
 
-        $room = Room::where('available_number', '!=', 0)->get();
+        $branch = Branch::where('id', $get_room_id->branch_id)->get();
+
+        $room = Room::where('id', $request->room_id)->get();
 
         return view('admin.wards.create', compact('branch', 'room'));
     }
@@ -64,7 +66,7 @@ class WardController extends Controller
 
         $request->session()->flash('success', 'Created Successfully');
 
-        return redirect()->route('admin.wards.index');
+        return redirect()->route('admin.rooms.index');
     }
 
     public function show(Room $room)
@@ -76,13 +78,13 @@ class WardController extends Controller
         return view('admin.rooms.show', compact('branch', 'room_type', 'room'));
     }
 
-    public function edit(Room $room)
+    public function edit(Ward $ward)
     {
         $branch = Branch::all();
 
-        $room_type = RoomType::all();
+        $room = Room::where()->where('available_number', '!=', 0)->get();
 
-        return view('admin.rooms.edit', compact('branch', 'room_type', 'room'));
+        return view('admin.wards.edit', compact('branch', 'room', 'ward'));
     }
 
     public function update(Request $request, Room $room)
@@ -99,11 +101,11 @@ class WardController extends Controller
         return redirect()->route('admin.rooms.index');
     }
 
-    public function destroy(Room $room)
+    public function destroy(Ward $ward)
     {
-        $room->delete();
+        $ward->delete();
 
-        return redirect()->route('admin.rooms.index')->with('success', 'Room Deleted Successfully');
+        return redirect()->route('admin.rooms.index')->with('success', 'Ward Deleted Successfully');
     }
 
     public function updateStatus(Request $request, Room $room)
@@ -121,5 +123,25 @@ class WardController extends Controller
         $room = Room::where('branch_id', request()->input('branch_id'))->where('available_number', '!=', 0)->get();
 
         return response()->json(['room' => $room]);
+    }
+
+    public function deleteDataWard(Request $request)
+    {
+        $ward = Ward::where('id', request()->input('id'))->delete();
+
+        $room = Room::where('id', request()->input('room_id'))->first();
+
+        $room->update([
+            'available_number' => $room->available_number + 1,
+        ]);
+
+        if($room->available_number != 0)
+        {
+            $room->update([
+                'status' => 1,
+            ]);
+        }
+
+        return redirect()->route('admin.rooms.index')->with('success', 'Ward Deleted Successfully');
     }
 }

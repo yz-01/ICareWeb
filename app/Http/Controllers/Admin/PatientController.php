@@ -44,7 +44,7 @@ class PatientController extends Controller
         ]);
         $add_doctor_code_number = substr($patient->code,-4) + 1;
         $patient->update([
-            'code' => "D0".str_pad($add_doctor_code_number, 4, '0', STR_PAD_LEFT),
+            'code' => "P0".str_pad($add_doctor_code_number, 4, '0', STR_PAD_LEFT),
         ]);
 
         if($request->image)

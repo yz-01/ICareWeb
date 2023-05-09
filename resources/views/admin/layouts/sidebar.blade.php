@@ -53,7 +53,6 @@
                             <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
                                 <li><a href="{{ route('admin.roomTypes.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'roomTypes' && Request::segment(3) != 'create') ? 'active' : '' }}">Room Type List</a></li>
                                 <li><a href="{{ route('admin.rooms.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'rooms' && Request::segment(3) != 'create') ? 'active' : '' }}">Room List</a></li>
-                                <li><a href="{{ route('admin.wards.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'nurses' && Request::segment(3) != 'create') ? 'active' : '' }}">Ward List</a></li>
                             </ul>
                         </li>
                     </ul>

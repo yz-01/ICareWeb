@@ -72,26 +72,35 @@ class TreatmentController extends Controller
             'description' => $request->description,
         ]);
 
-        foreach ($request->support_doctor_id as $id => $support_doctor_ids) {
-            $support_doctor = SupportDoctor::create([
-                'treatment_id' => $treatment->id,
-                'support_doctor_id' => $support_doctor_ids,
-            ]);
+        if($request->support_doctor_id)
+        {
+            foreach ($request->support_doctor_id as $id => $support_doctor_ids) {
+                $support_doctor = SupportDoctor::create([
+                    'treatment_id' => $treatment->id,
+                    'support_doctor_id' => $support_doctor_ids,
+                ]);
+            }
         }
 
-        foreach ($request->support_nurse_id as $id => $support_nurse_ids) {
-            $support_nurse = SupportNurse::create([
-                'treatment_id' => $treatment->id,
-                'support_nurse_id' => $support_nurse_ids,
-            ]);
+        if($request->support_nurse_id)
+        {
+            foreach ($request->support_nurse_id as $id => $support_nurse_ids) {
+                $support_nurse = SupportNurse::create([
+                    'treatment_id' => $treatment->id,
+                    'support_nurse_id' => $support_nurse_ids,
+                ]);
+            }
         }
 
-        foreach ($request->medicine_id as $id => $medicine_ids) {
-            $treatment_medicine = TreatmentMedicine::create([
-                'treatment_id' => $treatment->id,
-                'medicine_id' => $medicine_ids,
-                'usage_of_medicine' => 0,
-            ]);
+        if($request->medicine_id)
+        {
+            foreach ($request->medicine_id as $id => $medicine_ids) {
+                $treatment_medicine = TreatmentMedicine::create([
+                    'treatment_id' => $treatment->id,
+                    'medicine_id' => $medicine_ids,
+                    'usage_of_medicine' => 0,
+                ]);
+            }
         }
 
         $request->session()->flash('success', 'Created Successfully');
@@ -419,7 +428,7 @@ class TreatmentController extends Controller
     {
         $branch = Patient::where('id', request()->input('patient_id'))->pluck('branch_id');
 
-        $ward = Ward::where('branch_id', $branch)->where('status', 1)->get();
+        $ward = Ward::where('branch_id', $branch)->where('status', 1)->orderBy('room_id')->get();
 
         foreach ($ward as $wards) {
             $room = $wards->room;

@@ -11,6 +11,7 @@ use App\Models\Doctor;
 use App\Models\Room;
 use App\Models\RoomType;
 use App\Models\State;
+use App\Models\Ward;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -61,7 +62,9 @@ class RoomController extends Controller
 
         $room_type = RoomType::all();
 
-        return view('admin.rooms.show', compact('branch', 'room_type', 'room'));
+        $ward = Ward::where('room_id', $room->id)->get();
+
+        return view('admin.rooms.show', compact('branch', 'room_type', 'room', 'ward'));
     }
 
     public function edit(Room $room)

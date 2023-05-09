@@ -45,11 +45,9 @@
                                     <img id="imageResult1" src="{{ asset($medicine->image) }}" class="w-100 h-100" style="object-fit: contain !important;" />
                                     @else
                                     <i class="fa fa-plus" id="imageResultIcon1" style="border-radius:5px;"></i>
+                                    <img id="imageResult1" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
                                     @endif
                                 </div>
-                                @error('image') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div>
-                                @enderror
-                                {{-- <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label> --}}
                             </div>
                         </div>
 
@@ -115,7 +113,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-lg-12 d-flex flex-row-reverse">
-                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            <button type="submit" class="btn btn-primary w-md">Update</button>
                         </div>
                     </div>
                 </div>
@@ -127,18 +125,18 @@
 </form>
 @endsection
 
-@push('scripts')
+@push('script')
 <script>
     function readURL(input, id) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
             reader.onload = function(e) {
-                $('#imageResultIcon' + id).hide();
-                $('#imageResult' + id)
+                $('#imageResultIcon1').hide();
+                $('#imageResult1')
                     .attr('src', e.target.result);
-                $('#imageResult' + id).show();
-                $('#camera' + id).show();
+                $('#imageResult1').show();
+                $('#camera1').show();
             };
             reader.readAsDataURL(input.files[0]);
         }

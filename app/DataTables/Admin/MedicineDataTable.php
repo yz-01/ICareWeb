@@ -20,7 +20,7 @@ class MedicineDataTable extends DataTable
             ->eloquent($query)
             ->addIndexColumn('DT_RowIndex')
             ->editColumn('image', function ($item) {
-                if ($item->logo) {
+                if ($item->image) {
                     return "<a target='_blank' href='" . asset($item->image) . "'><img src='" . asset($item->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 } else {
                     return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";

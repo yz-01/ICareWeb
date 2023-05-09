@@ -25,7 +25,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-4">Ward Information</h4>
-                            <div class="form-group mb-3">
+                            <div class="form-group mb-3" hidden>
                                 <label for="city">Branch<span class="text-danger">*</span></label>
                                 <select class="form-select select-city @error('branch_id') is-invalid @enderror" name="branch_id">
                                     <option value="">-- Please Select --</option>
@@ -33,15 +33,17 @@
                                     <option value="{{ $branches->id }}" {{ old('branch_id') == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
                                     @endforeach
                                 </select>
+                                <input type="number" name="branch_id" value="{{ $branches->id }}" hidden>
                             </div>
-                            <div class="form-group mb-3" style="display: none;" id="get_room">
+                            <div class="form-group mb-3" hidden>
                                 <label for="city">Room<span class="text-danger">*</span></label>
                                 <select class="form-select select-city @error('room_id') is-invalid @enderror" name="room_id" id="room_id">
                                     <option value="">-- Please Select --</option>
                                     @foreach($room as $rooms)
-                                    <option value="{{ $rooms->id }}" {{ old('room_id') == $rooms->id ? 'selected' : '' }}>{{ $rooms->room_number }}</option>
+                                    <option value="{{ $rooms->id }}" {{ old('room_id') == $rooms->id ? 'selected' : '' }}>Floor: {{ $rooms->floor }}, Room Number: {{ $rooms->room_number }}</option>
                                     @endforeach
                                 </select>
+                                <input type="number" name="room_id" value="{{ $rooms->id }}" hidden>
                             </div>
                             <div class="form-group mb-3">
                                 <label for="ward_number">Ward Number<span class="text-danger">*</span></label>

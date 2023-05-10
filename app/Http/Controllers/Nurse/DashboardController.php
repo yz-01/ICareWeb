@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Nurse;
 
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        return view('doctor.dashboard');
     }
 
     public function python()

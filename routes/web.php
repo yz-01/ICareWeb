@@ -20,17 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'HomeController@index')->name('welcome');
-Route::get('tnc', 'HomeController@tnc')->name('tnc');
-Route::get('reward_tnc', 'HomeController@reward_tnc')->name('reward_tnc');
 Route::resource('home', 'HomeController');
-
-Route::resource('profile', 'ProfileController');
-Route::resource('cart', 'CartController');
-Route::get('addtocart/{course}', 'CartController@addtoCart')->name('addtocart');
-Route::get('course/{course}', 'CourseController@show')->name('course');
-Route::get('course-list/', 'CourseController@courselist')->name('courselist');
-Route::get('course-list/{trainer}', 'CourseController@courselistTrainer')->name('courselistTrainer');
-Route::get('checkoutform', 'CartController@checkoutform')->name('checkoutform');
-Route::post('checkout', 'CartController@checkout')->name('checkout');
-Route::get('cart-del/{cart}', 'CartController@delete')->name('cartDelete');
 

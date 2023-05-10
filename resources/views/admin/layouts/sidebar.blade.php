@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.branches.index') }}" class="waves-effect">
+                    <a href="{{ route('admin.python') }}" class="waves-effect">
                         <i class="bx bx-bar-chart-square"></i>
                         <span>Report</span>
                     </a>

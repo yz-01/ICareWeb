@@ -1,4 +1,4 @@
-@extends('doctor.auth.layouts.app')
+@extends('nurse.auth.layouts.app')
 @push('style')
 <style>
     .password-eye:hover {
@@ -42,9 +42,9 @@
                 <div class="rbt-contact-form contact-form-style-1 max-width-auto">
                     <div class="text-center">
                         <img src="{{ asset('images/icon/logo.png') }}" alt="" style="width: 200px">
-                        <h6 class="pt-4">Doctor Login</h6>
+                        <h6 class="pt-4">Nurse Login</h6>
                     </div>
-                    <form class="max-width-auto" action="{{ route('doctor.login') }}" method="POST" enctype="multipart/form-data">
+                    <form class="max-width-auto" action="{{ route('nurse.login') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
@@ -81,8 +81,8 @@
                                     </label>
                                 </div>
                                 <div class="ms-auto">
-                                    @if (Route::has('doctor.password.request'))
-                                    <a class="btn" href="{{ route('doctor.password.request') }}" style="font-size: 15px; color: var(--body-color)">
+                                    @if (Route::has('nurse.password.request'))
+                                    <a class="btn" href="{{ route('nurse.password.request') }}" style="font-size: 15px; color: var(--body-color)">
                                         <i class="fas fa-lock"></i> {{ __('Forgot Your Password?') }}
                                     </a>
                                     @endif

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Nurse;
 
-use App\DataTables\Doctor\TreatmentDataTable;
+use App\DataTables\Nurse\TreatmentDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Announcement;
 use App\Models\Branch;
@@ -35,22 +35,22 @@ class TreatmentController extends Controller
 
         $ward = Ward::all();
 
-        return $dataTable->render('doctor.treatments.index', compact('patient', 'doctor', 'nurse', 'ward'));
+        return $dataTable->render('nurse.treatments.index', compact('patient', 'doctor', 'nurse', 'ward'));
     }
 
     public function create()
     {
-        $patient = Patient::where('status', 1)->get();
+        $patient = Patient::where('branch_id', auth()->user()->branch_id)->where('in_treatment', 0)->get();
 
-        $doctor = Doctor::all();
+        $doctor = Doctor::where('branch_id', auth()->user()->branch_id)->get();
 
-        $nurse = Nurse::all();
+        $nurse = Nurse::where('branch_id', auth()->user()->branch_id)->get();
 
         $ward = Ward::where('status', 1)->get();
 
         $medicine = Medicine::where('status', 1)->get();
 
-        return view('doctor.treatments.create', compact('patient', 'doctor', 'nurse', 'ward', 'medicine'));
+        return view('nurse.treatments.create', compact('patient', 'doctor', 'nurse', 'ward', 'medicine'));
     }
 
     public function store(Request $request)
@@ -105,7 +105,7 @@ class TreatmentController extends Controller
 
         $request->session()->flash('success', 'Created Successfully');
 
-        return redirect()->route('doctor.treatments.index');
+        return redirect()->route('nurse.treatments.index');
     }
 
     public function show(Treatment $treatment)
@@ -132,20 +132,20 @@ class TreatmentController extends Controller
             $query->orWhere('status', 1)->orWhereIn('id', $get_treatment_medicine);
         })->where('branch_id', $treatment->patient->branch_id)->get();
 
-        return view('doctor.treatments.show', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
+        return view('nurse.treatments.show', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
     }
 
     public function edit(Treatment $treatment)
     {
         $patient = Patient::orWhere('status', 1)->orWhere('id', $treatment->patient_id)->get();
 
-        $doctor = Doctor::all();
+        $doctor = Doctor::where('branch_id', auth()->user()->branch_id)->get();
 
         $support_doctor = SupportDoctor::where('treatment_id', $treatment->id)->get();
 
         $number_support_doctor = $support_doctor->count();
 
-        $nurse = Nurse::all();
+        $nurse = Nurse::where('branch_id', auth()->user()->branch_id)->get();
 
         $support_nurse = SupportNurse::where('treatment_id', $treatment->id)->get();
 
@@ -159,7 +159,7 @@ class TreatmentController extends Controller
             $query->orWhere('status', 1)->orWhereIn('id', $get_treatment_medicine);
         })->where('branch_id', $treatment->patient->branch_id)->get();
 
-        return view('doctor.treatments.edit', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
+        return view('nurse.treatments.edit', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
     }
 
     public function update(Request $request, Treatment $treatment)
@@ -232,7 +232,7 @@ class TreatmentController extends Controller
 
         $request->session()->flash('success', trans('Update Successfully'));
 
-        return redirect()->route('doctor.treatments.index');
+        return redirect()->route('nurse.treatments.index');
     }
 
     public function destroy(Treatment $treatment)
@@ -245,7 +245,7 @@ class TreatmentController extends Controller
 
         $treatment->delete();
 
-        return redirect()->route('doctor.treatments.index')->with('success', 'Announcement Deleted Successfully');
+        return redirect()->route('nurse.treatments.index')->with('success', 'Announcement Deleted Successfully');
     }
 
     //Treatment History
@@ -257,7 +257,7 @@ class TreatmentController extends Controller
 
         $i = 1;
 
-        return view('doctor.treatments.history', compact('treatment', 'history', 'i'));
+        return view('nurse.treatments.history', compact('treatment', 'history', 'i'));
     }
 
     public function historyCreate(Request $request)
@@ -268,7 +268,7 @@ class TreatmentController extends Controller
 
         $medicine = Medicine::where('status', 1)->get();
 
-        return view('doctor.treatments.historyCreate', compact('treatment', 'treatment_medicine', 'medicine'));
+        return view('nurse.treatments.historyCreate', compact('treatment', 'treatment_medicine', 'medicine'));
     }
 
     public function historyStore(Request $request)
@@ -327,7 +327,7 @@ class TreatmentController extends Controller
 
         $i = 1;
 
-        return view('doctor.treatments.history', compact('treatment', 'history', 'i'));
+        return view('nurse.treatments.history', compact('treatment', 'history', 'i'));
     }
 
     public function historyEdit(Request $request)
@@ -340,7 +340,7 @@ class TreatmentController extends Controller
 
         $history = History::where('id', $request->history_id)->first();
 
-        return view('doctor.treatments.historyEdit', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
+        return view('nurse.treatments.historyEdit', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
     }
 
     public function historyUpdate(Request $request)
@@ -400,7 +400,7 @@ class TreatmentController extends Controller
 
         $i = 1;
 
-        return view('doctor.treatments.history', compact('treatment', 'history', 'i'));
+        return view('nurse.treatments.history', compact('treatment', 'history', 'i'));
     }
 
     public function historyShow(Request $request)
@@ -413,7 +413,7 @@ class TreatmentController extends Controller
 
         $history = History::where('id', $request->history_id)->first();
 
-        return view('doctor.treatments.historyShow', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
+        return view('nurse.treatments.historyShow', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
     }
 
     public function historyDelete(Request $request)

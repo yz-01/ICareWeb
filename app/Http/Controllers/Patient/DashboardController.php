@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('doctor.dashboard');
+        return view('patient.dashboard');
     }
 
     public function python()

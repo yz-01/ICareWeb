@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Doctor;
+namespace App\DataTables\Patient;
 
 use App\Models\SupportDoctor;
 use App\Models\SupportNurse;
@@ -30,7 +30,7 @@ class TreatmentDataTable extends DataTable
                 }
             })
             ->addColumn('action', function ($item) {
-                return view('doctor.treatments.action', compact('item'));
+                return view('patient.treatments.action', compact('item'));
             })
             ->addColumn('patient', function ($item) {
                 return $item->patient->name ?: '-';
@@ -69,18 +69,16 @@ class TreatmentDataTable extends DataTable
 
     public function query(Treatment $model)
     {
-        $treatment = SupportDoctor::where('support_doctor_id', auth()->id())->pluck('treatment_id');
-
-        return $model->localsearch(request())->orWhere('pic_doctor_id', auth()->id())->orWhereIn('id', $treatment);
+        return $model->localsearch(request())->where('patient_id', auth()->id());
     }
 
     public function html()
     {
         return $this->builder()
-                    ->setTableId('doctor-treatment-table')
+                    ->setTableId('patient-treatment-table')
                     ->columns($this->getColumns())
                     ->ajax([
-                        'url' => route('doctor.treatments.index'),
+                        'url' => route('patient.treatments.index'),
                         'data' => 'function(d) {
                             d.patient_id = $("#patient_id").val();
                             d.doctor_id = $("#doctor_id").val();
@@ -91,10 +89,10 @@ class TreatmentDataTable extends DataTable
                     ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
                     ->initComplete('function() {
                             $(".datatable-input").on("change",function () {
-                                $("#doctor-treatment-table").DataTable().ajax.reload();
+                                $("#patient-treatment-table").DataTable().ajax.reload();
                             });
                             $("#subBtn").on("click",function () {
-                                $("#doctor-treatment-table").DataTable().ajax.reload();
+                                $("#patient-treatment-table").DataTable().ajax.reload();
                             });
                             $("#clearBtn").on("click",function () {
                                 $("#patient_id").val(null);
@@ -104,9 +102,9 @@ class TreatmentDataTable extends DataTable
                                 $("#nurse_id").val(null);
                                 $("#nurse_id").change();
                                 $("#title").val(null);
-                                $("#doctor-treatment-table").DataTable().ajax.reload();
+                                $("#patient-treatment-table").DataTable().ajax.reload();
                             });
-                            $("#doctor-treatment-table").on("click", ".delFunc", function(e) {
+                            $("#patient-treatment-table").on("click", ".delFunc", function(e) {
                                 var del_id = ".destroy_" + $(this).attr("data-id");
                                 event.preventDefault();
                                 Swal.fire({
@@ -125,7 +123,7 @@ class TreatmentDataTable extends DataTable
                                     }
                                 });
                             });
-                            $("#doctor-treatment-table").on("click", ".resFunc", function(e) {
+                            $("#patient-treatment-table").on("click", ".resFunc", function(e) {
                                 var del_id = ".restore_" + $(this).attr("data-id");
                                 var id = $(this);
                                 Swal.fire({
@@ -161,6 +159,6 @@ class TreatmentDataTable extends DataTable
 
     protected function filename()
     {
-        return 'Doctor\Treatment_' . date('YmdHis');
+        return 'Patient\Treatment_' . date('YmdHis');
     }
 }

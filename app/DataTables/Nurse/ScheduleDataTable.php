@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin;
+namespace App\DataTables\Nurse;
 
 use App\Models\Room;
 use App\Models\Schedule;
@@ -37,7 +37,7 @@ class ScheduleDataTable extends DataTable
                 }
             })
             ->addColumn('action', function ($item) {
-                return view('admin.schedules.action', compact('item'));
+                return view('nurse.schedules.action', compact('item'));
             })
             ->addColumn('name', function ($item) {
                 if($item->doctor_id)
@@ -50,7 +50,22 @@ class ScheduleDataTable extends DataTable
                 }
                 
             })
-            ->rawColumns(['action', 'name', 'image']);
+            ->addColumn('shift', function ($item) {
+                if($item->shift == 1)
+                {
+                    return 'Morning Shift (8AM - 4PM)' ?: '-';
+                }
+                elseif($item->shift == 2)
+                {
+                    return 'Afternoon Shift (4PM - 12AM)' ?: '-';
+                }
+                elseif($item->shift == 3)
+                {
+                    return 'Night Shift (12AM - 8AM)' ?: '-';
+                }
+                
+            })
+            ->rawColumns(['action', 'name', 'image', 'shift']);
     }
 
     /**
@@ -61,7 +76,7 @@ class ScheduleDataTable extends DataTable
      */
     public function query(Schedule $model)
     {
-        return $model->localsearch(request());
+        return $model->localsearch(request())->where('nurse_id', auth()->id());
     }
 
     /**
@@ -72,10 +87,10 @@ class ScheduleDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admin-schedules-table')
+            ->setTableId('nurse-schedules-table')
             ->columns($this->getColumns())
             ->ajax([
-                'url' => route('admin.schedules.index'),
+                'url' => route('nurse.schedules.index'),
                 'data' => 'function(d) {
                     d.doctor_id = $("#doctor_id").val();
                     d.nurse_id = $("#nurse_id").val();
@@ -85,10 +100,10 @@ class ScheduleDataTable extends DataTable
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
             ->initComplete('function() {
                     $(".datatable-input").on("change",function () {
-                        $("#admin-schedules-table").DataTable().ajax.reload();
+                        $("#nurse-schedules-table").DataTable().ajax.reload();
                     });
                     $("#subBtn").on("click",function () {
-                        $("#admin-schedules-table").DataTable().ajax.reload();
+                        $("#nurse-schedules-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
                         $("#date").val(null);
@@ -96,9 +111,9 @@ class ScheduleDataTable extends DataTable
                         $("#doctor_id").change();
                         $("#nurse_id").val(null);
                         $("#nurse_id").change();
-                        $("#admin-schedules-table").DataTable().ajax.reload();
+                        $("#nurse-schedules-table").DataTable().ajax.reload();
                     });
-                    $("#admin-schedules-table").on("click", ".delFunc", function(e) {
+                    $("#nurse-schedules-table").on("click", ".delFunc", function(e) {
                         var id = $(this).data("id");
                         var form = $("#delete-schedule-"+id);
                         Swal.fire({
@@ -113,7 +128,7 @@ class ScheduleDataTable extends DataTable
                             }
                         });
                     });
-                    $("#admin-schedules-table").on("change", ".change-status", function(e) {
+                    $("#nurse-schedules-table").on("change", ".change-status", function(e) {
                         var $this = $(this);
                         var id = $(this).data("id");
                         var form = $("#update-room-status-"+id);
@@ -151,8 +166,7 @@ class ScheduleDataTable extends DataTable
             Column::make('image')->title('Image')->orderable(false),
             Column::make('name')->title('name')->orderable(false),
             Column::make('date')->title('Date')->orderable(false),
-            Column::make('time_in')->title('Time In')->orderable(false),
-            Column::make('time_out')->title('Time Out')->orderable(false),
+            Column::make('shift')->title('Shift')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];
     }
@@ -164,6 +178,6 @@ class ScheduleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/Schedule' . date('YmdHis');
+        return 'Nurse/Schedule' . date('YmdHis');
     }
 }

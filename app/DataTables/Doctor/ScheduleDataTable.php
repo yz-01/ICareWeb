@@ -61,7 +61,7 @@ class ScheduleDataTable extends DataTable
      */
     public function query(Schedule $model)
     {
-        return $model->localsearch(request());
+        return $model->localsearch(request())->where('doctor', auth()->id());
     }
 
     /**

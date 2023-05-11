@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Nurse;
 
-use App\DataTables\Admin\ScheduleDataTable;
+use App\DataTables\Nurse\ScheduleDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\City;

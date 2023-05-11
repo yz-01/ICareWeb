@@ -43,8 +43,7 @@ class ScheduleController extends Controller
     {
         $schedule = Schedule::create([
             'date' => $request->date,
-            'time_in' => $request->time_in,
-            'time_out' => $request->time_out,
+            'shift' => $request->shift,
         ]);
 
         if($request->doctor_id)
@@ -88,8 +87,7 @@ class ScheduleController extends Controller
     {
         $schedule->update([
             'date' => $request->date,
-            'time_in' => $request->time_in,
-            'time_out' => $request->time_out,
+            'shift' => $request->shift,
         ]);
 
         $request->session()->flash('success', trans('Update Successfully'));

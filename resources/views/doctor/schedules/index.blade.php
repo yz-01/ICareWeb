@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('doctor.layouts.app')
 
 @section('content')
 <div class="row">
@@ -12,7 +12,7 @@
             </div>
 
             <div class="page-title-right">
-                <a href="{{ route('admin.schedules.create') }}" class="btn btn-primary waves-effect waves-light">Create</a>
+                <a href="{{ route('doctor.schedules.create') }}" class="btn btn-primary waves-effect waves-light">Create</a>
             </div>
         </div>
     </div>

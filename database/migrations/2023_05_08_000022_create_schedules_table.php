@@ -18,8 +18,7 @@ class CreateSchedulesTable extends Migration
             $table->foreignId('doctor_id')->nullable()->constrained('doctors');
             $table->foreignId('nurse_id')->nullable()->constrained('nurses');
             $table->date('date')->nullable();
-            $table->time('time_in')->nullable();
-            $table->time('time_out')->nullable();
+            $table->string('shift')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -46,9 +46,9 @@ class TreatmentController extends Controller
 
         $nurse = Nurse::where('branch_id', auth()->user()->branch_id)->get();
 
-        $ward = Ward::where('status', 1)->get();
+        $ward = Ward::where('is_available', 1)->get();
 
-        $medicine = Medicine::where('status', 1)->get();
+        $medicine = Medicine::where('in_stock', 1)->get();
 
         return view('nurse.treatments.create', compact('patient', 'doctor', 'nurse', 'ward', 'medicine'));
     }
@@ -56,11 +56,11 @@ class TreatmentController extends Controller
     public function store(Request $request)
     {
         $patient = Patient::where('id', $request->patient_id)->update([
-            'status' => 0,
+            'in_treatment' => 1,
         ]);
 
         $ward = Ward::where('id', $request->ward_id)->update([
-            'status' => 0,
+            'is_available' => 0,
         ]);
 
         $treatment = Treatment::create([
@@ -173,11 +173,11 @@ class TreatmentController extends Controller
         ]);
 
         $last_time_ward_id = Ward::where('id', $request->last_time_ward_id)->update([
-            'status' => 1,
+            'is_available' => 1,
         ]);
 
         $ward = Ward::where('id', $request->ward_id)->update([
-            'status' => 0,
+            'is_available' => 0,
         ]);
 
         SupportDoctor::where('treatment_id', $treatment->id)->delete();
@@ -253,7 +253,7 @@ class TreatmentController extends Controller
     {
         $treatment = $request->treatment_id;
 
-        $history = History::where('treatment_id', $request->treatment_id)->where('status', 1)->get();
+        $history = History::where('treatment_id', $request->treatment_id)->get();
 
         $i = 1;
 
@@ -266,7 +266,7 @@ class TreatmentController extends Controller
 
         $treatment_medicine = TreatmentMedicine::where('treatment_id', $request->treatment_id)->get();
 
-        $medicine = Medicine::where('status', 1)->get();
+        $medicine = Medicine::where('in_stock', 1)->get();
 
         return view('nurse.treatments.historyCreate', compact('treatment', 'treatment_medicine', 'medicine'));
     }
@@ -316,7 +316,7 @@ class TreatmentController extends Controller
             if($medicine->number == 0)
             {
                 $medicine->update([
-                    'status' => 0,
+                    'in_stock' => 0,
                 ]);
             }
         }
@@ -336,7 +336,7 @@ class TreatmentController extends Controller
 
         $treatment_medicine = TreatmentMedicine::where('treatment_id', $request->treatment_id)->get();
 
-        $medicine = Medicine::where('status', 1)->get();
+        $medicine = Medicine::where('in_stock', 1)->get();
 
         $history = History::where('id', $request->history_id)->first();
 
@@ -389,7 +389,7 @@ class TreatmentController extends Controller
             if($medicine->number == 0)
             {
                 $medicine->update([
-                    'status' => 0,
+                    'in_stock' => 0,
                 ]);
             }
         }
@@ -409,7 +409,7 @@ class TreatmentController extends Controller
 
         $treatment_medicine = TreatmentMedicine::where('treatment_id', $request->treatment_id)->get();
 
-        $medicine = Medicine::where('status', 1)->get();
+        $medicine = Medicine::all();
 
         $history = History::where('id', $request->history_id)->first();
 
@@ -428,14 +428,14 @@ class TreatmentController extends Controller
     {
         $branch = Patient::where('id', request()->input('patient_id'))->pluck('branch_id');
 
-        $ward = Ward::where('branch_id', $branch)->where('status', 1)->orderBy('room_id')->get();
+        $ward = Ward::where('branch_id', $branch)->where('is_available', 1)->orderBy('room_id')->get();
 
         foreach ($ward as $wards) {
             $room = $wards->room;
             $roomNumber = $room->room_number;
         }
 
-        $medicine = Medicine::where('branch_id', $branch)->where('status', 1)->get();
+        $medicine = Medicine::where('branch_id', $branch)->where('in_stock', 1)->get();
 
         return response()->json(['branch' => $branch, 'ward' => $ward, 'medicine' => $medicine]);
     }
@@ -453,7 +453,7 @@ class TreatmentController extends Controller
         if($medicine->number > 0)
         {
             $medicine->update([
-                'status' => 1,
+                'in_stock' => 1,
             ]);
         }
 

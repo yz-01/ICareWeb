@@ -50,6 +50,21 @@ class ScheduleDataTable extends DataTable
                 }
                 
             })
+            ->addColumn('shift', function ($item) {
+                if($item->shift == 1)
+                {
+                    return 'Morning Shift (8AM - 4PM)' ?: '-';
+                }
+                elseif($item->shift == 2)
+                {
+                    return 'Afternoon Shift (4PM - 12AM)' ?: '-';
+                }
+                elseif($item->shift == 3)
+                {
+                    return 'Night Shift (12AM - 8AM)' ?: '-';
+                }
+                
+            })
             ->rawColumns(['action', 'name', 'image']);
     }
 
@@ -151,8 +166,7 @@ class ScheduleDataTable extends DataTable
             Column::make('image')->title('Image')->orderable(false),
             Column::make('name')->title('name')->orderable(false),
             Column::make('date')->title('Date')->orderable(false),
-            Column::make('time_in')->title('Time In')->orderable(false),
-            Column::make('time_out')->title('Time Out')->orderable(false),
+            Column::make('shift')->title('Shift')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];
     }

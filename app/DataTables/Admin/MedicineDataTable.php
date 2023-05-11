@@ -32,7 +32,22 @@ class MedicineDataTable extends DataTable
             ->addColumn('branch', function ($item) {
                 return $item->branch->name;
             })
-            ->rawColumns(['branch', 'action', 'image']);
+            ->addColumn('stock', function ($item) {
+                if($item->number < 10)
+                {
+                    return $item->number . ' (Low Stock)';
+                }
+                elseif($item->number == 0)
+                {
+                    return $item->number . ' (Out of Stock)';
+                }
+                else
+                {
+                    return $item->number;
+                }
+                
+            })
+            ->rawColumns(['branch', 'action', 'image', 'stock']);
     }
 
     public function query(Medicine $model)
@@ -117,6 +132,7 @@ class MedicineDataTable extends DataTable
             Column::make('branch')->title('Branch')->orderable(false),
             Column::make('code')->title('Code')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
+            Column::make('stock')->title('Stock')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];
     }

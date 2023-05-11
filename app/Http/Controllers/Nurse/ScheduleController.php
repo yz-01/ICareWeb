@@ -27,7 +27,7 @@ class ScheduleController extends Controller
 
         $nurse = Nurse::all();
 
-        return $dataTable->render('admin.schedules.index', compact('doctor', 'nurse'));
+        return $dataTable->render('nurse.schedules.index', compact('doctor', 'nurse'));
     }
 
     public function create()
@@ -36,15 +36,14 @@ class ScheduleController extends Controller
 
         $nurse = Nurse::all();
 
-        return view('admin.schedules.create', compact('doctor', 'nurse'));
+        return view('nurse.schedules.create', compact('doctor', 'nurse'));
     }
 
     public function store(Request $request)
     {
         $schedule = Schedule::create([
             'date' => $request->date,
-            'time_in' => $request->time_in,
-            'time_out' => $request->time_out,
+            'shift' => $request->shift,
         ]);
 
         if($request->doctor_id)
@@ -63,7 +62,7 @@ class ScheduleController extends Controller
 
         $request->session()->flash('success', 'Created Successfully');
 
-        return redirect()->route('admin.schedules.index');
+        return redirect()->route('nurse.schedules.index');
     }
 
     public function show(Room $room)
@@ -72,7 +71,7 @@ class ScheduleController extends Controller
 
         $room_type = RoomType::all();
 
-        return view('admin.schedules.show', compact('branch', 'room_type', 'room'));
+        return view('nurse.schedules.show', compact('branch', 'room_type', 'room'));
     }
 
     public function edit(Schedule $schedule)
@@ -81,26 +80,25 @@ class ScheduleController extends Controller
 
         $nurse = Nurse::all();
 
-        return view('admin.schedules.edit', compact('schedule', 'doctor', 'nurse'));
+        return view('nurse.schedules.edit', compact('schedule', 'doctor', 'nurse'));
     }
 
     public function update(Request $request, Schedule $schedule)
     {
         $schedule->update([
             'date' => $request->date,
-            'time_in' => $request->time_in,
-            'time_out' => $request->time_out,
+            'shift' => $request->shift,
         ]);
 
         $request->session()->flash('success', trans('Update Successfully'));
 
-        return redirect()->route('admin.schedules.index');
+        return redirect()->route('nurse.schedules.index');
     }
 
     public function destroy(Schedule $schedule)
     {
         $schedule->delete();
 
-        return redirect()->route('admin.schedules.index')->with('success', 'Schedule Deleted Successfully');
+        return redirect()->route('nurse.schedules.index')->with('success', 'Schedule Deleted Successfully');
     }
 }

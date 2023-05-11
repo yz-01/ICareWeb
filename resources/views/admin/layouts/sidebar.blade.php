@@ -25,7 +25,9 @@
                         <span>User</span>
                     </a>
                     <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
+                        @if(auth()->user()->id == 1)
                         <li><a href="{{ route('admin.admins.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Admin List</a></li>
+                        @endif
                         <li><a href="{{ route('admin.doctors.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'doctors' && Request::segment(3) != 'create') ? 'active' : '' }}">Doctor List</a></li>
                         <li><a href="{{ route('admin.nurses.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'nurses' && Request::segment(3) != 'create') ? 'active' : '' }}">Nurse List</a></li>
                         <li><a href="{{ route('admin.patients.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'patients' && Request::segment(3) != 'create') ? 'active' : '' }}">Patient List</a></li>

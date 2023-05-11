@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('nurse.layouts.app')
 
 @section('content')
 <div class="row">
@@ -8,7 +8,7 @@
                 <h4 class="mb-sm-0 font-size-18">Room - {{ $room->room_number }}</h4>
                 <ol class="breadcrumb m-0 mt-3">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('admin.rooms.index') }}">Room List</a>
+                        <a href="{{ route('nurse.rooms.index') }}">Room List</a>
                     </li>
                     <li class="breadcrumb-item active">Room List</li>
                 </ol>

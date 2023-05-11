@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('doctor.layouts.app')
 
 @section('content')
 <div class="row">
@@ -8,7 +8,7 @@
                 <h4 class="mb-sm-0 font-size-18">Schedule Edit</h4>
                 <ol class="breadcrumb m-0 mt-3">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('admin.schedules.index') }}">Schedule List</a>
+                        <a href="{{ route('doctor.schedules.index') }}">Schedule List</a>
                     </li>
                     <li class="breadcrumb-item active">Schedule Edit</li>
                 </ol>
@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-<form action="{{ route('admin.schedules.update', $schedule->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('doctor.schedules.update', $schedule->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="row">

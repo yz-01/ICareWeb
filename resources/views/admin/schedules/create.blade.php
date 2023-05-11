@@ -53,13 +53,14 @@
                                 <label for="date">Date<span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="date" value="{{ old('date') ?: '' }}">
                             </div>
-                            <div class="form-group mb-3" id="group_time_in" style="display: none;">
-                                <label for="time_in">Time In<span class="text-danger">*</span></label>
-                                <input type="time" class="form-control @error('time_in') is-invalid @enderror" name="time_in" placeholder="time_in" value="{{ old('time_in') ?: '' }}">
-                            </div>
-                            <div class="form-group mb-3" id="group_time_out" style="display: none;">
-                                <label for="time_out">Time Out<span class="text-danger">*</span></label>
-                                <input type="time" class="form-control @error('time_out') is-invalid @enderror" name="time_out" placeholder="time_out" value="{{ old('time_out') ?: '' }}">
+                            <div class="form-group mb-3" id="group_shift" style="display: none;">
+                                <label for="city">Shift<span class="text-danger">*</span></label>
+                                <select class="form-select select-city @error('shift') is-invalid @enderror" name="shift" id="shift">
+                                    <option value="">-- Please Select --</option>
+                                    <option value="1" {{ old('shift') ? 'selected' : '' }}>Morning Shift (8AM - 4PM)</option>
+                                    <option value="2" {{ old('shift') ? 'selected' : '' }}>Afternoon Shift (4PM - 12AM)</option>
+                                    <option value="3" {{ old('shift') ? 'selected' : '' }}>Night Shift (12AM - 8AM)</option>
+                                </select>
                             </div>
                         </div>
                         <div class="card-footer text-end">
@@ -80,16 +81,14 @@
         $('#group_doctor').show(0);
         $('#group_nurse').hide();
         $('#group_date').show(0);
-        $('#group_time_in').show(0);
-        $('#group_time_out').show(0);
+        $('#group_shift').show(0);
     });
 
     $("#selected_nurse").click(function() {
         $('#group_nurse').show(0);
         $('#group_doctor').hide();
         $('#group_date').show(0);
-        $('#group_time_in').show(0);
-        $('#group_time_out').show(0);
+        $('#group_shift').show(0);
     });
 </script>
 @endpush

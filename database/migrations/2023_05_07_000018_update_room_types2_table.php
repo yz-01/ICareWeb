@@ -14,7 +14,7 @@ class UpdateRoomTypes2Table extends Migration
     public function up()
     {
         Schema::table('room_types', function (Blueprint $table) {
-            $table->string('status')->nullable()->after('image');
+            $table->string('status')->nullable()->default(1)->after('image');
         });
     }
 }

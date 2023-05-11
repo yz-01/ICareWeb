@@ -120,4 +120,52 @@ class RoomController extends Controller
 
         return redirect()->route('admin.rooms.index');
     }
+
+    public function roomTypeCreate()
+    {
+        return view('admin.rooms.roomTypeCreate');
+    }
+
+    public function roomTypeStore(Request $request)
+    {
+        $room_type = RoomType::create([
+            'name' => $request->name,
+            'max_number' => $request->max_number,
+        ]);
+
+        return redirect()->route('admin.roomTypes.index');
+    }
+
+    public function roomTypeEdit(Request $request)
+    {
+        $room_type = RoomType::where('id', $request->id)->first();
+
+        return view('admin.rooms.roomTypeEdit', compact('room_type'));
+    }
+
+    public function roomTypeUpdate(Request $request)
+    {
+        $room_type = RoomType::where('id', $request->id)->first();
+
+        $room_type->update([
+            'name' => $request->name,
+            'max_number' => $request->max_number,
+        ]);
+
+        return redirect()->route('admin.roomTypes.index');
+    }
+
+    public function roomTypeShow(Request $request)
+    {
+        $room_type = RoomType::where('id', $request->id)->first();
+
+        return view('admin.rooms.roomTypeShow', compact('room_type'));
+    }
+
+    public function roomTypeDelete(Request $request)
+    {
+        $room_type = RoomType::where('id', $request->id)->delete();
+
+        return redirect()->route('admin.roomTypes.index');
+    }
 }

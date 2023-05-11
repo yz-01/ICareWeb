@@ -56,6 +56,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource('roomTypes', 'RoomTypeController');
 
     //Room
+    Route::get('rooms/roomTypeCreate', 'RoomController@roomTypeCreate')->name('rooms.roomTypeCreate');
+    Route::post('rooms/roomTypeStore', 'RoomController@roomTypeStore')->name('rooms.roomTypeStore');
+    Route::get('rooms/roomTypeEdit', 'RoomController@roomTypeEdit')->name('rooms.roomTypeEdit');
+    Route::put('rooms/roomTypeUpdate', 'RoomController@roomTypeUpdate')->name('rooms.roomTypeUpdate');
+    Route::get('rooms/roomTypeShow', 'RoomController@roomTypeShow')->name('rooms.roomTypeShow');
+    Route::get('rooms/roomTypeDelete', 'RoomController@roomTypeDelete')->name('rooms.roomTypeDelete');
     Route::put('room/updateStatus/{room}', 'RoomController@updateStatus')->name('rooms.updateStatus');
     Route::resource('rooms', 'RoomController');
 

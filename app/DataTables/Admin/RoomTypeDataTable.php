@@ -78,7 +78,7 @@ class RoomTypeDataTable extends DataTable
                         $("#admin-roomTypes-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
-                        $("#nam").val(null);
+                        $("#name").val(null);
                         $("#roomType_status").val(null);
                         $("#roomType_status").change();
                         $("#admin-roomTypes-table").DataTable().ajax.reload();
@@ -134,7 +134,6 @@ class RoomTypeDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
-            Column::make('roomType_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];
     }

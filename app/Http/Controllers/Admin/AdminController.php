@@ -6,6 +6,7 @@ use App\DataTables\Admin\AdminDataTable;
 use App\Facade\UploadImage;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Branch;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -14,12 +15,16 @@ class AdminController extends Controller
 {
     public function index(AdminDataTable $dataTable)
     {
-        return $dataTable->render('admin.admins.index');
+        $branch = Branch::all();
+
+        return $dataTable->render('admin.admins.index', compact('branch'));
     }
 
     public function create()
     {
-        return view('admin.admins.create');
+        $branch = Branch::all();
+
+        return view('admin.admins.create', compact('branch'));
     }
 
     public function store(Request $request)
@@ -45,6 +50,7 @@ class AdminController extends Controller
         $admin_hq = Admin::withTrashed()->latest('id')->first();
 
         $admin = Admin::create([
+            'branch_id' => $request->branch_id,
             'username' => $request->username,
             'name' => $request->name,
             'code' => $admin_hq->code,
@@ -72,12 +78,16 @@ class AdminController extends Controller
 
     public function show(Admin $admin)
     {
-        return view('admin.admins.show', compact('admin'));
+        $branch = Branch::all();
+
+        return view('admin.admins.show', compact('admin', 'branch'));
     }
 
     public function edit(Admin $admin)
     {
-        return view('admin.admins.edit', compact('admin'));
+        $branch = Branch::all();
+
+        return view('admin.admins.edit', compact('admin', 'branch'));
     }
 
     public function update(Request $request, Admin $admin)
@@ -96,6 +106,7 @@ class AdminController extends Controller
         }
 
         $admin->update([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'identity_card' => $request->identity_card,
             'email' => $request->email,

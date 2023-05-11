@@ -30,15 +30,24 @@
                             <input type="file" name="image" onchange="readURL(this,1);" style="z-index: 2;" class="">
                             <div class="camera-bg"></div>
                             @if ($admin->image == null)
-                                <img id="imageResult1" src="{{ asset('images/default/profile.png') }}" class="w-100 h-100" style="object-fit: cover !important;"/>
+                            <img id="imageResult1" src="{{ asset('images/default/profile.png') }}" class="w-100 h-100" style="object-fit: cover !important;" />
                             @else
-                                <img id="imageResult1" src="{{ asset($admin->image) }}" class="w-100 h-100" style="object-fit:contain;">
+                            <img id="imageResult1" src="{{ asset($admin->image) }}" class="w-100 h-100" style="object-fit:contain;">
                             @endif
                         </div>
-                        @error('image') <div id="val-username-error"
-                            class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div>
+                        @error('image') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div>
                         @enderror
                         <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Branch</label>
+                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
+                            <option selected="" value="">Select Branch</option>
+                            @foreach($branch as $branches)
+                            <option value="{{ $branches->id }}" {{ $admin->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('branch_id') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="name">Name<span class="text-danger">*</span></label>
@@ -93,11 +102,11 @@
                         <div class="card-body">
                             <h4 class="card-title mb-4">Admin Account Password Change</h4>
                             <div class="card mb-2">
-                                <div class="card-body py-2"  style="background-color: rgba(128, 128, 128, 0.116); ">
+                                <div class="card-body py-2" style="background-color: rgba(128, 128, 128, 0.116); ">
                                     <span class="text-danger" style="line-height: 25px;">
-                                        ***Password should be alphanumeric   <br />
-                                        ***Password must be at least 8 characters  <br />
-                                        ***Password must include Uppercase & Lowercase   <br />
+                                        ***Password should be alphanumeric <br />
+                                        ***Password must be at least 8 characters <br />
+                                        ***Password must include Uppercase & Lowercase <br />
                                         ***Password must contain a special character (@, $, !, &, etc)
                                     </span>
                                 </div>
@@ -119,7 +128,7 @@
                                 <div class="input-group auth-pass-inputgroup">
                                     <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
                                     <button class="btn btn-light " type="button" id="password_confirmation-addon"><i class="mdi mdi-eye-outline"></i></button>
-                                </div>  
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer text-end">
@@ -134,39 +143,41 @@
 @endsection
 
 @push('script')
-    <script>
-        // $(".select-role").select2({
-        //     placeholder: "Select a role",
-        //     minimumResultsForSearch: Infinity
-        // });
-        function readURL(input, id) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+<script>
+    // $(".select-role").select2({
+    //     placeholder: "Select a role",
+    //     minimumResultsForSearch: Infinity
+    // });
+    function readURL(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#imageResultIcon'+id).hide();
-                    $('#imageResult'+id)
-                        .attr('src', e.target.result);
-                    $('#imageResult'+id).show();
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
+            reader.onload = function(e) {
+                $('#imageResultIcon' + id).hide();
+                $('#imageResult' + id)
+                    .attr('src', e.target.result);
+                $('#imageResult' + id).show();
+            };
+            reader.readAsDataURL(input.files[0]);
         }
-        function myFunction() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+    }
+
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
-        function myFunction2() {
-            var x = document.getElementById("password-confirm");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+    }
+
+    function myFunction2() {
+        var x = document.getElementById("password-confirm");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
-    </script>
+    }
+</script>
 @endpush

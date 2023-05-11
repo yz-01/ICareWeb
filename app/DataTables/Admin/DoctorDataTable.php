@@ -32,6 +32,9 @@ class DoctorDataTable extends DataTable
                     return "<a target='_blank' href='".asset('images/default/profile.png')."'><img src='".asset('images/default/profile.png')."' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 }
             })
+            ->addColumn('branch', function($item){
+                return $item->branch->name ?: '-';
+            })
             ->addColumn('action', function ($item) {
                 return view('admin.doctors.action', compact('item'));
             })
@@ -57,7 +60,7 @@ class DoctorDataTable extends DataTable
                            '</form>';
                 return $action;
             })
-            ->rawColumns(['action','doctor_status', 'image']);
+            ->rawColumns(['action','doctor_status', 'image', 'branch']);
     }
 
     /**
@@ -88,7 +91,9 @@ class DoctorDataTable extends DataTable
                     d.name = $("#name").val();
                     d.email = $("#email").val();
                     d.identity_card = $("#identity_card").val();
-                    d.doctor_status = $("#doctor_status").val();
+                    d.identity_card = $("#identity_card").val();
+                    d.area_of_experise = $("#area_of_experise").val();
+                    d.branch_id = $("#branch_id").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
@@ -103,9 +108,12 @@ class DoctorDataTable extends DataTable
                         $("#code").val(null);
                         $("#name").val(null);
                         $("#email").val(null);
+                        $("#area_of_experise").val(null);
                         $("#identity_card").val(null);
                         $("#doctor_status").val(null);
                         $("#doctor_status").change();
+                        $("#branch_id").val(null);
+                        $("#branch_id").change();
                         $("#admin-doctors-table").DataTable().ajax.reload();
                     });
                     $("#admin-doctors-table").on("click", ".delFunc", function(e) {
@@ -159,11 +167,12 @@ class DoctorDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false),
             Column::make('image')->title('Image')->orderable(false),
+            Column::make('branch')->title('Branch')->orderable(false),
             Column::make('code')->title('Code')->orderable(false),
             Column::make('username')->title('Username')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),
-            Column::make('identity_card')->title('Identity Card')->orderable(false),
+            Column::make('area_of_experise')->title('Area of Experise')->orderable(false),
             Column::make('doctor_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];

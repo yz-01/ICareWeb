@@ -24,6 +24,12 @@ class Doctor extends Authenticatable
         $this->notify(new ResetPassword($token, 'doctor'));
     }
 
+    public function branch()
+    {
+        return $this->belongsTo(\App\Models\Branch::class);
+    }
+
+
     public function scopeLocalSearch($query)
     {
         $query->when(request()->has('code') && filled(request('code')), function ($q) {
@@ -40,6 +46,12 @@ class Doctor extends Authenticatable
         });
         $query->when(request()->has('doctor_status') && filled(request('doctor_status')), function ($q) {
             $q->where('status', request('doctor_status'));
+        });
+        $query->when(request()->has('branch_id') && filled(request('branch_id')), function ($q) {
+            $q->where('branch_id', request('branch_id'));
+        });
+        $query->when(request()->has('area_of_experise') && filled(request('area_of_experise')), function ($q) {
+            $q->where('area_of_experise', 'LIKE', '%' . request('area_of_experise') . '%');
         });
         return $query;
     }

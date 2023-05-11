@@ -63,6 +63,10 @@
                                         <th scope="row">Phone Number :</th>
                                         <td>{{ $patient->phone ?: '-' }}</td>
                                     </tr>
+                                    <tr>
+                                        <th scope="row">Branch :</th>
+                                        <td>{{ $patient->branch_id ? $patient->branch->name : '-' }}</td>
+                                    </tr> 
                                     {{-- <tr>
                                         <th scope="row">Role :</th>
                                         <td>{{ $patient->role ? $patient->role->name : '-' }}</td>

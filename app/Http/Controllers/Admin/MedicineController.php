@@ -32,6 +32,8 @@ class MedicineController extends Controller
     public function store(Request $request)
     {
         $medicine = Medicine::create([
+            'supplier' => $request->supplier,
+            'price' => $request->price,
             'code' => $request->code,
             'branch_id' => $request->branch_id,
             'name' => $request->name,
@@ -88,6 +90,8 @@ class MedicineController extends Controller
         }
 
         $medicine->update([
+            'supplier' => $request->supplier,
+            'price' => $request->price,
             'code' => $request->code,
             'branch_id' => $request->branch_id,
             'name' => $request->name,

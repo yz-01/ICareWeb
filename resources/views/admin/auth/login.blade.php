@@ -14,7 +14,7 @@
                 <div class="my-2" style="border-radius: 5px; background-color: rgb(255, 255, 255)">
                     <ul class="nav nav-pills nav-justified" role="tablist">
                         <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link" href="{{ route('admin.login') }}" role="tab">
+                            <a class="nav-link active" href="{{ route('admin.login') }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
                                 <span class="d-none d-sm-block">Admin</span>
                             </a>
@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link active" href="{{ route('patient.login') }}" role="tab">
+                            <a class="nav-link" href="{{ route('patient.login') }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                 <span class="d-none d-sm-block">Patient</span>
                             </a>

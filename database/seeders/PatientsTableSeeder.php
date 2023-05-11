@@ -23,9 +23,10 @@ class PatientsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'code' => 'P00001',
-                'username' => 'patient',
-                'name' => 'Tey Yoong Zhun',
-                'email' => 'teyyoongzhun@gmail.com',
+                'branch_id' => 1,
+                'username' => 'patient1',
+                'name' => 'Patient 1',
+                'email' => 'patient1@gmail.com',
                 'nurse_call_application_id' => 1,
                 'password' => '$2y$10$JJLxXs.PhZ7M2thDH8xttOZbK/sOGAZPBTEebCY5KIuPUp0OTd/W6',
                 'status' => 1,

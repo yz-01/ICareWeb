@@ -77,7 +77,7 @@
                     <h4 class="card-title mb-4">Content Information</h4>
                     <div class="row">
 
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="mb-3">
                                 <label class="form-label">Name<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="name" value="{{ $medicine->name }}">
@@ -93,11 +93,27 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="mb-3">
                                 <label class="form-label">Number<span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="number" value="{{ $medicine->number }}">
                                 @error('number') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label class="form-label">Price<span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" name="price" value="{{ $medicine->price }}">
+                                @error('price') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label class="form-label">Supplier Name<span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="supplier" value="{{ $medicine->supplier }}">
+                                @error('supplier') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                             </div>
                         </div>
 

@@ -24,6 +24,11 @@ class Admin extends Authenticatable
         $this->notify(new ResetPassword($token, 'admin'));
     }
 
+    public function branch()
+    {
+        return $this->belongsTo(\App\Models\Branch::class);
+    }
+
     public function scopeLocalSearch($query)
     {
         $query->when(request()->has('code') && filled(request('code')), function ($q) {
@@ -40,6 +45,9 @@ class Admin extends Authenticatable
         });
         $query->when(request()->has('admin_status') && filled(request('admin_status')), function ($q) {
             $q->where('status', request('admin_status'));
+        });
+        $query->when(request()->has('branch_id') && filled(request('branch_id')), function ($q) {
+            $q->where('branch_id', request('branch_id'));
         });
         return $query;
     }

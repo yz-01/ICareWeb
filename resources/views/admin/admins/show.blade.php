@@ -63,10 +63,10 @@
                                         <th scope="row">Phone Number :</th>
                                         <td>{{ $admin->phone ?: '-' }}</td>
                                     </tr>
-                                    {{-- <tr>
-                                        <th scope="row">Role :</th>
-                                        <td>{{ $admin->role ? $admin->role->name : '-' }}</td>
-                                    </tr> --}}
+                                    <tr>
+                                        <th scope="row">Branch :</th>
+                                        <td>{{ $admin->branch_id ? $admin->branch->name : '-' }}</td>
+                                    </tr> 
                                 </tbody>
                             </table>
                         </div>

@@ -51,6 +51,19 @@ class RoomController extends Controller
             'available_number' => $room_type->max_number,
         ]);
 
+        $j=1;
+
+        for($i=0; $i<$room_type->max_number; $i++)
+        {
+            $ward = Ward::create([
+                'branch_id' => $request->branch_id,
+                'room_id' => $room->id,
+                'ward_number' => $request->room_number . '-' . $j,
+            ]);
+
+            $j++;
+        }
+
         $request->session()->flash('success', 'Created Successfully');
 
         return redirect()->route('admin.rooms.index');
@@ -73,7 +86,9 @@ class RoomController extends Controller
 
         $room_type = RoomType::all();
 
-        return view('admin.rooms.edit', compact('branch', 'room_type', 'room'));
+        $ward = Ward::where('room_id', $room->id)->get();
+
+        return view('admin.rooms.edit', compact('branch', 'room_type', 'room', 'ward'));
     }
 
     public function update(Request $request, Room $room)

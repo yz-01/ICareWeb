@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        @if($item->status == 1)
+        <!-- @if($item->status == 1)
         <div class="col-3">
             <a href="{{route('admin.wards.create', ['room_id' => $item->id])}}">
                 <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Add Wards'>
@@ -10,11 +10,11 @@
         </div>
         @else
         <div class="col-3">
-            <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Add Wards' disabled>
+            <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='View Wards' disabled>
                 <i class="fas fa-bed"></i>
             </button>
         </div>
-        @endif
+        @endif -->
         <div class="col-3">
             <a href="{{route('admin.rooms.show',$item->id)}}">
                 <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='View'>

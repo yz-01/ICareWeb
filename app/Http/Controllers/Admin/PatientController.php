@@ -12,12 +12,15 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class PatientController extends Controller
 {
     public function index(PatientDataTable $dataTable)
     {
-        return $dataTable->render('admin.patients.index');
+        $branch = Branch::all();
+
+        return $dataTable->render('admin.patients.index', compact('branch'));
     }
 
     public function create()
@@ -32,6 +35,7 @@ class PatientController extends Controller
         $patient_hq = Patient::withTrashed()->latest('id')->first();
 
         $patient = Patient::create([
+            'branch_id' => $request->branch_id,
             'username' => $request->username,
             'name' => $request->name,
             'code' => $patient_hq->code,
@@ -60,6 +64,17 @@ class PatientController extends Controller
                 'image' => $file,
             ]);
         }
+
+        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
+        
+        // Create the file
+        $filename = $path . '\\' . $patient->name . '.txt';
+        File::put($filename, '');
+    
+        // Write content to the file
+        $content = "Patient Name: " . $patient->name . "\r\nInstruction: ";
+        File::put($filename, $content, FILE_APPEND);
+
         $request->session()->flash('success', 'Created Successfully');
 
         return redirect()->route('admin.patients.index');
@@ -94,6 +109,7 @@ class PatientController extends Controller
         }
 
         $patient->update([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'identity_card' => $request->identity_card,
             'email' => $request->email,
@@ -101,6 +117,16 @@ class PatientController extends Controller
             'nurse_call_application_id' => $request->nurse_call_application_id,
             'branch_id' => $request->branch_id,
         ]);
+
+        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
+        
+        // Create the file
+        $filename = $path . '\\' . $patient->name . '.txt';
+        File::put($filename, '');
+    
+        // Write content to the file
+        $content = "Patient Name: " . $patient->name . "\r\nInstruction: ";
+        File::put($filename, $content, FILE_APPEND);
 
         $request->session()->flash('success', trans('Update Successfully'));
 

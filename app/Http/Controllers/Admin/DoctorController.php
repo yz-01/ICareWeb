@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\Admin\DoctorDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,12 +16,16 @@ class DoctorController extends Controller
 {
     public function index(DoctorDataTable $dataTable)
     {
-        return $dataTable->render('admin.doctors.index');
+        $branch = Branch::all();
+
+        return $dataTable->render('admin.doctors.index', compact('branch'));
     }
 
     public function create()
     {
-        return view('admin.doctors.create');
+        $branch = Branch::all();
+
+        return view('admin.doctors.create', compact('branch'));
     }
 
     public function store(Request $request)
@@ -28,11 +33,13 @@ class DoctorController extends Controller
         $doctor_hq = Doctor::withTrashed()->latest('id')->first();
 
         $doctor = Doctor::create([
+            'branch_id' => $request->branch_id,
             'username' => $request->username,
             'name' => $request->name,
             'code' => $doctor_hq->code,
             'identity_card' => $request->identity_card,
             'email' => $request->email,
+            'area_of_experise' => $request->area_of_experise,
             'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
@@ -66,7 +73,9 @@ class DoctorController extends Controller
 
     public function edit(Doctor $doctor)
     {
-        return view('admin.doctors.edit', compact('doctor'));
+        $branch = Branch::all();
+
+        return view('admin.doctors.edit', compact('doctor', 'branch'));
     }
 
     public function update(Request $request, Doctor $doctor)
@@ -86,10 +95,12 @@ class DoctorController extends Controller
         }
 
         $doctor->update([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'identity_card' => $request->identity_card,
             'email' => $request->email,
             'phone' => $request->phone,
+            'area_of_experise' => $request->area_of_experise,
         ]);
 
         $request->session()->flash('success', trans('Update Successfully'));

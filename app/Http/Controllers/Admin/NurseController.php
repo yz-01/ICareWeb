@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\Admin\NurseDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Branch;
 use App\Models\Merchant;
 use App\Models\Nurse;
 use App\Models\PromoteProduct;
@@ -17,12 +18,16 @@ class NurseController extends Controller
 {
     public function index(NurseDataTable $dataTable)
     {
-        return $dataTable->render('admin.nurses.index');
+        $branch = Branch::all();
+
+        return $dataTable->render('admin.nurses.index', compact('branch'));
     }
 
     public function create()
     {
-        return view('admin.nurses.create');
+        $branch = Branch::all();
+
+        return view('admin.nurses.create', compact('branch'));
     }
 
     public function store(Request $request)
@@ -30,6 +35,7 @@ class NurseController extends Controller
         $nurse_hq = Nurse::withTrashed()->latest('id')->first();
 
         $nurse = Nurse::create([
+            'branch_id' => $request->branch_id,
             'username' => $request->username,
             'name' => $request->name,
             'code' => $nurse_hq->code,
@@ -69,7 +75,9 @@ class NurseController extends Controller
 
     public function edit(Nurse $nurse)
     {
-        return view('admin.nurses.edit', compact('nurse'));
+        $branch = Branch::all();
+
+        return view('admin.nurses.edit', compact('nurse', 'branch'));
     }
 
     public function update(Request $request, Nurse $nurse)
@@ -89,6 +97,7 @@ class NurseController extends Controller
         }
 
         $nurse->update([
+            'branch_id' => $request->branch_id,
             'name' => $request->name,
             'identity_card' => $request->identity_card,
             'email' => $request->email,

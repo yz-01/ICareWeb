@@ -24,6 +24,11 @@ class Patient extends Authenticatable
         $this->notify(new ResetPassword($token, 'patient'));
     }
 
+    public function branch()
+    {
+        return $this->belongsTo(\App\Models\Branch::class);
+    }
+
     public function scopeLocalSearch($query)
     {
         $query->when(request()->has('code') && filled(request('code')), function ($q) {
@@ -40,6 +45,9 @@ class Patient extends Authenticatable
         });
         $query->when(request()->has('patient_status') && filled(request('patient_status')), function ($q) {
             $q->where('status', request('patient_status'));
+        });
+        $query->when(request()->has('branch_id') && filled(request('branch_id')), function ($q) {
+            $q->where('branch_id', request('branch_id'));
         });
         return $query;
     }

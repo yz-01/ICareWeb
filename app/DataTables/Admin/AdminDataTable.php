@@ -32,6 +32,17 @@ class AdminDataTable extends DataTable
                     return "<a target='_blank' href='".asset('images/default/profile.png')."'><img src='".asset('images/default/profile.png')."' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 }
             })
+            ->addColumn('branch', function($item){
+                if($item->branch)
+                {
+                    return $item->branch->name ?: '-';
+                }
+                else
+                {
+                    return '-';
+                }
+
+            })
             ->addColumn('action', function ($item) {
                 return view('admin.admins.action', compact('item'));
             })
@@ -57,7 +68,7 @@ class AdminDataTable extends DataTable
                            '</form>';
                 return $action;
             })
-            ->rawColumns(['action','admin_status', 'image']);
+            ->rawColumns(['action','admin_status', 'image', 'branch']);
     }
 
     /**
@@ -89,6 +100,7 @@ class AdminDataTable extends DataTable
                     d.email = $("#email").val();
                     d.identity_card = $("#identity_card").val();
                     d.admin_status = $("#admin_status").val();
+                    d.branch_id = $("#branch_id").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
@@ -106,6 +118,8 @@ class AdminDataTable extends DataTable
                         $("#identity_card").val(null);
                         $("#admin_status").val(null);
                         $("#admin_status").change();
+                        $("#branch_id").val(null);
+                        $("#branch_id").change();
                         $("#admin-admins-table").DataTable().ajax.reload();
                     });
                     $("#admin-admins-table").on("click", ".delFunc", function(e) {
@@ -159,11 +173,11 @@ class AdminDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false),
             Column::make('image')->title('Image')->orderable(false),
+            Column::make('branch')->title('Branch')->orderable(false),
             Column::make('code')->title('Code')->orderable(false),
             Column::make('username')->title('Username')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),
-            Column::make('identity_card')->title('Identity Card')->orderable(false),
             Column::make('admin_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];

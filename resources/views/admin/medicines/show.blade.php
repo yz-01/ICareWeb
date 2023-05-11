@@ -63,6 +63,14 @@
                                 <th scope="row">Number:</th>
                                 <td>{{ $medicine->number }}</td>
                             </tr>
+                            <tr>
+                                <th scope="row">Price:</th>
+                                <td>RM {{ $medicine->price }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Supplier Name:</th>
+                                <td>{{ $medicine->supplier }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

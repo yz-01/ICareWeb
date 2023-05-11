@@ -29,11 +29,13 @@
                     <div class="pe-2 flex-fill">
                         <input type="text" class="form-control datatable-input" id="name" placeholder="Name" data-col-index="2">
                     </div>
-                    <div class="pe-2 flex-fill">
-                        <input type="text" class="form-control datatable-input" id="email" placeholder="Email" data-col-index="2">
-                    </div>
-                    <div class="pe-2 flex-fill">
-                        <input type="text" class="form-control datatable-input" id="identity_card" placeholder="Identity Card" data-col-index="2">
+                    <div class="px-2 flex-fill">
+                        <select class="form-select datatable-input" id="branch_id">
+                            <option value="">Select Branch</option>
+                            @foreach($branch as $branches)
+                            <option value="{{ $branches->id }}">{{ $branches->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="px-2 flex-fill">
                         <select class="form-select select-status datatable-input" id="patient_status">

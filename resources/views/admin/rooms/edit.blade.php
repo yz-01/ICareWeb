@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="page-title-box d-flex align-items-center justify-content-between">
             <div>
-                <h4 class="mb-sm-0 font-size-18">Room Edit - {{ $room->name }}</h4>
+                <h4 class="mb-sm-0 font-size-18">Room Edit - {{ $room->room_number }}</h4>
                 <ol class="breadcrumb m-0 mt-3">
                     <li class="breadcrumb-item">
                         <a href="{{ route('admin.rooms.index') }}">Room List</a>
@@ -20,7 +20,7 @@
     @csrf
     @method('PUT')
     <div class="row">
-        <div class="col-12 col-md-12">
+        <div class="col-6 col-md-6">
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -52,6 +52,37 @@
                                     @endforeach
                                 </select>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-6">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Ward Information</h4>
+                            <table class="table table-nowrap mb-0">
+                                <tbody>
+                                    @foreach($ward as $wards)
+                                    <tr>
+                                        <th scope="row">Ward Number :</th>
+                                        <td>
+                                            {{ $wards->ward_number }}
+                                            &nbsp;
+                                            <button type="submit" class="btn btn-danger waves-effect waves-light delete-data-ward" data-id="{{$wards->id}}" data-room_id="{{$room->id}}" data-toggle='tooltip' data-placement='top' title='Delete'>
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                            <form id="delete-ward-{{$wards->id}}" method="POST" action="{{ route('admin.wards.destroy', $wards->id) }}" class="destroy_{{$wards->id}} d-none">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
+                                            </form>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                         <div class="card-footer text-end">
                             <button type="submit" class="btn btn-primary">Update</button>

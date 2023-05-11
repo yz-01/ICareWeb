@@ -35,6 +35,9 @@ class PatientDataTable extends DataTable
             ->addColumn('action', function ($item) {
                 return view('admin.patients.action', compact('item'));
             })
+            ->addColumn('branch', function($item){
+                return $item->branch->name ?: '-';
+            })
             ->addColumn('email', function($item){
                 return $item->email ?: '-';
             })
@@ -57,7 +60,7 @@ class PatientDataTable extends DataTable
                            '</form>';
                 return $action;
             })
-            ->rawColumns(['action','patient_status', 'image']);
+            ->rawColumns(['action','patient_status', 'image', 'branch']);
     }
 
     /**
@@ -89,6 +92,7 @@ class PatientDataTable extends DataTable
                     d.email = $("#email").val();
                     d.identity_card = $("#identity_card").val();
                     d.patient_status = $("#patient_status").val();
+                    d.branch_id = $("#branch_id").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
@@ -106,6 +110,8 @@ class PatientDataTable extends DataTable
                         $("#identity_card").val(null);
                         $("#patient_status").val(null);
                         $("#patient_status").change();
+                        $("#branch_id").val(null);
+                        $("#branch_id").change();
                         $("#admin-patients-table").DataTable().ajax.reload();
                     });
                     $("#admin-patients-table").on("click", ".delFunc", function(e) {
@@ -159,6 +165,7 @@ class PatientDataTable extends DataTable
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false),
             Column::make('image')->title('Image')->orderable(false),
+            Column::make('branch')->title('Branch')->orderable(false),
             Column::make('code')->title('Code')->orderable(false),
             Column::make('username')->title('Username')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),

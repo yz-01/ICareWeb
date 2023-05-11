@@ -34,49 +34,59 @@
                         <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
                         @error('image') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Branch<span class="text-danger">*</span></label>
+                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
+                            <option selected="" value="">Select Branch</option>
+                            @foreach($branch as $branches)
+                            <option value="{{ $branches->id }}">{{ $branches->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('branch_id') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
+                    </div>
                     <div class="form-group mb-3">
                         <label for="username">Username<span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" value="{{ old('username') ?: '' }}">
                         @error('username')
-                            <div class="invalid-feedback">
-                                <span>{{ $message }}</span>
-                            </div>
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="name">Name<span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: '' }}">
                         @error('name')
-                            <div class="invalid-feedback">
-                                <span>{{ $message }}</span>
-                            </div>
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="identity_card">Identity Card</label>
                         <input type="tel" class="form-control @error('identity_card') is-invalid @enderror" name="identity_card" placeholder="Identity Card" value="{{ old('identity_card') ?: '' }}">
                         @error('identity_card')
-                            <div class="invalid-feedback">
-                                <span>{{ $message }}</span>
-                            </div>
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="phone">Phone</label>
                         <input type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="Phone" value="{{ old('phone') ?: '' }}">
                         @error('phone')
-                            <div class="invalid-feedback">
-                                <span>{{ $message }}</span>
-                            </div>
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
                         <label for="email">Email</label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: '' }}">
                         @error('email')
-                            <div class="invalid-feedback">
-                                <span>{{ $message }}</span>
-                            </div>
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
                         @enderror
                     </div>
                 </div>
@@ -87,11 +97,11 @@
                 <div class="card-body">
                     <h4 class="card-title mb-4">Admin Account Password</h4>
                     <div class="card mb-2">
-                        <div class="card-body py-2"  style="background-color: rgba(128, 128, 128, 0.116); ">
+                        <div class="card-body py-2" style="background-color: rgba(128, 128, 128, 0.116); ">
                             <span class="text-danger" style="line-height: 25px;">
-                                ***Password should be alphanumeric   <br />
-                                ***Password must be at least 8 characters  <br />
-                                ***Password must include Uppercase & Lowercase   <br />
+                                ***Password should be alphanumeric <br />
+                                ***Password must be at least 8 characters <br />
+                                ***Password must include Uppercase & Lowercase <br />
                                 ***Password must contain a special character (@, $, !, &, etc)
                             </span>
                         </div>
@@ -100,9 +110,9 @@
                         <label for="password">Password<span class="text-danger">*</span></label>
                         <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
                         @error('password')
-                            <div class="invalid-feedback">
-                                <span>{{ $message }}</span>
-                            </div>
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
@@ -121,39 +131,41 @@
 @endsection
 
 @push('script')
-    <script>
-        // $(".select-role").select2({
-        //     placeholder: "Select a role",
-        //     minimumResultsForSearch: Infinity
-        // });
-        function readURL(input, id) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
+<script>
+    // $(".select-role").select2({
+    //     placeholder: "Select a role",
+    //     minimumResultsForSearch: Infinity
+    // });
+    function readURL(input, id) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-                reader.onload = function (e) {
-                    $('#imageResultIcon'+id).hide();
-                    $('#imageResult'+id)
-                        .attr('src', e.target.result);
-                    $('#imageResult'+id).show();
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
+            reader.onload = function(e) {
+                $('#imageResultIcon' + id).hide();
+                $('#imageResult' + id)
+                    .attr('src', e.target.result);
+                $('#imageResult' + id).show();
+            };
+            reader.readAsDataURL(input.files[0]);
         }
-        function myFunction() {
-            var x = document.getElementById("password");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+    }
+
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
-        function myFunction2() {
-            var x = document.getElementById("password-confirm");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+    }
+
+    function myFunction2() {
+        var x = document.getElementById("password-confirm");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
-    </script>
+    }
+</script>
 @endpush

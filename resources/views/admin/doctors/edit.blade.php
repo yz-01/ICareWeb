@@ -40,6 +40,16 @@
                         @enderror
                         <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Branch</label>
+                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
+                            <option selected="" value="">Select Branch</option>
+                            @foreach($branch as $branches)
+                            <option value="{{ $branches->id }}" {{ $doctor->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('branch_id') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
+                    </div>
                     <div class="form-group mb-3">
                         <label for="name">Name<span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: $doctor->name }}">
@@ -71,6 +81,15 @@
                         <label for="email">Email<span class="text-danger">*</span></label>
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: $doctor->email }}">
                         @error('email')
+                        <div class="invalid-feedback">
+                            <span>{{ $message }}</span>
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="area_of_experise">Area of Experise<span class="text-danger">*</span></label>
+                        <input type="area_of_experise" class="form-control @error('area_of_experise') is-invalid @enderror" name="area_of_experise" placeholder="Area of Experise" value="{{ old('area_of_experise') ?: $doctor->area_of_experise }}">
+                        @error('area_of_experise')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
                         </div>

@@ -23,6 +23,7 @@ class AdminsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'code' => 'A00001',
+                'branch_id' => null,
                 'username' => 'superadmin',
                 'name' => 'I Care Web Admin',
                 'email' => 'superadmin@superadmin.com',
@@ -35,9 +36,10 @@ class AdminsTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'code' => 'A00002',
-                'username' => 'admin',
-                'name' => 'Admin',
-                'email' => 'admin@admin.com',
+                'branch_id' => 1,
+                'username' => 'johorbranchadmin',
+                'name' => 'Johor Branch Admin',
+                'email' => 'JohorBranchAdmin@admin.com',
                 'password' => '$2y$10$JJLxXs.PhZ7M2thDH8xttOZbK/sOGAZPBTEebCY5KIuPUp0OTd/W6',
                 'status' => 1,
                 'created_at' => '2023-02-28 11:53:33',

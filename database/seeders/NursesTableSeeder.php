@@ -23,9 +23,10 @@ class NursesTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'code' => 'N00001',
-                'username' => 'supernurse',
-                'name' => 'Head of Nurses',
-                'email' => 'teyyoongzhun@gmail.com',
+                'branch_id' => 1,
+                'username' => 'nurse1',
+                'name' => 'Nurse 1',
+                'email' => 'nurse1@gmail.com',
                 'password' => '$2y$10$JJLxXs.PhZ7M2thDH8xttOZbK/sOGAZPBTEebCY5KIuPUp0OTd/W6',
                 'status' => 1,
                 'created_at' => '2023-02-28 11:53:33',

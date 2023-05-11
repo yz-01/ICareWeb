@@ -34,9 +34,9 @@
 </head>
 
 <body class="rbt-header-sticky">
-    {{-- @include('admin.auth.layouts.header') --}}
+    {{-- @include('doctor.auth.layouts.header') --}}
     @yield('content')
-    {{-- @include('admin.auth.layouts.footer') --}}
+    {{-- @include('doctor.auth.layouts.footer') --}}
     
     <!-- End Copyright Area  -->
     <div class="rbt-progress-parent">
@@ -82,7 +82,7 @@
     <!-- Sweet alert init js-->
     <script src="{{ asset('assets/js/sweet-alerts.init.js') }}"></script>
 
-    @include('admin.auth.layouts.sweetalerts')
+    @include('doctor.auth.layouts.sweetalerts')
     @stack('script')
 </body>
 

@@ -20,7 +20,7 @@
                             </a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link" href="{{ route('doctor.login') }}" role="tab">
+                            <a class="nav-link active" href="{{ route('doctor.login') }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
                                 <span class="d-none d-sm-block">Doctor</span>
                             </a>
@@ -32,7 +32,7 @@
                             </a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link active" href="{{ route('patient.login') }}" role="tab">
+                            <a class="nav-link" href="{{ route('patient.login') }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                 <span class="d-none d-sm-block">Patient</span>
                             </a>

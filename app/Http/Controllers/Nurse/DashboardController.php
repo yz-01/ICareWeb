@@ -15,9 +15,16 @@ class DashboardController extends Controller
         return view('nurse.dashboard');
     }
 
-    public function python()
+    public function call(Request $request)
     {
-        $patient = Patient::where('id', 1)->first();
+        $patient = Patient::where('branch_id', auth()->user()->branch_id)->where('in_treatment', 1)->get();
+
+        return view('nurse.call', compact('patient'));
+    }
+
+    public function callStore(Request $request)
+    {
+        $patient = Patient::where('id', $request->patient_id)->first();
 
         $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
         
@@ -28,5 +35,9 @@ class DashboardController extends Controller
         // Write content to the file
         $content = "Patient Name: " . $patient->name . "\r\nInstruction: ";
         File::put($filename, $content, FILE_APPEND);
+
+        $request->session()->flash('success', 'Created Successfully');
+
+        return view('nurse.dashboard');
     }
 }

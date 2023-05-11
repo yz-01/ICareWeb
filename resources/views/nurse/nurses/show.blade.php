@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('nurse.layouts.app')
 
 @section('content')
 <div class="row">
@@ -7,9 +7,9 @@
             <div>
                 <h4 class="mb-sm-0 font-size-18">Nurse - {{ $nurse->name }}</h4>
                 <ol class="breadcrumb m-0 mt-3">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('admin.nurses.index') }}">Nurse List</a>
-                    </li>
+                    <!-- <li class="breadcrumb-item">
+                        <a href="{{ route('nurse.nurses.index') }}">Nurse List</a>
+                    </li> -->
                     <li class="breadcrumb-item active">Nurse List</li>
                 </ol>
             </div>
@@ -23,11 +23,11 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex">
                         <h4 class="card-title mb-0">Nurse Information</h4>
-                        <a href="{{ route('admin.nurses.edit', $nurse->id) }}" class="ms-auto">
+                        <!-- <a href="{{ route('nurse.nurses.edit', $nurse->id) }}" class="ms-auto">
                             <button class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </button>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="col-lg-12">
                         <div class="table-responsive">

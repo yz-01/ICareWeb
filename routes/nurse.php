@@ -25,7 +25,8 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth:nurse'], function () {
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-    Route::get('python', 'DashboardController@python')->name('python');
+    Route::get('call', 'DashboardController@call')->name('call');
+    Route::post('callStore', 'DashboardController@callStore')->name('callStore');
 
     //Nurse
     Route::put('nurse/updateStatus/{nurse}', 'NurseController@updateStatus')->name('nurses.updateStatus');

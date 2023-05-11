@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('doctor.layouts.app')
 
 @section('content')
 <div class="row">
@@ -7,9 +7,9 @@
             <div>
                 <h4 class="mb-sm-0 font-size-18">Doctor - {{ $doctor->name }}</h4>
                 <ol class="breadcrumb m-0 mt-3">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('admin.doctors.index') }}">Doctor List</a>
-                    </li>
+                    <!-- <li class="breadcrumb-item">
+                        <a href="{{ route('doctor.doctors.index') }}">Doctor List</a>
+                    </li> -->
                     <li class="breadcrumb-item active">Doctor List</li>
                 </ol>
             </div>
@@ -23,11 +23,11 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex">
                         <h4 class="card-title mb-0">Doctor Information</h4>
-                        <a href="{{ route('admin.doctors.edit', $doctor->id) }}" class="ms-auto">
+                        <!-- <a href="{{ route('doctor.doctors.edit', $doctor->id) }}" class="ms-auto">
                             <button class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </button>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="col-lg-12">
                         <div class="table-responsive">
@@ -62,6 +62,12 @@
                                         <td>{{ $doctor->identity_card ?: '-' }}</td>
                                         <th scope="row">Phone Number :</th>
                                         <td>{{ $doctor->phone ?: '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Branch :</th>
+                                        <td>{{ $doctor->branch->name ?: '-' }}</td>
+                                        <th scope="row">Area of Experise :</th>
+                                        <td>{{ $doctor->area_of_experise ?: '-' }}</td>
                                     </tr>
                                     {{-- <tr>
                                         <th scope="row">Role :</th>

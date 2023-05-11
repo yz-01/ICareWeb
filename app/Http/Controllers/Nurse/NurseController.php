@@ -17,12 +17,12 @@ class NurseController extends Controller
 {
     public function index(NurseDataTable $dataTable)
     {
-        return $dataTable->render('admin.nurses.index');
+        return $dataTable->render('nurse.nurses.index');
     }
 
     public function create()
     {
-        return view('admin.nurses.create');
+        return view('nurse.nurses.create');
     }
 
     public function store(Request $request)
@@ -58,18 +58,18 @@ class NurseController extends Controller
         }
         $request->session()->flash('success', 'Created Successfully');
 
-        return redirect()->route('admin.nurses.index');
+        return redirect()->route('nurse.nurses.index');
     }
 
 
     public function show(Nurse $nurse)
     {
-        return view('admin.nurses.show', compact('nurse'));
+        return view('nurse.nurses.show', compact('nurse'));
     }
 
     public function edit(Nurse $nurse)
     {
-        return view('admin.nurses.edit', compact('nurse'));
+        return view('nurse.nurses.edit', compact('nurse'));
     }
 
     public function update(Request $request, Nurse $nurse)
@@ -97,14 +97,14 @@ class NurseController extends Controller
 
         $request->session()->flash('success', trans('Update Successfully'));
 
-        return redirect()->route('admin.nurses.index');
+        return redirect()->route('nurse.nurses.index');
     }
 
     public function destroy(Nurse $nurse)
     {
         $nurse->delete();
 
-        return redirect()->route('admin.nurses.index')->with('success', 'Nurse Deleted Successfully');
+        return redirect()->route('nurse.nurses.index')->with('success', 'Nurse Deleted Successfully');
     }
 
     public function updateStatus(Request $request, Nurse $nurse)
@@ -113,7 +113,7 @@ class NurseController extends Controller
         
         $request->session()->flash('success', 'Status Update Successfully');
 
-        return redirect()->route('admin.nurses.index');
+        return redirect()->route('nurse.nurses.index');
     }
 
     public function updatePassword(Request $request, Nurse $nurse)
@@ -135,6 +135,6 @@ class NurseController extends Controller
 
         $request->session()->flash('success', 'Password updated successfully!');
 
-        return redirect()->route('admin.nurses.index');
+        return redirect()->route('nurse.nurses.index');
     }
 }

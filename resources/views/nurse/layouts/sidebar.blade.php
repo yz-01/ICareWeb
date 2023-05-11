@@ -32,9 +32,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('nurse.python') }}" class="waves-effect">
+                    <a href="{{ route('nurse.call') }}" class="waves-effect">
                         <i class="bx bx-bar-chart-square"></i>
                         <span>Report</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('nurse.call') }}" class="waves-effect">
+                        <i class="bx bx-phone"></i>
+                        <span>Patient Call</span>
                     </a>
                 </li>
             </ul>

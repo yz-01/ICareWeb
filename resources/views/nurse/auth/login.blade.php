@@ -26,13 +26,13 @@
                             </a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link" href="{{ route('nurse.login') }}" role="tab">
+                            <a class="nav-link active" href="{{ route('nurse.login') }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                 <span class="d-none d-sm-block">Nurse</span>
                             </a>
                         </li>
                         <li class="nav-item waves-effect waves-light">
-                            <a class="nav-link active" href="{{ route('patient.login') }}" role="tab">
+                            <a class="nav-link" href="{{ route('patient.login') }}" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                 <span class="d-none d-sm-block">Patient</span>
                             </a>

@@ -15,12 +15,12 @@ class DoctorController extends Controller
 {
     public function index(DoctorDataTable $dataTable)
     {
-        return $dataTable->render('admin.doctors.index');
+        return $dataTable->render('doctor.doctors.index');
     }
 
     public function create()
     {
-        return view('admin.doctors.create');
+        return view('doctor.doctors.create');
     }
 
     public function store(Request $request)
@@ -56,17 +56,17 @@ class DoctorController extends Controller
         }
         $request->session()->flash('success', 'Created Successfully');
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route('doctor.doctors.index');
     }
 
     public function show(Doctor $doctor)
     {
-        return view('admin.doctors.show', compact('doctor'));
+        return view('doctor.doctors.show', compact('doctor'));
     }
 
     public function edit(Doctor $doctor)
     {
-        return view('admin.doctors.edit', compact('doctor'));
+        return view('doctor.doctors.edit', compact('doctor'));
     }
 
     public function update(Request $request, Doctor $doctor)
@@ -94,14 +94,14 @@ class DoctorController extends Controller
 
         $request->session()->flash('success', trans('Update Successfully'));
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route('doctor.doctors.index');
     }
 
     public function destroy(Doctor $doctor)
     {
         $doctor->delete();
 
-        return redirect()->route('admin.doctors.index')->with('success', 'Agent Deleted Successfully');
+        return redirect()->route('doctor.doctors.index')->with('success', 'Agent Deleted Successfully');
     }
 
     public function updateStatus(Request $request, Doctor $doctor)
@@ -110,7 +110,7 @@ class DoctorController extends Controller
         
         $request->session()->flash('success', 'Status Update Successfully');
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route('doctor.doctors.index');
     }
 
     public function updatePassword(Request $request, Doctor $agent)
@@ -132,6 +132,6 @@ class DoctorController extends Controller
 
         $request->session()->flash('success', 'Password updated successfully!');
 
-        return redirect()->route('admin.doctors.index');
+        return redirect()->route('doctor.doctors.index');
     }
 }

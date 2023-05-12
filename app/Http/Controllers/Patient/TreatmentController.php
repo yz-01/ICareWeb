@@ -62,7 +62,9 @@ class TreatmentController extends Controller
             $query->orWhere('status', 1)->orWhereIn('id', $get_treatment_medicine);
         })->where('branch_id', $treatment->patient->branch_id)->get();
 
-        return view('patient.treatments.show', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
+        $history = History::where('treatment_id', $treatment->id)->get();
+
+        return view('patient.treatments.show', compact('history', 'treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
     }
 
     //Treatment History

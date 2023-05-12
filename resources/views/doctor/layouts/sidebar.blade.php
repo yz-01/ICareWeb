@@ -31,12 +31,12 @@
                         <span>Schedule</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="{{ route('doctor.python') }}" class="waves-effect">
                         <i class="bx bx-bar-chart-square"></i>
                         <span>Report</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <!-- Sidebar -->

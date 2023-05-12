@@ -166,5 +166,84 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Treatment Process Information</h4>
+                @foreach($history as $histories)
+                <div class="row">
+                    <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                        <div class="table-responsive">
+                            <table class="">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            @if($histories->image)
+                                            <img src="{{ asset($histories->image) }}" style="width: 200px; height: 200px;" class="rounded-circle">
+                                            @else
+                                            <img src="{{ asset('images/default/profile.png') }}" style="width: 200px; height: 200px;" class="rounded-circle">
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="table-responsive">
+                            <table class="table table-nowrap mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Title :</th>
+                                        <td>{{ $histories->title }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Doctor Remark :</th>
+                                        <td>{!! $histories->doctor_remark !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Nurse Remark :</th>
+                                        <td>{!! $histories->nurse_remark !!}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Date / Time :</th>
+                                        <td>{{ $histories->date }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Patient Healthy Status :</th>
+                                        <td>
+                                            @if($histories->patient_healthy_status == 1)
+                                            Excellent
+                                            @elseif($histories->patient_healthy_status == 2)
+                                            Good
+                                            @elseif($histories->patient_healthy_status == 3)
+                                            Normal
+                                            @elseif($histories->patient_healthy_status == 4)
+                                            Fair
+                                            @elseif($histories->patient_healthy_status == 5)
+                                            Bad
+                                            @else
+                                            @endif
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                @endforeach
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-lg-12 d-flex flex-row-reverse">
+                        <button type="button" class="btn btn-success waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Print' onclick="window.print();">
+                            <i class="fas fa-print"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

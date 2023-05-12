@@ -31,12 +31,12 @@
                         <span>Schedule</span>
                     </a>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="{{ route('nurse.call') }}" class="waves-effect">
                         <i class="bx bx-bar-chart-square"></i>
                         <span>Report</span>
                     </a>
-                </li>
+                </li> -->
                 <li>
                     <a href="{{ route('nurse.call') }}" class="waves-effect">
                         <i class="bx bx-phone"></i>

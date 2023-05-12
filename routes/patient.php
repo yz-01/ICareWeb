@@ -45,4 +45,7 @@ Route::group(['middleware' => 'auth:patient'], function () {
     Route::post('treatments/historyStore', 'TreatmentController@historyStore')->name('treatments.historyStore');
     Route::post('treatments/historyUpdate', 'TreatmentController@historyUpdate')->name('treatments.historyUpdate');
     Route::resource('treatments', 'TreatmentController');
+
+    //Announcement
+    Route::resource('announcements', 'AnnouncementController');
 });

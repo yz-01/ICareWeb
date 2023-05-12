@@ -49,4 +49,7 @@ Route::group(['middleware' => 'auth:nurse'], function () {
 
     //Schedule
     Route::resource('schedules', 'ScheduleController');
+
+    //Announcement
+    Route::resource('announcements', 'AnnouncementController');
 });

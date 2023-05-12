@@ -19,6 +19,11 @@ class Announcement extends Model
     public $table = 'announcements';
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
+    public function admin()
+    {
+        return $this->belongsTo(\App\Models\Admin::class);
+    }
+
     public function branch()
     {
         return $this->belongsTo(\App\Models\Branch::class);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Nurse;
 
 use App\Http\Controllers\Controller;
+use App\Models\Announcement;
 use App\Models\Patient;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
@@ -13,7 +14,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('nurse.dashboard');
+        $announcement = Announcement::where('branch_id', auth()->user()->branch_id)
+        ->orWhere(function ($query) {
+            $query->where('published_to', 1)
+                ->orWhere('published_to', 3);
+        })
+        ->latest()
+        ->first();
+
+        return view('nurse.dashboard', compact('announcement'));
     }
 
     public function call(Request $request)

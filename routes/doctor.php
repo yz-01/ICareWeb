@@ -48,4 +48,7 @@ Route::group(['middleware' => 'auth:doctor'], function () {
 
     //Schedule
     Route::resource('schedules', 'ScheduleController');
+
+    //Announcement
+    Route::resource('announcements', 'AnnouncementController');
 });

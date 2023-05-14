@@ -66,7 +66,11 @@
                             <tr>
                                 <th scope="row">Published To Branch:</th>
                                 <td>
+                                    @if($announcement->branch)
                                     <span>{{ $announcement->branch->name }}</span>
+                                    @else
+                                    <span>All</span>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>

@@ -119,16 +119,6 @@ class PatientController extends Controller
             'branch_id' => $request->branch_id,
         ]);
 
-        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
-        
-        // Create the file
-        $filename = $path . '\\' . $patient->name . '.txt';
-        File::put($filename, '');
-    
-        // Write content to the file
-        $content = "Patient Name: " . $patient->name . "\r\nRoom: " . $treatment->ward->room->room_number . "\r\nWard: " . $treatment->ward->ward_number . "\r\nInstruction: ";
-        File::put($filename, $content, FILE_APPEND);
-
         $request->session()->flash('success', trans('Update Successfully'));
 
         return redirect()->route('admin.patients.index');

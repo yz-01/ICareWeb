@@ -52,7 +52,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Published to<span class="text-danger">*</span></label>
                                 <select class="form-select @error('published_to') is-invalid @enderror" name="published_to" id="published_to">
-                                    <option selected="" value="">Select Type</option>
+                                    <option selected="" value="">-- Please Select --</option>
                                     <option value="1" {{ old('published_to') == 1 ? 'selected' : '' }}>All</option>
                                     <option value="2" {{ old('published_to') == 2 ? 'selected' : '' }}>Doctors</option>
                                     <option value="3" {{ old('published_to') == 3 ? 'selected' : '' }}>Nurses</option>
@@ -66,7 +66,8 @@
                             <div class="mb-3">
                                 <label class="form-label">Published to Branch<span class="text-danger">*</span></label>
                                 <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
-                                    <option selected="" value="">Select Type</option>
+                                    <option selected value="">-- Please Select --</option>
+                                    <option value="">All</option>
                                     @foreach($branch as $branches)
                                     <option value="{{ $branches->id }}">{{ $branches->name }}</option>
                                     @endforeach

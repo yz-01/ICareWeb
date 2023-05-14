@@ -45,6 +45,7 @@
                                     <img id="imageResult1" src="{{ asset($announcement->image) }}" class="w-100 h-100" style="object-fit: contain !important;" />
                                     @else
                                     <i class="fa fa-plus" id="imageResultIcon1" style="border-radius:5px;"></i>
+                                    <img id="imageResult1" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
                                     @endif
                                 </div>
                                 @error('image') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div>
@@ -72,10 +73,11 @@
                             <div class="mb-3">
                                 <label class="form-label">Published to Branch</label>
                                 <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" disabled>
-                                    <option selected="" value="">Select Type</option>
-                                    @foreach($branch as $branches)
-                                    <option value="{{ $branches->id }}" {{ $announcement->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
-                                    @endforeach
+                                    @if($announcement->branch_id)
+                                    <option selected="" value="">{{ $branches->name }}</option>
+                                    @else
+                                    <option selected="" value="">All</option>
+                                    @endif
                                 </select>
                                 @error('branch_id') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                             </div>
@@ -123,7 +125,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-lg-12 d-flex flex-row-reverse">
-                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            <button type="submit" class="btn btn-primary w-md">Update</button>
                         </div>
                     </div>
                 </div>
@@ -135,7 +137,7 @@
 </form>
 @endsection
 
-@push('scripts')
+@push('script')
 <script>
     function readURL(input, id) {
         if (input.files && input.files[0]) {

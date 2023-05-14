@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
 
 class TreatmentController extends Controller
 {
@@ -102,6 +103,16 @@ class TreatmentController extends Controller
                 ]);
             }
         }
+
+        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
+        
+        // Create the file
+        $filename = $path . '\\' . $patient->name . '.txt';
+        File::put($filename, '');
+    
+        // Write content to the file
+        $content = "Patient Name: " . $patient->name . "\r\nRoom: " . $treatment->ward->room->room_number . "\r\nWard: " . $treatment->ward->ward_number . "\r\nInstruction: ";
+        File::put($filename, $content, FILE_APPEND);
 
         $request->session()->flash('success', 'Created Successfully');
 

@@ -65,7 +65,7 @@ class ScheduleDataTable extends DataTable
                 }
                 
             })
-            ->rawColumns(['action', 'name', 'image']);
+            ->rawColumns(['action', 'name', 'image', 'shift']);
     }
 
     /**
@@ -163,7 +163,6 @@ class ScheduleDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false),
-            Column::make('image')->title('Image')->orderable(false),
             Column::make('name')->title('name')->orderable(false),
             Column::make('date')->title('Date')->orderable(false),
             Column::make('shift')->title('Shift')->orderable(false),

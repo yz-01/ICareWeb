@@ -343,7 +343,7 @@
         $(this).closest('.row').remove();
     });
 
-    var k = 0;
+    var k = 1;
 
     $("#add_medicine").click(function() {
         var newRow =

@@ -57,7 +57,7 @@
                                     <div class="form-group">
                                         <label for="city">City<span class="text-danger">*</span></label>
                                         <select class="form-select select-city @error('city_id') is-invalid @enderror" name="city_id">
-                                            <option value=""></option>
+                                            <option value="">-- Please Select --</option>
                                             @foreach($city as $cities)
                                             <option value="{{ $cities->id }}" {{ old('city_id') == $cities->id ? 'selected' : '' }}>{{ $cities->name }}</option>
                                             @endforeach
@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                         <label for="state">State<span class="text-danger">*</span></label>
                                         <select class="form-select select-state @error('state_id') is-invalid @enderror" name="state_id">
-                                            <option value=""></option>
+                                            <option value="">-- Please Select --</option>
                                             @foreach($state as $states)
                                             <option value="{{ $states->id }}" {{ old('state_id') == $states->id ? 'selected' : '' }}>{{ $states->name }}</option>
                                             @endforeach

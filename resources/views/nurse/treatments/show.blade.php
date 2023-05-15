@@ -68,7 +68,7 @@
                     @if($treatment->treatment_medicine != '[]')
                     <div class="col-lg-9">
                         <div class="mb-3">
-                            <label class="form-label">Name (Last Time Added)<span class="text-danger">*</span></label>
+                            <label class="form-label">Name<span class="text-danger">*</span></label>
                             @foreach($treatment->treatment_medicine as $treatment_medicines)
                             <select class="form-select @error('medicine_id') is-invalid @enderror" name="last_time_medicine_id[]" id="medicine_id" disabled>
                                 <option selected="" value="">-- Please Select --</option>
@@ -85,7 +85,7 @@
                         <div class="mb-3">
                             <label class="form-label">Number of Usage<span class="text-danger">*</span></label>
                             @foreach($treatment->treatment_medicine as $treatment_medicines)
-                            <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->usage_of_medicine }}" disabled>
+                            <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->total_usage }}" disabled>
                             <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->usage_of_medicine }}" hidden>
                             <br>
                             @endforeach

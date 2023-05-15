@@ -112,30 +112,24 @@
                         <div class="col-lg-8">
                             <div class="mb-3">
                                 <label class="form-label">Name<span class="text-danger">*</span></label>
-                                @foreach($treatment_medicine as $treatment_medicines)
-                                @if($treatment_medicines->medicine->status != 0)
-                                <select class="form-select @error('medicine_id') is-invalid @enderror" name="medicine_id[{{ $treatment_medicines->id }}]" id="medicine_id" disabled>
+                                @foreach($history_medicine as $history_medicines)
+                                <select class="form-select @error('medicine_id') is-invalid @enderror" name="medicine_id[{{ $history_medicines->id }}]" id="medicine_id" disabled>
                                     <option selected="" value="">-- Please Select --</option>
                                     @foreach($medicine as $medicines)
-                                    <option value="{{ $medicines->id }}" {{ $treatment_medicines->medicine_id == $medicines->id ? 'selected' : '' }}>{{ $medicines->name }}</option>
+                                    <option value="{{ $medicines->id }}" {{ $history_medicines->medicine_id == $medicines->id ? 'selected' : '' }}>{{ $medicines->name }}</option>
                                     @endforeach
                                 </select>
-                                <input type="number" name="medicine_id[{{ $treatment_medicines->id }}]" id="medicine_id" value="{{ $treatment_medicines->medicine_id }}" hidden>
+                                <input type="number" name="medicine_id[{{ $history_medicines->id }}]" id="medicine_id" value="{{ $history_medicines->medicine_id }}" hidden>
                                 <br>
-                                @else
-                                @endif
                                 @endforeach
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="mb-3">
                                 <label class="form-label">Number of Usage<span class="text-danger">*</span></label>
-                                @foreach($treatment_medicine as $treatment_medicines)
-                                @if($treatment_medicines->medicine->status != 0)
-                                <input type="number" class="form-control" name="number_of_usage[{{ $treatment_medicines->id }}]" value="{{ $treatment_medicines->usage_of_medicine }}" disabled>
+                                @foreach($history_medicine as $history_medicines)
+                                <input type="number" class="form-control" name="number_of_usage[{{ $history_medicines->id }}]" value="{{ $history_medicines->usage_of_medicine }}" disabled>
                                 <br>
-                                @else
-                                @endif
                                 @endforeach
                             </div>
                         </div>

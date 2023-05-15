@@ -85,7 +85,7 @@
                         <div class="mb-3">
                             <label class="form-label">Number of Usage<span class="text-danger">*</span></label>
                             @foreach($treatment->treatment_medicine as $treatment_medicines)
-                            <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->usage_of_medicine }}" disabled>
+                            <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->total_usage }}" disabled>
                             <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->usage_of_medicine }}" hidden>
                             <br>
                             @endforeach

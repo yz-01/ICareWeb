@@ -24,7 +24,12 @@
         <div class="col-xl-6">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title mb-4">Edit Treatment</h4>
+                    <h4 class="card-title mb-4">
+                        Edit Treatment
+                        @if($check_treatment != null)
+                        <span style="color: red;"><b>(Treatment Started)</b></span>
+                        @endif
+                    </h4>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="mb-3">
@@ -77,6 +82,7 @@
                             </div>
                         </div>
 
+                        @if($check_treatment == null)
                         <div class="col-lg-2">
                             <div class="mb-3">
                                 <label class="form-label">Action<span class="text-danger">*</span></label>
@@ -86,6 +92,17 @@
                                 @endforeach
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-2">
+                            <div class="mb-3">
+                                <label class="form-label">Action<span class="text-danger">*</span></label>
+                                @foreach($treatment->treatment_medicine as $treatment_medicines)
+                                <button type="button" class="btn btn-outline-danger delete-data-medicine" data-id="{{ $treatment_medicines->id }}" disabled>Delete</button>
+                                <br><br>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
                         @endif
 
                         <div id="medicines_table"></div>
@@ -153,6 +170,7 @@
                             </div>
                         </div>
 
+                        @if($check_treatment == null)
                         <div class="col-lg-2">
                             <div class="mb-3">
                                 <label class="form-label">Action<span class="text-danger">*</span></label>
@@ -162,6 +180,17 @@
                                 @endforeach
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-2">
+                            <div class="mb-3">
+                                <label class="form-label">Action<span class="text-danger">*</span></label>
+                                @foreach($support_doctor as $support_doctors)
+                                <button type="button" class="btn btn-outline-danger delete-data-doctor" data-id="{{ $support_doctors->id }}" disabled>Delete</button>
+                                <br><br>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
                         @endif
 
                         <input type="number" name="number_support_doctor" id="number_support_doctor" value="{{ $number_support_doctor }}" hidden>
@@ -209,6 +238,7 @@
                             </div>
                         </div>
 
+                        @if($check_treatment == null)
                         <div class="col-lg-2">
                             <div class="mb-3">
                                 <label class="form-label">Action<span class="text-danger">*</span></label>
@@ -218,6 +248,17 @@
                                 @endforeach
                             </div>
                         </div>
+                        @else
+                        <div class="col-lg-2">
+                            <div class="mb-3">
+                                <label class="form-label">Action<span class="text-danger">*</span></label>
+                                @foreach($support_nurse as $support_nurses)
+                                <button type="button" class="btn btn-outline-danger delete-data-nurse" data-id="{{ $support_nurses->id }}" disabled>Delete</button>
+                                <br><br>
+                                @endforeach
+                            </div>
+                        </div>
+                        @endif
                         @endif
 
                         <input type="number" name="number_support_nurse" id="number_support_nurse" value="{{ $number_support_nurse }}" hidden>
@@ -228,7 +269,7 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-lg-12 d-flex flex-row-reverse">
-                            <button type="submit" class="btn btn-primary w-md">Submit</button>
+                            <button type="submit" class="btn btn-primary w-md">Update</button>
                         </div>
                     </div>
                 </div>

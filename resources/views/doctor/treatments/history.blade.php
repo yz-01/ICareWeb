@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('doctor.layouts.app')
 
 @section('content')
 <div class="row">
@@ -7,13 +7,13 @@
             <div>
                 <h4 class="mb-sm-0 font-size-18">Treatment History</h4>
                 <ol class="breadcrumb m-0 mt-3">
-                    <li class="breadcrumb-item"><a href="{{route('admin.treatments.index')}}">Treatment List</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('doctor.treatments.index')}}">Treatment List</a></li>
                     <li class="breadcrumb-item active">Treatment History List</li>
                 </ol>
             </div>
 
             <div class="page-title-right">
-                <a href="{{route('admin.treatments.historyCreate', ['treatment_id' => $treatment])}}" class="text-white">
+                <a href="{{route('doctor.treatments.historyCreate', ['treatment_id' => $treatment])}}" class="text-white">
                     <button type="button" class="btn btn-primary waves-effect waves-light">Create</button>
                 </a>
             </div>
@@ -44,12 +44,12 @@
                                 <td>{{ $histories->title }}</td>
                                 <td>{!! $histories->doctor_remark !!}</td>
                                 <td>
-                                    <a href="{{route('admin.treatments.historyShow', ['treatment_id' => $treatment, 'history_id' => $histories->id])}}">
+                                    <a href="{{route('doctor.treatments.historyShow', ['treatment_id' => $treatment, 'history_id' => $histories->id])}}">
                                         <button type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='View'>
                                             <i class="fas fa-eye"></i>
                                         </button>
                                     </a>
-                                    <a href="{{route('admin.treatments.historyEdit', ['treatment_id' => $treatment, 'history_id' => $histories->id])}}">
+                                    <a href="{{route('doctor.treatments.historyEdit', ['treatment_id' => $treatment, 'history_id' => $histories->id])}}">
                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle='tooltip' data-placement='top' title='Edit'>
                                             <i class="fas fa-edit"></i>
                                         </button>
@@ -88,7 +88,7 @@
         }).then((result) => {
             if (result.value) {
                 if (id != null) {
-                    var url = "{{ route('admin.treatments.historyDelete', ['id' => '']) }}" + id;
+                    var url = "{{ route('doctor.treatments.historyDelete', ['id' => '']) }}" + id;
                     window.location.href = url;
                 }
             }

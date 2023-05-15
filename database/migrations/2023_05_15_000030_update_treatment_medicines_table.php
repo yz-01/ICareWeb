@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTreatmentMedicines2Table extends Migration
+class UpdateTreatmentMedicinesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class UpdateTreatmentMedicines2Table extends Migration
     public function up()
     {
         Schema::table('treatment_medicines', function (Blueprint $table) {
-            $table->string('usage_of_medicine')->nullable()->after('medicine_id');
+            $table->string('total_usage')->nullable()->default(0)->after('medicine_id');
         });
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Announcement;
 use App\Models\Branch;
 use App\Models\Doctor;
 use App\Models\History;
+use App\Models\HistoryMedicine;
 use App\Models\Medicine;
 use App\Models\Nurse;
 use App\Models\Patient;
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\File;
 
 class TreatmentController extends Controller
 {
@@ -46,9 +48,9 @@ class TreatmentController extends Controller
 
         $nurse = Nurse::where('branch_id', auth()->user()->branch_id)->get();
 
-        $ward = Ward::where('is_available', 1)->get();
+        $ward = Ward::where('branch_id', auth()->user()->branch_id)->where('is_available', 1)->get();
 
-        $medicine = Medicine::where('in_stock', 1)->get();
+        $medicine = Medicine::where('branch_id', auth()->user()->branch_id)->where('in_stock', 1)->get();
 
         return view('nurse.treatments.create', compact('patient', 'doctor', 'nurse', 'ward', 'medicine'));
     }
@@ -98,10 +100,21 @@ class TreatmentController extends Controller
                 $treatment_medicine = TreatmentMedicine::create([
                     'treatment_id' => $treatment->id,
                     'medicine_id' => $medicine_ids,
-                    'usage_of_medicine' => 0,
                 ]);
             }
         }
+
+        $patient = Patient::where('id', $request->patient_id)->first();
+
+        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
+        
+        // Create the file
+        $filename = $path . '\\' . $patient->name . '.txt';
+        File::put($filename, '');
+    
+        // Write content to the file
+        $content = "Patient Name: " . $patient->name . "\r\nRoom: " . $treatment->ward->room->room_number . "\r\nWard: " . $treatment->ward->ward_number . "\r\nInstruction: ";
+        File::put($filename, $content, FILE_APPEND);
 
         $request->session()->flash('success', 'Created Successfully');
 
@@ -161,7 +174,9 @@ class TreatmentController extends Controller
             $query->orWhere('status', 1)->orWhereIn('id', $get_treatment_medicine);
         })->where('branch_id', $treatment->patient->branch_id)->get();
 
-        return view('nurse.treatments.edit', compact('treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
+        $check_treatment = History::where('treatment_id', $treatment->id)->first();
+
+        return view('nurse.treatments.edit', compact('check_treatment', 'treatment', 'patient', 'doctor', 'nurse', 'ward', 'medicine', 'support_doctor', 'support_nurse', 'number_support_doctor', 'number_support_nurse'));
     }
 
     public function update(Request $request, Treatment $treatment)
@@ -227,10 +242,21 @@ class TreatmentController extends Controller
                 $treatment_medicine = TreatmentMedicine::create([
                     'treatment_id' => $treatment->id,
                     'medicine_id' => $medicine_ids,
-                    'usage_of_medicine' => 0,
                 ]);
             }
         }
+
+        $patient = Patient::where('id', $request->patient_id)->first();
+        
+        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
+        
+        // Create the file
+        $filename = $path . '\\' . $patient->name . '.txt';
+        File::put($filename, '');
+    
+        // Write content to the file
+        $content = "Patient Name: " . $patient->name . "\r\nRoom: " . $treatment->ward->room->room_number . "\r\nWard: " . $treatment->ward->ward_number . "\r\nInstruction: ";
+        File::put($filename, $content, FILE_APPEND);
 
         $request->session()->flash('success', trans('Update Successfully'));
 
@@ -299,20 +325,25 @@ class TreatmentController extends Controller
             ]);
         }
 
-        foreach($request->number_of_usage as $id => $number_of_usages)
+        foreach($request->medicine_id as $id => $medicine_ids)
         {
-            $treatment_medicine = TreatmentMedicine::where('id', $id)->first();
-
-            $usage_of_medicine = $treatment_medicine->usage_of_medicine;
-
-            $treatment_medicine->update([
-                'usage_of_medicine' => $number_of_usages,
+            $history_medicine = HistoryMedicine::create([
+                'history_id' => $history->id,
+                'medicine_id' => $medicine_ids,
+                'last_time_usage_of_medicine' => $request->number_of_usage[$id],
+                'usage_of_medicine' => $request->number_of_usage[$id],
             ]);
 
-            $medicine = Medicine::where('id', $treatment_medicine->medicine_id)->first();
+            $treatment_medicine = TreatmentMedicine::where('treatment_id', $request->treatment_id)->where('medicine_id', $medicine_ids)->first();
+
+            $treatment_medicine->update([
+                'total_usage' => $treatment_medicine->total_usage + $request->number_of_usage[$id],
+            ]);
+
+            $medicine = Medicine::where('id', $medicine_ids)->first();
 
             $medicine->update([
-                'number' => $medicine->number + $usage_of_medicine - $number_of_usages,
+                'number' => $medicine->number - $request->number_of_usage[$id],
             ]);
 
             if($medicine->number == 0)
@@ -329,6 +360,8 @@ class TreatmentController extends Controller
 
         $i = 1;
 
+        $request->session()->flash('success', 'Created Successfully');
+
         return view('nurse.treatments.history', compact('treatment', 'history', 'i'));
     }
 
@@ -342,7 +375,9 @@ class TreatmentController extends Controller
 
         $history = History::where('id', $request->history_id)->first();
 
-        return view('nurse.treatments.historyEdit', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
+        $history_medicine = HistoryMedicine::where('history_id', $request->history_id)->get();
+
+        return view('nurse.treatments.historyEdit', compact('history_medicine', 'treatment', 'treatment_medicine', 'medicine', 'history'));
     }
 
     public function historyUpdate(Request $request)
@@ -372,20 +407,27 @@ class TreatmentController extends Controller
             ]);
         }
 
-        foreach($request->number_of_usage as $id => $number_of_usages)
+        foreach($request->medicine_id as $id => $medicine_ids)
         {
-            $treatment_medicine = TreatmentMedicine::where('id', $id)->first();
+            $history_medicine = HistoryMedicine::where('history_id', $request->history_id)->where('medicine_id', $medicine_ids)->first();
 
-            $usage_of_medicine = $treatment_medicine->usage_of_medicine;
+            $last_time_usage_of_medicine = $history_medicine->last_time_usage_of_medicine;
 
-            $treatment_medicine->update([
-                'usage_of_medicine' => $number_of_usages,
+            $history_medicine->update([
+                'last_time_usage_of_medicine' => $request->number_of_usage[$id],
+                'usage_of_medicine' => $request->number_of_usage[$id],
             ]);
 
-            $medicine = Medicine::where('id', $treatment_medicine->medicine_id)->first();
+            $treatment_medicine = TreatmentMedicine::where('treatment_id', $request->treatment_id)->where('medicine_id', $medicine_ids)->first();
+
+            $treatment_medicine->update([
+                'total_usage' => $treatment_medicine->total_usage + $request->number_of_usage[$id] - $last_time_usage_of_medicine,
+            ]);
+
+            $medicine = Medicine::where('id', $medicine_ids)->first();
 
             $medicine->update([
-                'number' => $medicine->number + $usage_of_medicine - $number_of_usages,
+                'number' => $medicine->number + $last_time_usage_of_medicine - $request->number_of_usage[$id],
             ]);
 
             if($medicine->number == 0)
@@ -402,6 +444,8 @@ class TreatmentController extends Controller
 
         $i = 1;
 
+        $request->session()->flash('success', 'Update Successfully');
+
         return view('nurse.treatments.history', compact('treatment', 'history', 'i'));
     }
 
@@ -415,7 +459,9 @@ class TreatmentController extends Controller
 
         $history = History::where('id', $request->history_id)->first();
 
-        return view('nurse.treatments.historyShow', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
+        $history_medicine = HistoryMedicine::where('history_id', $request->history_id)->get();
+
+        return view('nurse.treatments.historyShow', compact('history_medicine', 'treatment', 'treatment_medicine', 'medicine', 'history'));
     }
 
     public function historyDelete(Request $request)
@@ -461,6 +507,8 @@ class TreatmentController extends Controller
 
         $treatment_medicine->delete();
 
+        $request->session()->flash('success', 'Deleted Successfully');
+
         return Redirect::back();
     }
 
@@ -468,12 +516,16 @@ class TreatmentController extends Controller
     {
         $support_doctor = SupportDoctor::where('id', $request->id)->delete();
 
+        $request->session()->flash('success', 'Deleted Successfully');
+
         return Redirect::back();
     }
 
     public function deleteDataNurse(Request $request)
     {
         $support_nurse = SupportNurse::where('id', $request->id)->delete();
+
+        $request->session()->flash('success', 'Deleted Successfully');
 
         return Redirect::back();
     }

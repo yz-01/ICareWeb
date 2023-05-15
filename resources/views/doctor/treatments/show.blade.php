@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('doctor.layouts.app')
 
 @section('content')
 <!-- Start Page Title -->
@@ -9,7 +9,7 @@
         </div>
         <div class="page-title-left d-sm-flex align-items-center justify-content-between">
             <ol class="breadcrumb mt-n3 p-0">
-                <li class="breadcrumb-item"><a href="{{route('admin.treatments.index')}}">Treatment List</a></li>
+                <li class="breadcrumb-item"><a href="{{route('doctor.treatments.index')}}">Treatment List</a></li>
                 <li class="breadcrumb-item active">Treatment Detail</li>
             </ol>
         </div>
@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-lg-12 d-flex">
                         <h4 class="card-title mb-0">Treatment Information</h4>
-                        <a href="{{ route('admin.treatments.edit', $treatment->id) }}" class="ms-auto">
+                        <a href="{{ route('doctor.treatments.edit', $treatment->id) }}" class="ms-auto">
                             <button class="btn btn-primary">
                                 <i class="fas fa-edit"></i>
                             </button>
@@ -85,7 +85,7 @@
                         <div class="mb-3">
                             <label class="form-label">Number of Usage<span class="text-danger">*</span></label>
                             @foreach($treatment->treatment_medicine as $treatment_medicines)
-                            <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->usage_of_medicine }}" disabled>
+                            <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->total_usage }}" disabled>
                             <input type="number" class="form-control" name="last_time_number[]" value="{{ $treatment_medicines->usage_of_medicine }}" hidden>
                             <br>
                             @endforeach

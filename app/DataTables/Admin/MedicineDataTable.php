@@ -23,7 +23,7 @@ class MedicineDataTable extends DataTable
                 if ($item->image) {
                     return "<a target='_blank' href='" . asset($item->image) . "'><img src='" . asset($item->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
+                    return "<a target='_blank' href='" . asset('images/default/medicine.png') . "'><img src='" . asset('images/default/medicine.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
                 }
             })
             ->addColumn('action', function ($item) {

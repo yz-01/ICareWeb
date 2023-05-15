@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('doctor.layouts.app')
 
 @section('content')
 <div class="row">
@@ -7,8 +7,8 @@
             <div>
                 <h4 class="mb-sm-0 font-size-18">Edit Treatment History</h4>
                 <ol class="breadcrumb m-0 mt-3">
-                    <li class="breadcrumb-item"><a href="{{route('admin.treatments.index')}}">Treatment List</a></li>
-                    <li class="breadcrumb-item"><a href="{{route('admin.treatments.history', ['treatment_id' => $treatment])}}">Treatment History List</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('doctor.treatments.index')}}">Treatment List</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('doctor.treatments.history', ['treatment_id' => $treatment])}}">Treatment History List</a></li>
                     <li class="breadcrumb-item active">Edit Treatment History</li>
                 </ol>
             </div>
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-<form action="{{route('admin.treatments.historyUpdate')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('doctor.treatments.historyUpdate')}}" method="post" enctype="multipart/form-data">
     @csrf
     @method('POST')
     <div class="row">

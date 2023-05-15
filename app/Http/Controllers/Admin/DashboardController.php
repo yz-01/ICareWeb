@@ -27,13 +27,15 @@ class DashboardController extends Controller
         }
         else
         {
+            $patient = Patient::where('branch_id', auth()->user()->branch_id)->pluck('id');
+
             $total_patient = count(Patient::where('branch_id', auth()->user()->branch_id)->get());
 
             $total_doctor = count(Doctor::where('branch_id', auth()->user()->branch_id)->get());
 
             $total_nurse = count(Nurse::where('branch_id', auth()->user()->branch_id)->get());
 
-            $total_treatment = count(Treatment::where('branch_id', auth()->user()->branch_id)->get());
+            $total_treatment = count(Treatment::whereIn('patient_id', $patient)->get());
         }
         return view('admin.dashboard', compact('total_patient', 'total_doctor', 'total_nurse', 'total_treatment'));
     }

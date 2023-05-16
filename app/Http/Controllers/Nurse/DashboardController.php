@@ -48,8 +48,16 @@ class DashboardController extends Controller
         $content = "Patient Name: " . $patient->name . "\r\nRoom: " . $treatment->ward->room->room_number . "\r\nWard: " . $treatment->ward->ward_number . "\r\nInstruction: ";
         File::put($filename, $content, FILE_APPEND);
 
+        $announcement = Announcement::where('branch_id', auth()->user()->branch_id)
+        ->orWhere(function ($query) {
+            $query->where('published_to', 1)
+                ->orWhere('published_to', 3);
+        })
+        ->latest()
+        ->first();
+
         $request->session()->flash('success', 'Created Successfully');
 
-        return view('nurse.dashboard');
+        return view('nurse.dashboard', compact('announcement'));
     }
 }

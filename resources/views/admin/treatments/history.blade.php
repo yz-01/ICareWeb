@@ -11,12 +11,6 @@
                     <li class="breadcrumb-item active">Treatment History List</li>
                 </ol>
             </div>
-
-            <div class="page-title-right">
-                <a href="{{route('admin.treatments.historyCreate', ['treatment_id' => $treatment])}}" class="text-white">
-                    <button type="button" class="btn btn-primary waves-effect waves-light">Create</button>
-                </a>
-            </div>
         </div>
     </div>
 </div>

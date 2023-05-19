@@ -26,34 +26,20 @@
                         <div class="card-body">
                             <h4 class="card-title mb-4">Schedule Information</h4>
                             <div class="form-group mb-3">
-                                <label for="city">For<span class="text-danger">*</span></label>
-                                <br>
-                                <button type="button" name="selected_doctor" id="selected_doctor" class="btn btn-outline-primary" style="width: 115px;">Doctor</button>
-                                <button type="button" name="selected_nurse" id="selected_nurse" class="btn btn-outline-success" style="width: 115px;">Nurse</button>
-                            </div>
-                            <div class="form-group mb-3" id="group_doctor" style="display: none;">
-                                <label for="city">Doctor Name<span class="text-danger">*</span></label>
-                                <select class="form-select select-city @error('doctor_id') is-invalid @enderror" name="doctor_id" id="doctor_id">
-                                    <option value="">-- Please Select --</option>
-                                    @foreach($doctor as $doctors)
-                                    <option value="{{ $doctors->id }}" {{ old('doctor_id') == $doctors->id ? 'selected' : '' }}>{{ $doctors->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="form-group mb-3" id="group_nurse" style="display: none;">
                                 <label for="city">Nurse Name<span class="text-danger">*</span></label>
-                                <select class="form-select select-city @error('nurse_id') is-invalid @enderror" name="nurse_id" id="nurse_id">
+                                <select class="form-select select-city @error('nurse_id') is-invalid @enderror" name="nurse_id" id="nurse_id" disabled>
                                     <option value="">-- Please Select --</option>
                                     @foreach($nurse as $nurses)
-                                    <option value="{{ $nurses->id }}" {{ old('nurse_id') == $nurses->id ? 'selected' : '' }}>{{ $nurses->name }}</option>
+                                    <option value="{{ $nurses->id }}" {{ auth()->id() == $nurses->id ? 'selected' : '' }}>{{ $nurses->name }}</option>
                                     @endforeach
                                 </select>
+                                <input type="number" name="nurse_id" id="nurse_id" value="{{ auth()->id() }}" hidden>
                             </div>
-                            <div class="form-group mb-3" id="group_date" style="display: none;">
+                            <div class="form-group mb-3">
                                 <label for="date">Date<span class="text-danger">*</span></label>
                                 <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="date" value="{{ old('date') ?: '' }}">
                             </div>
-                            <div class="form-group mb-3" id="group_shift" style="display: none;">
+                            <div class="form-group mb-3">
                                 <label for="city">Shift<span class="text-danger">*</span></label>
                                 <select class="form-select select-city @error('shift') is-invalid @enderror" name="shift" id="shift">
                                     <option value="">-- Please Select --</option>

@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth:nurse'], function () {
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('call', 'DashboardController@call')->name('call');
+    Route::get('callList', 'DashboardController@callList')->name('callList');
     Route::post('callStore', 'DashboardController@callStore')->name('callStore');
 
     //Nurse

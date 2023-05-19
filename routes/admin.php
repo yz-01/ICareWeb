@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Auth'], function () {
 Route::group(['middleware' => 'auth:admin'], function () {
     // Dashboard
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
-    Route::get('python', 'DashboardController@python')->name('python');
+    Route::get('callList', 'DashboardController@callList')->name('callList');
 
     //Admins
     Route::put('admin/updateStatus/{admin}', 'AdminController@updateStatus')->name('admins.updateStatus');

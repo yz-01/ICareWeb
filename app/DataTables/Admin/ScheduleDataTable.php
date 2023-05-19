@@ -23,19 +23,6 @@ class ScheduleDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addIndexColumn('DT_RowIndex')
-            ->editColumn('image', function ($item) {
-                if ($item->doctor->image) {
-                    return "<a target='_blank' href='" . asset($item->doctor->image) . "'><img src='" . asset($item->doctor->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                }
-
-                if ($item->nurse->image) {
-                    return "<a target='_blank' href='" . asset($item->nurse->image) . "'><img src='" . asset($item->nurse->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                }
-            })
             ->addColumn('action', function ($item) {
                 return view('admin.schedules.action', compact('item'));
             })
@@ -65,7 +52,7 @@ class ScheduleDataTable extends DataTable
                 }
                 
             })
-            ->rawColumns(['action', 'name', 'image', 'shift']);
+            ->rawColumns(['action', 'name', 'shift']);
     }
 
     /**

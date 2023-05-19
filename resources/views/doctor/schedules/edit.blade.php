@@ -65,12 +65,13 @@
                                 <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" placeholder="date" value="{{ $schedule->date }}">
                             </div>
                             <div class="form-group mb-3">
-                                <label for="time_in">Time In<span class="text-danger">*</span></label>
-                                <input type="time" class="form-control @error('time_in') is-invalid @enderror" name="time_in" placeholder="time_in" value="{{ $schedule->time_in }}">
-                            </div>
-                            <div class="form-group mb-3">
-                                <label for="time_out">Time Out<span class="text-danger">*</span></label>
-                                <input type="time" class="form-control @error('time_out') is-invalid @enderror" name="time_out" placeholder="time_out" value="{{ $schedule->time_out }}">
+                                <label for="city">Shift<span class="text-danger">*</span></label>
+                                <select class="form-select select-city @error('shift') is-invalid @enderror" name="shift" id="shift">
+                                    <option value="">-- Please Select --</option>
+                                    <option value="1" {{ $schedule->shift == 1 ? 'selected' : '' }}>Morning Shift (8AM - 4PM)</option>
+                                    <option value="2" {{ $schedule->shift == 2 ? 'selected' : '' }}>Afternoon Shift (4PM - 12AM)</option>
+                                    <option value="3" {{ $schedule->shift == 3 ? 'selected' : '' }}>Night Shift (12AM - 8AM)</option>
+                                </select>
                             </div>
                         </div>
                         <div class="card-footer text-end">

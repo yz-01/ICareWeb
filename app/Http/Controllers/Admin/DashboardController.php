@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Nurse;
 use App\Models\Patient;
+use App\Models\PatientCall;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -40,18 +41,12 @@ class DashboardController extends Controller
         return view('admin.dashboard', compact('total_patient', 'total_doctor', 'total_nurse', 'total_treatment'));
     }
 
-    public function python()
+    public function callList(Request $request)
     {
-        $patient = Patient::where('id', 1)->first();
+        $patient_call = PatientCall::all();
 
-        $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
-        
-        // Create the file
-        $filename = $path . '\\' . $patient->name . '.txt';
-        File::put($filename, '');
-    
-        // Write content to the file
-        $content = "Patient Name: " . $patient->name . "\r\nInstruction: ";
-        File::put($filename, $content, FILE_APPEND);
+        $i = 1;
+
+        return view('admin.callList', compact('patient_call', 'i'));
     }
 }

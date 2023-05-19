@@ -38,6 +38,9 @@ class Schedule extends Authenticatable
         $query->when(request()->has('nurse_id') && filled(request('nurse_id')), function ($q) {
             $q->where('nurse_id', request('nurse_id'));
         });
+        $query->when(request()->has('shift') && filled(request('shift')), function ($q) {
+            $q->where('shift', request('shift'));
+        });
         return $query;
     }
 }

@@ -10,14 +10,6 @@
                     <li class="breadcrumb-item active">Treatment List</li>
                 </ol>
             </div>
-
-            @if(auth()->user()->branch_id)
-            <div class="page-title-right">
-                <a href="{{route('admin.treatments.create')}}" class="text-white">
-                    <button type="button" class="btn btn-primary waves-effect waves-light">Create</button>
-                </a>
-            </div>
-            @endif
         </div>
     </div>
 </div>

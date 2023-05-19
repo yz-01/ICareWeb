@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DataTables\Admin;
+namespace App\DataTables\doctor;
 
 use App\Models\Room;
 use App\Models\Schedule;
@@ -23,21 +23,8 @@ class ScheduleDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addIndexColumn('DT_RowIndex')
-            ->editColumn('image', function ($item) {
-                if ($item->doctor->image) {
-                    return "<a target='_blank' href='" . asset($item->doctor->image) . "'><img src='" . asset($item->doctor->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                }
-
-                if ($item->nurse->image) {
-                    return "<a target='_blank' href='" . asset($item->nurse->image) . "'><img src='" . asset($item->nurse->image) . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                } else {
-                    return "<a target='_blank' href='" . asset('images/default/profile.png') . "'><img src='" . asset('images/default/profile.png') . "' style='width: 50px; height: 50px' class='rounded-circle'></a>";
-                }
-            })
             ->addColumn('action', function ($item) {
-                return view('admin.schedules.action', compact('item'));
+                return view('doctor.schedules.action', compact('item'));
             })
             ->addColumn('name', function ($item) {
                 if($item->doctor_id)
@@ -47,6 +34,21 @@ class ScheduleDataTable extends DataTable
                 if($item->nurse_id)
                 {
                     return $item->nurse->name ?: '-';
+                }
+                
+            })
+            ->addColumn('shift', function ($item) {
+                if($item->shift == 1)
+                {
+                    return 'Morning Shift (8AM - 4PM)' ?: '-';
+                }
+                elseif($item->shift == 2)
+                {
+                    return 'Afternoon Shift (4PM - 12AM)' ?: '-';
+                }
+                elseif($item->shift == 3)
+                {
+                    return 'Night Shift (12AM - 8AM)' ?: '-';
                 }
                 
             })
@@ -61,7 +63,7 @@ class ScheduleDataTable extends DataTable
      */
     public function query(Schedule $model)
     {
-        return $model->localsearch(request())->where('doctor', auth()->id());
+        return $model->localsearch(request())->where('doctor_id', auth()->id());
     }
 
     /**
@@ -72,23 +74,24 @@ class ScheduleDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('admin-schedules-table')
+            ->setTableId('doctor-schedules-table')
             ->columns($this->getColumns())
             ->ajax([
-                'url' => route('admin.schedules.index'),
+                'url' => route('doctor.schedules.index'),
                 'data' => 'function(d) {
                     d.doctor_id = $("#doctor_id").val();
                     d.nurse_id = $("#nurse_id").val();
                     d.date = $("#date").val();
+                    d.shift = $("#shift").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
             ->initComplete('function() {
                     $(".datatable-input").on("change",function () {
-                        $("#admin-schedules-table").DataTable().ajax.reload();
+                        $("#doctor-schedules-table").DataTable().ajax.reload();
                     });
                     $("#subBtn").on("click",function () {
-                        $("#admin-schedules-table").DataTable().ajax.reload();
+                        $("#doctor-schedules-table").DataTable().ajax.reload();
                     });
                     $("#clearBtn").on("click",function () {
                         $("#date").val(null);
@@ -96,9 +99,11 @@ class ScheduleDataTable extends DataTable
                         $("#doctor_id").change();
                         $("#nurse_id").val(null);
                         $("#nurse_id").change();
-                        $("#admin-schedules-table").DataTable().ajax.reload();
+                        $("#shift").val(null);
+                        $("#shift").change();
+                        $("#doctor-schedules-table").DataTable().ajax.reload();
                     });
-                    $("#admin-schedules-table").on("click", ".delFunc", function(e) {
+                    $("#doctor-schedules-table").on("click", ".delFunc", function(e) {
                         var id = $(this).data("id");
                         var form = $("#delete-schedule-"+id);
                         Swal.fire({
@@ -113,7 +118,7 @@ class ScheduleDataTable extends DataTable
                             }
                         });
                     });
-                    $("#admin-schedules-table").on("change", ".change-status", function(e) {
+                    $("#doctor-schedules-table").on("change", ".change-status", function(e) {
                         var $this = $(this);
                         var id = $(this).data("id");
                         var form = $("#update-room-status-"+id);
@@ -162,6 +167,6 @@ class ScheduleDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Admin/Schedule' . date('YmdHis');
+        return 'doctor/Schedule' . date('YmdHis');
     }
 }

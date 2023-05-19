@@ -35,22 +35,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="px-2 flex-fill">
-                        <select class="form-select datatable-input" id="doctor_id">
-                            <option value="">Select Doctor</option>
-                            @foreach($doctor as $doctors)
-                            <option value="{{ $doctors->id }}">{{ $doctors->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="px-2 flex-fill">
-                        <select class="form-select datatable-input" id="nurse_id">
-                            <option value="">Select Nurse</option>
-                            @foreach($nurse as $nurses)
-                            <option value="{{ $nurses->id }}">{{ $nurses->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="px-2 flex-fil">
                         <input type="text" class="form-control datatable-input" id="title" placeholder="Title" data-col-index="2">
                     </div>

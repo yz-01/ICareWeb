@@ -24,19 +24,11 @@
             <div class="card-body">
                 <div class="d-none d-md-flex mb-3">
                     <div class="px-2 flex-fill">
-                        <select class="form-select datatable-input" id="doctor_id">
-                            <option value="">Select Doctor</option>
-                            @foreach($doctor as $doctors)
-                            <option value="{{ $doctors->id }}">{{ $doctors->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="px-2 flex-fill">
-                        <select class="form-select datatable-input" id="nurse_id">
-                            <option value="">Select Nurse</option>
-                            @foreach($nurse as $nurses)
-                            <option value="{{ $nurses->id }}">{{ $nurses->name }}</option>
-                            @endforeach
+                        <select class="form-select datatable-input" id="shift">
+                            <option value="">Select Shift</option>
+                            <option value="1">Morning Shift (8AM - 4PM)</option>
+                            <option value="2">Afternoon Shift (4PM - 12AM)</option>
+                            <option value="3">Night Shift (12AM - 8AM)</option>
                         </select>
                     </div>
                     <div class="pe-2 flex-fill">

@@ -39,13 +39,13 @@
                         <span>Announcement</span>
                     </a>
                 </li>
-                <li class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-active' : '' }}">
+                <li class="{{ Request::segment(3) && (Request::segment(2) == 'branches' && Request::segment(3) != 'create') ? 'mm-active' : '' }}">
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="bx bx-building-house"></i>
                         <span>Branch</span>
                     </a>
-                    <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
-                        <li><a href="{{ route('admin.branches.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'admins' && Request::segment(3) != 'create') ? 'active' : '' }}">Branch List</a></li>
+                    <ul class="sub-menu {{ Request::segment(3) && (Request::segment(2) == 'branches' && Request::segment(3) != 'create') ? 'mm-show' : '' }}" aria-expanded="false">
+                        <li><a href="{{ route('admin.branches.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'branches' && Request::segment(3) != 'create') ? 'active' : '' }}">Branch List</a></li>
                         <li><a href="{{ route('admin.roomTypes.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'roomTypes' && Request::segment(3) != 'create') ? 'active' : '' }}">Room Type List</a></li>
                         <li><a href="{{ route('admin.rooms.index') }}" class="{{ Request::segment(3) && (Request::segment(2) == 'rooms' && Request::segment(3) != 'create') ? 'active' : '' }}">Room List</a></li>
                     </ul>
@@ -68,12 +68,12 @@
                         <span>Schedule</span>
                     </a>
                 </li>
-                <!-- <li>
-                    <a href="{{ route('admin.python') }}" class="waves-effect">
-                        <i class="bx bx-bar-chart-square"></i>
-                        <span>Report</span>
+                <li>
+                    <a href="{{ route('admin.callList') }}" class="waves-effect">
+                        <i class="bx bx-phone"></i>
+                        <span>Patient Calling List</span>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->

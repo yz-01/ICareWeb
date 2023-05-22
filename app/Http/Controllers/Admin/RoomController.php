@@ -96,7 +96,6 @@ class RoomController extends Controller
         $room->update([
             'floor' => $request->floor,
             'room_number' => $request->room_number,
-            'room_type_id' => $request->room_type_id,
             'branch_id' => $request->branch_id,
         ]);
 

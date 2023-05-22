@@ -67,7 +67,6 @@
                                 <label class="form-label">Published to Branch<span class="text-danger">*</span></label>
                                 <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
                                     <option selected value="">-- Please Select --</option>
-                                    <option value="">All</option>
                                     @foreach($branch as $branches)
                                     <option value="{{ $branches->id }}">{{ $branches->name }}</option>
                                     @endforeach

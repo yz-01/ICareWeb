@@ -39,6 +39,14 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="px-2 flex-fill">
+                        <select class="form-select datatable-input" id="shift">
+                            <option value="">Select Shift</option>
+                            <option value="1">Morning Shift (8AM - 4PM)</option>
+                            <option value="2">Afternoon Shift (4PM - 12AM)</option>
+                            <option value="3">Night Shift (12AM - 8AM)</option>
+                        </select>
+                    </div>
                     <div class="pe-2 flex-fill">
                         <input type="date" class="form-control datatable-input" id="date" placeholder="Date" data-col-index="2">
                     </div>

@@ -150,7 +150,6 @@ class TreatmentDataTable extends DataTable
     {
         return [
             Column::make('DT_RowIndex')->title('#')->orderable(false),
-            Column::make('image')->title('Image')->orderable(false),
             Column::make('patient')->title('Patient Name')->orderable(false),
             Column::make('doctor')->title('Doctor')->orderable(false),
             Column::make('nurse')->title('Nurse')->orderable(false),

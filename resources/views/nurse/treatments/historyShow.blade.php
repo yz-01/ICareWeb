@@ -59,9 +59,9 @@
                                             Excellent
                                             @elseif($history->patient_healthy_status == 2)
                                             Good
-                                            @elseif($history->patient_healthy_status == 2)
+                                            @elseif($history->patient_healthy_status == 3)
                                             Normal
-                                            @elseif($history->patient_healthy_status == 2)
+                                            @elseif($history->patient_healthy_status == 4)
                                             Fair
                                             @else
                                             Bad

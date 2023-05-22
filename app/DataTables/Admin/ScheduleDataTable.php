@@ -82,6 +82,7 @@ class ScheduleDataTable extends DataTable
                     d.doctor_id = $("#doctor_id").val();
                     d.nurse_id = $("#nurse_id").val();
                     d.date = $("#date").val();
+                    d.shift = $("#shift").val();
                 }',
             ])
             ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12 table-responsive' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
@@ -98,6 +99,8 @@ class ScheduleDataTable extends DataTable
                         $("#doctor_id").change();
                         $("#nurse_id").val(null);
                         $("#nurse_id").change();
+                        $("#shift").val(null);
+                        $("#shift").change();
                         $("#admin-schedules-table").DataTable().ajax.reload();
                     });
                     $("#admin-schedules-table").on("click", ".delFunc", function(e) {

@@ -10,13 +10,7 @@
                     <li class="breadcrumb-item"><a href="{{route('patient.treatments.index')}}">Treatment List</a></li>
                     <li class="breadcrumb-item active">Treatment History List</li>
                 </ol>
-            </div>
-
-            <div class="page-title-right">
-                <a href="{{route('patient.treatments.historyCreate', ['treatment_id' => $treatment])}}" class="text-white">
-                    <button type="button" class="btn btn-primary waves-effect waves-light">Create</button>
-                </a>
-            </div>
+            </div>  
         </div>
     </div>
 </div>

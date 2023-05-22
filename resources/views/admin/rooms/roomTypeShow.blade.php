@@ -28,6 +28,10 @@
                                 <th scope="row">Name :</th>
                                 <td>{{ $room_type->name }}</td>
                             </tr>
+                            <tr>
+                                <th scope="row">Maximum Number :</th>
+                                <td>{{ $room_type->max_number }}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

@@ -73,11 +73,10 @@
                             <div class="mb-3">
                                 <label class="form-label">Published to Branch</label>
                                 <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" disabled>
-                                    @if($announcement->branch_id)
-                                    <option selected="" value="">{{ $branches->name }}</option>
-                                    @else
-                                    <option selected="" value="">All</option>
-                                    @endif
+                                <option selected value="">-- Please Select --</option>
+                                    @foreach($branch as $branches)
+                                    <option value="{{ $branches->id }}" {{ $branches->id == $announcement->branch_id ? 'selected' : '' }}>{{ $branches->name }}</option>
+                                    @endforeach
                                 </select>
                                 @error('branch_id') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                             </div>

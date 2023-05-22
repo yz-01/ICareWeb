@@ -29,9 +29,9 @@
                                         <th scope="row">Photo :</th>
                                         <td>
                                             @if ($patient->image)
-                                                <img src="{{ asset($patient->image) }}" style="width: 100px; height: 100px;" class="rounded-circle">
+                                            <img src="{{ asset($patient->image) }}" style="width: 100px; height: 100px;" class="rounded-circle">
                                             @else
-                                                <img src="{{ asset('images/default/profile.png') }}" style="width: 100px; height: 100px;" class="rounded-circle">
+                                            <img src="{{ asset('images/default/profile.png') }}" style="width: 100px; height: 100px;" class="rounded-circle">
                                             @endif
                                         </td>
                                         <th></th>
@@ -54,6 +54,22 @@
                                         <td>{{ $patient->identity_card ?: '-' }}</td>
                                         <th scope="row">Phone Number :</th>
                                         <td>{{ $patient->phone ?: '-' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Branch :</th>
+                                        <td>{{ $patient->branch_id ? $patient->branch->name : '-' }}</td>
+                                        <th scope="row">Nurse Call Application :</th>
+                                        <td>
+                                            @if($patient->nurse_call_application_id == 1)
+                                            Fingers Recognition Application
+                                            @else
+                                            Eyes Recognition Application
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Calling Times :</th>
+                                        <td>{{ $patient_call ?: '-' }}</td>
                                     </tr>
                                     {{-- <tr>
                                         <th scope="row">Role :</th>

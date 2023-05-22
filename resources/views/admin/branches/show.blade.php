@@ -79,7 +79,7 @@
                                     @if($branch->logo)
                                     <img class="logo-preview" src="{{ asset($branch->logo) }}">
                                     @else
-                                    <img class="logo-preview" src="{{ asset('/images/icon/logotext_default.png') }}">
+                                    <img class="logo-preview" src="{{ asset('/images/icon/logo.png') }}">
                                     @endif
                                 </div>
                                 @error('logo')
@@ -97,7 +97,7 @@
                                     @if($branch->thumbnail_logo)
                                     <img class="logo-sm-preview" src="{{ asset($branch->thumbnail_logo) }}">
                                     @else
-                                    <img class="logo-sm-preview" src="{{ asset('/images/icon/logotext_default.png') }}">
+                                    <img class="logo-sm-preview" src="{{ asset('/images/icon/logo.png') }}">
                                     @endif
                                 </div>
                                 @error('logo_sm')

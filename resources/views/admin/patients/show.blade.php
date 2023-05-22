@@ -66,7 +66,19 @@
                                     <tr>
                                         <th scope="row">Branch :</th>
                                         <td>{{ $patient->branch_id ? $patient->branch->name : '-' }}</td>
-                                    </tr> 
+                                        <th scope="row">Nurse Call Application :</th>
+                                        <td>
+                                            @if($patient->nurse_call_application_id == 1)
+                                            Fingers Recognition Application
+                                            @else
+                                            Eyes Recognition Application
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Calling Times :</th>
+                                        <td>{{ $patient_call ?: '-' }}</td>
+                                    </tr>
                                     {{-- <tr>
                                         <th scope="row">Role :</th>
                                         <td>{{ $patient->role ? $patient->role->name : '-' }}</td>

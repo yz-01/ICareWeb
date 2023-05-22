@@ -22,14 +22,6 @@
                 <!--begin: Datatable-->
                 <div class="d-md-flex mb-3 mt-1">
                     <div class="px-2 flex-fill">
-                        <select class="form-select datatable-input" id="patient_id">
-                            <option value="">Select Patient</option>
-                            @foreach($patient as $patients)
-                            <option value="{{ $patients->id }}">{{ $patients->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="px-2 flex-fill">
                         <select class="form-select datatable-input" id="doctor_id">
                             <option value="">Select Doctor</option>
                             @foreach($doctor as $patients)

@@ -8,6 +8,7 @@ use App\Models\Announcement;
 use App\Models\Branch;
 use App\Models\Doctor;
 use App\Models\History;
+use App\Models\HistoryMedicine;
 use App\Models\Medicine;
 use App\Models\Nurse;
 use App\Models\Patient;
@@ -89,6 +90,8 @@ class TreatmentController extends Controller
 
         $history = History::where('id', $request->history_id)->first();
 
-        return view('patient.treatments.historyShow', compact('treatment', 'treatment_medicine', 'medicine', 'history'));
+        $history_medicine = HistoryMedicine::where('history_id', $request->history_id)->get();
+
+        return view('patient.treatments.historyShow', compact('history_medicine', 'treatment', 'treatment_medicine', 'medicine', 'history'));
     }
 }

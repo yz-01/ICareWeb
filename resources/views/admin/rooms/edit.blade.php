@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <label for="city">Room Type<span class="text-danger">*</span></label>
-                                <select class="form-select select-city @error('room_type_id') is-invalid @enderror" name="room_type_id">
+                                <select class="form-select select-city @error('room_type_id') is-invalid @enderror" name="room_type_id" disabled>
                                     <option value="">-- Please Select --</option>
                                     @foreach($room_type as $room_types)
                                     <option value="{{ $room_types->id }}" {{ $room->room_type_id == $room_types->id ? 'selected' : '' }}>{{ $room_types->name }}</option>

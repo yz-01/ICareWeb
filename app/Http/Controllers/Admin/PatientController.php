@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Branch;
 use App\Models\Paient;
 use App\Models\Patient;
+use App\Models\PatientCall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
@@ -73,7 +74,9 @@ class PatientController extends Controller
 
     public function show(Patient $patient)
     {
-        return view('admin.patients.show', compact('patient'));
+        $patient_call = count(PatientCall::where('patient_id', $patient->id)->get());
+
+        return view('admin.patients.show', compact('patient', 'patient_call'));
     }
 
     public function edit(Patient $patient)

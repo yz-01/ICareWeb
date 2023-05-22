@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="name">Name<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: $admin->name }}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: $admin->name }}" required>
                         @error('name')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="email">Email<span class="text-danger">*</span></label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: $admin->email }}">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: $admin->email }}" required>
                         @error('email')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>

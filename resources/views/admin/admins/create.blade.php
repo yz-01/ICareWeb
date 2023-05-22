@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="username">Username<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" value="{{ old('username') ?: '' }}">
+                        <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" placeholder="Username" value="{{ old('username') ?: '' }}" required>
                         @error('username')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="name">Name<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: '' }}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: '' }}" required>
                         @error('name')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -81,8 +81,8 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: '' }}">
+                        <label for="email">Email<span class="text-danger">*</span></label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: '' }}" required>
                         @error('email')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="password">Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" required>
                         @error('password')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -117,7 +117,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="password_confirmation">Confirm Password<span class="text-danger">*</span></label>
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password">
+                        <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required> 
                     </div>
                 </div>
                 <div class="card-footer text-end">

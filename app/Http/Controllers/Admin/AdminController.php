@@ -29,24 +29,6 @@ class AdminController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'username' => 'required|string|max:255|unique:admins,deleted_at,NULL',
-            'name' => 'required|string|max:255',
-            'identity_card' => 'nullable|string|max:255|unique:admins,deleted_at,NULL',
-            'phone' => 'nullable|numeric',
-            'email' => 'required|string|email|max:255|unique:admins,deleted_at,NULL',
-            'image' => 'nullable|max:8192',
-            // 'role' => 'required|exists:roles,id',
-            'password' => [
-                'required','string','confirmed',
-                Password::min(8)
-                        ->mixedCase()
-                        ->letters()
-                        ->numbers()
-                        ->symbols()
-            ],
-        ]);
-
         $admin_hq = Admin::withTrashed()->latest('id')->first();
 
         $admin = Admin::create([
@@ -92,14 +74,6 @@ class AdminController extends Controller
 
     public function update(Request $request, Admin $admin)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'identity_card' => 'nullable|string|max:255|unique:admins,identity_card,' . $admin->id . ',id,deleted_at,NULL',
-            'phone' => 'nullable|numeric',
-            'email' => 'nullable|string|email|max:255|unique:admins,email,' . $admin->id . ',id,deleted_at,NULL',
-            'image' => 'nullable|max:8192',
-        ]);
-
         if($request->image)
         {
             $file = UploadImage::uploadAdminImage($request, $admin);

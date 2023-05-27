@@ -30,7 +30,7 @@
                         <input type="text" class="form-control datatable-input" id="name" placeholder="Name" data-col-index="2">
                     </div>
                     <div class="pe-2 flex-fill">
-                        <input type="text" class="form-control datatable-input" id="area_of_experise" placeholder="Area of Experise" data-col-index="2">
+                        <input type="text" class="form-control datatable-input" id="area_of_experise" placeholder="Area of Expertise" data-col-index="2">
                     </div>
                     <div class="px-2 flex-fill">
                         <select class="form-select datatable-input" id="branch_id">

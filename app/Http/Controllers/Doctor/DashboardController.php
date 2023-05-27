@@ -14,11 +14,13 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $announcement = Announcement::where('branch_id', auth()->user()->branch_id)
-            ->orWhere(function ($query) {
-                $query->where('published_to', 1)
-                    ->orWhere('published_to', 2);
-            })
+        $announcement = Announcement::where(function ($query) {
+            $query->where('branch_id', auth()->user()->branch_id)
+                ->orWhere('branch_id', null);
+        })->where(function ($query) {
+            $query->where('published_to', 1)
+                ->orWhere('published_to', 2);
+        })
             ->latest()
             ->first();
 

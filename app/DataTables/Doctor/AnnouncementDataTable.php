@@ -21,31 +21,24 @@ class AnnouncementDataTable extends DataTable
             ->addColumn('action', function ($item) {
                 return view('doctor.announcements.action', compact('item'));
             })
-            ->addColumn('published_to', function($item) {
+            ->addColumn('published_to', function ($item) {
                 $data = '';
-                if($item->published_to == 1)
-                {
+                if ($item->published_to == 1) {
                     $data .= "All";
-                }
-                elseif($item->published_to == 2)
-                {
+                } elseif ($item->published_to == 2) {
                     $data .= "Doctors";
-                }
-                elseif($item->published_to == 3)
-                {
+                } elseif ($item->published_to == 3) {
                     $data .= "Nurses";
-                }
-                elseif($item->published_to == 3)
-                {
+                } elseif ($item->published_to == 3) {
                     $data .= "Patients";
                 }
                 return $data;
             })
-            ->addColumn('created_at', function($item) {
+            ->addColumn('created_at', function ($item) {
                 return $item->created_at->format('d/m/Y h:i');
             })
-            ->addColumn('published_at', function($item) {
-                if($item->published_at != NULL){
+            ->addColumn('published_at', function ($item) {
+                if ($item->published_at != NULL) {
                     return Carbon::parse($item->published_at)->format('d/m/Y H:i');
                 }
             })
@@ -54,26 +47,30 @@ class AnnouncementDataTable extends DataTable
 
     public function query(Announcement $model)
     {
-        return $model->localsearch(request())->where('branch_id', auth()->user()->branch_id)->orWhere(function ($query) {
-            $query->where('published_to', 1)
-                ->orWhere('published_to', 2);
-        });
+        return $model->localsearch(request())
+            ->where(function ($query) {
+                $query->where('branch_id', auth()->user()->branch_id)
+                    ->orWhere('branch_id', null);
+            })->where(function ($query) {
+                $query->where('published_to', 1)
+                    ->orWhere('published_to', 2);
+            });
     }
 
     public function html()
     {
         return $this->builder()
-                    ->setTableId('doctor-announcement-table')
-                    ->columns($this->getColumns())
-                    ->ajax([
-                        'url' => route('doctor.announcements.index'),
-                        'data' => 'function(d) {
+            ->setTableId('doctor-announcement-table')
+            ->columns($this->getColumns())
+            ->ajax([
+                'url' => route('doctor.announcements.index'),
+                'data' => 'function(d) {
                             d.title = $("#title").val();
                             d.published_to = $("#published_to").val();
                         }',
-                    ])
-                    ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
-                    ->initComplete('function() {
+            ])
+            ->dom("<'d-flex justify-content-end tw-py-2' p><'row'<'col-sm-12' t>><'row'<'col-lg-12' <'tw-py-3 col-lg-12 d-flex flex-column flex-sm-row align-items-center justify-content-between tw-space-y-5 md:tw-space-y-0' ip>r>>")
+            ->initComplete('function() {
                             $(".datatable-input").on("change",function () {
                                 $("#doctor-announcement-table").DataTable().ajax.reload();
                             });

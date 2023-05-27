@@ -36,7 +36,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Branch<span class="text-danger">*</span></label>
-                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
+                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" required>
                             <option selected="" value="">Select Branch</option>
                             @foreach($branch as $branches)
                             <option value="{{ $branches->id }}">{{ $branches->name }}</option>

@@ -66,7 +66,7 @@
                                     <tr>
                                         <th scope="row">Branch :</th>
                                         <td>{{ $doctor->branch->name ?: '-' }}</td>
-                                        <th scope="row">Area of Experise :</th>
+                                        <th scope="row">Area of Expertise :</th>
                                         <td>{{ $doctor->area_of_experise ?: '-' }}</td>
                                     </tr>
                                     {{-- <tr>

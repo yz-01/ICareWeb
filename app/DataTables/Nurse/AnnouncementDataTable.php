@@ -54,10 +54,14 @@ class AnnouncementDataTable extends DataTable
 
     public function query(Announcement $model)
     {
-        return $model->localsearch(request())->where('branch_id', auth()->user()->branch_id)->orWhere(function ($query) {
-            $query->where('published_to', 1)
-                ->orWhere('published_to', 3);
-        });
+        return $model->localsearch(request())
+            ->where(function ($query) {
+                $query->where('branch_id', auth()->user()->branch_id)
+                    ->orWhere('branch_id', null);
+            })->where(function ($query) {
+                $query->where('published_to', 1)
+                    ->orWhere('published_to', 3);
+            });
     }
 
     public function html()

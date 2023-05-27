@@ -58,6 +58,10 @@ class LoginController extends Controller
             return redirect()->back()->withErrors(['username' => 'This account is not active']);
         }
 
+        if(Admin::where('username',$request->username)->exists() && Admin::where('password', '!=', $request->password)){
+            return redirect()->back()->withErrors(['username' => 'gg']);
+        }
+
         if (Auth::guard('admin')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             return redirect()->intended(route('admin.dashboard'));
         }

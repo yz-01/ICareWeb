@@ -41,8 +41,8 @@
                         <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Branch</label>
-                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
+                        <label class="form-label">Branch<span class="text-danger">*</span></label>
+                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" required>
                             <option selected="" value="">Select Branch</option>
                             @foreach($branch as $branches)
                             <option value="{{ $branches->id }}" {{ $patient->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="name">Name<span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: $patient->name }}">
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name" value="{{ old('name') ?: $patient->name }}" required>
                         @error('name')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="email">Email<span class="text-danger">*</span></label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: $patient->email }}">
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email" value="{{ old('email') ?: $patient->email }}" required>
                         @error('email')
                         <div class="invalid-feedback">
                             <span>{{ $message }}</span>
@@ -87,17 +87,8 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="city">Branch<span class="text-danger">*</span></label>
-                        <select class="form-select select-city @error('branch_id') is-invalid @enderror" name="branch_id">
-                            <option value="">-- Please Select --</option>
-                            @foreach($branch as $branches)
-                            <option value="{{ $branches->id }}" {{ $patient->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
                         <label for="city">Nurse Call Application<span class="text-danger">*</span></label>
-                        <select class="form-select select-city @error('nurse_call_application_id') is-invalid @enderror" name="nurse_call_application_id">
+                        <select class="form-select select-city @error('nurse_call_application_id') is-invalid @enderror" name="nurse_call_application_id" required>
                             <option value="">-- Please Select --</option>
                             <option value="1" {{ $patient->nurse_call_application_id == 1 ? 'selected' : '' }}>Fingers Recognition Application</option>
                             <option value="0" {{ $patient->nurse_call_application_id == 0 ? 'selected' : '' }}>Eyes Recognition Application</option>

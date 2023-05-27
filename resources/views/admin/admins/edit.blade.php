@@ -40,8 +40,8 @@
                         <label class="text-danger">***Maximum file size to upload is 8MB (8192 KB)***</label>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Branch</label>
-                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
+                        <label class="form-label">Branch<span class="text-danger">*</span></label>
+                        <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id" required>
                             <option selected="" value="">Select Branch</option>
                             @foreach($branch as $branches)
                             <option value="{{ $branches->id }}" {{ $admin->branch_id == $branches->id ? 'selected' : '' }}>{{ $branches->name }}</option>

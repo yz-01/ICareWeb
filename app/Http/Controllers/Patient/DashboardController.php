@@ -13,13 +13,15 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $announcement = Announcement::where('branch_id', auth()->user()->branch_id)
-        ->orWhere(function ($query) {
+        $announcement = Announcement::where(function ($query) {
+            $query->where('branch_id', auth()->user()->branch_id)
+                ->orWhere('branch_id', null);
+        })->where(function ($query) {
             $query->where('published_to', 1)
                 ->orWhere('published_to', 4);
         })
-        ->latest()
-        ->first();
+            ->latest()
+            ->first();
 
         return view('patient.dashboard', compact('announcement'));
     }
@@ -29,11 +31,11 @@ class DashboardController extends Controller
         $patient = Patient::where('id', 1)->first();
 
         $path = "C:\\Users\\pc\\PycharmProjects\\HandTracking\\PatientCallingHistory";
-        
+
         // Create the file
         $filename = $path . '\\' . $patient->name . '.txt';
         File::put($filename, '');
-    
+
         // Write content to the file
         $content = "Patient Name: " . $patient->name . "\r\nInstruction: ";
         File::put($filename, $content, FILE_APPEND);

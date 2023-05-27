@@ -172,7 +172,7 @@ class DoctorDataTable extends DataTable
             Column::make('username')->title('Username')->orderable(false),
             Column::make('name')->title('Name')->orderable(false),
             Column::make('email')->title('Email')->orderable(false),
-            Column::make('area_of_experise')->title('Area of Experise')->orderable(false),
+            Column::make('area_of_experise')->title('Area of Expertise')->orderable(false),
             Column::make('doctor_status')->title('Status')->orderable(false),
             Column::make('action')->className('text-end')->title('')->width('200px')->sorting(false),
         ];

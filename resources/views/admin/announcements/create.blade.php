@@ -37,9 +37,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">Image</label>
+                                <label for="formFile" class="form-label">Image<span class="text-danger">*</span></label>
                                 <div class="file-upload w-100">
-                                    <input type="file" name="image" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;">
+                                    <input type="file" name="image" onchange="readURL(this,1)" style="z-index:2; width: 100% !important;" required>
                                     <div class="camera-bg" style="display: none; left: auto !important;" id="camera1"></div>
                                     <i class="fa fa-plus" id="imageResultIcon1" style="border-radius:5px;"></i>
                                     <img id="imageResult1" class="w-100 h-100" style="object-fit: contain !important; display: none;" />
@@ -51,7 +51,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label class="form-label">Published to<span class="text-danger">*</span></label>
-                                <select class="form-select @error('published_to') is-invalid @enderror" name="published_to" id="published_to">
+                                <select class="form-select @error('published_to') is-invalid @enderror" name="published_to" id="published_to" required>
                                     <option selected="" value="">-- Please Select --</option>
                                     <option value="1" {{ old('published_to') == 1 ? 'selected' : '' }}>All</option>
                                     <option value="2" {{ old('published_to') == 2 ? 'selected' : '' }}>Doctors</option>
@@ -66,7 +66,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Published to Branch<span class="text-danger">*</span></label>
                                 <select class="form-select @error('branch_id') is-invalid @enderror" name="branch_id">
-                                    <option selected value="">-- Please Select --</option>
+                                    <option selected value="">All Branches</option>
                                     @foreach($branch as $branches)
                                     <option value="{{ $branches->id }}">{{ $branches->name }}</option>
                                     @endforeach
@@ -78,7 +78,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">Published At<span class="text-danger">*</span></label>
-                                <input type="datetime-local" class="form-control @error('published_at') is-invalid @enderror" placeholder="Published Date" name="published_at" value="{{ old('published_at') }}">
+                                <input type="datetime-local" class="form-control @error('published_at') is-invalid @enderror" placeholder="Published Date" name="published_at" value="{{ old('published_at') }}" required>
                                 @error('published_at') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         <div class="col-lg-12">
                             <div class="mb-3">
                                 <label class="form-label">Title<span class="text-danger">*</span></label>
-                                <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+                                <input type="text" class="form-control" name="title" value="{{ old('title') }}" required>
                                 @error('title') <div id="val-username-error" class="invalid-feedback animated fadeInUp" style="display: block;">{{$message}}</div> @enderror
                             </div>
                         </div>

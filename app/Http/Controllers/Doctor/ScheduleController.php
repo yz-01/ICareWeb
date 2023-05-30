@@ -101,4 +101,15 @@ class ScheduleController extends Controller
 
         return redirect()->route('doctor.schedules.index')->with('success', 'Schedule Deleted Successfully');
     }
+
+    public function calendar()
+    {
+        $schedule = Schedule::where('doctor_id', auth()->id())->get();
+
+        $doctor = Doctor::all();
+
+        $nurse = Nurse::all();
+
+        return view('doctor.schedules.calendar', compact('doctor', 'nurse', 'schedule'));
+    }
 }

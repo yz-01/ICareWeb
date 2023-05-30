@@ -12,6 +12,7 @@
             </div>
 
             <div class="page-title-right">
+                <a href="{{ route('doctor.schedules.calendar') }}" class="btn btn-danger waves-effect waves-light">Calendar</a>
                 <a href="{{ route('doctor.schedules.create') }}" class="btn btn-primary waves-effect waves-light">Create</a>
             </div>
         </div>

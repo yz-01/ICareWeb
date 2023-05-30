@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth:doctor'], function () {
     Route::resource('treatments', 'TreatmentController');
 
     //Schedule
+    Route::get('schedules/calendar', 'ScheduleController@calendar')->name('schedules.calendar');
     Route::resource('schedules', 'ScheduleController');
 
     //Announcement

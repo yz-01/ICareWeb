@@ -45,7 +45,7 @@
                                 <td>
                                     <span>
                                         @if($announcement->published_to == 1)
-                                        All 
+                                        All
                                         @elseif($announcement->published_to == 2)
                                         Doctors
                                         @elseif($announcement->published_to == 3)
@@ -53,7 +53,7 @@
                                         @elseif($announcement->published_to == 4)
                                         Patients
                                         @else
-                                        
+
                                         @endif
                                     </span>
                                 </td>
@@ -61,7 +61,11 @@
                             <tr>
                                 <th scope="row">Published To Branch:</th>
                                 <td>
+                                    @if($announcement->branch)
                                     <span>{{ $announcement->branch->name }}</span>
+                                    @else
+                                    <span>All</span>
+                                    @endif
                                 </td>
                             </tr>
                             <tr>

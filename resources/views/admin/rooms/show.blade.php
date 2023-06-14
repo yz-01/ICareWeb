@@ -46,6 +46,7 @@
                                 <td>
                                     {{ $wards->ward_number }}
                                     &nbsp;
+                                    @if($wards->is_available != 0)
                                     <button type="submit" class="btn btn-danger waves-effect waves-light delete-data-ward" data-id="{{$wards->id}}" data-room_id="{{$room->id}}" data-toggle='tooltip' data-placement='top' title='Delete'>
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
@@ -53,6 +54,8 @@
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                     </form>
+                                    @else
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

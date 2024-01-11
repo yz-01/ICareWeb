@@ -45,11 +45,11 @@
                                 <label for="instruction">Instruction<span class="text-danger">*</span></label>
                                 <select class="form-select select-city @error('instruction') is-invalid @enderror" name="instruction" id="instruction">
                                     <option value="">-- Please Select --</option>
-                                    <option value="Call Doctor">Call Doctor</option>
-                                    <option value="Want to Go Toilet">Want to Go Toilet</option>
-                                    <option value="Want to Eat">Want to Eat</option>
-                                    <option value="Want to Drink">Want to Drink</option>
-                                    <option value="Need Medicine">Need Medicine</option>
+                                    <option value="Mobility Assistance">Mobility Assistance</option>
+                                    <option value="Cleaning Service">Cleaning Service</option>
+                                    <option value="Personal Care Assistant">Personal Care Assistant</option>
+                                    <option value="Personal Care Assistant">Personal Care Assistant</option>
+                                    <option value="Call Nurse">Call Nurse</option>
                                 </select>
                             </div>
                             <div class="form-group mb-3">
